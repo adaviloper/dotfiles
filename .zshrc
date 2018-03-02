@@ -80,4 +80,39 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-source $HOME/.aliases
+# Example aliases
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+
+# Fix numeric keypad
+# 0 . Enter
+bindkey -s "^[Op" "0"
+bindkey -s "^[On" "."
+bindkey -s "^[OM" "^M"
+# 1 2 3
+bindkey -s "^[Oq" "1"
+bindkey -s "^[Or" "2"
+bindkey -s "^[Os" "3"
+# 4 5 6
+bindkey -s "^[Ot" "4"
+bindkey -s "^[Ou" "5"
+bindkey -s "^[Ov" "6"
+# 7 8 9
+bindkey -s "^[Ow" "7"
+bindkey -s "^[Ox" "8"
+bindkey -s "^[Oy" "9"
+# + -  * /
+bindkey -s "^[Ol" "+"
+bindkey -s "^[Om" "-"
+bindkey -s "^[Oj" "*"
+bindkey -s "^[Oo" "/"
+
+export PATH="$PATH:/Applications/XAMPP/bin;yarn global bin;"
+
+## Vagrant and Development
+alias ll="ls -alh"
+alias pup="php -S localhost:3000"
+alias vgserve="cd ~/Homestead; vagrant up;"
+alias vgprov="cd ~/Homestead; vagrant up --provision;"
+alias vghalt="cd ~/Homestead; vagrant halt;"
+alias vgssh="cd ~/Homestead; vagrant ssh;"
