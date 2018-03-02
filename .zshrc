@@ -119,17 +119,23 @@ alias vgssh="cd ~/Homestead; vagrant ssh;"
 
 #Laravel
 alias pa="php artisan"
+
 #PHP
 export PATH="/usr/local/php5/bin:$PATH"
 alias pup="php -S localhost:3000"
+
 #PHPUnit
 alias p="phpunit"
 alias pf="phpunit --filter"
+
 #Servers
 alias chislhphys="ssh adrian@72.10.51.135"
 alias chisjhphys="ssh adrian@70.32.86.71"
 alias ddemo="ssh adrian@70.32.80.104"
 alias dweb="ssh adrian@72.10.35.69"
+alias dev="ssh adrian@107.170.107.136"
+alias prod="ssh adrian@162.243.69.132"
 alias sshio="ssh adrian@45.56.73.78"
+
 #Sublime
 export PATH=/usr/local/sbin:$PATH
