@@ -117,6 +117,9 @@ alias vgprov="cd ~/Homestead; vagrant up --provision;"
 alias vghalt="cd ~/Homestead; vagrant halt;"
 alias vgssh="cd ~/Homestead; vagrant ssh;"
 
+#Helpers
+alias c="clear"
+
 #Laravel
 alias pa="php artisan"
 
