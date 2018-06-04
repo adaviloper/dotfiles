@@ -2,12 +2,19 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/Users/adriandavila/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="robbyrussell"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +58,9 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras git)
+plugins=(
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,64 +90,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Fix numeric keypad
-# 0 . Enter
-bindkey -s "^[Op" "0"
-bindkey -s "^[On" "."
-bindkey -s "^[OM" "^M"
-# 1 2 3
-bindkey -s "^[Oq" "1"
-bindkey -s "^[Or" "2"
-bindkey -s "^[Os" "3"
-# 4 5 6
-bindkey -s "^[Ot" "4"
-bindkey -s "^[Ou" "5"
-bindkey -s "^[Ov" "6"
-# 7 8 9
-bindkey -s "^[Ow" "7"
-bindkey -s "^[Ox" "8"
-bindkey -s "^[Oy" "9"
-# + -  * /
-bindkey -s "^[Ol" "+"
-bindkey -s "^[Om" "-"
-bindkey -s "^[Oj" "*"
-bindkey -s "^[Oo" "/"
-
-export PATH="$PATH:/Applications/XAMPP/bin;yarn global bin;"
-
-## Vagrant and Development
 alias ll="ls -alh"
-alias pup="php -S localhost:3000"
-alias vgserve="cd ~/Homestead; vagrant up;"
-alias vgprov="cd ~/Homestead; vagrant up --provision;"
-alias vghalt="cd ~/Homestead; vagrant halt;"
-alias vgssh="cd ~/Homestead; vagrant ssh;"
-
-#Helpers
-alias c="clear"
-
-#Laravel
-alias pa="php artisan"
-
-#PHP
-export PATH="/usr/local/php5/bin:$PATH"
-alias pup="php -S localhost:3000"
-
-#PHPUnit
-alias p="phpunit"
-alias pf="phpunit --filter"
-
-#Servers
-alias chislhphys="ssh adrian@72.10.51.135"
-alias chisjhphys="ssh adrian@70.32.86.71"
-alias ddemo="ssh adrian@70.32.80.104"
-alias dweb="ssh adrian@72.10.35.69"
-alias dev="ssh adrian@107.170.107.136"
-alias prod="ssh adrian@162.243.69.132"
-alias sshio="ssh adrian@45.56.73.78"
-
-#Sublime
-export PATH=/usr/local/sbin:$PATH
