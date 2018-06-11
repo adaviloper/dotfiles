@@ -94,3 +94,33 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ll="ls -alh"
+alias pup="php -S localhost:3000"
+
+# Vagrant aliases
+alias vgu="cd ~/Homestead; vagrant up;"
+alias vgs="vagrant ssh"
+alias vgus="vgu; vagrant ssh"
+
+# Node alias
+alias nrd='npm run dev'
+alias nrh='npm run hot'
+alias nrp='npm run production'
+alias nrw='npm run watch'
+alias nrww='npm run watch-poll'
+alias yrd='yarn run dev'
+alias yrh='yarn run hot'
+alias yrp='yarn run production'
+alias yrw='yarn run watch'
+alias yrwp='yarn run watch-poll'
+
+# Testing
+alias p='phpunit'
+alias pf='p --filter'
+alias phpspec='vendor/bin/phpspec'
+alias phpunit='vendor/bin/phpunit'
+alias serve='serve-laravel'
+alias xoff='sudo phpdismod -s cli xdebug'
+alias xon='sudo phpenmod -s cli xdebug'
+
+# Path updates
+export PATH=/Applications/PhpStorm.app/Contents/bin:$PATH
