@@ -93,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias c="clear"
 alias ll="ls -alh"
 alias pup="php -S localhost:3000"
 
@@ -100,6 +101,7 @@ alias pup="php -S localhost:3000"
 alias vgu="cd ~/Homestead; vagrant up;"
 alias vgs="vagrant ssh"
 alias vgus="vgu; vagrant ssh"
+alias vgh="vagrant halt"
 
 # Node alias
 alias nrd='npm run dev'

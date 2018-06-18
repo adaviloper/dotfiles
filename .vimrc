@@ -57,7 +57,7 @@ syntax enable
 if (has("termguicolors"))
   set termguicolors
 endif
-colorscheme vim-material
+colorscheme OceanicNext 
 
 
 
