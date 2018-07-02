@@ -94,6 +94,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias c="clear"
+alias cloc="git ls-files | xargs wc -l"
 alias ll="ls -alh"
 alias pup="php -S localhost:3000"
 
