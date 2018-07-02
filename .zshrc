@@ -127,3 +127,6 @@ alias xon='sudo phpenmod -s cli xdebug'
 
 # Path updates
 export PATH=/Applications/PhpStorm.app/Contents/bin:$PATH
+
+# Work Connections
+alias app1="ssh forge@54.214.53.168"
