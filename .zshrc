@@ -130,3 +130,4 @@ export PATH=/Applications/PhpStorm.app/Contents/bin:$PATH
 
 # Work Connections
 alias app1="ssh forge@54.214.53.168"
+alias app2="ssh forge@34.221.177.87"
