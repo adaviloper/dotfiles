@@ -59,6 +59,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  composer
   git
 )
 
@@ -93,7 +94,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias c="clear"
+alias cl="clear"
 alias cloc="git ls-files | xargs wc -l"
 alias ll="ls -alh"
 alias pup="php -S localhost:3000"
@@ -130,4 +131,4 @@ export PATH=/Applications/PhpStorm.app/Contents/bin:$PATH
 
 # Work Connections
 alias app1="ssh forge@54.214.53.168"
-alias app2="ssh forge@34.221.177.87"
+alias app2="ssh forge@35.162.21.101"
