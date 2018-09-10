@@ -94,15 +94,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias cdh="cd ~/Homestead"
 alias cl="clear"
 alias cloc="git ls-files | xargs wc -l"
 alias ll="ls -alh"
 alias pup="php -S localhost:3000"
 
 # Vagrant aliases
-alias vgu="cd ~/Homestead; vagrant up;"
+alias vgu="vagrant up;"
 alias vgs="vagrant ssh"
-alias vgus="vgu; vagrant ssh"
+alias vgus="vgu; vgs"
 alias vgh="vagrant halt"
 
 # Node alias
