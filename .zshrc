@@ -107,7 +107,7 @@ alias vgus="vgu; vgs"
 alias vgh="vagrant halt"
 
 # Node alias
-alias nrd='npm run dev'
+alias nrd='npm run development'
 alias nrh='npm run hot'
 alias nrp='npm run production'
 alias nrw='npm run watch'
@@ -119,6 +119,20 @@ alias yrw='yarn run watch'
 alias yrwp='yarn run watch-poll'
 
 # Testing
+alias cy='./node_modules/.bin/cypress'
+alias cyo='cy open'
+alias cyr='cy run'
+#alias cyrs='cyr --spec'
+cyrd () {
+  testRoot="./cypress/integration/"
+  suffix="/**/*"
+  cyr --spec "$testRoot$1$suffix"
+}
+cyrf () {
+  testRoot="./cypress/integration/"
+  suffix=".spec.js"
+  cyr --spec "$testRoot$1$suffix"
+}
 alias p='phpunit'
 alias pf='p --filter'
 alias phpspec='vendor/bin/phpspec'
