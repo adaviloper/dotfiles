@@ -1,8 +1,8 @@
 *
+.DS_Store
 !.aliases
 !.bash_profile
 !.gitignore
 !.vimrc
 !.zshrc
 !work-settings.jar
-!.oh-my-zsh/
