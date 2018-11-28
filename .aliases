@@ -30,9 +30,58 @@ export PATH="$PATH:/Applications/XAMPP/bin;yarn global bin;"
 ## Vagrant and Development
 alias ll="ls -alh"
 alias pup="php -S localhost:3000"
-alias vgserve="cd ~/Homestead; vagrant up;"
-alias vgprov="cd ~/Homestead; vagrant up --provision;"
-alias vghalt="cd ~/Homestead; vagrant halt;"
-alias vgssh="cd ~/Homestead; vagrant ssh;"
 
 alias c="clear"
+
+alias cdh="cd ~/Homestead"
+alias cloc="git ls-files | xargs wc -l"
+alias gcos="git checkout staging"
+
+# Vagrant aliases
+alias vgu="vagrant up;"
+alias vgs="vagrant ssh"
+alias vgus="vgu; vgs"
+alias vgh="vagrant halt"
+alias vgprov="vagrant up --provision;"
+
+# Node alias
+alias nrd='npm run development'
+alias nrh='npm run hot'
+alias nrp='npm run production'
+alias nrw='npm run watch'
+alias nrww='npm run watch-poll'
+alias yrd='yarn run dev'
+alias yrh='yarn run hot'
+alias yrp='yarn run production'
+alias yrw='yarn run watch'
+alias yrwp='yarn run watch-poll'
+
+# Testing
+alias cy='./node_modules/.bin/cypress'
+alias cyo='cy open'
+alias cyr='cy run'
+#alias cyrs='cyr --spec'
+cyrd () {
+  testRoot="./cypress/integration/"
+  suffix="/**/*"
+  cyr --spec "$testRoot$1$suffix"
+}
+cyrf () {
+  testRoot="./cypress/integration/"
+  suffix=".spec.js"
+  cyr --spec "$testRoot$1$suffix"
+}
+alias p='phpunit'
+alias pf='p --filter'
+alias phpspec='vendor/bin/phpspec'
+alias phpunit='vendor/bin/phpunit'
+alias serve='serve-laravel'
+alias xoff='sudo phpdismod -s cli xdebug'
+alias xon='sudo phpenmod -s cli xdebug'
+
+# Path updates
+export PATH=/Applications/PhpStorm.app/Contents/bin:$PATH
+
+# Work Connections
+alias app1="ssh forge@54.214.53.168"
+alias app2="ssh forge@35.162.21.101"
