@@ -2,6 +2,7 @@
 .DS_Store
 !.aliases
 !.bash_profile
+!.functions
 !.gitignore
 !.vimrc
 !.zshrc

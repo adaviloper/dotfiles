@@ -1,0 +1,14 @@
+cyrd () {
+  testRoot="./cypress/integration/"
+  suffix="/**/*"
+  cyr --spec "$testRoot$1$suffix"
+}
+cyrf () {
+  testRoot="./cypress/integration/"
+  suffix=".spec.js"
+  cyr --spec "$testRoot$1$suffix"
+}
+
+mkd () {
+  mkdir -p $1 && cd $1
+}
