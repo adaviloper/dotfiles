@@ -4,6 +4,7 @@
 !.bash_profile
 !.functions
 !.gitignore
+!.oh-my-zsh/custom
 !.vimrc
 !.zshrc
 !work-settings.jar
