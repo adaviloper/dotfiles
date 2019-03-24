@@ -47,15 +47,21 @@ alias vgus="vgu; vgs"
 alias vgh="vagrant halt"
 alias vgprov="vagrant up --provision;"
 
+# Composer
+alias crs='composer run-script'
+
 # Node alias
 alias nrd='npm run development'
 alias nrh='npm run hot'
 alias nrp='npm run production'
+alias nrt='npm run test'
 alias nrw='npm run watch'
 alias nrww='npm run watch-poll'
+
 alias yrd='yarn run dev'
 alias yrh='yarn run hot'
 alias yrp='yarn run production'
+alias yrt='yarn run test'
 alias yrw='yarn run watch'
 alias yrwp='yarn run watch-poll'
 
