@@ -6,5 +6,5 @@
 !.gitignore
 !.vimrc
 !.zshrc
-!Code/qmk_firmware/keyboards/dz60/keymaps/adavila.dev/
+!~/Code/qmk_firmware/keyboards/dz60/keymaps/adavila.dev/
 !work-settings.jar
