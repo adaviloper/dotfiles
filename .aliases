@@ -28,7 +28,7 @@ bindkey -s "^[Oo" "/"
 export PATH="$PATH:/Applications/XAMPP/bin;yarn global bin;"
 
 ## Vagrant and Development
-alias ll="ls -alh --color"
+alias ll="ls -alhG"
 alias pup="php -S localhost:3000"
 
 alias c="clear"
