@@ -41,11 +41,11 @@ alias gcos="git checkout staging"
 alias gcod="git checkout dev"
 
 # Vagrant aliases
-alias vgu="vagrant up;"
+alias vgu="vagrant up"
 alias vgs="vagrant ssh"
 alias vgus="vgu; vgs"
 alias vgh="vagrant halt"
-alias vgprov="vagrant up --provision;"
+alias vgprov="vagrant up --provision"
 
 # Composer
 alias crs='composer run-script'
@@ -69,7 +69,7 @@ alias yrwp='yarn run watch-poll'
 alias cy='./node_modules/.bin/cypress'
 alias cyo='cy open'
 alias cyr='cy run'
-#alias cyrs='cyr --spec'
+alias jt='nrt -t'
 alias p='phpunit'
 alias pf='p --filter'
 alias phpspec='vendor/bin/phpspec'
