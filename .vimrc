@@ -1,7 +1,7 @@
 let mapleader = ","
 
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype on                   " required
 
 "  set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -29,11 +29,12 @@ Plugin 'VundleVim/Vundle.vim'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'airblade/vim-gitgutter'
-Plugin 'HerringtonDarkholme/yats.vim'
-Plugin 'kaicataldo/material.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'sjl/gundo.vim'
+Plugin 'kaicataldo/material.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'HerringtonDarkholme/yats.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -124,3 +125,5 @@ augroup END
 
 
 
+"-------------TagbarToggle-------------"
+let g:tagbar_show_visibility=1
