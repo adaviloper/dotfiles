@@ -65,6 +65,13 @@ let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
+highlight Cursor guifg=white guibg=#E91E63
+highlight iCursor guifg=white guibg=#E91E63
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
+
 set autoindent
 set smartindent
 set number relativenumber
@@ -93,6 +100,10 @@ highlight GitGutterDelete guifg=#F07178
 nmap <Leader>ev :e $MYVIMRC<CR>
 autocmd bufwritepost .vimrc source $MYVIMRC
 nnoremap <Leader>ul :GundoToggle<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 
 
