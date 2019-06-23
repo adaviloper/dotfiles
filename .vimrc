@@ -74,8 +74,11 @@ set guicursor+=i:blinkwait10
 
 set autoindent
 set smartindent
+
 set number relativenumber
 set nu rnu
+set splitbelow
+set splitright
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set updatetime=100
 
