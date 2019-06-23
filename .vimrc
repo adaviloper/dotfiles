@@ -1,4 +1,5 @@
 let mapleader = ","
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -28,11 +29,11 @@ Plugin 'VundleVim/Vundle.vim'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rafi/awesome-vim-colorschemes'
-Plugin 'mhartington/oceanic-next'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'kaicataldo/material.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'sjl/gundo.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,14 +50,39 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"-------------AutoCommands-------------"
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
+
+
+
+
+
 " Editor configurations
-set number
+set background=dark
+colorscheme material
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+set autoindent
+set smartindent
+set number relativenumber
+set nu rnu
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+set updatetime=100
 
 syntax enable
 if (has("termguicolors"))
   set termguicolors
 endif
+
+"-------------VimGitGutter-------------"
+"let g:gitgutter_override_sign_column_highlight = 0
+"highlight SignColumn guibg=
+highlight GitGutterAdd guifg=#C3E88D
+highlight GitGutterChange guifg=#FFCB6B
+highlight GitGutterDelete guifg=#F07178
 
 
 
@@ -64,4 +90,23 @@ endif
 
 "---------------Mappings---------------"
 "Make it easier to edit the .vimrc file
-nmap <Leader>ev :e $MYVIMRC<cr>
+nmap <Leader>ev :e $MYVIMRC<CR>
+autocmd bufwritepost .vimrc source $MYVIMRC
+nnoremap <Leader>ul :GundoToggle<CR>
+
+
+
+
+
+
+"-------------NumberToggle-------------"
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+
+
+
+
+
