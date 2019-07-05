@@ -66,6 +66,8 @@ let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
+highlight Search cterm=underline
+
 highlight Cursor guifg=white guibg=#E91E63
 highlight iCursor guifg=white guibg=#E91E63
 set guicursor=n-v-c:block-Cursor
@@ -74,14 +76,18 @@ set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkwait10
 
 set autoindent
+set copyindent
 set smartindent
 
+set mouse=a
 set number relativenumber
 set nu rnu
 set splitbelow
 set splitright
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set updatetime=100
+set wildignore+=*/vendor/**
+set wildignore+=*/node_modules/**
 
 syntax enable
 if (has("termguicolors"))
@@ -108,6 +114,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nmap <C-v> :vertical resize +5<CR>
+
 
 
 
@@ -127,3 +135,4 @@ augroup END
 
 "-------------TagbarToggle-------------"
 let g:tagbar_show_visibility=1
+nnoremap <silent> <Leader>tb :TagbarToggle<CR>

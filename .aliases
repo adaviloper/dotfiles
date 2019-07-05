@@ -27,7 +27,7 @@ bindkey -s "^[Oo" "/"
 
 export PATH="$PATH:/Applications/XAMPP/bin;yarn global bin;"
 
-## Vagrant and Development
+## Development
 alias ll="ls -alhG"
 alias pup="php -S localhost:3000"
 
@@ -41,11 +41,12 @@ alias gcos="git checkout staging"
 alias gcod="git checkout dev"
 
 # Vagrant aliases
-alias vgu="vagrant up"
-alias vgs="vagrant ssh"
+alias v="vagrant"
+alias vgu="v up"
+alias vgs="v ssh"
 alias vgus="vgu; vgs"
-alias vgh="vagrant halt"
-alias vgprov="vagrant up --provision"
+alias vgh="v halt"
+alias vgprov="v up --provision"
 
 # Composer
 alias crs='composer run-script'
