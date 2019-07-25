@@ -41,12 +41,12 @@ alias gcos="git checkout staging"
 alias gcod="git checkout dev"
 
 # Vagrant aliases
-alias v="vagrant"
-alias vgu="v up"
-alias vgs="v ssh"
+alias vg="vagrant"
+alias vgu="vg up"
+alias vgs="vg ssh"
 alias vgus="vgu; vgs"
-alias vgh="v halt"
-alias vgprov="v up --provision"
+alias vgh="vg halt"
+alias vgprov="vg up --provision"
 
 # Composer
 alias crs='composer run-script'
