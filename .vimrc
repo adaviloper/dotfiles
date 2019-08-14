@@ -95,8 +95,12 @@ set splitbelow
 set splitright
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set updatetime=100
-set wildignore+=*/vendor/**
+set hidden
+set path+=**
+set wildmenu
+set wildignore+=*/public/report/**
 set wildignore+=*/node_modules/**
+set wildignore+=*/vendor/**
 
 "-------------VimGitGutter-------------"
 "let g:gitgutter_override_sign_column_highlight = 0
