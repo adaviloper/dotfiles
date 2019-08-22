@@ -107,6 +107,7 @@ set autoindent
 set copyindent
 set smartindent
 
+set backspace=2
 set mouse=a
 set number relativenumber
 set nu rnu
