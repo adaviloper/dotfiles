@@ -55,6 +55,7 @@ filetype plugin indent on    " required
 "-------------AutoCommands-------------"
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
+autocmd bufwritepost .vimrc source $MYVIMRC
 
 
 
@@ -66,6 +67,8 @@ syntax on
 if (has("termguicolors"))
   set termguicolors
 endif
+
+set shell=/usr/local/bin/zsh
 
 set background=dark
 colorscheme material
@@ -137,7 +140,6 @@ highlight GitGutterDelete guifg=#F07178
 "Make it easier to edit the .vimrc file
 nmap <Leader>ev :e $MYVIMRC<CR>
 nmap <Leader>. :e .<CR>
-autocmd bufwritepost .vimrc source $MYVIMRC
 nnoremap <Leader>ul :GundoToggle<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
