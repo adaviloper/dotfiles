@@ -4,6 +4,7 @@
 !.bash_profile
 !.functions
 !.gitignore
+!.path
 !.vimrc
 !.zshrc
 !com.googlecode.iterm2.plist
