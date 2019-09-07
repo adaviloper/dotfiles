@@ -6,6 +6,7 @@
 !.gitignore
 !.vimrc
 !.zshrc
+!.dotfiles/
 !com.googlecode.iterm2.plist
 !Default.bttpreset
 !dz60_adavila.dev.hex
