@@ -55,7 +55,6 @@ filetype plugin indent on    " required
 "-------------AutoCommands-------------"
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
-autocmd bufwritepost .vimrc source $MYVIMRC
 
 
 
@@ -68,27 +67,23 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set shell=/bin/zsh
-
 set background=dark
 colorscheme material
 " Acceptable values are 'default' | 'dark' | 'palenight'
 let g:material_theme_style = 'default'
 
-if $TERM_PROGRAM =~ "iTerm"
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_SR = "\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-endif
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 highlight Search cterm=underline
 
 highlight Cursor guifg=white guibg=#E91E63
 highlight iCursor guifg=white guibg=#E91E63
-"set guicursor=n-v-c:block-Cursor
-"set guicursor+=i:ver100-iCursor
-"set guicursor+=n-v-c:blinkon0
-"set guicursor+=i:blinkwait10
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
 
 " Powerline
 set guifont=Inconsolata\ for\ Powerline:h15
@@ -142,6 +137,7 @@ highlight GitGutterDelete guifg=#F07178
 "Make it easier to edit the .vimrc file
 nmap <Leader>ev :e $MYVIMRC<CR>
 nmap <Leader>. :e .<CR>
+autocmd bufwritepost .vimrc source $MYVIMRC
 nnoremap <Leader>ul :GundoToggle<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
