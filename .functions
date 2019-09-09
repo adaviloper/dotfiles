@@ -1,14 +1,8 @@
-cyrd () {
-  testRoot="./cypress/integration/"
-  suffix="/**/*"
-  cyr --spec "$testRoot$1$suffix"
-}
-cyrf () {
-  testRoot="./cypress/integration/"
-  suffix=".spec.js"
-  cyr --spec "$testRoot$1$suffix"
+clean_local_branches () {
+  git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done
 }
 
 mkd () {
   mkdir -p $1 && cd $1
 }
+
