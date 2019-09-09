@@ -1,0 +1,16 @@
+tap 'homebrew/bundle'
+tap 'homebrew/cask-versions'
+tap 'thoughtbot/formulae'
+
+brew 'autoconf'
+brew 'ctags'
+brew 'git'
+brew 'neofetch'
+brew 'node'
+brew 'openssl'
+brew 'rcm'
+brew 'readline'
+brew 'sqlite'
+brew 'vim'
+
+cask virtualbox

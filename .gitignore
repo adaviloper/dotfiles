@@ -1,12 +1,12 @@
 *
 .DS_Store
 !.aliases
-!.bash_profile
 !.functions
 !.gitignore
 !.path
 !.vimrc
 !.zshrc
+!.dotfiles/
 !com.googlecode.iterm2.plist
 !Default.bttpreset
 !dz60_adavila.dev.hex

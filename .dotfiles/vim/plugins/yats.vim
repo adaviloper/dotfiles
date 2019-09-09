@@ -1,0 +1,1 @@
+Plugin 'HerringtonDarkholme/yats.vim'
