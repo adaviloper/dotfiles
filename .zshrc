@@ -1,1 +1,1 @@
-/Users/adrian/.dotfiles/zshrc
+/Users/adriandavila/.dotfiles/zshrc
