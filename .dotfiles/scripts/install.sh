@@ -15,11 +15,15 @@ info() {
 
 chsh -s $(which zsh)
 
+# Setup OhMyZsh for Zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 cd ~/.dotfiles
 
 brew tap homebrew/bundle
 brew bundle
 
+# Setup Vundle for Vim
 mkdir -p ~/.vim/bunlde
 yellow "Installing Vundle"
 echo ""
