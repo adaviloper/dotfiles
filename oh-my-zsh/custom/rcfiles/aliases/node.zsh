@@ -1,0 +1,8 @@
+alias ni='npm install'
+alias nid='npm install -D'
+alias nrd='npm run development'
+alias nrh='npm run hot'
+alias nrp='npm run production'
+alias nrt='npm run test'
+alias nrw='npm run watch'
+alias nrww='npm run watch-poll'

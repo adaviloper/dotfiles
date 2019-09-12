@@ -17,34 +17,6 @@ alias cloc="git ls-files | xargs wc -l"
 alias gcos="git checkout staging"
 alias gcod="git checkout dev"
 
-# Vagrant aliases
-alias vg="vagrant"
-alias vgu="vg up"
-alias vgs="vg ssh"
-alias vgus="vgu; vgs"
-alias vgh="vg halt"
-alias vgprov="vg up --provision"
-
-# Composer
-alias crs='composer run-script'
-
-# Node alias
-alias ni='npm install'
-alias nid='npm install -D'
-alias nrd='npm run development'
-alias nrh='npm run hot'
-alias nrp='npm run production'
-alias nrt='npm run test'
-alias nrw='npm run watch'
-alias nrww='npm run watch-poll'
-
-alias yrd='yarn run dev'
-alias yrh='yarn run hot'
-alias yrp='yarn run production'
-alias yrt='yarn run test'
-alias yrw='yarn run watch'
-alias yrwp='yarn run watch-poll'
-
 # Python
 #alias python=python3
 
@@ -58,8 +30,6 @@ alias pf='p --filter'
 alias phpspec='vendor/bin/phpspec'
 alias phpunit='vendor/bin/phpunit'
 alias serve='serve-laravel'
-alias xoff='sudo phpdismod -s cli xdebug'
-alias xon='sudo phpenmod -s cli xdebug'
 
 # Path updates
 export PATH=/Applications/PhpStorm.app/Contents/bin:$PATH

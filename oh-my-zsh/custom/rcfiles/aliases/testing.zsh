@@ -1,0 +1,10 @@
+alias cy='./node_modules/.bin/cypress'
+alias cyo='cy open'
+alias cyr='cy run'
+alias jt='nrt -t'
+alias p='phpunit'
+alias pf='p --filter'
+alias phpspec='vendor/bin/phpspec'
+alias phpunit='vendor/bin/phpunit'
+alias serve='serve-laravel'
+
