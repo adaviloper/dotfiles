@@ -100,7 +100,6 @@ AGNOSTER_PROMPT_SEGMENTS=("prompt_dir" "prompt_git" "prompt_end")
 sourceFileInConfig () {
   for file in $ZSH/custom/$1/**/*.zsh; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
-    print "Sourcing $file"
   done;
   unset file;
 }
