@@ -22,5 +22,6 @@ for repository in "${REPOSITORIES[@]}"
         echo "Checking out $branch";
         git checkout $branch
         git pull;
+        git checkout -
       done
   done
