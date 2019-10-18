@@ -1,8 +1,8 @@
 #! /bin/bash
 
 declare -a REPOSITORIES=(
-  #"admin-product"
-  #"billing-api"
+  "admin-product"
+  "billing-api"
   "onlinemeded"
 )
 
@@ -16,19 +16,20 @@ STASHED=false
 for repository in "${REPOSITORIES[@]}"
   do
     cd ~/Code/$repository;
+    echo "Navigated to $repository";
+
     CHANGES_EXIST=$(git diff-index --quiet HEAD -- || echo "changed")
     if [ "$CHANGES_EXIST" == "changed" ]
     then
-      #git stash push
       STASHED=true
+      git stash push
     fi
 
     git fetch --all --prune;
-    echo "Navigated to $repository";
     for branch in "${BRANCHES[@]}"
       do 
-        echo "Checking out $branch";
         git checkout $branch
+        echo "Checked out $branch";
         git pull;
         git checkout -
       done
