@@ -19,9 +19,11 @@ for repository in "${REPOSITORIES[@]}"
     echo "Navigated to $repository";
 
     CHANGES_EXIST=$(git diff-index --quiet HEAD -- || echo "changed")
-    if [ "$CHANGES_EXIST" == "changed" ]
+    echo "::$CHANGES_EXIST::"
+    if [[ "$CHANGES_EXIST" == "changed" ]]
     then
       STASHED=true
+      echo "Stashing changes"
       git stash push
     fi
 
@@ -33,6 +35,11 @@ for repository in "${REPOSITORIES[@]}"
         git pull;
         git checkout -
       done
-    git stash apply
-    STASHED=false
+
+    if [[ $STASHED ]]
+    then
+      git stash apply
+      echo "\n Applied stash"
+      STASHED=false
+    fi
   done
