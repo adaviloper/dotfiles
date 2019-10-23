@@ -1,6 +1,0 @@
-[user]
-	name = adrian
-	email = adavila.dev@gmail.com
-[core]
-	autocrlf = input
-	editor = /usr/local/bin/vim
