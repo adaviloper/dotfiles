@@ -16,14 +16,13 @@ STASHED=false
 for repository in "${REPOSITORIES[@]}"
   do
     cd ~/Code/$repository;
-    echo "Navigated to $repository";
+    echo "\nNavigated to $repository";
 
     CHANGES_EXIST=$(git diff-index --quiet HEAD -- || echo "changed")
-    echo "::$CHANGES_EXIST::"
     if [[ "$CHANGES_EXIST" == "changed" ]]
     then
       STASHED=true
-      echo "Stashing changes"
+      echo "\nStashing changes"
       git stash push
     fi
 
@@ -31,14 +30,14 @@ for repository in "${REPOSITORIES[@]}"
     for branch in "${BRANCHES[@]}"
       do 
         git checkout $branch
-        echo "Checked out $branch";
+        echo "\nChecked out $branch";
         git pull;
         git checkout -
       done
 
     if [[ $STASHED ]]
     then
-      git stash apply
+      git stash pop
       echo "\n Applied stash"
       STASHED=false
     fi
