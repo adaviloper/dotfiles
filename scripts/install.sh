@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo xcodebuild -license accept
+
 set -e
 
 yellow() {
