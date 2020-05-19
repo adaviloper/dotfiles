@@ -15,3 +15,4 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nmap <C-v> :vertical resize +5<CR>
+nmap <C-h> :resize +5<CR>
