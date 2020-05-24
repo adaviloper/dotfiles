@@ -8,9 +8,9 @@
     <nav>
       <a href="%root_path%index.html">Home</a>
     </nav>
+    <h1>%title%</h1>
     <div class="content">
       %content%
     </div>
-    <p><small>Page created on %date%</small></p>
   </body>
 </html>
