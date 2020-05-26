@@ -1,1 +1,1 @@
-EXCLUDES="scripts apps Brewfile"
+EXCLUDES="apps Brewfile phpstorm scripts"
