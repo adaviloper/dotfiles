@@ -1,8 +1,11 @@
 set autoindent
 set copyindent
 set smartindent
+set expandtab
 
 set backspace=2
+set colorcolumn=120
+set incsearch
 set mouse=a
 set number relativenumber
 set nu rnu
@@ -10,6 +13,7 @@ set splitbelow
 set splitright
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set updatetime=100
+
 set hidden
 set path+=**
 set wildmenu
