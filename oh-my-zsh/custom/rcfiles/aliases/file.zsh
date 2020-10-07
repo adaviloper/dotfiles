@@ -4,21 +4,15 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 
 export PATH="$PATH:/Applications/XAMPP/bin;yarn global bin;"
 
+
 ## Development
-alias ll="ls -alhG"
-alias pup="php -S localhost:3000"
-
+alias .="cd ~/.dotfiles"
 alias c="clear"
-
 alias cdh="cd ~/Homestead"
 alias cloc="git ls-files | xargs wc -l"
-
-# Git
-alias gcos="git checkout staging"
-alias gcod="git checkout dev"
-
-# Python
-#alias python=python3
+alias code="cd ~/Code"
+alias ll="ls -alhG"
+alias pup="php -S localhost:3000"
 
 # Testing
 alias cy='./node_modules/.bin/cypress'

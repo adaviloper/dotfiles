@@ -1,8 +1,12 @@
-dev11 () {
+alias staging-billing="eb ssh staging-2020-04-13-01"
+alias staging="eb ssh staging-2020-04-11-02"
+alias production="eb ssh production-2020-04-24"
+
+bastion3 () {
   ssh1 10.0.4.31
 }
 
-dev12 () {
+bastion4 () {
   ssh2 10.0.4.31
 }
 
@@ -25,13 +29,13 @@ devlb2 () {
 # SSH through bastion1 at known private IP
 # Usage: ssh1 <privateIP>
 ssh1 () {
-        ssh forge@"${1}" -o "proxycommand ssh -W %h:%p adrian@bastion1.ome.farm"
+        ssh forge@"${1}" -o "proxycommand ssh -W %h:%p adrian@25.81.0.213"
 }
 
 # SSH through bastion2 at known private IP
 # Usage: ssh1 <privateIP>
 ssh2 () {
-        ssh forge@"${1}" -o "proxycommand ssh -W %h:%p adrian@bastion2.ome.farm"
+        ssh forge@"${1}" -o "proxycommand ssh -W %h:%p adrian@25.63.170.49"
 }
 
 # retrieve private IP from known public IP

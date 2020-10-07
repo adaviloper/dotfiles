@@ -1,2 +1,2 @@
-alias gcos="git checkout staging"
-alias gcod="git checkout dev"
+alias gcos="gco staging; gl"
+alias gcod="gco dev"
