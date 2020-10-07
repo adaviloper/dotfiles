@@ -7,8 +7,8 @@
   <body>
     <nav>
       <a href="%root_path%index.html">Home</a>
+      <a href="%root_path%diary/diary.html">Diary</a>
     </nav>
-    <h1>%title%</h1>
     <div class="content">
       %content%
     </div>

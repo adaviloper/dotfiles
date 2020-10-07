@@ -4,7 +4,6 @@ set smartindent
 set expandtab
 
 set backspace=2
-set colorcolumn=120
 set incsearch
 set mouse=a
 set number relativenumber
