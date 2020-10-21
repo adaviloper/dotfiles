@@ -4,6 +4,7 @@ tap 'thoughtbot/formulae'
 
 brew 'autoconf'
 brew 'ctags'
+brew 'composer'
 brew 'git'
 brew 'neofetch'
 brew 'node'
