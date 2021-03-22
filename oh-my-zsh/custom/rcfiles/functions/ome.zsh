@@ -2,6 +2,18 @@ alias staging-billing="eb ssh staging-2020-04-13-01"
 alias staging="eb ssh staging-2020-04-11-02"
 alias production="eb ssh production-2020-04-24"
 
+demo () {
+  demoDir
+  if [[ $1 == "today" ]]
+  then
+    vim "$(date +'%Y')-$(date +'%m')-$(date +'%d').md"
+  fi
+}
+
+demoDir () {
+  cd ~/Code/workbench/sprint-demos/$(date +"%Y")
+}
+
 bastion3 () {
   ssh1 10.0.4.31
 }
