@@ -1,5 +1,5 @@
 alias staging-billing="eb ssh staging-2020-04-13-01"
-alias staging="eb ssh staging-2020-04-11-02"
+alias staging="eb ssh staging-ome-main-2021-03-25"
 alias production="eb ssh production-2020-04-24"
 
 demo () {
