@@ -28,3 +28,4 @@ brew bundle
 rcup
 
 sh ./vim.sh
+sh ./post-install.sh
