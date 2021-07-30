@@ -2,6 +2,28 @@ alias staging-billing="eb ssh staging-2020-04-13-01"
 alias staging="eb ssh staging-ome-main-2021-03-25"
 alias production="eb ssh production-2020-04-24"
 
+proxyDown () {
+  cd ~/Code/billing-api-ops
+  ./ome dev down
+  cd ~/Code/scheduler-ops
+  ./dev down
+  cd ~/Code/ome-main-ops
+  ./dev down
+  cd ~/Code/proxynet
+  ./dev down
+}
+
+proxyUp () {
+  cd ~/Code/proxynet
+  ./dev up -d
+  cd ~/Code/billing-api-ops
+  ./ome dev up -d
+  cd ~/Code/scheduler-ops
+  ./dev up -d
+  cd ~/Code/ome-main-ops
+  ./dev up -d
+}
+
 demo () {
   demoDir
   if [[ $1 == "today" ]]
