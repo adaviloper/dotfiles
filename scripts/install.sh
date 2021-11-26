@@ -16,19 +16,23 @@ info() {
 }
 
 
+info "Installing HomeBrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Setup OhMyZsh for Zsh
+info "Installing Oh-My-ZSH"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -- --unattended)"
+
+info "Switching shell to ZSH"
 chsh -s $(which zsh)
 
-# Setup OhMyZsh for Zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+info "Installing Brewfile packages"
+sh ~/.dotfiles/scripts/brew.sh
 
-cd ~/.dotfiles
+info "Running [rcup]"
+rcup -f
 
-brew tap homebrew/bundle
-brew bundle
-
-rcup
-
-sh ./vim.sh
-sh ./post-install.sh
+info "Running [vim.sh]"
+sh ~/.dotfiles/scripts/vim.sh
+info "Running [post-install.sh]"
+sh ~/.dotfiles/scripts/post-install.sh
