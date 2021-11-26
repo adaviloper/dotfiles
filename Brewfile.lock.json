@@ -679,6 +679,12 @@
         "options": {
           "full_name": "vlc"
         }
+      },
+      "alfred": {
+        "version": "4.6,1266",
+        "options": {
+          "full_name": "alfred"
+        }
       }
     }
   },
@@ -687,7 +693,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.3.5",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "0758b71ec3d916fc35d5b9894e0c796a462d9c65",
+        "Homebrew/homebrew-core": "d38318db2bc71f7b9c8d60ad0cd76a5f30b864a1",
         "CLT": "12.5.1.0.1.1623191612",
         "Xcode": "12.5.1",
         "macOS": "11.6"

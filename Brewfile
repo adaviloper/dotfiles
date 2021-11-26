@@ -19,6 +19,7 @@ brew 'vim'
 brew 'zsh'
 brew 'zsh-completions'
 
+cask 'alfred'
 cask 'background-music'
 cask 'bettertouchtool'
 cask 'karabiner-elements'
