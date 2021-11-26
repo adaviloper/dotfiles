@@ -12,6 +12,7 @@ alias cdh="cd ~/Homestead"
 alias cloc="git ls-files | xargs wc -l"
 alias code="cd ~/Code"
 alias ll="ls -alhG"
+alias l="ll"
 alias pup="php -S localhost:3000"
 
 # Testing
