@@ -9,6 +9,9 @@
       },
       "thoughtbot/formulae": {
         "revision": "a6bb452f4c03204fc49556c81e64172700a6d6d1"
+      },
+      "homebrew/cask-drivers": {
+        "revision": "4ae47a93035dfabf147629f6570d9cdd136b3ea1"
       }
     },
     "brew": {
@@ -685,6 +688,12 @@
         "options": {
           "full_name": "alfred"
         }
+      },
+      "qmk-toolbox": {
+        "version": "0.1.1",
+        "options": {
+          "full_name": "qmk-toolbox"
+        }
       }
     }
   },
@@ -693,7 +702,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.3.5",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "d38318db2bc71f7b9c8d60ad0cd76a5f30b864a1",
+        "Homebrew/homebrew-core": "89563bc82571e471f7e7fc3ad98a7aeb1f1eca5d",
         "CLT": "12.5.1.0.1.1623191612",
         "Xcode": "12.5.1",
         "macOS": "11.6"
