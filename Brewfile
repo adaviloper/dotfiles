@@ -1,6 +1,7 @@
 tap 'homebrew/bundle'
 tap 'homebrew/cask-versions'
 tap 'homebrew/cask-drivers'
+tap 'qmk/qmk'
 tap 'thoughtbot/formulae'
 
 brew 'autoconf'
