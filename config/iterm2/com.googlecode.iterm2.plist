@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AlternateMouseScroll</key>
-	<false/>
+	<true/>
 	<key>AutoHideTmuxClientSession</key>
 	<true/>
 	<key>ColoredSelectedTabOutlineStrength</key>
