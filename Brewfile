@@ -23,7 +23,6 @@ brew 'zsh-completions'
 
 cask 'alfred'
 cask 'background-music'
-cask 'bettertouchtool'
 cask 'karabiner-elements'
 cask 'iterm2'
 cask 'moom'
