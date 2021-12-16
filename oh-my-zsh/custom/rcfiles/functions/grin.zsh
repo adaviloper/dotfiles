@@ -15,5 +15,5 @@ function task()
 
 function ticketBranch()
 {
-  echo "$1/GN-$2/${3// /-}"
+  gcb "$1/GN-$2/${3// /-}"
 }
