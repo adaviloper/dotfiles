@@ -62,6 +62,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   composer
   git
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
