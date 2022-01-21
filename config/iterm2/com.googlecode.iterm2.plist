@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AlternateMouseScroll</key>
-	<true/>
+	<false/>
 	<key>AutoHideTmuxClientSession</key>
 	<true/>
 	<key>ColoredSelectedTabOutlineStrength</key>
@@ -1522,7 +1522,7 @@
 				<real>0.17621420323848724</real>
 			</dict>
 			<key>Cursor Type</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
@@ -1874,7 +1874,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 16</string>
+			<string>JetBrainsMono-Regular 16</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
