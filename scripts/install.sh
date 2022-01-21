@@ -26,6 +26,9 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 info "Switching shell to ZSH"
 chsh -s $(which zsh)
 
+info "Installing Zsh-AutoSuggestions"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 info "Installing Brewfile packages"
 sh ~/.dotfiles/scripts/brew.sh
 
