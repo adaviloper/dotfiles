@@ -14,7 +14,7 @@ function clean_local_branches () {
   git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done
 }
 
-function fuzzy_co () {
+function fco () {
   grepped_branches=$(git branch | grep "$1" | sed 's/*//')
   eval "branches=($grepped_branches)"
   branch_count=${#branches[*]}
