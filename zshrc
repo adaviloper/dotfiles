@@ -109,4 +109,5 @@ sourceFileInConfig () {
 sourceFileInConfig rcfiles
 
 unalias g
+unalias gco
 
