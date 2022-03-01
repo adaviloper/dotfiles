@@ -15,11 +15,16 @@ function clean_local_branches () {
 }
 
 function gco () {
-  grepped_branches=$(git branch | grep "$1" | sed 's/*//')
+  if [[ "$1" == "-" ]]; then
+    git checkout $1
+    return
+  fi
+  grepped_branches=$(git branch ${@:2} | grep "$1" | sed 's/*//')
   eval "branches=($grepped_branches)"
   branch_count=${#branches[*]}
   if (( $branch_count == 0 )); then
     echo "No matching branches found"
+    git checkout $1
   elif (( $branch_count == 1 )); then
     gco "${branches[1]}"
   else
