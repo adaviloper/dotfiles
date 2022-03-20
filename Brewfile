@@ -26,6 +26,7 @@ brew 'zsh-completions'
 
 cask 'alfred'
 cask 'background-music'
+cask 'contexts'
 cask 'karabiner-elements'
 cask 'iterm2'
 cask 'moom'
