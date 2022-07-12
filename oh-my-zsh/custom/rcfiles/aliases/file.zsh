@@ -11,7 +11,7 @@ alias c="clear"
 alias cdh="cd ~/Homestead"
 alias cloc="git ls-files | xargs wc -l"
 alias code="cd ~/Code"
-alias ll="ls -alhG"
+alias ll="ls -alhGP --color=auto"
 alias l="ll"
 alias pup="php -S localhost:3000"
 
@@ -25,6 +25,8 @@ alias pf='p --filter'
 alias phpspec='vendor/bin/phpspec'
 alias phpunit='vendor/bin/phpunit'
 alias serve='serve-laravel'
+
+export CLICOLOR=1
 
 # Path updates
 export PATH=/Applications/PhpStorm.app/Contents/bin:$PATH

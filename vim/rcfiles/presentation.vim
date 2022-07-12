@@ -6,7 +6,8 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-colorscheme nord
+colorscheme catppuccin_mocha
+hi Normal guibg=NONE ctermbg=NONE
 " Acceptable values are 'default' | 'dark' | 'palenight'
 let g:material_theme_style = 'default'
 
