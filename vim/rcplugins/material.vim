@@ -1,1 +1,1 @@
-Plugin 'catppuccin/vim'
+Plugin 'kaicataldo/material.vim', { 'branch': 'main' }
