@@ -1,6 +1,7 @@
 {
   "alfredsnippet" : {
     "snippet" : "release\/cpe",
+    "dontautoexpand" : true,
     "uid" : "9FA20D76-2983-44CC-AE84-6A34911982FE",
     "name" : "Release\/cpe",
     "keyword" : "gr"
