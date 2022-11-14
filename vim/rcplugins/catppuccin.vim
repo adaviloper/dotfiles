@@ -1,1 +1,1 @@
-Plugin 'catpuccin/vim', { 'as': 'catppuccin' }
+Plugin 'catppuccin/vim', { 'as': 'catppuccin' }
