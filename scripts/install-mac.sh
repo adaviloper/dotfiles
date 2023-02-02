@@ -22,6 +22,7 @@ info "Installing HomeBrew"
 # Setup OhMyZsh for Zsh
 info "Installing Oh-My-ZSH"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -- --unattended)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 info "Switching shell to ZSH"
 chsh -s $(which zsh)
