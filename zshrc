@@ -110,12 +110,3 @@ sourceFileInConfig rcfiles
 
 unalias g
 unalias gco
-
-WORK_ALIASES="$ZSH/custom/rcfiles/functions/work.zsh"
-WORK_FUNCTIONS="$ZSH/custom/rcfiles/aliases/work.zsh"
-if [ -f WORK_ALIASES ]; then
-  source WORK_ALIASES
-fi
-if [ -f WORK_FUNCTIONS ]; then
-  source WORK_FUNCTIONS
-fi
