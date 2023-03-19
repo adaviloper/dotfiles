@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "{date:yyyy-MM}-{date +7d:d}",
-    "uid" : "FB0DE82A-256B-4FD4-8058-3846E78F9C79",
-    "name" : "Next Week",
-    "keyword" : "nweek"
-  }
-}
