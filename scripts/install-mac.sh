@@ -18,6 +18,7 @@ info() {
 
 info "Installing HomeBrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/hackeysack09/.zprofile
 
 # Setup OhMyZsh for Zsh
 info "Installing Oh-My-ZSH"

@@ -1,2 +1,2 @@
-export QMK_HOME=~/Code/qmk_firmware
+export QMK_HOME=($PROJECTS)/qmk_firmware
 

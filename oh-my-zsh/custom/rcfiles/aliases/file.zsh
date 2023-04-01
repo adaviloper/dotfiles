@@ -3,14 +3,14 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 export PATH="$PATH:/Applications/XAMPP/bin;yarn global bin;"
-
+export PROJECTS="~/Code"
 
 ## Development
 alias .="cd ~/.dotfiles"
 alias c="clear"
 alias cdh="cd ~/Homestead"
 alias cloc="git ls-files | xargs wc -l"
-alias code="cd ~/Code"
+alias code="cd $PROJECTS"
 alias ll="ls -alhGP --color=auto"
 alias l="ll"
 alias pup="php -S localhost:3000"
