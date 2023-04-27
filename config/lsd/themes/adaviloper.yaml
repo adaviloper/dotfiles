@@ -1,0 +1,27 @@
+user: 45
+group: 42
+permission:
+  read: dark_green
+  write: dark_yellow
+  exec: dark_red
+  exec-sticky: 5
+  no-access: 245
+  octal: 6
+  acl: dark_cyan
+  context: cyan
+date:
+  hour-old: 47
+  day-old: 215
+  older: 187
+size:
+  none: 245
+  small: 120
+  medium: 179
+  large: 160
+inode:
+  valid: 13
+  invalid: 245
+links:
+  valid: 13
+  invalid: 245
+tree-edge: 33
