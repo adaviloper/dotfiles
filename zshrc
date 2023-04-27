@@ -110,3 +110,5 @@ sourceFileInConfig rcfiles
 
 unalias g
 unalias gco
+
+eval "$(starship init zsh)"
