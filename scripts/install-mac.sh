@@ -34,6 +34,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 info "Installing Brewfile packages"
 sh ~/.dotfiles/scripts/brew.sh
 
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+
 info "Running [rcup]"
 rcup -f
 
