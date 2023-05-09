@@ -1,0 +1,26 @@
+return {
+  "nvim-treesitter/nvim-treesitter",
+  opts = {
+    ensure_installed = {
+      "bash",
+      "c",
+      "go",
+      "html",
+      "javascript",
+      "json",
+      "lua",
+      "luap",
+      "markdown",
+      "markdown_inline",
+      "php",
+      "python",
+      "query",
+      "regex",
+      "tsx",
+      "typescript",
+      "vim",
+      "yaml",
+      "luap",
+    },
+  },
+}
