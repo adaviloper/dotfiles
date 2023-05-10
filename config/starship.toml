@@ -4,9 +4,11 @@
 # Sets user-defined palette
 palette = "catppuccin_mocha"
 
+# [┌───────────────────>](bold peach)
 format = """
-[┌───────────────────>](bold peach)
+[┌](bold peach)$fill[∙](bold peach)
 [│](bold peach) \
+[ ](base bg:sapphire)\
 $username\
 [ ](sapphire bg:green)\
 $directory\
@@ -38,6 +40,10 @@ truncation_length = 4
 [directory.substitutions]
 # Add any substitions here
 # 'some/path' = 'alias'
+
+[fill]
+symbol = '─'
+style = 'bold peach'
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style bg:peach)'
