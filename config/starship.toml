@@ -46,7 +46,7 @@ symbol = '─'
 style = 'bold peach'
 
 [git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style bg:peach)'
+format = '[$symbol$branch(:$remote_branch) ]($style bg:peach)'
 style = 'mantle'
 symbol = '[ ](mantle bg:peach)'
 
