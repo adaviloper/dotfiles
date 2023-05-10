@@ -4,15 +4,25 @@
 # Sets user-defined palette
 palette = "catppuccin_mocha"
 
-format = '''
+format = """
 [┌───────────────────>](bold peach)
-[│](bold peach) $username$directory$git_branch$git_state$git_status$git_metrics
-[└─>](bold peach) '''
+[│](bold peach) \
+$username\
+[ ](sapphire bg:green)\
+$directory\
+[ ](green bg:peach)\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+[ ](peach)
+[└─> ](bold peach)
+"""
 
 right_format = '$time'
 
 # Inserts a blank line between shell prompts
-add_newline = true
+add_newline = false
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
@@ -20,19 +30,24 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 
 [directory]
 fish_style_pwd_dir_length = 3
-truncation_length = 3
-truncation_symbol = '.../'
+format = '[$path]($style)[$read_only ]($read_only_style bg:green)'
+style = 'mantle bg:green'
+truncation_length = 4
+# truncation_symbol = '.../'
 
 [directory.substitutions]
 # Add any substitions here
 # 'some/path' = 'alias'
 
 [git_branch]
-symbol = '[ ](bold green)'
+format = '[$symbol$branch(:$remote_branch)]($style bg:peach)'
+style = 'mantle'
+symbol = '[ ](mantle bg:peach)'
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
+format = '([\[$all_status$ahead_behind\] ]($style))'
 disabled = false
+style = 'mantle bg:peach'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -42,8 +57,13 @@ disabled = true
 disabled = false
 format = '[$time]($style rosewater) '
 
+      # left = { "", " " },
+      # right = { " ", "" },
+
 [username]
-format = '[adaviloper]($style sapphire) '
+style_user = "bg:sapphire"
+style_root = "bg:pink"
+format = '[ adaviloper ]($style mantle)'
 show_always = true
 
 [palettes.catppuccin_mocha]

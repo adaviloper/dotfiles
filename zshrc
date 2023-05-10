@@ -117,3 +117,4 @@ unalias gco
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
