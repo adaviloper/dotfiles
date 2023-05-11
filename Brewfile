@@ -44,3 +44,4 @@ cask 'slack'
 cask 'spotify'
 cask 'steermouse'
 cask 'vlc'
+
