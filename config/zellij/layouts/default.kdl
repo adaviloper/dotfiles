@@ -9,7 +9,7 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
-    tab name=".dotfiles" cwd="/Users/hackeysack09/.dotfiles" {
+    tab focus=true name=".dotfiles" cwd="/Users/hackeysack09/.dotfiles" {
         pane command="nvim"
     }
     tab name="qmk" cwd="/Users/hackeysack09/Code/qmk_firmware" {
@@ -19,7 +19,7 @@ layout {
     tab name="Core10" split_direction="vertical" cwd="/Users/hackeysack09/Code/core10" {
         pane command="nvim"
         pane size="20%" stacked=true {
-            pane name="cli"
+            pane name="cli" expanded=true
             pane name="tests"
         }
     }
