@@ -36,8 +36,8 @@ return {
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     -- ISwap
     ["Q"] = { "<cmd>ISwapWith<cr>" },
-    [">p"] = { "<cmd>ISwapNodeWithRight<cr>" },
-    ["<p"] = { "<cmd>ISwapNodeWithLeft<cr>" },
+    [">p"] = { "<cmd>ISwapNodeWithRight<cr>", desc = "Swap node with right" },
+    ["<p"] = { "<cmd>ISwapNodeWithLeft<cr>", desc = "Swap node with left" },
   },
   t = {
     -- setting a mapping to false will disable it

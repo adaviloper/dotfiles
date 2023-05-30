@@ -13,10 +13,11 @@ return {
     -- define the separators between each section
     separators = {
       -- left = { "", " " }, -- separator for the left side of the statusline
-      -- right = { " ", "" }, -- separator for the right side of the statusline
       -- tab = { "", "" },
-      left = { "", " " },
-      right = { " ", "" },
+      left = { "", " " },
+      right = { " ", "" }, -- separator for the right side of the statusline
+      -- left = { "", " " },
+      -- right = { " ", "" },
     },
     -- add new colors that can be used by heirline
     colors = function(hl)
@@ -44,17 +45,15 @@ return {
     },
   },
   plugins = {
-    heirline = {
-
-    },
+    heirline = {},
     cmp = function(table)
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
+      local cmp = require "cmp"
+      local luasnip = require "luasnip"
       local t = table.mapping
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         local lines = vim.api.nvim_buf_get_lines
-        return col ~= 0 and lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        return col ~= 0 and lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
       end
       t["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
@@ -147,7 +146,7 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    require("luasnip.loaders.from_snipmate").lazy_load({ path = { "./lua/user/snippets" } })
+    require("luasnip.loaders.from_snipmate").lazy_load { path = { "./lua/user/snippets" } }
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {

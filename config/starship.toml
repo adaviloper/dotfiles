@@ -4,20 +4,41 @@
 # Sets user-defined palette
 palette = "catppuccin_mocha"
 
+# separators
+# left round:   \uE0B6
+# right round:  \uE0B4
+# left angled:  \uE0B2
+# right angled: \uE0B0
+
 # [┌───────────────────>](bold peach)
+# format = """
+# [┌](bold sky)$fill[∙ ](bold sky)$time
+# [│](bold sky) \
+# [\uE0B6](sapphire bg:base)\
+# $username\
+# [\ue0B0 ](sapphire bg:peach)\
+# $directory\
+# [\ue0b0 ](peach bg:green)\
+# $git_branch\
+# $git_state\
+# $git_status\
+# $git_metrics\
+# [\ue0b0 ](green)
+# [└─> ](bold sky)
+# """
 format = """
 [┌](bold sky)$fill[∙ ](bold sky)$time
 [│](bold sky) \
-[ ](base bg:sapphire)\
+[\uE0B0](base bg:sapphire)\
 $username\
-[ ](sapphire bg:peach)\
+[\ue0B4 ](sapphire bg:peach)\
 $directory\
-[ ](peach bg:green)\
+[\ue0b4 ](peach bg:green)\
 $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
-[ ](green)
+[\ue0b4 ](green)
 [└─> ](bold sky)
 """
 
