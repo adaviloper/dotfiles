@@ -13,9 +13,9 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
-          require("astronvim.utils.buffer").close(bufnr)
-        end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
@@ -34,6 +34,10 @@ return {
     n = { utils.better_search "nzz", desc = "Next search" },
     N = { utils.better_search "Nzz", desc = "Previous search" }, -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    -- ISwap
+    ["Q"] = { "<cmd>ISwapWith<cr>" },
+    [">p"] = { "<cmd>ISwapNodeWithRight<cr>" },
+    ["<p"] = { "<cmd>ISwapNodeWithLeft<cr>" },
   },
   t = {
     -- setting a mapping to false will disable it
