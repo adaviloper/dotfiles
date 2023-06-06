@@ -108,7 +108,7 @@ sourceFileInConfig rcfiles
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR=nvim
+export EDITOR=$(which nvim)
 
 
 unalias g
