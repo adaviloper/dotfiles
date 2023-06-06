@@ -1,3 +1,5 @@
 EXCLUDES="apps Brewfile phpstorm scripts work-settings.jar xbindkeysrc.scm"
 
 SYMLINK_DIRS="config/nvim/lua/user"
+
+UNDOTTED="Library"
