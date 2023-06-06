@@ -16,7 +16,7 @@ layout {
         pane command="nvim"
         pane size="20%"
     }
-    tab name="Core10" split_direction="vertical" cwd="/Users/hackeysack09/Code/core10" {
+    tab name="Core10" cwd="/Users/hackeysack09/Code/core10" split_direction="vertical" {
         pane command="nvim"
         pane size="20%" stacked=true {
             pane name="cli"
