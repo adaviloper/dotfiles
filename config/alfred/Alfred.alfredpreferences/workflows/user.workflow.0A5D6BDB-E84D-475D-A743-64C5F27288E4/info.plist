@@ -22,18 +22,7 @@
 			</dict>
 		</array>
 		<key>51407C0E-6936-4EB7-99AB-439C5E822AB4</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>763D961C-A650-4E21-81A3-A056E1D637EA</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>84857419-16FC-4004-8DCD-31F9A48E8E6B</key>
 		<array>
 			<dict>
@@ -135,21 +124,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>openwith</key>
-				<string></string>
-				<key>sourcefile</key>
-				<string>~/Documents</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>8A7AE692-3D6A-4F49-981A-F4BFFA77CA4A</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -200,23 +174,6 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Safari.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>D5F8FB0C-66A7-4CFE-AAE2-4F4985DAFF01</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
 					<string>/Applications/Obsidian.app</string>
 				</array>
 				<key>toggle</key>
@@ -235,11 +192,11 @@
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
-				<integer>0</integer>
+				<integer>3</integer>
 				<key>focusedappvariable</key>
-				<false/>
+				<true/>
 				<key>focusedappvariablename</key>
-				<string></string>
+				<string>focusedapp</string>
 				<key>hotkey</key>
 				<integer>31</integer>
 				<key>hotmod</key>
@@ -263,14 +220,31 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Obsidian.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>A03F2284-9199-4857-80E6-96CE137B09D2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
 				<integer>0</integer>
 				<key>focusedappvariable</key>
-				<false/>
+				<true/>
 				<key>focusedappvariablename</key>
-				<string></string>
+				<string>focusedapp</string>
 				<key>hotkey</key>
 				<integer>35</integer>
 				<key>hotmod</key>
@@ -281,8 +255,13 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>notion.id</string>
+					<string>md.obsidian</string>
+				</array>
 				<key>relatedAppsMode</key>
-				<integer>0</integer>
+				<integer>1</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
@@ -305,27 +284,6 @@
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
 			<string>DDBE7356-A6EE-47AC-AB4E-BA349763AEE8</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string></string>
-				<key>title</key>
-				<string>Good morning!</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>D06D3C5F-4081-47FD-BA59-59EDAC4441C7</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -391,7 +349,7 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>235</real>
 			<key>ypos</key>
-			<real>450</real>
+			<real>555</real>
 		</dict>
 		<key>4BB29D03-9F5D-4ACA-897B-AEBA7E331FE9</key>
 		<dict>
@@ -405,7 +363,7 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>240</real>
+			<real>290</real>
 		</dict>
 		<key>763D961C-A650-4E21-81A3-A056E1D637EA</key>
 		<dict>
@@ -419,18 +377,7 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>450</real>
-		</dict>
-		<key>8A7AE692-3D6A-4F49-981A-F4BFFA77CA4A</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>2</integer>
-			<key>note</key>
-			<string>6. This Open File action opens a specified file; your Documents folder in this case.</string>
-			<key>xpos</key>
-			<real>630</real>
-			<key>ypos</key>
-			<real>50</real>
+			<real>555</real>
 		</dict>
 		<key>9ACFE091-A925-4196-B964-9B2C241E4BE2</key>
 		<dict>
@@ -444,36 +391,21 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
+			<real>450</real>
+		</dict>
+		<key>A03F2284-9199-4857-80E6-96CE137B09D2</key>
+		<dict>
+			<key>xpos</key>
+			<real>235</real>
+			<key>ypos</key>
 			<real>345</real>
-		</dict>
-		<key>D06D3C5F-4081-47FD-BA59-59EDAC4441C7</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>2</integer>
-			<key>note</key>
-			<string>8. The Post Notification Output shows the text you've specified in your Notification Center.</string>
-			<key>xpos</key>
-			<real>630</real>
-			<key>ypos</key>
-			<real>400</real>
-		</dict>
-		<key>D5F8FB0C-66A7-4CFE-AAE2-4F4985DAFF01</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>2</integer>
-			<key>note</key>
-			<string>7. This Action launches Apps/Files; Safari in this case.</string>
-			<key>xpos</key>
-			<real>630</real>
-			<key>ypos</key>
-			<real>230</real>
 		</dict>
 		<key>DDBE7356-A6EE-47AC-AB4E-BA349763AEE8</key>
 		<dict>
 			<key>xpos</key>
 			<real>235</real>
 			<key>ypos</key>
-			<real>345</real>
+			<real>450</real>
 		</dict>
 		<key>ECACCEB5-20CA-455F-A37A-5FD8CDD9E979</key>
 		<dict>

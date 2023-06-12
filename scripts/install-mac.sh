@@ -18,12 +18,7 @@ info() {
 
 info "Installing HomeBrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/hackeysack09/.zprofile
-
-# Setup OhMyZsh for Zsh
-info "Installing Oh-My-ZSH"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -- --unattended)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
 
 info "Switching shell to ZSH"
 chsh -s $(which zsh)
@@ -43,3 +38,8 @@ info "Running [vim.sh]"
 sh ~/.dotfiles/scripts/vim.sh
 info "Running [post-install.sh]"
 sh ~/.dotfiles/scripts/post-install.sh
+
+# Setup OhMyZsh for Zsh
+info "Installing Oh-My-ZSH"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -- --unattended)"
+
