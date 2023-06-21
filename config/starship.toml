@@ -4,6 +4,8 @@
 # Sets user-defined palette
 palette = "catppuccin_mocha"
 
+command_timeout = 1000
+
 # separators
 # left round:   \uE0B6
 # right round:  \uE0B4
