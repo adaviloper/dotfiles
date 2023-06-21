@@ -16,3 +16,15 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     vim.opt.scrolloff = 8
   end,
 })
+
+vim.api.nvim_create_augroup("NewFileTemplates", { clear = true })
+vim.api.nvim_create_autocmd("BufNewFile", {
+  desc = "Insert the opening PHP tags", -- nice description
+  pattern = "*.php", -- the pattern si the name of our User autocommand events
+  group = "NewFileTemplates", -- add the autocmd to the newly created augroup
+  callback = function()
+    vim.cmd("norm i <?php")
+    vim.cmd("norm o")
+    vim.cmd("norm o")
+  end,
+})
