@@ -1,6 +1,7 @@
 #!/bin/bash
 
 compdef g=git
+TICKET_BRANCH_PREFIX="RET"
 
 function g {
   if [[ $# -gt 0 ]]; then
@@ -80,7 +81,7 @@ function task()
 
 function ticket_branch()
 {
-  gcb "$1/GN-$2/${3// /-}"
+  gcb "$1/$TICKET_BRANCH_PREFIX-$2/${3// /-}"
 }
 
 function copy_branch()
@@ -90,10 +91,10 @@ function copy_branch()
 
 function ticket_number()
 {
-  printf "%q" $(git_current_branch)  | sed 's/^.*GN-//g' | sed 's/\/.*$//g'
+  printf "%q" $(git_current_branch)  | sed "s/^.*$TICKET_BRANCH_PREFIX-//g" | sed 's/\/.*$//g'
 }
 
 function git_commit_prefix()
 {
-  echo "[GN-$(ticket_number)] -"
+  echo "[$TICKET_BRANCH_PREFIX-$(ticket_number)] -"
 }
