@@ -45,7 +45,7 @@ function gco () {
 
 function bug()
 {
-  ticket_branch 'bug' $1 $2
+  ticket_branch 'bugfix' $1 $2
 }
 
 function epic()
@@ -81,7 +81,7 @@ function task()
 
 function ticket_branch()
 {
-  gcb "$1/$TICKET_BRANCH_PREFIX-$2/${3// /-}"
+  gcb "$1/$TICKET_BRANCH_PREFIX-$2-${3// /-}"
 }
 
 function copy_branch()
@@ -91,7 +91,7 @@ function copy_branch()
 
 function ticket_number()
 {
-  printf "%q" $(git_current_branch)  | sed "s/^.*$TICKET_BRANCH_PREFIX-//g" | sed 's/\/.*$//g'
+  printf "%q" $(git_current_branch) | sed "s/.*$TICKET_BRANCH_PREFIX-\([0-9]*\).*/\1/"
 }
 
 function git_commit_prefix()

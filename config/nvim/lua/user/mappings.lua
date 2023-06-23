@@ -38,14 +38,14 @@ return {
     ["Q"] = { "<cmd>ISwapWith<cr>" },
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
     ["<p"] = { "<cmd>ISwapWithLeft<cr>", desc = "Swap node with left" },
-    -- NeoTest
+    -- NeoTeset
     ["<F4>"] = { name = "NeoTest", },
     ["<F4>n"] = { function() require("neotest").run.run() end, desc = "Run nearest test" },
     ["<F4>f"] = { function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Test the entire file" },
     ["<F4>d"] = { function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug nearest test" },
     ["<F4>e"] = { function() require("neotest").run.stop() end, desc = "Stop nearest test" },
     ["<F4>a"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
-    ["<F4>o"] = { function() require("neotest").output_panel.toggle() end, desc = "View the output" },
+    ["<F4>o"] = { function() require("nejotest").output_panel.toggle() end, desc = "View the output" },
     ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
   },
   t = {

@@ -12,25 +12,23 @@ command_timeout = 1000
 # left angled:  \uE0B2
 # right angled: \uE0B0
 
-# [┌───────────────────>](bold peach)
 # format = """
 # [┌](bold sky)$fill[∙ ](bold sky)$time
 # [│](bold sky) \
-# [\uE0B6](sapphire bg:base)\
+# [\uE0B0](base bg:sapphire)\
 # $username\
-# [\ue0B0 ](sapphire bg:peach)\
+# [\ue0B4 ](sapphire bg:peach)\
 # $directory\
-# [\ue0b0 ](peach bg:green)\
+# [\ue0b4 ](peach bg:green)\
 # $git_branch\
 # $git_state\
 # $git_status\
 # $git_metrics\
-# [\ue0b0 ](green)
+# [\ue0b4 ](green)
 # [└─> ](bold sky)
 # """
+
 format = """
-[┌](bold sky)$fill[∙ ](bold sky)$time
-[│](bold sky) \
 [\uE0B0](base bg:sapphire)\
 $username\
 [\ue0B4 ](sapphire bg:peach)\
@@ -40,8 +38,7 @@ $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
-[\ue0b4 ](green)
-[└─> ](bold sky)
+[\uE0B0](green)$fill $time
 """
 
 # Inserts a blank line between shell prompts
