@@ -48,6 +48,18 @@ return {
     ["<F4>o"] = { function() require("nejotest").output_panel.toggle() end, desc = "View the output" },
     ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
   },
+  i = {
+    [";;"] = { "<Esc>A;", desc = "Quick append a semi-colon at the end of the line" },
+    [",,"] = { "<Esc>A,", desc = "Quick append a comma at the end of the line" },
+    -- ["<M-j>"] = { "<cmd>move +1<CR>==gi", desc = "Move the current line up"},
+    -- ["<M-k>"] = { "<Esc>:move -1<CR>==gi", desc = "Move the current line up"},
+  },
+  v = {
+    ["<"] = { "<gv", desc = "Unindent without losing selection"},
+    [">"] = { ">gv", desc = "Indent without losing selection"},
+    ["p"] = { '"_dP', desc = "Paste yanked text without losing the original contents"},
+    ["y"] = { "myy`y", desc = "Yank in visual mode without losing cursor position"},
+  },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,

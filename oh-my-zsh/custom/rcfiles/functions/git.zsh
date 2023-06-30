@@ -3,6 +3,17 @@
 compdef g=git
 TICKET_BRANCH_PREFIX="RET"
 
+function toggle_prefix()
+{
+  if [ $TICKET_BRANCH_PREFIX="RET" ] 
+  then
+    TICKET_BRANCH_PREFIX="LPR"
+  else
+    TICKET_BRANCH_PREFIX="RET"
+  fi
+  echo $TICKET_BRANCH_PREFIX
+}
+
 function g {
   if [[ $# -gt 0 ]]; then
     git "$@"
@@ -39,7 +50,7 @@ function gco () {
     return
   else
     local branch=$(select_from_matching_branches $1)
-    gco $branch
+    git checkout $branch
   fi
 }
 

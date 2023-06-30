@@ -9,18 +9,17 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
-    tab focus=true name=".dotfiles" cwd="/Users/hackeysack09/.dotfiles" {
-        pane command="nvim"
+    tab name="Core" split_direction="vertical" cwd="/Users/adriandavilla/Code/loop-returns-app/" {
+        pane
     }
-    tab name="qmk" cwd="/Users/hackeysack09/Code/qmk_firmware" {
-        pane command="nvim"
+    tab name="Whiplash" split_direction="vertical" cwd="/Users/adriandavilla/Code/whiplash-middleware/" {
+        pane
     }
-    tab name="Core10" split_direction="vertical" cwd="/Users/hackeysack09/Code/core10" {
-        pane command="nvim"
-        pane size="20%" stacked=true {
-            pane name="cli"
-            pane name="tests"
-        }
+    tab focus=true name=".dotfiles" cwd="/Users/adriandavilla/.dotfiles" {
+        pane
+    }
+    tab name="qmk" cwd="/Users/adriandavilla/Code/qmk_firmware" {
+        pane
     }
 }
 
