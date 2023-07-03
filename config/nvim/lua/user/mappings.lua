@@ -38,27 +38,11 @@ return {
     ["Q"] = { "<cmd>ISwapWith<cr>" },
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
     ["<p"] = { "<cmd>ISwapWithLeft<cr>", desc = "Swap node with left" },
-    -- NeoTeset
-    ["<F4>"] = { name = "NeoTest", },
-    ["<F4>n"] = { function() require("neotest").run.run() end, desc = "Run nearest test" },
-    ["<F4>f"] = { function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Test the entire file" },
-    ["<F4>d"] = { function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug nearest test" },
-    ["<F4>e"] = { function() require("neotest").run.stop() end, desc = "Stop nearest test" },
-    ["<F4>a"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
-    ["<F4>o"] = { function() require("nejotest").output_panel.toggle() end, desc = "View the output" },
-    ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
-  },
-  i = {
-    [";;"] = { "<Esc>A;", desc = "Quick append a semi-colon at the end of the line" },
-    [",,"] = { "<Esc>A,", desc = "Quick append a comma at the end of the line" },
-    -- ["<M-j>"] = { "<cmd>move +1<CR>==gi", desc = "Move the current line up"},
-    -- ["<M-k>"] = { "<Esc>:move -1<CR>==gi", desc = "Move the current line up"},
-  },
-  v = {
-    ["<"] = { "<gv", desc = "Unindent without losing selection"},
-    [">"] = { ">gv", desc = "Indent without losing selection"},
-    ["p"] = { '"_dP', desc = "Paste yanked text without losing the original contents"},
-    ["y"] = { "myy`y", desc = "Yank in visual mode without losing cursor position"},
+    -- LuaSnip
+    ["<leader><leader>s"] = {
+      "<cmd>source ~/.config/nvim/lua/user/plugins/luasnip.lua<cr>",
+      desc = "Source LuaSnip snippet files",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
