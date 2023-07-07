@@ -82,7 +82,7 @@ function spike()
 
 function story()
 {
-  ticket_branch 'story' $1 $2
+  ticket_branch 'feature' $1 $2
 }
 
 function task()
