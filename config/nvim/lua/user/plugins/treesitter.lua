@@ -1,26 +1,12 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
-    ensure_installed = {
-      "bash",
-      "c",
-      "go",
-      "html",
-      "javascript",
-      "json",
-      "lua",
-      "luap",
-      "markdown",
-      "markdown_inline",
-      "php",
-      "python",
-      "query",
-      "regex",
-      "tsx",
-      "typescript",
-      "vim",
-      "yaml",
-      "luap",
+    ensure_installed = 'all',
+    highlight = {
+      additional_vim_regex_highlighting = true,
     },
+    context_commentstring = {
+      enable = true,
+    }
   },
 }
