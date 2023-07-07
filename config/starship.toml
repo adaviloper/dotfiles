@@ -14,7 +14,7 @@ command_timeout = 1000
 
 format = """
 [┌](bold sky)$fill[∙ ](bold sky)$time
-[│](bold sky) \
+[┕](bold sky) \
 [\uE0B0](base bg:sapphire)\
 $username\
 [\ue0B4 ](sapphire bg:peach)\
@@ -25,9 +25,9 @@ $git_state\
 $git_status\
 $git_metrics\
 [\ue0b4 ](green)
-[└─> ](bold sky)
 """
 
+# [└─∙ ](bold sky)
 # format = """
 # [\uE0B0](base bg:sapphire)\
 # $username\
