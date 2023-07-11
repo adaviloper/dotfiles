@@ -14,10 +14,10 @@ return {
     separators = {
       -- left = { "", " " }, -- separator for the left side of the statusline
       -- tab = { "", "" },
-      left = { "", " " },
-      right = { " ", "" }, -- separator for the right side of the statusline
-      -- left = { "", " " },
-      -- right = { " ", "" },
+      -- left = { "", " " },
+      -- right = { " ", "" }, -- separator for the right side of the statusline
+      left = { "", " " },
+      right = { " ", "" },
     },
     -- add new colors that can be used by heirline
     colors = function(hl)

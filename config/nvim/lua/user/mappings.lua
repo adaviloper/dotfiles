@@ -47,6 +47,8 @@ return {
     ["<F4>a"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
     ["<F4>o"] = { function() require("nejotest").output_panel.toggle() end, desc = "View the output" },
     ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
+    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to definition"},
+    ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references"},
   },
   i = {
     [";;"] = { "<Esc>A;", desc = "Quick append a semi-colon at the end of the line" },

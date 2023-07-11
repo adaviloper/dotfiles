@@ -4,9 +4,27 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     -- overrides `require("mason-lspconfig").setup(...)`
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp-signature-help'
+    },
     opts = {
       -- ensure_installed = { "lua_ls" },
+      ensure_installed = { "all" },
     },
+    config = function ()
+      -- PHP
+      require('lspconfig').intelephense.setup({})
+
+      -- Vue, JavaScript, Typescript
+      require('lspconfig').volar.setup({
+        -- Enable "Take Over Mode" where avolar will provide all JS/TS LSP services
+        -- This drastically improves the responsiveness of diagnostic updates on change
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
+      })
+
+      -- TailwindCSS
+      require('lspconfig').tailwindcss.setup({})
+    end
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
   {
