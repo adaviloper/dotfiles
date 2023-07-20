@@ -38,6 +38,8 @@ return {
     ["Q"] = { "<cmd>ISwapWith<cr>" },
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
     ["<p"] = { "<cmd>ISwapWithLeft<cr>", desc = "Swap node with left" },
+    -- LuaSnip
+    ["<leader><leader>s"] = { "<cmd>source ~/.config/nvim/lua/user/plugins/luasnip.lua<cr>", desc = "Source LuaSnip snippet files" },
     -- NeoTeset
     ["<F4>"] = { name = "NeoTest", },
     ["<F4>n"] = { function() require("neotest").run.run() end, desc = "Run nearest test" },
@@ -53,19 +55,14 @@ return {
   i = {
     [";;"] = { "<Esc>A;", desc = "Quick append a semi-colon at the end of the line" },
     [",,"] = { "<Esc>A,", desc = "Quick append a comma at the end of the line" },
-    -- ["<M-j>"] = { "<cmd>move +1<CR>==gi", desc = "Move the current line up"},
-    -- ["<M-k>"] = { "<Esc>:move -1<CR>==gi", desc = "Move the current line up"},
+    ["<M-j>"] = { "<cmd>move +1<CR>==gi", desc = "Move the current line up"},
+    ["<M-k>"] = { "<Esc>:move -1<CR>==gi", desc = "Move the current line up"},
   },
   v = {
     ["<"] = { "<gv", desc = "Unindent without losing selection"},
     [">"] = { ">gv", desc = "Indent without losing selection"},
     ["p"] = { '"_dP', desc = "Paste yanked text without losing the original contents"},
     ["y"] = { "myy`y", desc = "Yank in visual mode without losing cursor position"},
-    -- LuaSnip
-    ["<leader><leader>s"] = {
-      "<cmd>source ~/.config/nvim/lua/user/plugins/luasnip.lua<cr>",
-      desc = "Source LuaSnip snippet files",
-    },
   },
   t = {
     -- setting a mapping to false will disable it
