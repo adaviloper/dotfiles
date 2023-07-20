@@ -61,6 +61,11 @@ return {
     [">"] = { ">gv", desc = "Indent without losing selection"},
     ["p"] = { '"_dP', desc = "Paste yanked text without losing the original contents"},
     ["y"] = { "myy`y", desc = "Yank in visual mode without losing cursor position"},
+    -- LuaSnip
+    ["<leader><leader>s"] = {
+      "<cmd>source ~/.config/nvim/lua/user/plugins/luasnip.lua<cr>",
+      desc = "Source LuaSnip snippet files",
+    },
   },
   t = {
     -- setting a mapping to false will disable it

@@ -1,12 +1,29 @@
 {
   "public method": {
-    "prefix": ["pubf"],
-    "body": ["public function $1()", "{", "\t$0", "}", ""],
+    "prefix": [
+      "pubf"
+    ],
+    "body": [
+      "public function $1()",
+      "{",
+      "\t$0",
+      "}",
+      ""
+    ],
     "description": "Public class method"
   },
   "public test method": {
-    "prefix": ["tmet"],
-    "body": ["/** @test */", "public function $1()", "{", "\t$0", "}", ""],
+    "prefix": [
+      "tmet"
+    ],
+    "body": [
+      "/** @test */",
+      "public function $1()",
+      "{",
+      "\t$0",
+      "}",
+      ""
+    ],
     "description": "Public class method"
   }
 }
