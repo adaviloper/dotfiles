@@ -25,32 +25,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>739B7B06-CB5D-42C0-BD43-9BC16F2C401C</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>739B7B06-CB5D-42C0-BD43-9BC16F2C401C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
 				<string>763D961C-A650-4E21-81A3-A056E1D637EA</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>DAAA15A1-DB20-4CEB-A44E-EA6B6DDAA025</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>A03F2284-9199-4857-80E6-96CE137B09D2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -66,6 +41,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>274CDCE6-F5A2-4DBE-BCFC-2B841461D5A3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9A3649B1-0523-422C-9F17-AEE10D0FFEE8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A03F2284-9199-4857-80E6-96CE137B09D2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -275,7 +263,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Obsidian.app</string>
+					<string>/Applications/Notion.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -286,6 +274,37 @@
 			<string>763D961C-A650-4E21-81A3-A056E1D637EA</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<true/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>45</integer>
+				<key>hotmod</key>
+				<integer>917504</integer>
+				<key>hotstring</key>
+				<string>N</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>51407C0E-6936-4EB7-99AB-439C5E822AB4</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -314,48 +333,16 @@
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>51407C0E-6936-4EB7-99AB-439C5E822AB4</string>
+			<string>9A3649B1-0523-422C-9F17-AEE10D0FFEE8</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:focusedapp}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>1</integer>
-						<key>matchstring</key>
-						<string>md.obsidian</string>
-						<key>outputlabel</key>
-						<string>obsidian</string>
-						<key>uid</key>
-						<string>DAAA15A1-DB20-4CEB-A44E-EA6B6DDAA025</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>notion</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>739B7B06-CB5D-42C0-BD43-9BC16F2C401C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Notion.app</string>
+					<string>/Applications/Obsidian.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -491,14 +478,7 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>395</real>
-		</dict>
-		<key>739B7B06-CB5D-42C0-BD43-9BC16F2C401C</key>
-		<dict>
-			<key>xpos</key>
-			<real>175</real>
-			<key>ypos</key>
-			<real>415</real>
+			<real>345</real>
 		</dict>
 		<key>763D961C-A650-4E21-81A3-A056E1D637EA</key>
 		<dict>
@@ -513,6 +493,13 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<real>30</real>
 			<key>ypos</key>
 			<real>660</real>
+		</dict>
+		<key>9A3649B1-0523-422C-9F17-AEE10D0FFEE8</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>450</real>
 		</dict>
 		<key>9ACFE091-A925-4196-B964-9B2C241E4BE2</key>
 		<dict>
