@@ -55,7 +55,7 @@ return {
   i = {
     [";;"] = { "<Esc>A;", desc = "Quick append a semi-colon at the end of the line" },
     [",,"] = { "<Esc>A,", desc = "Quick append a comma at the end of the line" },
-    ["<M-j>"] = { "<cmd>move +1<CR>==gi", desc = "Move the current line up"},
+    ["<M-j>"] = { "<cmd>move +1<CR>==gi", desc = "Move the current line down"},
     ["<M-k>"] = { "<Esc>:move -1<CR>==gi", desc = "Move the current line up"},
   },
   v = {
