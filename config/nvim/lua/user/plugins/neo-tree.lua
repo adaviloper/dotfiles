@@ -8,7 +8,10 @@ return {
         hide_dotfiles = false,
         hide_gitignored = false,
         hide_hidden = false,
+      },
+      window = {
+        position = 'float',
       }
-    }
+    },
   }
 }
