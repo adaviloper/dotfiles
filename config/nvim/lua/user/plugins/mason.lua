@@ -10,6 +10,7 @@ return {
     opts = {
       -- ensure_installed = { "lua_ls" },
       ensure_installed = { "all" },
+      automatic_installation = true,
     },
     config = function ()
       -- PHP
@@ -24,6 +25,9 @@ return {
 
       -- TailwindCSS
       require('lspconfig').tailwindcss.setup({})
+
+      -- Lua
+      require('lspconfig').lua_ls.setup({})
     end
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
