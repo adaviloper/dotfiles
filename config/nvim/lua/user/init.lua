@@ -7,6 +7,7 @@ return {
     GitAdd = "",
     GitChange = "",
     GitDelete = "",
+    Telescope = "󰭎",
   },
   -- modify variables used by heirline but not defined in the setup call directly
   heirline = {

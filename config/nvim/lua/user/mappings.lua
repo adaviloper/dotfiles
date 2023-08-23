@@ -1,4 +1,6 @@
 local utils = require "user.utils"
+local astroUtils = require("astronvim.utils")
+local get_icon = astroUtils.get_icon
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
 -- Please use this mappings table to set keyboard mapping since this is the
@@ -43,6 +45,8 @@ return {
     ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to definition"},
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references"},
+    -- Telescope
+    ["<leader>T"] = { name = get_icon('Telescope', 1, true).."Telescope" },
   },
   i = {
     [";;"] = { "<Esc>A;", desc = "Quick append a semi-colon at the end of the line" },
