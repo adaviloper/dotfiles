@@ -8,6 +8,19 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>287CF763-9C1F-4450-ADEC-E80320662FEF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E06E0DFF-F676-45CB-9434-A242EBC7CF15</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>4BB29D03-9F5D-4ACA-897B-AEBA7E331FE9</key>
 		<array>
 			<dict>
@@ -450,6 +463,54 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/zoom.us.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>E06E0DFF-F676-45CB-9434-A242EBC7CF15</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>6</integer>
+				<key>hotmod</key>
+				<integer>917504</integer>
+				<key>hotstring</key>
+				<string>Z</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>287CF763-9C1F-4450-ADEC-E80320662FEF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Use hotkeys to launch actions by pressing a key combination. You can connect one or more actions to be performed.
@@ -465,6 +526,13 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<real>270</real>
 			<key>ypos</key>
 			<real>660</real>
+		</dict>
+		<key>287CF763-9C1F-4450-ADEC-E80320662FEF</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>765</real>
 		</dict>
 		<key>4BB29D03-9F5D-4ACA-897B-AEBA7E331FE9</key>
 		<dict>
@@ -542,6 +610,13 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<real>270</real>
 			<key>ypos</key>
 			<real>555</real>
+		</dict>
+		<key>E06E0DFF-F676-45CB-9434-A242EBC7CF15</key>
+		<dict>
+			<key>xpos</key>
+			<real>270</real>
+			<key>ypos</key>
+			<real>765</real>
 		</dict>
 		<key>ECACCEB5-20CA-455F-A37A-5FD8CDD9E979</key>
 		<dict>
