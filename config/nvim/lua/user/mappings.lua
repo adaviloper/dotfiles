@@ -28,6 +28,7 @@ return {
     n = { utils.better_search "nzz", desc = "Next search" },
     N = { utils.better_search "Nzz", desc = "Previous search" }, -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    X = { "dlvU", desc = "Delete current character and capitalize the next"},
     -- ISwap
     ["Q"] = { "<cmd>ISwapWith<cr>" },
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
