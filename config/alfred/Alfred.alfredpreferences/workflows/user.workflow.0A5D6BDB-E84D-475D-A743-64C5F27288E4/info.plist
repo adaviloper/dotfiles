@@ -103,6 +103,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>DE8D6931-E01C-4018-8C14-64F6778A7896</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>59B27131-4636-46C4-8733-B2115651AD49</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>F9853120-ADC7-4973-8392-7009482ED60B</key>
 		<array>
 			<dict>
@@ -468,7 +481,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/zoom.us.app</string>
+					<string>/Applications/Postman.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -477,6 +490,54 @@
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
 			<string>E06E0DFF-F676-45CB-9434-A242EBC7CF15</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>17</integer>
+				<key>hotmod</key>
+				<integer>917504</integer>
+				<key>hotstring</key>
+				<string>T</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>287CF763-9C1F-4450-ADEC-E80320662FEF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/zoom.us.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>59B27131-4636-46C4-8733-B2115651AD49</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -507,7 +568,7 @@
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>287CF763-9C1F-4450-ADEC-E80320662FEF</string>
+			<string>DE8D6931-E01C-4018-8C14-64F6778A7896</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -547,6 +608,13 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<real>30</real>
 			<key>ypos</key>
 			<real>345</real>
+		</dict>
+		<key>59B27131-4636-46C4-8733-B2115651AD49</key>
+		<dict>
+			<key>xpos</key>
+			<real>270</real>
+			<key>ypos</key>
+			<real>870</real>
 		</dict>
 		<key>763D961C-A650-4E21-81A3-A056E1D637EA</key>
 		<dict>
@@ -610,6 +678,13 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<real>270</real>
 			<key>ypos</key>
 			<real>555</real>
+		</dict>
+		<key>DE8D6931-E01C-4018-8C14-64F6778A7896</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>870</real>
 		</dict>
 		<key>E06E0DFF-F676-45CB-9434-A242EBC7CF15</key>
 		<dict>
