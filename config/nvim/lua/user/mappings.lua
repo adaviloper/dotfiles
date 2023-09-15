@@ -1,6 +1,7 @@
 local utils = require "user.utils"
 local astroUtils = require("astronvim.utils")
 local get_icon = astroUtils.get_icon
+
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
 -- Please use this mappings table to set keyboard mapping since this is the
@@ -12,6 +13,8 @@ return {
     -- second key is the lefthand side of the map
     ["<leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- mappings seen under group name "Buffer"
+    -- this is useful for naming menus
+    ["<leader>b"] = { name = "Buffers" },
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
@@ -21,9 +24,23 @@ return {
       end,
       desc = "Pick to close",
     },
+    ["<leader>c"] = {
+      function()
+        local bufs = vim.fn.getbufinfo({ buflisted = true })
+        require("astronvim.utils.buffer").close(0)
+        if require("astronvim.utils").is_available("alpha-nvim") and not bufs[2] then
+          require("alpha").start(true)
+        end
+      end,
+      desc = "Close buffer",
+    },
+    -- Harpoon
+    ["<leader>m"] = { name = get_icon('Harpoon', 1, true).."Harpoon" },
+    ["<leader>ma"] = { function () require("harpoon.mark").add_file() end, desc = "Add file to Harpoon list" },
+    ["<leader>mm"] = { function () require("harpoon.ui").toggle_quick_menu() end, desc = "Toggle Harpoon quick menu" },
+    ["<leader>ml"] = { function () require("harpoon.ui").nav_next() end, desc = "Navigate to previous harpoon mark" },
+    ["<leader>mh"] = { function () require("harpoon.ui").nav_prev() end, desc = "Navigate to next harpoon mark" },
     -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
-    ["<leader>b"] = { name = "Buffers" },
     -- better search
     n = { utils.better_search "nzz", desc = "Next search" },
     N = { utils.better_search "Nzz", desc = "Previous search" }, -- quick save
@@ -48,18 +65,24 @@ return {
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references"},
     -- Telescope
     ["<leader>T"] = { name = get_icon('Telescope', 1, true).."Telescope" },
+    ['<A-j>'] = { ':move .+1<CR>=='},
+    ['<A-k>'] = { ':move .-2<CR>=='},
+    ['<A-Down>'] = { '<cmd>resize -4<CR>' },
+    ['<A-Up>'] = { '<cmd>resize +4<CR>' },
+    ['<A-Left>'] = { '<cmd>vertical resize -4<CR>' },
+    ['<A-Right>'] = { '<cmd>vertical resize +4<CR>' },
   },
   i = {
-    [";;"] = { "<Esc>A;", desc = "Quick append a semi-colon at the end of the line" },
-    [",,"] = { "<Esc>A,", desc = "Quick append a comma at the end of the line" },
-    ["<M-j>"] = { "<cmd>move +1<CR>==gi", desc = "Move the current line down"},
-    ["<M-k>"] = { "<Esc>:move -1<CR>==gi", desc = "Move the current line up"},
+    ['<A-j>'] = { '<Esc>:move .+1<CR>==gi'},
+    ['<A-k>'] = { '<Esc>:move .-2<CR>==gi'},
   },
   v = {
     ["<"] = { "<gv", desc = "Unindent without losing selection"},
     [">"] = { ">gv", desc = "Indent without losing selection"},
     ["p"] = { '"_dP', desc = "Paste yanked text without losing the original contents"},
     ["y"] = { "myy`y", desc = "Yank in visual mode without losing cursor position"},
+    ['<A-j>'] = { ":move '>+1<CR>gv=gv"},
+    ['<A-k>'] = { ":move '<-2<CR>gv=gv"},
   },
   t = {
     -- setting a mapping to false will disable it
