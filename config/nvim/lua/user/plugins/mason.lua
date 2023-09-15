@@ -16,6 +16,7 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
       -- PHP
       require('lspconfig').intelephense.setup({
+        pattern = 'php',
         commands = {
           IntelephenseIndex = {
             function ()
@@ -30,6 +31,7 @@ return {
         capabilities = capabilities
       })
       require('lspconfig').phpactor.setup({
+        pattern = 'php',
         capabilities = capabilities,
         on_attach = function(client, bufnr)
           client.server_capabilities.completionProvider = false
