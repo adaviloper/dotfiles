@@ -34,6 +34,7 @@ return {
       end,
       desc = "Close buffer",
     },
+    ["<leader>fs"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", desc = "Find a symbol in the workspace" },
     -- Harpoon
     ["<leader>m"] = { name = get_icon('Harpoon', 1, true).."Harpoon" },
     ["<leader>ma"] = { function () require("harpoon.mark").add_file() end, desc = "Add file to Harpoon list" },
@@ -61,20 +62,12 @@ return {
     ["<F4>a"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
     ["<F4>o"] = { function() require("nejotest").output_panel.toggle() end, desc = "View the output" },
     ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
+    ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Go to definition"},
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to definition"},
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references"},
-    -- Telescope
-    ["<leader>T"] = { name = get_icon('Telescope', 1, true).."Telescope" },
-    ['<A-j>'] = { ':move .+1<CR>=='},
-    ['<A-k>'] = { ':move .-2<CR>=='},
-    ['<A-Down>'] = { '<cmd>resize -4<CR>' },
-    ['<A-Up>'] = { '<cmd>resize +4<CR>' },
-    ['<A-Left>'] = { '<cmd>vertical resize -4<CR>' },
-    ['<A-Right>'] = { '<cmd>vertical resize +4<CR>' },
   },
   i = {
-    ['<A-j>'] = { '<Esc>:move .+1<CR>==gi'},
-    ['<A-k>'] = { '<Esc>:move .-2<CR>==gi'},
+    --
   },
   v = {
     ["<"] = { "<gv", desc = "Unindent without losing selection"},
