@@ -9,7 +9,7 @@ return {
     },
     opts = {
       -- ensure_installed = { "lua_ls" },
-      ensure_installed = { "all" },
+      ensure_installed = { "intelephense", "jsonls", "lua_ls", "phpactor", "tailwindcss", "volar" },
       automatic_installation = true,
     },
     config = function ()
