@@ -3,15 +3,38 @@
 compdef g=git
 TICKET_BRANCH_PREFIX="RET"
 
-function toggle_prefix()
+function get_ticket_prefix()
 {
-  if [ $TICKET_BRANCH_PREFIX="RET" ] 
-  then
-    TICKET_BRANCH_PREFIX="LPR"
-  else
-    TICKET_BRANCH_PREFIX="RET"
-  fi
-  echo $TICKET_BRANCH_PREFIX
+  current_directory="${PWD#$HOME/}"
+
+  case "$current_directory" in
+      "Code/ultimate-tic-tac-toe")
+          mapped_string="UTTT"
+          ;;
+      "Code/loop-returns-app")
+        echo "Multiple options found for Code/loop-returns-app:"
+        echo "1. RET"
+        echo "2. LPR"
+        echo "Please select an option (1 or 2):"
+        read user_choice
+        case "$user_choice" in
+          "1")
+            mapped_string="RET"
+            ;;
+          "2")
+            mapped_string="LPR"
+            ;;
+          *)
+            mapped_string="Unknown option"
+            ;;
+        esac
+        ;;
+      *)
+          mapped_string="Unknown directory"
+          ;;
+  esac
+
+  echo "$mapped_string"
 }
 
 function g {
@@ -92,7 +115,7 @@ function task()
 
 function ticket_branch()
 {
-  gcb "$1/$TICKET_BRANCH_PREFIX-$2-${3// /-}"
+  gcb "$1/$(get_ticket_prefix)-$2-${3// /-}"
 }
 
 function copy_branch()
@@ -102,10 +125,10 @@ function copy_branch()
 
 function ticket_number()
 {
-  printf "%q" $(git_current_branch) | sed "s/.*$TICKET_BRANCH_PREFIX-\([0-9]*\).*/\1/"
+  printf "%q" $(git_current_branch) | sed "s/.*$(get_ticket_prefix)-\([0-9]*\).*/\1/"
 }
 
 function git_commit_prefix()
 {
-  echo "[$TICKET_BRANCH_PREFIX-$(ticket_number)] -"
+  echo "[$(get_ticket_prefix)-$(ticket_number)] -"
 }
