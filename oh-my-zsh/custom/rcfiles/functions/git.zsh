@@ -125,10 +125,10 @@ function copy_branch()
 
 function ticket_number()
 {
-  printf "%q" $(git_current_branch) | sed "s/.*$(get_ticket_prefix)-\([0-9]*\).*/\1/"
+  echo $(git_current_branch) | grep -e '[A-Z]*-[0-9]*' -ow
 }
 
 function git_commit_prefix()
 {
-  echo "[$(get_ticket_prefix)-$(ticket_number)] -"
+  echo "[$(ticket_number)] -"
 }
