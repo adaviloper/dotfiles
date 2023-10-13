@@ -7,12 +7,9 @@ return {
     dependencies = {
       'hrsh7th/cmp-nvim-lsp-signature-help'
     },
-    opts = {
-      -- ensure_installed = { "lua_ls" },
-      ensure_installed = { "intelephense", "jsonls", "lua_ls", "phpactor", "tailwindcss-language-server", "volar" },
-      automatic_installation = true,
-    },
-    config = function ()
+    config = function (_, opts)
+      opts.ensure_installed = { "intelephense", "jsonls", "lua_ls", "phpactor", "tailwindcss-language-server", "volar" }
+      opts.automatic_installation = true
       local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
       -- PHP
       require('lspconfig').intelephense.setup({
@@ -29,33 +26,6 @@ return {
           client.server_capabilities.documentRangeFormattingProvider = false
         end,
         capabilities = capabilities
-      })
-      require('lspconfig').phpactor.setup({
-        pattern = 'php',
-        capabilities = capabilities,
-        on_attach = function(client, bufnr)
-          client.server_capabilities.completionProvider = false
-          client.server_capabilities.hoverProvider = false
-          client.server_capabilities.implementationProvider = false
-          client.server_capabilities.referencesProvider = false
-          client.server_capabilities.renameProvider = false
-          client.server_capabilities.selectionRangeProvider = false
-          client.server_capabilities.signatureHelpProvider = false
-          client.server_capabilities.typeDefinitionProvider = false
-          client.server_capabilities.workspaceSymbolProvider = false
-          client.server_capabilities.definitionProvider = false
-          client.server_capabilities.documentHighlightProvider = false
-          client.server_capabilities.documentSymbolProvider = false
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-        end,
-        init_options = {
-          ["language_server_phpstan.enabled"] = false,
-          ["language_server_psalm.enabled"] = false,
-        },
-        handlers = {
-          ['textDocument/publishDiagnostics'] = function() end
-        }
       })
 
       -- Vue, JavaScript, Typescript
@@ -87,6 +57,8 @@ return {
       })
       -- Lua
       require('lspconfig').lua_ls.setup({ capabilities = capabilities })
+
+      return opts
     end
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
