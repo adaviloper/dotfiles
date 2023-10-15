@@ -10,7 +10,7 @@ return {
     require("plugins.configs.telescope")(plugin, opts)
 
     -- require telescope and load extensions as necessary
-    local telescope = require "telescope"
-    telescope.load_extension("harpoon")
+    -- local telescope = require "telescope"
+    -- telescope.load_extension("harpoon")
   end,
 }
