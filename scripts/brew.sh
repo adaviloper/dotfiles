@@ -15,5 +15,5 @@ info "Navigating to [~/.dotfiles]"
 cd ~/.dotfiles
 
 brew tap homebrew/bundle
-brew bundle <<EOF
+brew bundle
 

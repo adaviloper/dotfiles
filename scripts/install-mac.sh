@@ -1,5 +1,4 @@
 #!/bin/bash
-
 sudo xcodebuild -license accept
 
 set -e
@@ -31,11 +30,12 @@ sh ~/.dotfiles/scripts/brew.sh
 
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
+info "Running [vim.sh]"
+sh ~/.dotfiles/scripts/nvim.sh
+
 info "Running [rcup]"
 rcup -f
 
-info "Running [vim.sh]"
-sh ~/.dotfiles/scripts/vim.sh
 info "Running [post-install.sh]"
 sh ~/.dotfiles/scripts/post-install.sh
 
