@@ -79,9 +79,6 @@ return {
       end, { "i", "s" })
       return table
     end,
-    init = {
-      "rafamadriz/friendly-snippets",
-    },
   },
   -- Configure AstroNvim updates
   updater = {
