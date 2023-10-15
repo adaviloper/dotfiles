@@ -4,94 +4,39 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     -- overrides `require("mason-lspconfig").setup(...)`
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp-signature-help'
-    },
-    config = function (_, opts)
-      opts.ensure_installed = { "intelephense", "jsonls", "lua_ls", "phpactor", "tailwindcss-language-server", "volar" }
-      opts.automatic_installation = true
-      local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-      -- PHP
-      require('lspconfig').intelephense.setup({
-        pattern = 'php',
-        commands = {
-          IntelephenseIndex = {
-            function ()
-              vim.lsp.buf.execute_comand({ command = 'intelephense.index.workspace' })
-            end
-          },
-        },
-        on_attach = function (client, bufnr)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-        end,
-        capabilities = capabilities
+    opts = function(_, opts)
+      -- add more things to the ensure_installed table protecting against community packs modifying it
+      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+        "intelephense",
+        "jsonls",
+        "lua_ls",
+        "tailwindcss",
+        "volar",
       })
-
-      -- Vue, JavaScript, Typescript
-      require('lspconfig').volar.setup({
-        on_attach = function(client, bufnr)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-          -- if client.server_capabilities.inlayHintProvider then
-          --   vim.lsp.buf.inlay_hint(bufnr, true)
-          -- end
-        end,
-        capabilities = capabilities,
-        -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
-        -- This drastically improves the responsiveness of diagnostic updates on change
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-      })
-
-      -- TailwindCSS
-      require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
-
-      -- JSON
-      require('lspconfig').jsonls.setup({
-        capabilities = capabilities,
-        settings = {
-          json = {
-            schemas = require('schemastore').json.schemas(),
-          },
-        },
-      })
-      -- Lua
-      require('lspconfig').lua_ls.setup({ capabilities = capabilities })
-
-      return opts
-    end
+    end,
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
   {
     "jay-babu/mason-null-ls.nvim",
     -- overrides `require("mason-null-ls").setup(...)`
-    opts = {
-      -- ensure_installed = { "prettier", "stylua" },
-    },
+    opts = function(_, opts)
+      -- add more things to the ensure_installed table protecting against community packs modifying it
+      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+        -- "prettier",
+        -- "stylua",
+      })
+    end,
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     -- overrides `require("mason-nvim-dap").setup(...)`
-    opts = {
-      -- ensure_installed = { "python" },
-      handlers = {
-        php = function()
-          local dap = require "dap"
-          dap.adapters.php = {
-            type = "executable",
-            command = os.getenv "HOME" .. "/.local/share/nvim_astro/mason/bin/php-debug-adapter",
-          }
-
-          dap.configurations.php = {
-            {
-              type = "php",
-              request = "launch",
-              port = 9003,
-              name = "Listen for Xdebug",
-            },
-          }
-        end,
-      },
-    },
+    opts = function(_, opts)
+      -- add more things to the ensure_installed table protecting against community packs modifying it
+      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+        -- "python",
+        "js-debug-adapter",
+        "php-debug-adapter",
+      })
+    end,
   },
 }
