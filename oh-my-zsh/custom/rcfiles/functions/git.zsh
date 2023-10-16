@@ -12,22 +12,13 @@ function get_ticket_prefix()
           mapped_string="UTTT"
           ;;
       "Code/loop-returns-app")
-        echo "Multiple options found for Code/loop-returns-app:"
-        echo "1. RET"
-        echo "2. LPR"
-        echo "Please select an option (1 or 2):"
-        read user_choice
-        case "$user_choice" in
-          "1")
-            mapped_string="RET"
-            ;;
-          "2")
-            mapped_string="LPR"
-            ;;
-          *)
-            mapped_string="Unknown option"
-            ;;
-        esac
+        eval "prefixes=(RET LPR)"
+        
+        select prefix in $prefixes
+        do
+          echo $prefix
+          break
+        done
         ;;
       *)
           mapped_string="Unknown directory"
