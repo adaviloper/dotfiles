@@ -7,6 +7,7 @@ function get_ticket_prefix()
 {
   current_directory="${PWD#$HOME/}"
 
+  PS3="Select a prefix: "
   case "$current_directory" in
       "Code/ultimate-tic-tac-toe")
           mapped_string="UTTT"
@@ -50,6 +51,7 @@ function select_from_matching_branches()
   elif (( $branch_count == 1 )); then
     echo "${branches[1]}"
   else
+    PS3="Select a branch: "
     select branch in $branches
     do
       echo $branch
