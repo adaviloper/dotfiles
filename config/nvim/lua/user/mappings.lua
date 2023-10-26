@@ -30,6 +30,11 @@ return {
       end,
       desc = "Close buffer",
     },
+    -- Bookmarks
+    ["<leader>f'"] = {function () require('bookmarks').toggle_bookmarks() end, desc = "List all marks"},
+    ["ma"] = { function () require('bookmarks').add_bookmarks() end, desc = "Add bookmark" },
+    ["dm"] = { function () require('bookmarks.list').delete_on_virt() end, desc = "Delete bookmark" },
+    ["mi"] = { function () require('bookmarks.list').show_desc() end, desc = "Show bookmark description" },
     -- Harpoon
     ["<leader>m"] = { name = "󱡅 Harpoon" },
     ["<leader>ma"] = { function () require("harpoon.mark").add_file() end, desc = "Add file to Harpoon list" },
