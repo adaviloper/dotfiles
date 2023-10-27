@@ -1,5 +1,6 @@
 .DS_Store
 .idea
-config/alfred/Alfred.preferences/snippets/Emails
-config/alfred/Alfred.preferences/snippets/PII
+config/alfred/Alfred.alfredpreferences/snippets/Emails
+config/alfred/Alfred.alfredpreferences/snippets/PII
 intelephense/
+
