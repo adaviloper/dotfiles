@@ -24,9 +24,12 @@ return {
             require("lspconfig")[server_name].setup {}
         end,
         -- Next, you can provide targeted overrides for specific servers.
+        ["intelephense"] = function ()
+          lspconfig.intelephense.setup()
+        end,
         ["bashls"] = function ()
-            local lspconfig = require("lspconfig")
-          lspconfig.bashls.setup {
+          local lspconfig = require("lspconfig")
+          lspconfig.bashls.setup({
             settings = {
               bashIde = {
                 -- Glob pattern for finding and parsing shell script files in the workspace.
@@ -40,7 +43,7 @@ return {
               },
             },
             filetypes = {'sh', 'zsh'}
-          }
+          })
         end,
 
       }
