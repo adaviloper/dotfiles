@@ -59,7 +59,7 @@ return {
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to definition"},
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references"},
         -- Telescope
-    ["<leader>T"] = { name = "Telescope" },
+    ['<leader>T'] = { name = 'Telescope' },
     ['<A-j>'] = { ':move .+1<CR>=='},
     ['<A-k>'] = { ':move .-2<CR>=='},
     ['<A-Down>'] = { '<cmd>resize -4<CR>' },
@@ -77,8 +77,8 @@ return {
     [">"] = { ">gv", desc = "Indent without losing selection"},
     ["p"] = { '"_dP', desc = "Paste yanked text without losing the original contents"},
     ["y"] = { "myy`y", desc = "Yank in visual mode without losing cursor position"},
-    ['<A-j>'] = { ":move '>+1<CR>gv=gv"},
-    ['<A-k>'] = { ":move '<-2<CR>gv=gv"},
+    J = { ":move '>+1<CR>gv=gv"},
+    K = { ":move '<-2<CR>gv=gv"},
   },
   t = {
     -- setting a mapping to false will disable it
