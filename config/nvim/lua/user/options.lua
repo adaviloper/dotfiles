@@ -6,12 +6,13 @@ return {
     number = true,         -- sets vim.opt.number
     scrolloff = 8,
     spell = true,          -- sets vim.opt.spell
-    spelloptions = "camel",
-    signcolumn = "yes",    -- sets vim.opt.signcolumn to auto
+    spelloptions = 'camel',
+    signcolumn = 'yes',    -- sets vim.opt.signcolumn to auto
+    whichwrap = 'b,s,<,>',
     wrap = true,           -- sets vim.opt.wrap
   },
   g = {
-    mapleader = " ",                 -- sets vim.g.mapleader
+    mapleader = ' ',                 -- sets vim.g.mapleader
     autoformat_enabled = false,       -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
     cmp_enabled = true,              -- enable completion at start
     autopairs_enabled = true,        -- enable autopairs at start
