@@ -129,7 +129,7 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
-      "intelephense"
+      "phpactor",
     },
   },
   -- Configure require("lazy").setup() options

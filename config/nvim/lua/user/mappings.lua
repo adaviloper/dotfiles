@@ -31,10 +31,7 @@ return {
       desc = "Close buffer",
     },
     -- Bookmarks
-    ["<leader>f'"] = {function () require('bookmarks').toggle_bookmarks() end, desc = "List all marks"},
-    ["ma"] = { function () require('bookmarks').add_bookmarks() end, desc = "Add bookmark" },
-    ["dm"] = { function () require('bookmarks.list').delete_on_virt() end, desc = "Delete bookmark" },
-    ["mi"] = { function () require('bookmarks.list').show_desc() end, desc = "Show bookmark description" },
+    ["<leader>f'"] = { '<cmd>MarksQFListAll<CR>', desc = "List all marks"},
     -- Harpoon
     ["<leader>m"] = { name = "󱡅 Harpoon" },
     ["<leader>ma"] = { function () require("harpoon.mark").add_file() end, desc = "Add file to Harpoon list" },
@@ -60,6 +57,7 @@ return {
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references"},
         -- Telescope
     ['<leader>T'] = { name = 'Telescope' },
+    ['<leader>fd'] = { '<cmd>Telescope dir live_grep<CR>', desc = 'Find words in directory' },
     ['<A-j>'] = { ':move .+1<CR>=='},
     ['<A-k>'] = { ':move .-2<CR>=='},
     ['<A-Down>'] = { '<cmd>resize -4<CR>' },
