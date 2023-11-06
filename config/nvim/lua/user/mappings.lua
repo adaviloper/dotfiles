@@ -32,6 +32,7 @@ return {
     },
     -- Bookmarks
     ["<leader>f'"] = { '<cmd>MarksQFListAll<CR>', desc = "List all marks"},
+    ["<leader>fS"] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = "Search for symbol in workspace"},
     -- Harpoon
     ["<leader>m"] = { name = "󱡅 Harpoon" },
     ["<leader>ma"] = { function () require("harpoon.mark").add_file() end, desc = "Add file to Harpoon list" },
