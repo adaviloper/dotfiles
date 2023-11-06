@@ -1,1 +1,0 @@
-Plugin 'dense-analysis/ale'
