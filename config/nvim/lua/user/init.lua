@@ -131,6 +131,17 @@ return {
       -- "pyright"
       "phpactor",
     },
+    config = {
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              global = { 'vim' },
+            },
+          },
+        },
+      },
+    },
   },
   -- Configure require("lazy").setup() options
   lazy = {
