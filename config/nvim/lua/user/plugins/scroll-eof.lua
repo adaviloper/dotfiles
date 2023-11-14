@@ -1,6 +1,5 @@
 return {
   'Aasim-A/scrollEOF.nvim',
-  lazy = false,
   config = function()
     -- Default settings
     require('scrollEOF').setup({

@@ -1,7 +1,5 @@
----@diagnostic disable: missing-parameter
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  lazy = false,
   opts = {
     filesystem = {
       filtered_items = {

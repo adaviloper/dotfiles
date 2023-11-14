@@ -1,7 +1,6 @@
 return {
   "uga-rosa/ccc.nvim",
-  lazy = false,
-  enabled = true,
+  event = 'BufEnter',
   config = function ()
     require('ccc').setup()
   end,

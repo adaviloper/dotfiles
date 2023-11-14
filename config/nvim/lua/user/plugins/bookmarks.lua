@@ -1,6 +1,6 @@
 return {
   'chentoast/marks.nvim',
-  lazy = false,
+  event = 'BufEnter',
   config = function ()
     require('marks').setup()
   end,

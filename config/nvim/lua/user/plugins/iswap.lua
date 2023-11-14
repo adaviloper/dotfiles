@@ -1,6 +1,6 @@
 return {
   "mizlan/iswap.nvim",
-  lazy = false,
+  event = 'VeryLazy',
   config = function()
     require("iswap").setup {
       move_cursor = true,

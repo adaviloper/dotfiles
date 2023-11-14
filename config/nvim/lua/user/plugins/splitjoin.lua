@@ -1,6 +1,5 @@
 return {
   'AndrewRadev/splitjoin.vim',
-  lazy = false,
   config = function()
     vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
     vim.g.splitjoin_trailing_comma = 1
