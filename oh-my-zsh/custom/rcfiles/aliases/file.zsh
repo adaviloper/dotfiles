@@ -11,8 +11,8 @@ alias c="clear"
 alias cdh="cd ~/Homestead"
 alias cloc="git ls-files | xargs wc -l"
 alias code="cd $PROJECTS"
-alias ls="lsd"
-alias l="ls -alh --color=auto"
+alias ls="exa"
+alias l="ls -alh --color=auto --git --icons"
 alias pup="php -S localhost:3000"
 
 # Testing
