@@ -1,2 +1,6 @@
 map X dl~
+set relativenumber
 set scrolloff=8
+set showmode
+
+nnoremap Y y$
