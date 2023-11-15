@@ -1,7 +1,8 @@
 return {
-  'chentoast/marks.nvim',
-  event = 'BufEnter',
+  'cbochs/grapple.nvim',
   config = function ()
-    require('marks').setup()
+    require('grapple').setup({
+      scope = require('grapple').resolvers.git_branch
+    })
   end,
 }

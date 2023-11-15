@@ -23,10 +23,10 @@ function tm() {
         tmux "$@"
     else
         for ((i=1; i<=${#SESSION_NAMES[@]}; i++)); do
-            echo "Creating session for '${SESSION_NAMES[$i]}' in directory: ${DIRECTORIES[$i]//\~/$HOME} : ${DIRECTORIES[$i]}."
             tmux has-session -t $SESSION_NAMES[$i] 2>/dev/null
 
             if [ $? != 0 ]; then
+                echo "Creating session for '${SESSION_NAMES[$i]}' in directory: ${DIRECTORIES[$i]//\~/$HOME} : ${DIRECTORIES[$i]}."
                 tmux new-session -d -s $SESSION_NAMES[$i] -n "Project"
 
                 # Add more windows with specific names and directories
