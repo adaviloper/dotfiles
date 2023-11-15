@@ -14,6 +14,5 @@ info() {
 info "Navigating to [~/.dotfiles]"
 cd ~/.dotfiles
 
-brew tap homebrew/bundle
 brew bundle
 
