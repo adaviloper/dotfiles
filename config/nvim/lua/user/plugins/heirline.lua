@@ -2,6 +2,8 @@ return {
   "rebelot/heirline.nvim",
   opts = function(_, opts)
     local status = require("astronvim.utils.status")
+    -- local grapple = require('grapple')
+    -- grapple.exists(vim.cmd("!echo '%:p'"))
     opts.statusline = {
       -- statusline
       hl = { fg = "fg", bg = "bg" },
@@ -49,6 +51,23 @@ return {
           left = 1
         },
         file_modified = false,
+        provider = function(self)
+          local grapple = require('grapple')
+          local conditions = require('heirline.conditions')
+          -- first, trim the pattern relative to the current directory. For other
+          -- options, see :h filename-modifers
+          local filename = vim.fn.fnamemodify(self.filename, ":.")
+          if filename == "" then return "[No Name]" end
+          -- now, if the filename would occupy more than 1/4th of the available
+          -- space, we trim the file path to its initials
+          -- See Flexible Components section below for dynamic truncation
+          if not conditions.width_percent_below(#filename, 0.25) then
+            filename = vim.fn.pathshorten(filename)
+          end
+          if grapple.exists() then
+            return '[' .. grapple.key() .. ']'
+          end
+        end,
         color = function() return { main = "file_info_bg", right = "git_diff_bg" } end,
       },
       status.component.git_diff(),
