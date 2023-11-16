@@ -8,6 +8,14 @@ return {
   config = function(plugin, opts)
     -- run the core AstroNvim configuration function with the options table
     require("plugins.configs.telescope")(plugin, opts)
+    require('telescope').setup({
+      defaults = {
+        file_ignore_patterns = {
+          "config/alfred/.*",
+          "./assets/fonts/.*"
+        }
+      }
+    })
 
     -- require telescope and load extensions as necessary
     -- local telescope = require "telescope"
