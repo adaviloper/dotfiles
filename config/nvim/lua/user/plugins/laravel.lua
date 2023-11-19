@@ -19,6 +19,7 @@ return {
       desc = "Laravel Application Routes",
     },
   },
+  event = { 'VeryLazy' },
   config = function()
     require("laravel").setup()
     require("telescope").load_extension "laravel"

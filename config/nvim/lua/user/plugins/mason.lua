@@ -34,8 +34,8 @@ return {
       lspconfig.phpactor.setup({ 
         capabilities = capabilities,
         init_options = {
-          ['language_server_phpstan.enabled'] = false,
-          ['language_server_psalm.enabled'] = false,
+          -- ['language_server_phpstan.enabled'] = true,
+          -- ['language_server_psalm.enabled'] = false,
         },
         handlers = {
           -- ['textDocument/publishDiagnostics'] = function() end,
