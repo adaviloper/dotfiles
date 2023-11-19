@@ -31,24 +31,26 @@ return {
       desc = "Close buffer",
     },
     -- Bookmarks
-    ["<leader>f'"] = { '<cmd>MarksQFListAll<CR>', desc = "List all marks"},
     ["<leader>fS"] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = "Search for symbol in workspace"},
-    -- Harpoon
-    ["<leader>m"] = { name = "󰓾 Marks" },
+    -- Grapple
+    ["<leader>m"] = { name = "󰓾 Handle File Marks" },
+    ["<leader>'"] = { name = "󰓾 Jump to File Marks" },
+    -- ["<leader>f'"] = { function () require('grapple').popup_tags() end, desc = "List all marks"},
     ["<leader>mf"] = { function () require('grapple').popup_tags() end, desc = "List all tags"},
     ["<leader>mF"] = { function () require('grapple').popup_scopes() end, desc = "List all scopes"},
     ["<leader>ma"] = { function () require("grapple").tag() end, desc = "Add Grapple tag to file" },
     ["<leader>md"] = { function () require("grapple").untag() end, desc = "Remove file from Grapple tag list" },
-    ["<leader>mt"] = { function () require("grapple").select({ key = "test" }) end, desc = "Jump to the [test] tag" },
-    ["<leader>mT"] = { function () require("grapple").tag({ key = "test" }) end, desc = "Tag as [test]" },
-    ["<leader>ms"] = { function () require("grapple").select({ key = "subject" }) end, desc = "Jump to the [subject] tag" },
-    ["<leader>mS"] = { function () require("grapple").tag({ key = "subject" }) end, desc = "Tag as [subject]" },
-    ["<leader>mw"] = { function () require("grapple").tag({ key = "subject" }) end, desc = "Jump to [primary] tag" },
-    ["<leader>mW"] = { function () require("grapple").tag({ key = "subject" }) end, desc = "Tag as [primary]" },
-    ["<leader>me"] = { function () require("grapple").tag({ key = "subject" }) end, desc = "Jump to [secondary] tag" },
-    ["<leader>mE"] = { function () require("grapple").tag({ key = "subject" }) end, desc = "Tag as [secondary]" },
-    ["<leader>mr"] = { function () require("grapple").tag({ key = "subject" }) end, desc = "Jump to [tertiary] tag" },
-    ["<leader>mR"] = { function () require("grapple").tag({ key = "subject" }) end, desc = "Tag as [tertiary]" },
+
+    ["<leader>'t"] = { function () require("grapple").select({ key = "test" }) end, desc = "Jump to the [test] tag" },
+    ["<leader>mt"] = { function () require("grapple").tag({ key = "test" }) end, desc = "Tag as [test]" },
+    ["<leader>'s"] = { function () require("grapple").select({ key = "subject" }) end, desc = "Jump to the [subject] tag" },
+    ["<leader>ms"] = { function () require("grapple").tag({ key = "subject" }) end, desc = "Tag as [subject]" },
+    ["<leader>'w"] = { function () require("grapple").select({ key = "primary" }) end, desc = "Jump to [primary] tag" },
+    ["<leader>mw"] = { function () require("grapple").tag({ key = "primary" }) end, desc = "Tag as [primary]" },
+    ["<leader>'e"] = { function () require("grapple").select({ key = "secondary" }) end, desc = "Jump to [secondary] tag" },
+    ["<leader>me"] = { function () require("grapple").tag({ key = "secondary" }) end, desc = "Tag as [secondary]" },
+    ["<leader>'r"] = { function () require("grapple").select({ key = "tertiary" }) end, desc = "Jump to [tertiary] tag" },
+    ["<leader>mr"] = { function () require("grapple").tag({ key = "tertiary" }) end, desc = "Tag as [tertiary]" },
     -- ["<leader>ml"] = { function () require("harpoon.ui").nav_next() end, desc = "Navigate to previous harpoon mark" },
     -- ["<leader>mh"] = { function () require("harpoon.ui").nav_prev() end, desc = "Navigate to next harpoon mark" },
     -- ISwap
@@ -68,27 +70,30 @@ return {
     ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references"},
         -- Telescope
-    ['<leader>T'] = { name = 'Telescope' },
+    ["<leader>fo"] = { function() require("telescope.builtin").oldfiles({ cwd_only = true }) end, desc = "Find history" },
     ['<leader>fd'] = { '<cmd>Telescope dir live_grep<CR>', desc = 'Find words in directory' },
-    ['<A-j>'] = { ':move .+1<CR>=='},
-    ['<A-k>'] = { ':move .-2<CR>=='},
+    ['<leader>fe'] = { '<cmd>Telescope env<CR>', desc = 'Find env values' },
     ['<A-Down>'] = { '<cmd>resize -4<CR>' },
     ['<A-Up>'] = { '<cmd>resize +4<CR>' },
     ['<A-Left>'] = { '<cmd>vertical resize -4<CR>' },
     ['<A-Right>'] = { '<cmd>vertical resize +4<CR>' },
     X = { "x~", desc = "Delete current character and capitalize the next"},
+    ["<leader>/"] = {
+      "<esc><cmd>lua require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>j",
+      desc = "Toggle comment line",
+    }
   },
   i = {
-    ['<A-j>'] = { '<Esc>:move .+1<CR>==gi'},
-    ['<A-k>'] = { '<Esc>:move .-2<CR>==gi'},
   },
   v = {
     ["<"] = { "<gv", desc = "Unindent without losing selection"},
     [">"] = { ">gv", desc = "Indent without losing selection"},
     ["p"] = { '"_dP', desc = "Paste yanked text without losing the original contents"},
     ["y"] = { "myy`y", desc = "Yank in visual mode without losing cursor position"},
-    J = { ":move '>+1<CR>gv=gv"},
-    K = { ":move '<-2<CR>gv=gv"},
+    ["<leader>/"] = {
+      "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>j",
+      desc = "Toggle comment for selection",
+    }
   },
   t = {
     -- setting a mapping to false will disable it
