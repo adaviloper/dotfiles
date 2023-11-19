@@ -1,4 +1,5 @@
 map X dl~
+set number
 set relativenumber
 set scrolloff=8
 set showmode
