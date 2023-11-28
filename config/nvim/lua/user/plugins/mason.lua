@@ -15,14 +15,14 @@ return {
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-      lspconfig.bashls.setup({ 
+      lspconfig.bashls.setup({
         capabilities = capabilities,
         filetypes = { 'sh', 'ttyfast', 'zsh' }
       })
-      -- -- lspconfig.intelephense.setup({ 
-      -- --   capabilities = capabilities,
-      -- -- })
-      lspconfig.jsonls.setup({ 
+      lspconfig.intelephense.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.jsonls.setup({
         capabilities = capabilities,
         settings = {
           json = {
@@ -31,7 +31,7 @@ return {
         }
       })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.phpactor.setup({ 
+      lspconfig.phpactor.setup({
         capabilities = capabilities,
         init_options = {
           -- ['language_server_phpstan.enabled'] = true,
