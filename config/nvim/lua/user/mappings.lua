@@ -3,12 +3,6 @@ local utils = require "user.utils"
 return {
   -- first key is the mode
   n = {
-    ["<localleader>m"] = {
-      function()
-        vim.notify('using a buffer keymap', 3)
-      end,
-      desc = 'Use a localleader keymap',
-    },
     ["<leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
@@ -57,8 +51,6 @@ return {
     ["<leader>me"] = { function() require("grapple").tag({ key = "secondary" }) end, desc = "Tag as [secondary]" },
     ["<leader>'r"] = { function() require("grapple").select({ key = "tertiary" }) end, desc = "Jump to [tertiary] tag" },
     ["<leader>mr"] = { function() require("grapple").tag({ key = "tertiary" }) end, desc = "Tag as [tertiary]" },
-    -- ["<leader>ml"] = { function () require("harpoon.ui").nav_next() end, desc = "Navigate to previous harpoon mark" },
-    -- ["<leader>mh"] = { function () require("harpoon.ui").nav_prev() end, desc = "Navigate to next harpoon mark" },
     -- ISwap
     ["Q"] = { "<cmd>ISwapWith<cr>" },
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
@@ -85,16 +77,10 @@ return {
       desc = "Toggle comment line",
     },
     -- Copying
-    ['<localleader>y'] = { name = 'Copy...' },
+    ['<localleader>y'] = { name = '󰆏 Copy...' },
     ['<localleader>yp'] = { function() vim.fn.setreg('+', vim.fn.expand('%:p:.')) end, desc = 'Copy file path' },
     ['<localleader>yd'] = { function() vim.fn.setreg('+', vim.fn.expand('%:h')) end, desc = 'Copy directory path' },
     ['<localleader>yf'] = { function() vim.fn.setreg('+', vim.fn.expand('%:t')) end, desc = 'Copy file name' },
-    ['<localleader>yg'] = {
-      function()
-        vim.fn.setreg('+', vim.fn.expand('%:t'))
-      end,
-      desc = 'Copy file name'
-    },
   },
   i = {
   },
