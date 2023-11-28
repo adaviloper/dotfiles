@@ -7,11 +7,8 @@
 --     vim.cmd("norm zz")
 --   end,
 -- })
--- vim.api.nvim_create_autocmd("InsertLeave", {
---   desc = "Revert the scrolloff setting when exiting insert mode", -- nice description
---   pattern = "*", -- the pattern si the name of our User autocommand events
---   group = "VerticallyCenterWhileInserting", -- add the autocmd to the newly created augroup
---   callback = function()
---     vim.opt.scrolloff = 8
---   end,
--- })
+vim.api.nvim_create_autocmd("BufNewFile", {
+  desc = 'Add opening PHP tags for a new file', -- nice description
+  pattern = '*.php', -- the pattern si the name of our User autocommand events
+  command = '0r ~/.config/nvim/lua/user/skeleton/skeleton.php'
+})
