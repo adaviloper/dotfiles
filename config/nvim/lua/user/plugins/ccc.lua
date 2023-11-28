@@ -1,6 +1,13 @@
 return {
   "uga-rosa/ccc.nvim",
-  event = 'BufEnter',
+  ft = {
+    'css',
+    'html',
+    'lua',
+    'scss',
+    'sass',
+    'vue'
+  },
   config = function ()
     require('ccc').setup()
   end,
