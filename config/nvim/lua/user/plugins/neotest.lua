@@ -1,9 +1,14 @@
 return {
   "nvim-neotest/neotest",
   lazy = true,
+  dependencies = {
+    "nvim-neotest/neotest-go",
+    "nvim-neotest/neotest-jest",
+    "olimorris/neotest-phpunit",
+  },
   config = function()
     -- get neotest namespace (api call creates or returns namespace)
-    local neotest_ns = vim.api.nvim_create_namespace "neotest"
+    local neotest_ns = vim.api.nvim_create_namespace("neotest")
     vim.diagnostic.config({
       virtual_text = {
         format = function(diagnostic)
@@ -15,15 +20,14 @@ return {
     require("neotest").setup {
       -- your neotest config here
       adapters = {
-        require "neotest-go",
-        require "neotest-jest",
-        require "neotest-phpunit",
+        require("neotest-go"),
+        require("neotest-jest"),
+        require("neotest-phpunit")({
+          phpunit_cmd = function()
+            return "docker exec -it core vendor/bin/phpunit"
+          end
+        }),
       },
     }
   end,
-  dependencies = {
-    "nvim-neotest/neotest-go",
-    "nvim-neotest/neotest-jest",
-    "olimorris/neotest-phpunit",
-  },
 }
