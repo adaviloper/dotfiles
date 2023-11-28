@@ -1,8 +1,22 @@
+-- Treesitter query for grabbing the repo name
+-- (return_statement
+--   (expression_list
+--     (table_constructor
+--       (field
+--         !name
+--         value: (string 
+--                  content: (string_content) @repo-name)
+--         ) @repo-index
+--       ) @table
+--     ) @expression
+--   ) @return
+
+
 return {
   "nvim-treesitter/playground",
-  lazy = true,
+  lazy = false,
   config = function()
-    require("nvim-treesitter.configs").setup {
+    require("nvim-treesitter.configs").setup({
       playground = {
         enable = true,
         disable = {},
@@ -21,6 +35,6 @@ return {
           show_help = "?",
         },
       },
-    }
+    })
   end,
 }
