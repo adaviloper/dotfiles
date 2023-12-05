@@ -62,7 +62,7 @@ function select_from_matching_branches()
 
 function gco () {
   if [[ "$1" == "-" ]]; then
-    git checkout $1
+    git checkout -
     return
   else
     local branch=$(select_from_matching_branches $1)
