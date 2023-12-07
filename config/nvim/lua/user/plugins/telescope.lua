@@ -1,3 +1,17 @@
+-- vim.api.nvim_create_user_command(
+--   "Gco",
+--   function(args)
+--     local ticket_number = args.fargs[1]
+--     require('telescope.builtin').git_branches({ pattern = 'refs/**/*'..ticket_number..'*'})
+--   end,
+--   {
+--     nargs = "+",
+--     complete = function()
+--       return vim.tbl_keys(commands)
+--     end,
+--   }
+-- )
+
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = { -- add a new dependency to telescope that is our new plugin
@@ -30,22 +44,11 @@ return {
 			    -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
 			    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*"},
 		    },
+		    buffers = {
+		      path_display = { "smart" },
+		    }
 	    },
     })
-
-    vim.api.nvim_create_user_command(
-      "Gco",
-      function(args)
-        local ticket_number = args.fargs[1]
-        require('telescope.builtin').git_branches({ pattern = 'refs/**/*'..ticket_number..'*'})
-      end,
-      {
-        nargs = "+",
-        complete = function()
-          return vim.tbl_keys(commands)
-        end,
-      }
-    )
 
     -- require telescope and load extensions as necessary
     -- local telescope = require "telescope"

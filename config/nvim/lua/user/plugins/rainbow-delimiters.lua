@@ -1,6 +1,6 @@
 return {
   'HiPhish/rainbow-delimiters.nvim',
-  lazy = false,
+  event = 'User AstroFile',
   config = function ()
     local rainbow_delimiters = require('rainbow-delimiters')
     vim.g.rainbow_delimiters = {

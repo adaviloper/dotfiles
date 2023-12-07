@@ -4,6 +4,11 @@ return {
   enabled = vim.fn.executable "git" == 1,
   event = "User AstroGitFile",
   opts = {
+    current_line_blame_opts = {
+      ignore_whitespace = true,
+    },
+    numhl = true,
+    signcolumn = false,
     signs = {
       add = { text = get_icon "GitAdd" },
       change = { text = get_icon "GitChange" },
@@ -13,6 +18,5 @@ return {
       untracked = { text = get_icon "GitSign" },
     },
     worktrees = vim.g.git_worktrees,
-    numhl = true,
   },
 }
