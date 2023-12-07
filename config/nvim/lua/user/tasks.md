@@ -17,3 +17,8 @@
         - Empty PHP file
         - PHP Class
         - Vue Single-File Components
+
+## Plugins to look into
+- https://github.com/danymat/neogen
+- https://github.com/sindrets/diffview.nvim
+- https://github.com/nvim-pack/nvim-spectre
