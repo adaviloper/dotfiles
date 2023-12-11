@@ -19,12 +19,6 @@ info "Installing HomeBrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
 
-info "Switching shell to ZSH"
-chsh -s $(which zsh)
-
-info "Installing Zsh-AutoSuggestions"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
 info "Installing Brewfile packages"
 sh ~/.dotfiles/scripts/brew.sh
 
@@ -33,13 +27,23 @@ git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 info "Running [vim.sh]"
 sh ~/.dotfiles/scripts/nvim.sh
 
-info "Running [rcup]"
-rcup -f
-
 info "Running [post-install.sh]"
 sh ~/.dotfiles/scripts/post-install.sh
 
 # Setup OhMyZsh for Zsh
 info "Installing Oh-My-ZSH"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -- --unattended)"
+
+info "Installing Zsh-AutoSuggestions"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+info "Running [rcup]"
+rcup -f
+
+info "Switching shell to ZSH"
+chsh -s $(which zsh)
+
+info "Installing TPM"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
