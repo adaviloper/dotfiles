@@ -76,6 +76,8 @@ return {
       "<esc><cmd>lua require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>j",
       desc = "Toggle comment line",
     },
+    ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
+    ["<C-o>"] = { "<C-o>zz", desc = "Jump backward and center" },
     -- Copying
     ['<localleader>y'] = { name = '󰆏 Copy...' },
     ['<localleader>yp'] = { function() vim.fn.setreg('+', vim.fn.expand('%:p:.')) end, desc = 'Copy file path' },
