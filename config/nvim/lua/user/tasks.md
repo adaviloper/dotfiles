@@ -1,4 +1,8 @@
 # Tasks
+## Issues
+- Files/buffers do not update when files are changed externally via Git or some other mechanism
+- Phpactor LSP does not respect PhpStan rules
+
 ## Plugins
 - [ ] Things to synchronize Nvim state with git branch:
     - auto-session context

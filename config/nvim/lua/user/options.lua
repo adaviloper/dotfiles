@@ -1,16 +1,16 @@
 -- set vim options here (vim.<first_key>.<second_key> = value)
 return {
   opt = {
-    -- set to true or false etc.
+    autoread = true,
     relativenumber = true, -- sets vim.opt.relativenumber
     number = true,         -- sets vim.opt.number
     scrolloff = 8,
     showtabline = 0,
-    spell = true,          -- sets vim.opt.spell
+    spell = true,       -- sets vim.opt.spell
     spelloptions = 'camel',
-    signcolumn = 'yes',    -- sets vim.opt.signcolumn to auto
+    signcolumn = 'yes', -- sets vim.opt.signcolumn to auto
     whichwrap = 'b,s,<,>',
-    wrap = true,           -- sets vim.opt.wrap
+    wrap = true,        -- sets vim.opt.wrap
   },
   g = {
     mapleader = ' ',           -- sets vim.g.mapleader
