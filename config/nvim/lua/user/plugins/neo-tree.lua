@@ -11,6 +11,9 @@ return {
         position = 'float',
       }
     },
+    buffers = {
+      follow_current_file = { enabled = true },
+    },
     enable_git_status = true,
   }
 }
