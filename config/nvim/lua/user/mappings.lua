@@ -82,7 +82,7 @@ return {
     ['<localleader>y'] = { name = '󰆏 Copy...' },
     ['<localleader>yp'] = { function() vim.fn.setreg('+', vim.fn.expand('%:p:.')) end, desc = 'Copy file path' },
     ['<localleader>yd'] = { function() vim.fn.setreg('+', vim.fn.expand('%:h')) end, desc = 'Copy directory path' },
-    ['<localleader>yf'] = { function() vim.fn.setreg('+', vim.fn.expand('%:t')) end, desc = 'Copy file name' },
+    ['<localleader>yf'] = { function() vim.fn.setreg('+', vim.fn.expand('%:t:r')) end, desc = 'Copy file name' },
   },
   i = {
   },
