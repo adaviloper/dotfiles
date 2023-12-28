@@ -6,7 +6,6 @@ return {
 
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.editing-support.auto-save-nvim" },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
   -- { import = "astrocommunity.editing-support.refactoring-nvim" },
 }
