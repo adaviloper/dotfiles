@@ -14,18 +14,15 @@ info() {
   yellow "$@"
 }
 
-
-info "Installing HomeBrew"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+if test ! $(which brew); then
+    echo "Installing Homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
 
 info "Installing Brewfile packages"
 sh ~/.dotfiles/scripts/brew.sh
 
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-
-info "Running [vim.sh]"
-sh ~/.dotfiles/scripts/nvim.sh
 
 info "Running [post-install.sh]"
 sh ~/.dotfiles/scripts/post-install.sh
@@ -40,10 +37,14 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 info "Running [rcup]"
 rcup -f
 
+info "Running [nvim.sh]"
+sh ~/.dotfiles/scripts/nvim.sh
+
 info "Switching shell to ZSH"
 chsh -s $(which zsh)
 
 info "Installing TPM"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-
+info "Updating OSX default settings"
+sh ~/.dotfiles/scripts/osx.sh
