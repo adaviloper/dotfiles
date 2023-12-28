@@ -26,21 +26,21 @@ function tm() {
             tmux has-session -t $SESSION_NAMES[$i] 2>/dev/null
 
             if [ $? != 0 ]; then
-                echo "Creating session for '${SESSION_NAMES[$i]}' in directory: ${DIRECTORIES[$i]//\~/$HOME} : ${DIRECTORIES[$i]}."
-                tmux new-session -d -s $SESSION_NAMES[$i] -n "Project"
-
-                # Add more windows with specific names and directories
-                tmux new-window -t $SESSION_NAMES[$i]: -n "Terminals"
                 # Check if the directory exists before setting it
                 if check_directory "${DIRECTORIES[$i]}"; then
+                    echo "Creating session for '${SESSION_NAMES[$i]}' in directory: ${DIRECTORIES[$i]//\~/$HOME} : ${DIRECTORIES[$i]}."
+                    tmux new-session -d -s $SESSION_NAMES[$i] -n "Project"
+
+                    # Add more windows with specific names and directories
+                    tmux new-window -t $SESSION_NAMES[$i]: -n "Terminals"
                     tmux send-keys -t $SESSION_NAMES[$i]:1 "cd ${DIRECTORIES[$i]//\~/$HOME}" C-m
                     tmux send-keys -t $SESSION_NAMES[$i]:2 "cd ${DIRECTORIES[$i]//\~/$HOME}" C-m
                     tmux send-keys -t $SESSION_NAMES[$i]:1 "c" C-m
                     tmux send-keys -t $SESSION_NAMES[$i]:2 "c" C-m
                     tmux select-window -t $SESSION_NAMES[$i]:1
-                else
-                    echo "Directory '${DIRECTORIES[$i]//\~/$HOME}' does not exist."
                 fi
+            else
+                echo "Directory '${DIRECTORIES[$i]//\~/$HOME}' does not exist."
             fi
         done
         tmux attach -t $SESSION_NAMES[1]
