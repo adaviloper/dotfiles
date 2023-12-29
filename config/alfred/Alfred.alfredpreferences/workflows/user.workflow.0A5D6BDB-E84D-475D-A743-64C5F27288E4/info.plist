@@ -90,6 +90,19 @@
 		</array>
 		<key>A03F2284-9199-4857-80E6-96CE137B09D2</key>
 		<array/>
+		<key>A83EB02D-EA04-4D9B-AB1D-ED474DA51DF8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>44BEE7B6-6286-4594-90C8-1CB234B0F121</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>C88A3102-3BC2-4E9F-8434-4C9B4641D2C6</key>
 		<array>
 			<dict>
@@ -176,7 +189,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Google Chrome.app</string>
+					<string>/Applications/Brave Browser.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -248,6 +261,54 @@
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
+				<integer>2</integer>
+				<key>hotmod</key>
+				<integer>917504</integer>
+				<key>hotstring</key>
+				<string>D</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>A83EB02D-EA04-4D9B-AB1D-ED474DA51DF8</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Discord.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>44BEE7B6-6286-4594-90C8-1CB234B0F121</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
 				<integer>36</integer>
 				<key>hotmod</key>
 				<integer>917504</integer>
@@ -287,23 +348,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Notion.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>763D961C-A650-4E21-81A3-A056E1D637EA</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -331,6 +375,23 @@
 			<string>51407C0E-6936-4EB7-99AB-439C5E822AB4</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Notion.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>763D961C-A650-4E21-81A3-A056E1D637EA</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -383,6 +444,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/PhpStorm.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>DDBE7356-A6EE-47AC-AB4E-BA349763AEE8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -410,23 +488,6 @@
 			<string>A0052925-11B6-4876-A97F-69F71F6DCE76</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/PhpStorm.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>DDBE7356-A6EE-47AC-AB4E-BA349763AEE8</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -527,23 +588,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/zoom.us.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>59B27131-4636-46C4-8733-B2115651AD49</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -572,6 +616,23 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/zoom.us.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>59B27131-4636-46C4-8733-B2115651AD49</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Use hotkeys to launch actions by pressing a key combination. You can connect one or more actions to be performed.
@@ -586,14 +647,21 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>660</real>
+			<real>765</real>
 		</dict>
 		<key>287CF763-9C1F-4450-ADEC-E80320662FEF</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>765</real>
+			<real>870</real>
+		</dict>
+		<key>44BEE7B6-6286-4594-90C8-1CB234B0F121</key>
+		<dict>
+			<key>xpos</key>
+			<real>270</real>
+			<key>ypos</key>
+			<real>240</real>
 		</dict>
 		<key>4BB29D03-9F5D-4ACA-897B-AEBA7E331FE9</key>
 		<dict>
@@ -607,56 +675,63 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>345</real>
+			<real>450</real>
 		</dict>
 		<key>59B27131-4636-46C4-8733-B2115651AD49</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>870</real>
+			<real>975</real>
 		</dict>
 		<key>763D961C-A650-4E21-81A3-A056E1D637EA</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>345</real>
+			<real>450</real>
 		</dict>
 		<key>84857419-16FC-4004-8DCD-31F9A48E8E6B</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>660</real>
+			<real>765</real>
 		</dict>
 		<key>9A3649B1-0523-422C-9F17-AEE10D0FFEE8</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>450</real>
+			<real>555</real>
 		</dict>
 		<key>9ACFE091-A925-4196-B964-9B2C241E4BE2</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>240</real>
+			<real>345</real>
 		</dict>
 		<key>A0052925-11B6-4876-A97F-69F71F6DCE76</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>555</real>
+			<real>660</real>
 		</dict>
 		<key>A03F2284-9199-4857-80E6-96CE137B09D2</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>450</real>
+			<real>555</real>
+		</dict>
+		<key>A83EB02D-EA04-4D9B-AB1D-ED474DA51DF8</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>240</real>
 		</dict>
 		<key>C88A3102-3BC2-4E9F-8434-4C9B4641D2C6</key>
 		<dict>
@@ -677,21 +752,21 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>555</real>
+			<real>660</real>
 		</dict>
 		<key>DE8D6931-E01C-4018-8C14-64F6778A7896</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>870</real>
+			<real>975</real>
 		</dict>
 		<key>E06E0DFF-F676-45CB-9434-A242EBC7CF15</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>765</real>
+			<real>870</real>
 		</dict>
 		<key>ECACCEB5-20CA-455F-A37A-5FD8CDD9E979</key>
 		<dict>
@@ -705,7 +780,7 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>240</real>
+			<real>345</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
