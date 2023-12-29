@@ -333,7 +333,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/kitty.app</string>
+					<string>/Applications/WezTerm.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
