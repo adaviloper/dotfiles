@@ -83,6 +83,22 @@ return {
     ['<localleader>yp'] = { function() vim.fn.setreg('+', vim.fn.expand('%:p:.')) end, desc = 'Copy file path' },
     ['<localleader>yd'] = { function() vim.fn.setreg('+', vim.fn.expand('%:h')) end, desc = 'Copy directory path' },
     ['<localleader>yf'] = { function() vim.fn.setreg('+', vim.fn.expand('%:t:r')) end, desc = 'Copy file name' },
+    -- Scratch
+    ['<C-n>'] = { function()
+      -- local ft = vim.fn.input('Filetype: ', '', 'file')
+      vim.ui.select(
+        {'PHP', 'JSON', 'JS', 'Vue Template'},
+        {prompt = 'Filetype:'},
+        function (choice)
+          local ft = string.lower(choice)
+          if choice == 'Vue Template' then
+            ft = 'vue'
+          end
+          require('scratch').scratchByType(ft)
+        end
+      )
+    end,
+      desc = 'Open new scratch file'}
   },
   i = {
   },

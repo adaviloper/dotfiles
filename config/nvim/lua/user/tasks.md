@@ -7,11 +7,19 @@
 - [ ] Things to synchronize Nvim state with git branch:
     - auto-session context
     - Grapple scopes
+- [ ] Add Scratch configs for different languages
+    - [ ] PHP
+    - [ ] Vue
+    - [ ] JSON
+    - [ ] HTML
+    - [ ] Lua
+    - [ ] Typescript
+    - [ ] Shell
 - [ ] Add snippets for different languages
     - [ ] PHP
     - [ ] Vue
     - [ ] JS
-- [?]  Do we have some kind of docker integration?
+- [?] Do we have some kind of docker integration?
 - [ ] Need a way integrate `nvim-dap`
 
 ## Autocommands
