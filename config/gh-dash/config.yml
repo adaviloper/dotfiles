@@ -1,0 +1,103 @@
+prSections:
+- title: My Pull Requests
+  filters: is:open author:@me
+- title: Needs My Review
+  filters: is:open review-requested:@me
+- title: Involved
+  filters: is:open involves:@me -author:@me
+issuesSections:
+- title: My Issues
+  filters: is:open author:@me
+- title: Assigned
+  filters: is:open assignee:@me
+- title: Involved
+  filters: is:open involves:@me -author:@me
+defaults:
+  preview:
+    open: true
+    width: 50
+  prsLimit: 20
+  issuesLimit: 20
+  view: prs
+  layout:
+    prs:
+      updatedAt:
+        width: 7
+      repo:
+        width: 15
+      author:
+        width: 15
+      assignees:
+        width: 20
+        hidden: true
+      base:
+        width: 15
+        hidden: true
+      lines:
+        width: 16
+    issues:
+      updatedAt:
+        width: 7
+      repo:
+        width: 15
+      creator:
+        width: 10
+      assignees:
+        width: 20
+        hidden: true
+  refetchIntervalMinutes: 30
+keybindings:
+  issues: []
+  prs: []
+repoPaths:
+  adaviloper/dotfiles: ~/.dotfiles
+  adaviloper/qmk_firmware: ~/Code/qmk_firmware
+  LoopReturns/loop-returns-app: ~/Code/loop-returns-app
+theme:
+  ui:
+    table:
+      showSeparator: true
+  colors:
+    text:
+      primary: "#cdd6f4"
+      secondary: "#89b4fa"
+      inverted: "#313244"
+      faint: "#a6adc8"
+      warning: "#f38ba8"
+      success: "#a6e3a1"
+    background:
+      selected: "#6c7086"
+    border:
+      primary: "#313244"
+      secondary: "#45475a"
+      faint: "#585b70" 
+# {
+# 	rosewater = "#f5e0dc",
+# 	flamingo = "#f2cdcd",
+# 	pink = "#f5c2e7",
+# 	mauve = "#cba6f7",
+# 	red = "#f38ba8",
+# 	maroon = "#eba0ac",
+# 	peach = "#fab387",
+# 	yellow = "#f9e2af",
+# 	green = "#a6e3a1",
+# 	teal = "#94e2d5",
+# 	sky = "#89dceb",
+# 	sapphire = "#74c7ec",
+# 	blue = "#89b4fa",
+# 	lavender = "#b4befe",
+# 	text = "#cdd6f4",
+# 	subtext1 = "#bac2de",
+# 	subtext0 = "#a6adc8",
+# 	overlay2 = "#9399b2",
+# 	overlay1 = "#7f849c",
+# 	overlay0 = "#6c7086",
+# 	surface2 = "#585b70",
+# 	surface1 = "#45475a",
+# 	surface0 = "#313244",
+# 	base = "#1e1e2e",
+# 	mantle = "#181825",
+# 	crust = "#11111b",
+# }
+pager:
+  diff: ""
