@@ -36,6 +36,7 @@ return {
         hidden = true,
         file_ignore_patterns = {
           "config/alfred/.*",
+          "public/.*",
           "./assets/fonts/.*",
         },
         layout_config = {
@@ -44,6 +45,9 @@ return {
         sorting_strategy = 'ascending',
       },
       pickers = {
+        buffers = {
+          path_display = { "smart" },
+        },
         find_files = {
           -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
