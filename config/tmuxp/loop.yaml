@@ -1,0 +1,11 @@
+session_name: Loop Returns
+start_directory: "~/Code/loop-returns-app"
+windows:
+  - window_name: Project
+    panes:
+      - shell_command:
+        - cmd: "vim"
+  - window_name: Terminals
+    panes:
+      - 
+

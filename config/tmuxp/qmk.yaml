@@ -1,0 +1,18 @@
+session_name: QMK Firmware
+windows:
+  - window_name: Userland
+    start_directory: "~/Code/qmk_firmware/users/adaviloper"
+    panes:
+      -
+  - window_name: Lily58
+    start_directory: "~/Code/qmk_firmware/keyboards/lily58/keymaps/adaviloper"
+    panes:
+      -
+  - window_name: Lulu
+    start_directory: "~/Code/qmk_firmware/keyboards/boardsource/lulu/keymaps/adaviloper"
+    panes:
+      -
+  - window_name: Unicorne
+    start_directory: "~/Code/qmk_firmware/keyboards/boardsource/unicorne/keymaps/default"
+    panes:
+      -

@@ -1,0 +1,9 @@
+session_name: Whiplash
+start_directory: "~/Code/Whiplash"
+windows:
+  - window_name: Project
+    panes:
+      -
+  - window_name: Terminals
+    panes:
+      -
