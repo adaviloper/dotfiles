@@ -33,9 +33,8 @@ return {
     -- Bookmarks
     ["<leader>fS"] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = "Search for symbol in workspace" },
     -- Grapple
-    ["<leader>m"] = { name = "󰓾 Handle File Marks" },
-    ["<leader>'"] = { name = "󰓾 Jump to File Marks" },
-    -- ["<leader>f'"] = { function () require('grapple').popup_tags() end, desc = "List all marks"},
+    ["<leader>m"] = { name = "󰓾 Handle file tags" },
+    ["<leader>'"] = { name = "󰓾 Jump to file tags" },
     ["<leader>mf"] = { function() require('grapple').popup_tags() end, desc = "List all tags" },
     ["<leader>mF"] = { function() require('grapple').popup_scopes() end, desc = "List all scopes" },
     ["<leader>ma"] = { function() require("grapple").tag() end, desc = "Add Grapple tag to file" },
@@ -51,6 +50,7 @@ return {
     ["<leader>'e"] = { function() require("grapple").select({ key = "secondary" }) end, desc = "Jump to [secondary] tag" },
     ["<leader>mr"] = { function() require("grapple").tag({ key = "tertiary" }) end, desc = "Tag as [tertiary]" },
     ["<leader>'r"] = { function() require("grapple").select({ key = "tertiary" }) end, desc = "Jump to [tertiary] tag" },
+
     -- ISwap
     ["Q"] = { "<cmd>ISwapWith<cr>" },
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
