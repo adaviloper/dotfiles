@@ -3,7 +3,9 @@ start_directory: "~/Code/Whiplash"
 windows:
   - window_name: Project
     panes:
-      -
+      - shell_command:
+        - cmd: 'c'
   - window_name: Terminals
     panes:
-      -
+      - shell_command:
+        - cmd: 'c'

@@ -1,15 +1,18 @@
 session_name: Dotfiles
 windows:
   - window_name: .dotfiles
-    start_directory: "~/.dotfiles"
+    start_directory: '~/.dotfiles'
     panes:
       - shell_command:
-        - cmd: "vim"
+        - cmd: 'c'
+        - cmd: 'vim'
   - window_name: AstroNvim
-    start_directory: "~/.config/nvim"
+    start_directory: '~/.config/nvim'
     panes:
-      - 
+      - shell_command:
+        - cmd: 'c'
   - window_name: Plugins
-    start_directory: "~/.local/share/nvim/lazy"
+    start_directory: '~/.local/share/nvim/lazy'
     panes:
-      - 
+      - shell_command:
+        - cmd: 'c'
