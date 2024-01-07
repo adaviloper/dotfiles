@@ -1,8 +1,10 @@
 local utils = require "user.utils"
+local ls = require('luasnip')
 
 return {
   -- first key is the mode
   n = {
+    ["<leader><leader>s"] = { "<cmd>source ~/.config/nvim/lua/user/plugins/luasnip.lua"},
     ["<leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
@@ -101,6 +103,25 @@ return {
       desc = 'Open new scratch file'}
   },
   i = {
+    -- Luasnip
+    ['<C-k>'] = {
+      function ()
+        if ls.expand_or_jumpable() then
+          ls.expand_or_jump()
+        end
+      end,
+      desc = 'Jump to next snippet',
+      silent = true,
+    },
+    ['<C-j>'] = {
+      function ()
+        if ls.jumpable(-1) then
+          ls.jump(-1)
+        end
+      end,
+      desc = 'Jump to previous snippet',
+      silent = true,
+    },
   },
   v = {
     ["<"] = { "<gv", desc = "Unindent without losing selection" },
