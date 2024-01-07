@@ -52,9 +52,9 @@ return {
           -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         },
-        buffers = {
-          path_display = { "smart" },
-        }
+        -- git_commits = {
+        --   git_command = { "git", "log", "--format=format:%cs %h %s", "--", "." }
+        -- },
       },
     })
 
