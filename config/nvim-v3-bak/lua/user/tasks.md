@@ -16,7 +16,7 @@
     - [ ] Typescript
     - [ ] Shell
 - [ ] Add snippets for different languages
-    - [ ] PHP
+    - [o] PHP
     - [ ] Vue
     - [ ] JS
 - [?] Do we have some kind of docker integration?
