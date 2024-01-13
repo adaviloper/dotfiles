@@ -1,3 +1,4 @@
+-- Example customization of Null-LS sources
 return {
   "nvimtools/none-ls.nvim",
   opts = function(_, config)

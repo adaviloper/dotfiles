@@ -1,5 +1,6 @@
 local utils = require('helpers.utils')
 local ls = require('luasnip')
+
 return {
   {
     "AstroNvim/astrocore",
@@ -9,6 +10,7 @@ return {
         -- first key is the mode
         n = {
           ["<leader><leader>s"] = { "<cmd>source ~/.config/nvim/lua/user/plugins/luasnip.lua"},
+          ["<leader>un"] = { function() vim.o.relativenumber = vim.o.relativenumber ~= true end, desc = 'Toggle relativenumber'},
           ["<leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
           -- second key is the lefthand side of the map
           -- mappings seen under group name "Buffer"

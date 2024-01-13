@@ -2,6 +2,7 @@
 return {
   "AstroNvim/astroui",
   ---@type AstroUIOpts
+  event = 'User AstroFile',
   opts = {
     highlights = {
       init = { -- this table overrides highlights in all themes

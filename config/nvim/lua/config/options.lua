@@ -4,12 +4,13 @@
 vim.opt.autoread = true
 vim.opt.relativenumber = true -- sets vim.opt.relativenumber
 vim.opt.number = true -- sets vim.opt.number
+vim.opt.scrolloff = 8
 vim.opt.showtabline = 0
 vim.opt.spell = true -- sets vim.opt.spell
 vim.opt.spelloptions = 'camel'
-vim.opt.signcolumn = "auto" -- sets vim.opt.signcolumn to auto
+vim.opt.signcolumn = "yes:1" -- sets vim.opt.signcolumn to auto
 vim.opt.whichwrap = 'b,s,<,>'
-vim.opt.wrap = false -- sets vim.opt.wrap
+vim.opt.wrap = true -- sets vim.opt.wrap
 
 vim.g.mapleader = ' '            -- sets vim.g.mapleader
 vim.g.maplocalleader = ','       -- set default local leader key
