@@ -42,41 +42,6 @@
         ""
       ]
     },
-    "php": {
-      "cursor": {
-        "location": [
-          3,
-          1
-        ],
-        "insert_mode": true
-      },
-      "requireDir": true,
-      "content": [
-        "<?php",
-        "",
-        ""
-      ]
-    },
-    "vue": {
-      "cursor": {
-        "location": [
-          4,
-          1
-        ],
-        "insert_mode": true
-      },
-      "requireDir": true,
-      "content": [
-        "<template>",
-        "</template>",
-        "<script>",
-        "",
-        "</script>",
-        "<style>",
-        "</style>",
-        ""
-      ]
-    },
     "yaml": [],
     "k8s.yaml": {
       "subdir": "learn-k8s"
@@ -88,7 +53,6 @@
     "go",
     "lua",
     "js",
-    "php",
     "py",
     "sh"
   ],
@@ -110,6 +74,6 @@
       ]
     }
   ],
-  "scratch_file_dir": "/Users/hackeysack09/.cache/nvim/scratch.nvim",
+  "scratch_file_dir": "~/.cache/nvim/scratch.nvim",
   "window_cmd": "edit"
 }

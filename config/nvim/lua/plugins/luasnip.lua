@@ -1,12 +1,12 @@
 return {
   "L3MON4D3/LuaSnip",
-  enabled = true,
+  event = 'User AstroFile',
   config = function(plugin, opts)
     -- require("plugins.configs.luasnip")(plugin, opts) -- include the default astronvim config that calls the setup call
     local ls = require("luasnip")
     local types = require('luasnip.util.types')
     require("luasnip.loaders.from_lua").load({
-      paths = { "~/.config/nvim/lua/user/snippets" }
+      paths = { "~/.config/nvim/snippets/" }
     }) -- load snippets paths
     -- local types = require("luasnip.util.types")
     ls.setup({
