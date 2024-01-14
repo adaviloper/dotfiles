@@ -19,9 +19,9 @@ return {
         capabilities = capabilities,
         filetypes = { 'sh', 'ttyfast', 'zsh' }
       })
-      lspconfig.intelephense.setup({
-        capabilities = capabilities,
-      })
+      -- lspconfig.intelephense.setup({
+      --   capabilities = capabilities,
+      -- })
       lspconfig.jsonls.setup({
         capabilities = capabilities,
         settings = {
