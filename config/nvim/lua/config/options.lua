@@ -15,6 +15,7 @@ vim.opt.wrap = true -- sets vim.opt.wrap
 vim.g.mapleader = ' '            -- sets vim.g.mapleader
 vim.g.maplocalleader = ','       -- set default local leader key
 vim.g.autoformat_enabled = false -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
+vim.g.format_on_save = false
 vim.g.autopairs_enabled = true   -- enable autopairs at start
 vim.g.cmp_enabled = true         -- enable completion at start
 vim.g.diagnostics_mode = 1       -- set the visibility of diagnostics in the UI (0=off, 1=only show in status line, 2=virtual text off, 3=all on)

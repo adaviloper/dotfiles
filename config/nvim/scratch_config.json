@@ -63,12 +63,12 @@
       ],
       "LocalKeys": [
         {
+          "cmd": "<CMD>GpResponse<CR>",
           "modes": [
             "n",
             "i",
             "v"
           ],
-          "cmd": "<CMD>GpResponse<CR>",
           "key": "<C-k>k"
         }
       ]
