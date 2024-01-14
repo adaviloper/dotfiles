@@ -47,7 +47,6 @@ local env_values = function(opts)
         local selection = action_state.get_selected_entry()
         vim.api.nvim_put({ selection['ordinalAPP_URL'] }, "", false, true)
         vim.cmd('find +/' .. selection.ordinal .. ' .env')
-        -- vim.fs.find(vim.fn.getcwd(0, 0), {})
       end)
       return true
     end,
