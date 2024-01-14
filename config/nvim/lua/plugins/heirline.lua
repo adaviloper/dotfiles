@@ -127,7 +127,7 @@ return {
           hl = status.hl.get_attributes("tab_close", true),
           on_click = {
             callback = function()
-              require("astronvim.utils.buffer").close_tab()
+              require("astroui.buffer").close_tab()
             end,
             name = "heirline_tabline_close_tab_callback",
           },
