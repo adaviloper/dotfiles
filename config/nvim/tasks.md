@@ -21,6 +21,7 @@
     - [ ] JS
 - [?] Do we have some kind of docker integration?
 - [ ] Need a way integrate `nvim-dap`
+- [ ] `Telescope` picker for searching `.env` values
 
 ## Autocommands
 - [ ] Skeletons for populating new files with boilerplate

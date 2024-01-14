@@ -4,7 +4,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function (_, opts)
-      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         'bashls',
         'jsonls',
         'lua_ls',
@@ -19,14 +19,14 @@ return {
         capabilities = capabilities,
         filetypes = { 'sh', 'ttyfast', 'zsh' }
       })
-      lspconfig.intelephense.setup({
-        capabilities = capabilities,
-      })
+      -- lspconfig.intelephense.setup({
+      --   capabilities = capabilities,
+      -- })
       lspconfig.jsonls.setup({
         capabilities = capabilities,
         settings = {
           json = {
-            schemas = require('schemastore').json.schemas(),
+            -- schemas = require('schemastore').json.schemas(),
           }
         }
       })
@@ -55,7 +55,7 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         -- "prettier",
         -- "stylua",
       })
@@ -66,7 +66,7 @@ return {
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         -- "python",
         "js-debug-adapter",
         "php-debug-adapter",
