@@ -58,6 +58,8 @@ return {
           ["<leader>'e"] = { function() require("grapple").select({ key = "secondary" }) end, desc = "Jump to [secondary] tag" },
           ["<leader>mr"] = { function() require("grapple").tag({ key = "tertiary" }) end, desc = "Tag as [tertiary]" },
           ["<leader>'r"] = { function() require("grapple").select({ key = "tertiary" }) end, desc = "Jump to [tertiary] tag" },
+          ["<leader>ml"] = { function() require("grapple").tag({ key = "log" }) end, desc = "Tag as [log]" },
+          ["<leader>'l"] = { function() require("grapple").select({ key = "log" }) end, desc = "Jump to [log] tag" },
 
           -- ISwap
           ["Q"] = { "<cmd>ISwapWith<cr>" },
@@ -79,6 +81,8 @@ return {
           ["<leader>fo"] = { function() require("telescope.builtin").oldfiles({ cwd_only = true }) end, desc = "Find history" },
           ['<leader>fd'] = { '<cmd>Telescope dir live_grep<CR>', desc = 'Find words in directory' },
           ['<leader>fe'] = { '<cmd>Telescope env<CR>', desc = 'Find env values' },
+          ["<leader>f_"] = { '<cmd>ScratchOpen<cr>', desc = "Open a Scratch file" },
+
           X = { "x~", desc = "Delete current character and capitalize the next" },
           ["<leader>/"] = {
             "<esc><cmd>lua require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>j",
