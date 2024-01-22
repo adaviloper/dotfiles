@@ -5,7 +5,7 @@ return
     s('dml',
       fmt(
         [[
-dd(__METHOD__ . ':' . __LINE__, {});
+dd({}__METHOD__ . ':' . __LINE__);
     ]], {
           i(1, ''),
         })),
