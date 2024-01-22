@@ -1,7 +1,6 @@
 return {
   'nat-418/boole.nvim',
   config = function()
-    local i = 'true'
     require('boole').setup({
       mappings = {
         increment = '<C-a>',
@@ -11,6 +10,7 @@ return {
       additions = {
         {'production', 'development', 'local', 'testing'},
         {'protected', 'public', 'private'},
+        {'dd', 'dump'},
         {'let', 'const'},
         {'==', '==='},
         {'!=', '!=='},
