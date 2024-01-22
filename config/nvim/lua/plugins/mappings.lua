@@ -1,6 +1,25 @@
 local utils = require('helpers.utils')
 local ls = require('luasnip')
 
+local function setFileTag(tagName)
+  return {
+    function()
+      require('grapple').tag({ key = tagName })
+    end,
+    desc = 'Tag as [' .. tagName .. ']'
+  }
+end
+
+local function jumpToFileTag(tagName)
+  return {
+    function()
+      require('grapple').select({ key = tagName })
+      vim.cmd('norm zz')
+    end,
+    desc = 'Jump to the [' .. tagName .. '] tag'
+  }
+end
+
 return {
   {
     "AstroNvim/astrocore",
@@ -48,19 +67,20 @@ return {
           ["<leader>ma"] = { function() require("grapple").tag() end, desc = "Add Grapple tag to file" },
           ["<leader>md"] = { function() require("grapple").untag() end, desc = "Remove file from Grapple tag list" },
 
-          ["<leader>mt"] = { function() require("grapple").tag({ key = "test" }) end, desc = "Tag as [test]" },
-          ["<leader>'t"] = { function() require("grapple").select({ key = "test" }) end, desc = "Jump to the [test] tag" },
-          ["<leader>ms"] = { function() require("grapple").tag({ key = "subject" }) end, desc = "Tag as [subject]" },
-          ["<leader>'s"] = { function() require("grapple").select({ key = "subject" }) end, desc = "Jump to the [subject] tag" },
-          ["<leader>mw"] = { function() require("grapple").tag({ key = "primary" }) end, desc = "Tag as [primary]" },
-          ["<leader>'w"] = { function() require("grapple").select({ key = "primary" }) end, desc = "Jump to [primary] tag" },
-          ["<leader>me"] = { function() require("grapple").tag({ key = "secondary" }) end, desc = "Tag as [secondary]" },
-          ["<leader>'e"] = { function() require("grapple").select({ key = "secondary" }) end, desc = "Jump to [secondary] tag" },
-          ["<leader>mr"] = { function() require("grapple").tag({ key = "tertiary" }) end, desc = "Tag as [tertiary]" },
-          ["<leader>'r"] = { function() require("grapple").select({ key = "tertiary" }) end, desc = "Jump to [tertiary] tag" },
-          ["<leader>ml"] = { function() require("grapple").tag({ key = "log" }) end, desc = "Tag as [log]" },
-          ["<leader>'l"] = { function() require("grapple").select({ key = "log" }) end, desc = "Jump to [log] tag" },
+          ["<leader>mt"] = setFileTag("test"),
+          ["<leader>'t"] = jumpToFileTag("test"),
+          ["<leader>ms"] = setFileTag("subject"),
+          ["<leader>'s"] = jumpToFileTag("subject"),
+          ["<leader>mw"] = setFileTag("primary"),
+          ["<leader>'w"] = jumpToFileTag("primary"),
+          ["<leader>me"] = setFileTag("secondary"),
+          ["<leader>'e"] = jumpToFileTag("secondary"),
+          ["<leader>mr"] = setFileTag("tertiary"),
+          ["<leader>'r"] = jumpToFileTag("tertiary"),
+          ["<leader>ml"] = setFileTag("log"),
+          ["<leader>'l"] = jumpToFileTag("log"),
 
+          ["<A-t>"] = { function() vim.notify(vim.fs.stdpath('cache')) end, desc = 'Jump to associated test file'},
           -- ISwap
           ["Q"] = { "<cmd>ISwapWith<cr>" },
           [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
@@ -82,6 +102,9 @@ return {
           ['<leader>fd'] = { '<cmd>Telescope dir live_grep<CR>', desc = 'Find words in directory' },
           ['<leader>fe'] = { '<cmd>Telescope env<CR>', desc = 'Find env values' },
           ["<leader>f_"] = { '<cmd>ScratchOpen<cr>', desc = "Open a Scratch file" },
+
+          -- Notify
+          ["<leader>uD"] = { function() require('notify').dismiss() end, desc = 'Dismiss all displayed notifications'},
 
           X = { "x~", desc = "Delete current character and capitalize the next" },
           ["<leader>/"] = {
