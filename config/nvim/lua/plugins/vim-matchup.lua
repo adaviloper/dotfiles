@@ -1,6 +1,6 @@
 return {
   'andymass/vim-matchup',
-  enabled = false,
+  enabled = true,
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },
