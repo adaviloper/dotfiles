@@ -6,7 +6,6 @@ local M = {}
 local tmuxPrefix = act.SendKey({ key = ' ', mods = 'CTRL' })
 
 function M.getKeybindings()
-  
   return {
     { -- Switch to previously current window
       key = 'l',
