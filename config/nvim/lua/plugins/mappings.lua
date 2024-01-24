@@ -14,7 +14,7 @@ local function jumpToFileTag(tagName)
   return {
     function()
       require('grapple').select({ key = tagName })
-      vim.cmd('norm zz')
+      vim.cmd('norm zt')
     end,
     desc = 'Jump to the [' .. tagName .. '] tag'
   }
