@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.vdesabou.spotify.mini.player</string>
+	<key>category</key>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>016C8130-4E47-4710-9E65-0CB8510A72A8</key>
@@ -5792,12 +5794,12 @@ main($query,"TRACK","");
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>38</integer>
+				<integer>100</integer>
 				<key>script</key>
 				<string>&lt;?php
 require './src/action.php';
 $query = serialize(array("", "", "", "", "", "", "", "play" /* other_action */, "", "", "", "", "", "", "", "" , "", "", "", "", "", ""));
-main($query,"TRACK","");
+main($query,$argv[1],"");
 ?&gt;</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -11337,6 +11339,8 @@ main($query,"TRACK","");
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict/>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
@@ -13844,7 +13848,7 @@ During that time, you can use the workflow (you'll see the progress at the top o
 		<key>AE6160D1-56EA-4416-991E-CF12B874FFD3</key>
 		<dict>
 			<key>xpos</key>
-			<real>240</real>
+			<real>250</real>
 			<key>ypos</key>
 			<real>15</real>
 		</dict>
@@ -17429,7 +17433,7 @@ Example: https://open.spotify.com/track/6hxgHNJjadmCHAJPXw6AYL</string>
 		</dict>
 	</array>
 	<key>version</key>
-	<string>13.0</string>
+	<string>13.2</string>
 	<key>webaddress</key>
 	<string>https://alfred-spotify-mini-player.com</string>
 </dict>
