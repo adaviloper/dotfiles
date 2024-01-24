@@ -5,7 +5,7 @@ return
     s('func',
       fmt(
         [[
-function({}) {{
+function ({}) {{
     {}
 }}
     ]], {
@@ -16,7 +16,7 @@ function({}) {{
     s('ufunc',
       fmt(
         [[
-function({}) use (${}) {{
+function ({}) use (${}) {{
     {}
 }}
     ]], {
