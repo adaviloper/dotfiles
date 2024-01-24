@@ -205,6 +205,20 @@ return {
             desc = "Declaration of current symbol",
             cond = "textDocument/declaration",
           },
+          ["<leader>lo"] = {
+            function ()
+              vim.lsp.buf.code_action({
+                filter = function (ca)
+                  if ca.command ~= nil then
+                    return ca.command.title == 'Remove unused imports'
+                  end
+                  return false
+                end,
+                apply = true
+              })
+            end,
+            desc = 'Optimize imports',
+          },
         },
       },
     },
