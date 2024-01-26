@@ -7,7 +7,7 @@ windows:
         - cmd: 'c'
         - cmd: 'vim'
   - window_name: AstroNvim
-    start_directory: '~/.config/nvim'
+    start_directory: '~/.local/share/nvim/lazy/astroui'
     panes:
       - shell_command:
         - cmd: 'c'
