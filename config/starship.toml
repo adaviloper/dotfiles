@@ -7,10 +7,10 @@ palette = "catppuccin_mocha"
 command_timeout = 1000
 
 # separators
-# left round:   \uE0B6
-# right round:  \uE0B4
-# left angled:  \uE0B2
-# right angled: \uE0B0
+# left round:   
+# right round:  
+# left angled:  
+# right angled: 
 
 format = """
 [∙](bold sky)$fill[∙ ](bold sky)$time
