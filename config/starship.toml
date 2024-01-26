@@ -13,8 +13,8 @@ command_timeout = 1000
 # right angled: \uE0B0
 
 format = """
-[┌](bold sky)$fill[∙ ](bold sky)$time
-[┕](bold sky)\
+[∙](bold sky)$fill[∙ ](bold sky)$time
+[](bold sapphire)\
 $username\
 [ ](sapphire bg:peach)\
 $directory\
@@ -49,13 +49,17 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 
 [directory]
 fish_style_pwd_dir_length = 3
-format = '[$path]($style)[$read_only ]($read_only_style bg:peach)'
+format = '[$path]($style)[$read_only]($read_only_style bg:peach)'
 style = 'mantle bg:peach'
 truncation_length = 4
 
 [directory.substitutions]
 # Add any substitions here
 # 'some/path' = 'alias'
+'.dotfiles' = ' .dotfiles'
+'~/Code' = ' Code'
+'loop-returns-app' = ' Loop'
+'qmk_firmware' = '󰌓 QMK'
 
 [fill]
 symbol = '─'
@@ -82,7 +86,7 @@ format = '[$time]($style rosewater) '
 [username]
 style_user = "bg:sapphire"
 style_root = "bg:pink"
-format = '[ adaviloper ]($style mantle)'
+format = '[adaviloper]($style mantle)'
 show_always = true
 
 [palettes.catppuccin_mocha]
