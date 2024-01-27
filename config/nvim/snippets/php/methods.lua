@@ -3,16 +3,20 @@ return
   {
     -- Public function 
     s('pubf',
-      fmt(
-        [[
-public function {}()
-{{
-    {}
+      sn(
+        1,
+        fmt(
+          [[
+public function {}() {{
+{}
 }}
-    ]], {
-          i(1, 'method_name'),
-          i(2, ''),
-        })),
+]],
+          {
+            i(1, 'method_name')
+          }
+        )
+      )
+    ),
     -- Private function
     s('prif',
       fmt(
