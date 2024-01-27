@@ -4,14 +4,15 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = function (_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
+      opts.ensure_installed = require("astrocore").list_insert_unique(
+        opts.ensure_installed,
         'bashls',
         'jsonls',
         'lua_ls',
         'phpactor',
         'tailwindcss',
-        'volar',
-      })
+        'volar'
+      )
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -55,10 +56,11 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
+      opts.ensure_installed = require("astrocore").list_insert_unique(
+        opts.ensure_installed
         -- "prettier",
         -- "stylua",
-      })
+      )
     end,
   },
   {
@@ -66,11 +68,12 @@ return {
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
+      opts.ensure_installed = require("astrocore").list_insert_unique(
+        opts.ensure_installed,
         -- "python",
         "js-debug-adapter",
-        "php-debug-adapter",
-      })
+        "php-debug-adapter"
+      )
     end,
   },
 }
