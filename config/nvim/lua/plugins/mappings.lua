@@ -155,6 +155,22 @@ return {
             desc = 'Jump to previous snippet',
             silent = true,
           },
+          ['<C-h>'] = {
+            function ()
+              if ls.choice_active() then
+                ls.change_choice(-1)
+              end
+            end,
+            desc = 'Cycle through active choices'
+          },
+          ['<C-l>'] = {
+            function ()
+              if ls.choice_active() then
+                ls.change_choice(1)
+              end
+            end,
+            desc = 'Cycle through active choices'
+          },
         },
         v = {
           ["<"] = { "<gv", desc = "Unindent without losing selection" },
