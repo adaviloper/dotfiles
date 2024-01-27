@@ -16,6 +16,7 @@ require("lazy").setup {
     -- { import = "astrocommunity.pack.lua" },
     -- import/override with your plugins
     { import = "plugins" },
+    { 'max397574/better-escape.nvim', enabled = false }
   },
   install = { colorscheme = { "astrodark", "habamax" } },
   performance = {
