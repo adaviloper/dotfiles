@@ -1,6 +1,7 @@
 return {
   -- "LintaoAmons/scratch.nvim",
-  dir = '~/Code/scratch.nvim',
+  "adaviloper/scratch.nvim",
+  -- dir = '~/Code/scratch.nvim',
   event = "VeryLazy",
 }
 
