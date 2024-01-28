@@ -10,8 +10,8 @@ return {
       status.component.mode({
         -- enable mode text with padding as well as an icon before it
         mode_text = {
-          icon = { kind = "VimIcon", padding = { right = 1, left = 1 } },
-          padding = { right = 1, left = 1 },
+          icon = { kind = "VimIcon", padding = { right = 1, left = 0 } },
+          padding = { right = 0, left = 0 },
         },
         -- surround the component with a separators
         surround = {
@@ -57,7 +57,7 @@ return {
       status.component.virtual_env(),
       status.component.treesitter(),
       status.component.nav(),
-      status.component.mode({ surround = { separator = "right" } }),
+      status.component.mode({ surround = { separator = "blank" } }),
     }
 
     opts.winbar = { -- winbar
