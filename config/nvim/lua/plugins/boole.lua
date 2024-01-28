@@ -8,13 +8,14 @@ return {
       },
       -- User defined loops
       additions = {
+        {'dd', 'dump'},
+        {'get', 'set'},
+        {'let', 'const'},
         {'production', 'development', 'local', 'testing'},
         {'protected', 'public', 'private'},
-        {'dd', 'dump'},
-        {'let', 'const'},
+        {'up', 'right', 'down', 'left'},
         {'==', '==='},
         {'!=', '!=='},
-        {'get', 'set'},
       },
       allow_caps_additions = {
         {'enable', 'disable'}
