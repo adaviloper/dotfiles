@@ -108,7 +108,7 @@ return {
 
           X = { "x~", desc = "Delete current character and capitalize the next" },
           ["<leader>/"] = {
-            "<esc><cmd>lua require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>j",
+            "<cmd>lua require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>j",
             desc = "Toggle comment line",
           },
           ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
