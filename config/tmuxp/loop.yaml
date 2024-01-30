@@ -6,8 +6,22 @@ windows:
       - shell_command:
         - cmd: 'c'
         - cmd: "vim"
-  - window_name: Terminals
+  - window_name: Admin
     panes:
       - shell_command:
         - cmd: 'c'
+        - cmd: "vim"
+  - window_name: Frontend
+    panes:
+      - shell_command:
+        - cmd: 'c'
+        - cmd: "vim"
+  - window_name: Terminals
+    layout: main-vertical
+    panes:
+      - pane:
+      - pane:
+        start_directory: '~/Code/loop-returns-app/admin'
+      - pane:
+        start_directory: '~/Code/loop-returns-app/frontend/'
 
