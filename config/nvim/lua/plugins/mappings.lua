@@ -100,7 +100,7 @@ return {
           -- Telescope
           ["<leader>fo"] = { function() require("telescope.builtin").oldfiles({ cwd_only = true }) end, desc = "Find history" },
           ['<leader>fd'] = { '<cmd>Telescope dir live_grep<CR>', desc = 'Find words in directory' },
-          ['<leader>fe'] = { '<cmd>Telescope env<CR>', desc = 'Find env values' },
+          ['<leader>fe'] = { '<cmd>Telescope telescope-env env_values theme=dropdown<CR>', desc = 'Find env values' },
           ["<leader>f_"] = { '<cmd>ScratchOpen<cr>', desc = "Open a Scratch file" },
 
           -- Notify
@@ -108,7 +108,7 @@ return {
 
           X = { "x~", desc = "Delete current character and capitalize the next" },
           ["<leader>/"] = {
-            "<cmd>lua require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>j",
+            "<esc><cmd>lua require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>j",
             desc = "Toggle comment line",
           },
           ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
