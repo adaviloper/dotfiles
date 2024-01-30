@@ -15,6 +15,46 @@ function M.getKeybindings()
         act.SendKey({ key = 'l' }),
       })
     },
+    { -- Switch to previously client
+      key = 'L',
+      mods = 'SHIFT|CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'L' }),
+      })
+    },
+    { -- Switch to upper pane
+      key = 'UpArrow',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'UpArrow' }),
+      })
+    },
+    { -- Switch to lower pane
+      key = 'DownArrow',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'DownArrow' }),
+      })
+    },
+    { -- Switch to left pane
+      key = 'LeftArrow',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'LeftArrow' }),
+      })
+    },
+    { -- Switch to right pane
+      key = 'RightArrow',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'RightArrow' }),
+      })
+    },
     { -- Session Switching
       key = 's',
       mods = 'CMD',
