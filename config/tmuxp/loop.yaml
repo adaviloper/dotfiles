@@ -7,21 +7,27 @@ windows:
         - cmd: 'c'
         - cmd: "vim"
   - window_name: Admin
+    start_directory: ./admin
     panes:
       - shell_command:
         - cmd: 'c'
         - cmd: "vim"
   - window_name: Frontend
+    start_directory: ./frontend
     panes:
       - shell_command:
         - cmd: 'c'
         - cmd: "vim"
   - window_name: Terminals
     layout: main-vertical
+    focus: true
     panes:
       - pane:
-      - pane:
-        start_directory: '~/Code/loop-returns-app/admin'
-      - pane:
-        start_directory: '~/Code/loop-returns-app/frontend/'
+        focus: true
+      - shell_command:
+        - cd admin
+        - clear
+      - shell_command:
+        - cmd: 'cd frontend'
+        - cmd: 'clear'
 
