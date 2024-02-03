@@ -20,6 +20,29 @@ local function jumpToFileTag(tagName)
   }
 end
 
+local function getFileTypes()
+  return {
+    'Css',
+    'JavaScript',
+    'JSON',
+    'Markdown',
+    'PHP',
+    'Text',
+  }
+end
+
+local function getFileExtension(ft)
+  local ext_map = {
+    ['Css'] = 'css',
+    ['JavaScript'] = 'js',
+    ['JSON'] = 'json',
+    ['Markdown'] = 'md',
+    ['PHP'] = 'php',
+    ['Text'] = 'txt',
+  }
+  return ext_map[ft]
+end
+
 return {
   {
     "AstroNvim/astrocore",
@@ -119,21 +142,27 @@ return {
           ['<localleader>yd'] = { function() vim.fn.setreg('+', vim.fn.expand('%:h')) end, desc = 'Copy directory path' },
           ['<localleader>yf'] = { function() vim.fn.setreg('+', vim.fn.expand('%:t:r')) end, desc = 'Copy file name' },
           -- Scratch
-          ['<C-n>'] = { function()
-            -- local ft = vim.fn.input('Filetype: ', '', 'file')
-            vim.ui.select(
-              {'PHP', 'JSON', 'JS', 'Vue Template'},
-              {prompt = 'Filetype:'},
-              function (choice)
-                local ft = string.lower(choice)
-                if choice == 'Vue Template' then
-                  ft = 'vue'
+          ['<C-n>'] = {
+            function()
+              -- local ft = vim.fn.input('Filetype: ', '', 'file')
+              vim.ui.select(
+                getFileTypes(),
+                {prompt = 'Filetype:'},
+                function (choice)
+                  local ft = getFileExtension(choice)
+                  require('scratch').scratchByType(ft)
                 end
-                require('scratch').scratchByType(ft)
-              end
-            )
-          end,
-            desc = 'Open new scratch file'}
+              )
+            end,
+            desc = 'Open new scratch file'
+          },
+
+          -- TreeSJ
+          ["gS"] = {
+            function() require('treesj').split() end,
+            desc = 'TreeSJ split',
+          },
+          ["gJ"] = { function() require('treesj').join() end, desc = 'TreeSJ join'},
         },
         i = {
           -- Luasnip
