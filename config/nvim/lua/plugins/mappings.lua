@@ -104,12 +104,14 @@ return {
           ["<leader>'l"] = jumpToFileTag("log"),
 
           ["<A-t>"] = { function() vim.notify(vim.fs.stdpath('cache')) end, desc = 'Jump to associated test file'},
+
           -- ISwap
           ["Q"] = { "<cmd>ISwapWith<cr>" },
           [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
           ["<p"] = { "<cmd>ISwapWithLeft<cr>", desc = "Swap node with left" }, -- better search
           n = { utils.better_search "nzz", desc = "Next search" },
           N = { utils.better_search "Nzz", desc = "Previous search" },         -- quick save
+
           -- NeoTeset
           ["<F4>"] = { name = "NeoTest", },
           ["<F4>n"] = { function() require("neotest").run.run() end, desc = "Run nearest test" },
@@ -120,6 +122,7 @@ return {
           ["<F4>o"] = { function() require("nejotest").output_panel.toggle() end, desc = "View the output" },
           ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
           ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
+
           -- Telescope
           ["<leader>fo"] = { function() require("telescope.builtin").oldfiles({ cwd_only = true }) end, desc = "Find history" },
           ['<leader>fd'] = { '<cmd>Telescope dir live_grep<CR>', desc = 'Find words in directory' },
@@ -136,11 +139,13 @@ return {
           },
           ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
           ["<C-o>"] = { "<C-o>zz", desc = "Jump backward and center" },
+
           -- Copying
           ['<localleader>y'] = { name = '󰆏 Copy...' },
           ['<localleader>yp'] = { function() vim.fn.setreg('+', vim.fn.expand('%:p:.')) end, desc = 'Copy file path' },
           ['<localleader>yd'] = { function() vim.fn.setreg('+', vim.fn.expand('%:h')) end, desc = 'Copy directory path' },
           ['<localleader>yf'] = { function() vim.fn.setreg('+', vim.fn.expand('%:t:r')) end, desc = 'Copy file name' },
+
           -- Scratch
           ['<C-n>'] = {
             function()
@@ -163,6 +168,9 @@ return {
             desc = 'TreeSJ split',
           },
           ["gJ"] = { function() require('treesj').join() end, desc = 'TreeSJ join'},
+
+          -- Git
+          ["<leader>gB"] = { '<cmd>G blame<cr>', desc = 'Commit annotations'},
         },
         i = {
           -- Luasnip
