@@ -4,20 +4,42 @@ return {
     "goolord/alpha-nvim",
     opts = function(_, opts)
       -- customize the dashboard header
+      -- opts.section.header.val = {
+      --   "            ███████╗██╗██████╗                ",
+      --   "            ██╔════╝██║██╔══██╗               ",
+      --   "            ███████╗██║██████╔╝               ",
+      --   "            ╚════██║██║██╔══██╗               ",
+      --   "            ███████║██║██║  ██║▄█╗            ",
+      --   "            ╚══════╝╚═╝╚═╝  ╚═╝╚═╝            ",
+      --   "                                              ",
+      --   "██╗    ███████╗██╗  ██╗██╗███████╗████████╗██╗",
+      --   "██║    ██╔════╝╚██╗██╔╝██║██╔════╝╚══██╔══╝██║",
+      --   "██║    █████╗   ╚███╔╝ ██║███████╗   ██║   ██║",
+      --   "██║    ██╔══╝   ██╔██╗ ██║╚════██║   ██║   ╚═╝",
+      --   "██║    ███████╗██╔╝ ██╗██║███████║   ██║   ██╗",
+      --   "╚═╝    ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝   ╚═╝   ╚═╝",
+      -- }
+      local blue = vim.g.terminal_color_4
+      local green = vim.g.terminal_color_2
+
+      vim.api.nvim_set_hl(0, "NeovimDashboardLogo1", { fg = blue })
+      vim.api.nvim_set_hl(0, "NeovimDashboardLogo2", { fg = green, bg = blue })
+      vim.api.nvim_set_hl(0, "NeovimDashboardLogo3", { fg = green })
       opts.section.header.val = {
-        "            ███████╗██╗██████╗                ",
-        "            ██╔════╝██║██╔══██╗               ",
-        "            ███████╗██║██████╔╝               ",
-        "            ╚════██║██║██╔══██╗               ",
-        "            ███████║██║██║  ██║▄█╗            ",
-        "            ╚══════╝╚═╝╚═╝  ╚═╝╚═╝            ",
-        "                                              ",
-        "██╗    ███████╗██╗  ██╗██╗███████╗████████╗██╗",
-        "██║    ██╔════╝╚██╗██╔╝██║██╔════╝╚══██╔══╝██║",
-        "██║    █████╗   ╚███╔╝ ██║███████╗   ██║   ██║",
-        "██║    ██╔══╝   ██╔██╗ ██║╚════██║   ██║   ╚═╝",
-        "██║    ███████╗██╔╝ ██╗██║███████║   ██║   ██╗",
-        "╚═╝    ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝   ╚═╝   ╚═╝",
+        [[     █  █     ]],
+        [[     ███ ██     ]],
+        [[     █████     ]],
+        [[     ██ ███     ]],
+        [[     █  █     ]],
+        [[]],
+        [[N  E  O   V  I  M]],
+      }
+      opts.section.header.opts.hl = {
+        { { "NeovimDashboardLogo1", 6, 8 },  { "NeovimDashboardLogo3", 9, 22 } },
+        { { "NeovimDashboardLogo1", 6, 8 },  { "NeovimDashboardLogo2", 9, 11 }, { "NeovimDashboardLogo3", 12, 24 } },
+        { { "NeovimDashboardLogo1", 6, 11 }, { "NeovimDashboardLogo3", 12, 26 } },
+        { { "NeovimDashboardLogo1", 6, 11 }, { "NeovimDashboardLogo3", 12, 24 } },
+        { { "NeovimDashboardLogo1", 6, 11 }, { "NeovimDashboardLogo3", 12, 22 } },
       }
       return opts
     end,
