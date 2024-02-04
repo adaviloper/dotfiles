@@ -19,6 +19,7 @@ end
 return
   -- Snippets
   {
+    -- Public function 
     s('test',
       fmt(
         'public function {}(){}',
@@ -27,14 +28,13 @@ return
           d(2, function (args)
             local lines = lines_from(vim.fn.expand('%'))
             --- @param line string
-            for k, line in pairs(lines) do
-              if line:match('class') then
+            for _, line in pairs(lines) do
+              if line:match('class ') then
                 return sn(nil, fmt(
-                  [[
-                  : {}
-                  {{
-                      {}
-                  }}
+                  [[: {}
+{{
+    {}
+}}
                   ]], {
                     i(1, 'return_value'),
                     i(2, ''),
@@ -49,19 +49,6 @@ return
         }
       )
     ),
-    -- Public function 
-    s('pubf',
-      fmt(
-        [[
-public function {}(): {}
-{{
-    {}
-}}
-    ]], {
-          i(1, 'method_name'),
-          i(2, ''),
-          i(3, ''),
-        })),
     -- Private function
     s('prif',
       fmt(
