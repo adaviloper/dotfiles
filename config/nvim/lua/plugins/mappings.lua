@@ -241,12 +241,7 @@ return {
           },
           ["gd"] = {
             function ()
-              -- local symbolize = require('php-symbolize')
-              -- if symbolize.validate_touple() then
-              --   symbolize.go_to_definition()
-              -- else
-              require("telescope.builtin").lsp_definitions()
-              -- end
+              require('php-symbolize').go_to_definition()
             end,
             desc = "Go to definition",
           },
