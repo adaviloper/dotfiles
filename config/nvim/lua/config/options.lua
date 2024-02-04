@@ -2,8 +2,8 @@
 -- Default options that are always set: https://github.com/AstroNvim/AstroNvim/blob/main/lua/astronvim/options.lua
 -- Add any additional options here
 vim.opt.autoread = true
-vim.opt.relativenumber = true -- sets vim.opt.relativenumber
 vim.opt.number = true -- sets vim.opt.number
+vim.opt.relativenumber = true -- sets vim.opt.relativenumber
 vim.opt.scrolloff = 8
 vim.opt.spell = true -- sets vim.opt.spell
 vim.opt.spelloptions = 'camel'
@@ -23,3 +23,4 @@ vim.g.icons_enabled = true       -- disable icons in the UI (disable if no nerd 
 vim.g.inlay_hints_enabled = true
 vim.g.resession_enabled = false
 vim.g.ui_notifications_enabled = true -- disable notifications when toggling UI elements
+
