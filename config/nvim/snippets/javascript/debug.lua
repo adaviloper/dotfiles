@@ -1,5 +1,5 @@
 return
- ; gcmsg "$(git_commit_prefix) "; gpsup {
+  {
     s('cml',
       fmt(
         'console.{}("{}", {});',
