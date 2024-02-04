@@ -13,7 +13,7 @@ vim.filetype.add {
   },
   pattern = {
     -- ["~/%.config/foo/.*"] = "fooscript",
-    ["laravel.*%.log"] = 'laravellog'
+    ["laravel.*%.log"] = 'json'
   },
 }
 
