@@ -14,6 +14,7 @@ return {
         {'production', 'development', 'local', 'testing'},
         {'protected', 'public', 'private'},
         {'up', 'right', 'down', 'left'},
+        {'top', 'bottom'},
         {'==', '==='},
         {'!=', '!=='},
       },
