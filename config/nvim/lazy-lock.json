@@ -84,4 +84,3 @@
   "vim-matchup": { "branch": "master", "commit": "7f81ae12542b2a35819f0324895df9bd8626c8ba" },
   "vim-pasta": { "branch": "master", "commit": "2b786703eef9f82ae7a56f3de4ee43e1e5efaaa5" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
-}

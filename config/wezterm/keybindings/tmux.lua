@@ -7,20 +7,36 @@ local tmuxPrefix = act.SendKey({ key = ' ', mods = 'CTRL' })
 
 function M.getKeybindings()
   return {
-    { -- Switch to previously current window
+    { -- Switch to previously client
       key = 'l',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'L' }),
+      })
+    },
+    { -- Switch to previously client
+      key = 'h',
       mods = 'CMD',
       action = act.Multiple({
         tmuxPrefix,
         act.SendKey({ key = 'l' }),
       })
     },
-    { -- Switch to previously client
-      key = 'L',
-      mods = 'SHIFT|CMD',
+    { -- Switch to previously window
+      key = 'j',
+      mods = 'CMD',
       action = act.Multiple({
         tmuxPrefix,
-        act.SendKey({ key = 'L' }),
+        act.SendKey({ key = 'n' }),
+      })
+    },
+    { -- Switch to next window
+      key = 'k',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'p' }),
       })
     },
     { -- Switch to upper pane
