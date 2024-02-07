@@ -44,7 +44,7 @@ info "Switching shell to ZSH"
 chsh -s $(which zsh)
 
 info "Installing TPM"
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 info "Updating OSX default settings"
 sh ~/.dotfiles/scripts/osx.sh
