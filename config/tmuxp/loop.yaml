@@ -1,7 +1,7 @@
 session_name: Loop Returns
 start_directory: "~/Code/loop-returns-app"
 windows:
-  - window_name: Project
+  - window_name: Root
     panes:
       - shell_command:
         - cmd: 'c'
