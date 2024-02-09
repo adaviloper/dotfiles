@@ -12,7 +12,7 @@ function M.getKeybindings()
       mods = 'CMD',
       action = act.Multiple({
         tmuxPrefix,
-        act.SendKey({ key = 'L' }),
+        act.SendKey({ key = 'l' }),
       })
     },
     { -- Switch to previously client
@@ -20,7 +20,7 @@ function M.getKeybindings()
       mods = 'CMD',
       action = act.Multiple({
         tmuxPrefix,
-        act.SendKey({ key = 'l' }),
+        act.SendKey({ key = 'L' }),
       })
     },
     { -- Switch to previously window
