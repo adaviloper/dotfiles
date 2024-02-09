@@ -20,3 +20,8 @@ windows:
     panes:
       - shell_command:
         - cmd: 'c'
+  - window_name: Root
+    start_directory: "~/Code/qmk_firmware"
+    panes:
+      - shell_command:
+        - cmd: 'c'
