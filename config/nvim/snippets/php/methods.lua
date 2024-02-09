@@ -86,6 +86,34 @@ public static function {}(): {}
           i(2, ''),
           i(3, ''),
         })),
+    s('__construct',
+      fmt(
+        [[
+        public function __construct({}): void
+        {{
+            {}
+        }}
+        ]],
+        {
+          i(1, ''),
+          i(2, ''),
+        }
+      )
+    ),
+    s('__call',
+      fmt(
+        [[
+        public function __call({}): void
+        {{
+            {}
+        }}
+        ]],
+        {
+          i(1, ''),
+          i(2, ''),
+        }
+      )
+    ),
   },
   -- Autosnippets
   {
