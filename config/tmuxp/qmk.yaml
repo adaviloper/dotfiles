@@ -20,6 +20,11 @@ windows:
     panes:
       - shell_command:
         - cmd: 'c'
+  - window_name: DZ60
+    start_directory: "~/Code/qmk_firmware/keyboards/dz60/keymaps/adaviloper"
+    panes:
+      - shell_command:
+        - cmd: 'c'
   - window_name: Root
     start_directory: "~/Code/qmk_firmware"
     panes:
