@@ -9,6 +9,14 @@ dd({}__METHOD__ . ':' . __LINE__);
     ]], {
           i(1, ''),
         })),
+    s('ll',
+      fmt(
+        [[
+Log::{}({});
+    ]], {
+          c(1, {t('info'), t('debug')}),
+          i(2, ''),
+        })),
     -- Private function
 --     s('prif',
 --       fmt(
