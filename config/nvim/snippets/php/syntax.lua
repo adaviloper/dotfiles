@@ -1,5 +1,22 @@
 return
-  {},
+  {
+    s(
+      'try',
+      fmt(
+        [[
+        try {{
+            {}
+        }} catch(Throwable $exception) {{
+            {}
+        }}
+        ]],
+        {
+          i(1, ''),
+          i(2, ''),
+        }
+      )
+    ),
+  },
   {
     -- s(
     --   {

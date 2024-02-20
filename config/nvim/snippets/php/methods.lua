@@ -20,7 +20,7 @@ return
   -- Snippets
   {
     -- Public function 
-    s('test',
+    s('pubf',
       fmt(
         'public function {}(){}',
         {
@@ -89,7 +89,7 @@ public static function {}(): {}
     s('__construct',
       fmt(
         [[
-        public function __construct({}): void
+        public function __construct({})
         {{
             {}
         }}
@@ -103,7 +103,7 @@ public static function {}(): {}
     s('__call',
       fmt(
         [[
-        public function __call({}): void
+        public function __call({})
         {{
             {}
         }}
