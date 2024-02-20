@@ -35,6 +35,7 @@ return {
       { filter = { event = "msg_show", min_height = 20 },            view = "messages" },      -- send long messages to split
       { filter = { event = "msg_show", find = "AutoSave" },          opts = { skip = true } }, -- skip autosave notifications
       { filter = { event = "msg_show", find = "%d+L,%s%d+B" },       opts = { skip = true } }, -- skip save notifications
+      { filter = { event = "msg_show", find = "Hunk %d+ of %d+" },   opts = { skip = true } }, -- skip hunk jumping notifications
       { filter = { event = "msg_show", find = "^%d+ more lines$" },  opts = { skip = true } }, -- skip paste notifications
       { filter = { event = "msg_show", find = "^%d+ fewer lines$" }, opts = { skip = true } }, -- skip delete notifications
       {

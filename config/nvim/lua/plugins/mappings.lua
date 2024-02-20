@@ -14,7 +14,7 @@ local function jumpToFileTag(tagName)
   return {
     function()
       require('grapple').select({ key = tagName })
-      vim.cmd('norm zt')
+      -- vim.cmd('norm zt')
     end,
     desc = 'Jump to the [' .. tagName .. '] tag'
   }
@@ -103,8 +103,6 @@ return {
           ["<leader>ml"] = setFileTag("log"),
           ["<leader>'l"] = jumpToFileTag("log"),
 
-          ["<A-t>"] = { function() vim.notify(vim.fs.stdpath('cache')) end, desc = 'Jump to associated test file'},
-
           -- ISwap
           ["Q"] = { "<cmd>ISwapWith<cr>" },
           [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
@@ -179,7 +177,11 @@ return {
               -- need to get the node to the left of the cursor
               local cursor = vim.api.nvim_win_get_cursor(0)
               local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
+              local language = require('nvim-treesitter.parsers').get_parser():lang()
 
+              if not vim.tbl_contains({'php', 'javascript'}, language) then
+                return ':'
+              end
               local node = vim.treesitter.get_node { pos = left_of_cursor_range }
               local html_nodes_active_in = {
                 'shorthand_property_identifier',
@@ -189,7 +191,6 @@ return {
                 return ':'
               end
 
-              vim.notify(node:type())
               if vim.tbl_contains(html_nodes_active_in, node:type()) then
                 -- The cursor is not on an attribute node
                 return ': ,<left>'
@@ -207,27 +208,31 @@ return {
               local cursor = vim.api.nvim_win_get_cursor(0)
               local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
 
+              local language = require('nvim-treesitter.parsers').get_parser():lang()
+              if not vim.tbl_contains({'php', 'javascript'}, language) then
+                return '='
+              end
+
               local node = vim.treesitter.get_node { pos = left_of_cursor_range }
+              if not node then
+                return '='
+              end
               local html_nodes_active_in = {
                 'attribute_name',
                 'directive_argument',
                 'directive_name',
                 'property_identifier',
               }
-              local php_nodes_active_in = {
-                'array_creation_expression',
-                'array_element_initializer',
-              }
-              if not node then
-                return '='
-              end
 
               if vim.tbl_contains(html_nodes_active_in, node:type()) then
                 -- The cursor is not on an attribute node
                 return '=""<left>'
               end
 
-              vim.notify(node:type())
+              local php_nodes_active_in = {
+                'array_creation_expression',
+                'array_element_initializer',
+              }
               if vim.tbl_contains(php_nodes_active_in, node:type()) then
                 -- The cursor is not on an attribute node
                 return '=> ,<left>'
@@ -241,8 +246,8 @@ return {
           -- Luasnip
           ['<C-k>'] = {
             function ()
-              if ls.expand_or_jumpable() then
-                ls.expand_or_jump()
+              if ls.jumpable(-1) then
+                ls.jump(-1)
               end
             end,
             desc = 'Jump to next snippet',
@@ -250,8 +255,8 @@ return {
           },
           ['<C-j>'] = {
             function ()
-              if ls.jumpable(-1) then
-                ls.jump(-1)
+              if ls.jumpable(1) then
+                ls.jump(1)
               end
             end,
             desc = 'Jump to previous snippet',
