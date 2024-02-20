@@ -3,8 +3,8 @@
 # Function to create or attach to a tmux session with specified windows and directories
 function tm() {
     SESSION_NAME="main"
-    PROJECTS=("dots" "loop" "qmk" "whiplash")
-    DIRECTORIES=("~/.dotfiles" "~/Code/loop-returns-app" "~/Code/qmk_firmware" "~/Code/whiplash-middleware")
+    PROJECTS=("dots" "loop" "qmk" "figs" "whiplash")
+    DIRECTORIES=("~/.dotfiles" "~/Code/loop-returns-app" "~/Code/qmk_firmware" "~/Code/figs-recycling-campaign" "~/Code/whiplash-middleware")
 
     # Function to check if a directory exists
     check_directory() {
