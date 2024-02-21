@@ -1,7 +1,6 @@
 return {
   'adaviloper/php-dev-tools.nvim',
-  event = 'VeryLazy',
-  enabled = true,
+  ft = 'php',
   config = function ()
     require('php-dev-tools').setup()
   end,
