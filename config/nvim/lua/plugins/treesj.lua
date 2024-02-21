@@ -6,6 +6,7 @@ return {
   config = function()
     local lang_utils = require('treesj.langs.utils')
     require('treesj').setup({
+      use_default_keymaps = false,
       dot_repeat = true,
       langs = {
         javascript = {

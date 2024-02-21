@@ -111,15 +111,9 @@ return {
           N = { utils.better_search "Nzz", desc = "Previous search" },         -- quick save
 
           -- NeoTeset
-          ["<F4>"] = { name = "NeoTest", },
-          ["<F4>n"] = { function() require("neotest").run.run() end, desc = "Run nearest test" },
-          ["<F4>f"] = { function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Test the entire file" },
-          ["<F4>d"] = { function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug nearest test" },
-          ["<F4>e"] = { function() require("neotest").run.stop() end, desc = "Stop nearest test" },
-          ["<F4>a"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
-          ["<F4>o"] = { function() require("nejotest").output_panel.toggle() end, desc = "View the output" },
-          ["<F4>s"] = { function() require("neotest").summary.toggle() end, desc = "View the output" },
-          ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
+          ["<F4>"] = { name = "Testing", },
+          ["<F4>n"] = { function() require('php-dev-tools').test_nearest_method() end, desc = "Run nearest test" },
+          ["<F4>f"] = { function() require('php-dev-tools').test_current_file() end, desc = "Test the entire file" },
 
           -- Telescope
           ["<leader>fo"] = { function() require("telescope.builtin").oldfiles({ cwd_only = true }) end, desc = "Find history" },
@@ -311,7 +305,7 @@ return {
           },
           ["gd"] = {
             function ()
-              -- require('php-symbolize').go_to_definition()
+              -- require('php-dev-tools').go_to_definition()
               require('telescope.builtin').lsp_definitions()
             end,
             desc = "Go to definition",
@@ -324,6 +318,7 @@ return {
             desc = "Declaration of current symbol",
             cond = "textDocument/declaration",
           },
+          ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
           ["<leader>lo"] = {
             function ()
               vim.lsp.buf.code_action({
