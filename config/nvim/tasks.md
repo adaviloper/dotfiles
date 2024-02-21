@@ -8,12 +8,7 @@
     - auto-session context
     - Grapple scopes
 - [ ] Add Scratch configs for different languages
-    - [ ] PHP
     - [ ] Vue
-    - [ ] JSON
-    - [ ] HTML
-    - [ ] Lua
-    - [ ] Typescript
     - [ ] Shell
 - [ ] Add snippets for different languages
     - [.] PHP
@@ -21,6 +16,7 @@
     - [ ] JS
 - [?] Do we have some kind of docker integration?
 - [ ] Need a way integrate `nvim-dap`
+- [ ] Configure Grapple to scope by directory _and_ git branch
 
 ## Autocommands
 - [ ] Skeletons for populating new files with boilerplate
