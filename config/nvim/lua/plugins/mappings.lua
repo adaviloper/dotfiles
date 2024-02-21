@@ -22,23 +22,29 @@ end
 
 local function getFileTypes()
   return {
-    'Css',
+    'CSS',
+    'HTML',
     'JavaScript',
     'JSON',
+    'Lua',
     'Markdown',
     'PHP',
     'Text',
+    'TypeScript',
   }
 end
 
 local function getFileExtension(ft)
   local ext_map = {
-    ['Css'] = 'css',
+    ['CSS'] = 'css',
+    ['HTML'] = 'html',
     ['JavaScript'] = 'js',
     ['JSON'] = 'json',
+    ['Lua'] = 'lua',
     ['Markdown'] = 'md',
     ['PHP'] = 'php',
     ['Text'] = 'txt',
+    ['TypeScript'] = 'ts',
   }
   return ext_map[ft]
 end
