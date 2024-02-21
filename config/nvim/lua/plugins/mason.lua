@@ -12,7 +12,7 @@ return {
         'lua_ls',
         'marksman',
         'phpactor',
-        'stimulus-language-server',
+        'stimulus_ls',
         'tailwindcss',
         'volar'
       )
