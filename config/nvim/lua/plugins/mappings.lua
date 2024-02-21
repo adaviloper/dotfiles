@@ -291,7 +291,7 @@ return {
         },
         t = {
           -- setting a mapping to false will disable it
-          -- ["<esc>"] = false,
+          ["<F8>"] = { '<C-\\><C-n>' },
         },
       },
     },
