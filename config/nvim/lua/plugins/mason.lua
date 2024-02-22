@@ -6,15 +6,16 @@ return {
     opts = function (_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(
         opts.ensure_installed,
-        'bashls',
-        'cssls',
-        'jsonls',
-        'lua_ls',
-        'marksman',
-        'phpactor',
-        'stimulus_ls',
-        'tailwindcss',
-        'volar'
+        {
+          'bashls',
+          'cssls',
+          'jsonls',
+          'lua_ls',
+          'marksman',
+          'phpactor',
+          'tailwindcss',
+          'volar',
+        }
       )
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -60,9 +61,11 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(
-        opts.ensure_installed
-        -- "prettier",
-        -- "stylua",
+        opts.ensure_installed,
+        {
+          "prettier",
+          "stylua",
+        }
       )
     end,
   },
@@ -73,9 +76,11 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(
         opts.ensure_installed,
-        -- "python",
-        "js-debug-adapter",
-        "php-debug-adapter"
+        {
+          -- "python",
+          "js-debug-adapter",
+          "php-debug-adapter"
+        }
       )
     end,
   },
