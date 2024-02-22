@@ -1,3 +1,5 @@
+local mocha = require("catppuccin.palettes").get_palette("mocha")
+
 -- You can also add new plugins here as well using the lazy syntax:
 return {
   "andweeb/presence.nvim",
@@ -14,43 +16,45 @@ return {
     "goolord/alpha-nvim",
     opts = function(_, opts)
       -- customize the dashboard header
-      -- opts.section.header.val = {
-      --   "            ███████╗██╗██████╗                ",
-      --   "            ██╔════╝██║██╔══██╗               ",
-      --   "            ███████╗██║██████╔╝               ",
-      --   "            ╚════██║██║██╔══██╗               ",
-      --   "            ███████║██║██║  ██║▄█╗            ",
-      --   "            ╚══════╝╚═╝╚═╝  ╚═╝╚═╝            ",
-      --   "                                              ",
-      --   "██╗    ███████╗██╗  ██╗██╗███████╗████████╗██╗",
-      --   "██║    ██╔════╝╚██╗██╔╝██║██╔════╝╚══██╔══╝██║",
-      --   "██║    █████╗   ╚███╔╝ ██║███████╗   ██║   ██║",
-      --   "██║    ██╔══╝   ██╔██╗ ██║╚════██║   ██║   ╚═╝",
-      --   "██║    ███████╗██╔╝ ██╗██║███████║   ██║   ██╗",
-      --   "╚═╝    ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝   ╚═╝   ╚═╝",
-      -- }
-      local blue = vim.g.terminal_color_4
-      local green = vim.g.terminal_color_2
 
-      vim.api.nvim_set_hl(0, "NeovimDashboardLogo1", { fg = blue })
-      vim.api.nvim_set_hl(0, "NeovimDashboardLogo2", { fg = green, bg = blue })
-      vim.api.nvim_set_hl(0, "NeovimDashboardLogo3", { fg = green })
+      vim.api.nvim_set_hl(0, "NeovimDashboardLogo1", { fg = mocha.blue })
+      vim.api.nvim_set_hl(0, "NeovimDashboardLogo2", { fg = mocha.green, bg = mocha.blue })
+      vim.api.nvim_set_hl(0, "NeovimDashboardLogo2_1", { fg = mocha.blue, bg = mocha.green })
+      vim.api.nvim_set_hl(0, "NeovimDashboardLogo3", { fg = mocha.green })
+      vim.api.nvim_set_hl(0, "NeovimDashboardFooter1", { fg = mocha.blue })
+      vim.api.nvim_set_hl(0, "NeovimDashboardFooter2", { fg = mocha.green })
       opts.section.header.val = {
-        [[     █  █     ]],
-        [[     ███ ██     ]],
+        -- [[     █  █     ]],
         -- [[     ██ ██     ]],
-        [[     █████     ]],
-        [[     ██ ███     ]],
-        [[     █  █     ]],
+        -- [[     █████     ]],
+        -- [[     ██ ███     ]],
+        -- [[     █  █     ]],
+        [[   █           ]],
+        [[   ███          ]],
+        [[   ███         ]],
+        [[  ████████████ ]],
+        [[   █  █   ██ ]],
+        [[        █   ██ ]],
+        [[         █ ██ ]],
+        [[      ██████ ]],
+        [[           █    ]],
+        [[                ]],
         [[]],
         [[N  E  O   V  I  M]],
       }
       opts.section.header.opts.hl = {
-        { { "NeovimDashboardLogo1", 6, 8 },  { "NeovimDashboardLogo3", 9, 22 } },
-        { { "NeovimDashboardLogo1", 6, 8 },  { "NeovimDashboardLogo2", 9, 11 }, { "NeovimDashboardLogo3", 12, 24 } },
-        { { "NeovimDashboardLogo1", 6, 11 }, { "NeovimDashboardLogo3", 12, 26 } },
-        { { "NeovimDashboardLogo1", 6, 11 }, { "NeovimDashboardLogo3", 12, 24 } },
-        { { "NeovimDashboardLogo1", 6, 11 }, { "NeovimDashboardLogo3", 12, 22 } },
+        { { "NeovimDashboardLogo1", 2, 45 }, },
+        { { "NeovimDashboardLogo1", 2, 45 }, },
+        { { "NeovimDashboardLogo1", 2, 45 }, },
+        { { "NeovimDashboardLogo3", 0, 3 }, { "NeovimDashboardLogo1", 5, 12 }, { "NeovimDashboardLogo3", 0, 45 } },
+        { { "NeovimDashboardLogo1", 2, 23 }, { "NeovimDashboardLogo3", 24, 45 } },
+        { { "NeovimDashboardLogo1", 2, 19 }, { "NeovimDashboardLogo3", 20, 45 } },
+        { { "NeovimDashboardLogo1", 2, 26 }, { "NeovimDashboardLogo3", 20, 45 } },
+        { { "NeovimDashboardLogo3", 2, 19 }, { "NeovimDashboardLogo2_1", 20, 22 }, { "NeovimDashboardLogo1", 22, 24 }, { "NeovimDashboardLogo2_1", 25, 27 }, { "NeovimDashboardLogo3", 29, 45 } },
+        { { "NeovimDashboardLogo1", 0, 45 } },
+        { { "NeovimDashboardLogo1", 0, 45 } },
+        {},
+        { { "NeovimDashboardFooter1", 0, 8 }, { "NeovimDashboardFooter2", 9, 22 } },
       }
       return opts
     end,
