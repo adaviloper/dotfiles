@@ -36,6 +36,7 @@ return {
         }
       })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
+      lspconfig.pest_ls.setup({ capabilities = capabilities })
       lspconfig.phpactor.setup({
         capabilities = capabilities,
         init_options = {
