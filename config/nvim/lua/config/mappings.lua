@@ -113,8 +113,8 @@ return {
 
     -- NeoTeset
     ["<F4>"] = { name = "Testing", },
-    ["<F4>n"] = { function() require('php-dev-tools').test_nearest_method() end, desc = "Run nearest test" },
-    ["<F4>f"] = { function() require('php-dev-tools').test_current_file() end, desc = "Test the entire file" },
+    ["<F4>n"] = { function() require('php-dev-tools.test_utils').test_nearest_method() end, desc = "Run nearest test" },
+    ["<F4>f"] = { function() require('php-dev-tools.test_utils').test_current_file() end, desc = "Test the entire file" },
 
     -- Telescope
     ["<Leader>fo"] = { function() require("telescope.builtin").oldfiles({ cwd_only = true }) end, desc = "Find history" },
