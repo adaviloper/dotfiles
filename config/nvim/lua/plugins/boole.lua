@@ -10,7 +10,7 @@ return {
       additions = {
         {'dd', 'dump'},
         {'get', 'set'},
-        {'let', 'const'},
+        {'let', 'const', 'var'},
         {'production', 'development', 'local', 'testing'},
         {'protected', 'public', 'private'},
         {'up', 'right', 'down', 'left'},
