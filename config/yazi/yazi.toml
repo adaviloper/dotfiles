@@ -6,6 +6,7 @@
 [manager]
 folder_offset = [2,0,2,0]
 preview_offset = [2,1,2,1]
+scrolloff = 8
 show_hidden = true
 show_symlink = true
 sort_by = 'natural'
