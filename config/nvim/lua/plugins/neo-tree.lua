@@ -15,5 +15,19 @@ return {
       follow_current_file = { enabled = true },
     },
     enable_git_status = true,
+    window = {
+      mappings = {
+        J = {
+          function ()
+            vim.cmd('norm 5j')
+          end
+        },
+        K = {
+          function ()
+            vim.cmd('norm 5k')
+          end
+        }
+      }
+    }
   }
 }
