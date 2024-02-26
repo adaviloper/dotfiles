@@ -1,9 +1,9 @@
 return {
   n = {
     gl = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
-    ["gd"] = {
+    gd = {
       function ()
-        -- require('php-dev-tools').go_to_definition()
+        -- require('php-dev-tools.go_to').go_to_definition()
         require('telescope.builtin').lsp_definitions()
         vim.cmd('norm zt')
       end,
