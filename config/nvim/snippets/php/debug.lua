@@ -51,6 +51,5 @@ Log::{}({}{});
   },
   -- Autosnippets
   {
-
   }
 
