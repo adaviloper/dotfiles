@@ -18,8 +18,51 @@ return
         }
       )
     ),
+  },
+  {
     s(
-      { trig = "fe([%w_]+)", regTrig = true },
+      'el ',
+      fmt(
+        [[
+        else {{
+            {}
+        }}
+        ]],
+        {
+          i(1, ''),
+        }
+      )
+    ),
+    s(
+      'elif ',
+      fmt(
+        [[
+        else if (${}) {{
+            {}
+        }}
+        ]],
+        {
+          i(1, ''),
+          i(2, ''),
+        }
+      )
+    ),
+    s(
+      'if ',
+      fmt(
+        [[
+        if (${}) {{
+            {}
+        }}
+        ]],
+        {
+          i(1, ''),
+          i(2, ''),
+        }
+      )
+    ),
+    s(
+      'fore ',
       fmt([[
       foreach (${} as ${}{}) {{
           {}
@@ -35,7 +78,37 @@ return
         }
       )
     ),
-  },
-  {
-
+    s(
+      'match ',
+      fmt(
+        [[
+        match (${}) {{
+            {} => {},
+            default => {}
+        }}
+        ]],
+        {
+          i(1, 'constraint'),
+          i(2, 'case'),
+          i(3, 'return_val'),
+          i(4, 'default_return'),
+        }
+      )
+    ),
+    s(
+      'try ',
+      fmt(
+        [[
+        try {{
+            {}
+        }} catch (Throwable $exception) {{
+            {}
+        }}
+        ]],
+        {
+          i(1, ''),
+          i(2, ''),
+        }
+      )
+    ),
   }
