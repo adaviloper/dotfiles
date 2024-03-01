@@ -39,8 +39,8 @@ return {
           if not conditions.width_percent_below(#filename, 0.25) then
             filename = vim.fn.pathshorten(filename)
           end
-          if grapple.exists() and grapple.key() ~= nil then
-            return '[' .. grapple.key() .. ']'
+          if grapple.exists() and grapple.name_or_index() ~= nil then
+            return '[' .. grapple.name_or_index() .. ']'
           end
         end
       }),

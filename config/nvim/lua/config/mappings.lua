@@ -4,7 +4,7 @@ local ls = require('luasnip')
 local function setFileTag(tagName)
   return {
     function()
-      require('grapple').tag({ key = tagName })
+      require('grapple').tag({ name = tagName })
     end,
     desc = 'Tag as [' .. tagName .. ']'
   }
@@ -13,7 +13,7 @@ end
 local function jumpToFileTag(tagName)
   return {
     function()
-      require('grapple').select({ key = tagName })
+      require('grapple').select({ name = tagName })
       -- vim.cmd('norm zt')
     end,
     desc = 'Jump to the [' .. tagName .. '] tag'
@@ -86,8 +86,8 @@ return {
     -- Grapple
     ["<Leader>m"] = { name = "󰓾 Handle file tags" },
     ["<Leader>'"] = { name = "󰓾 Jump to file tags" },
-    ["<Leader>mf"] = { function() require('grapple').popup_tags() end, desc = "List all tags" },
-    ["<Leader>mF"] = { function() require('grapple').popup_scopes() end, desc = "List all scopes" },
+    ["<Leader>mf"] = { function() require('grapple').open_tags() end, desc = "List all tags" },
+    ["<Leader>mF"] = { function() require('grapple').open_scopes() end, desc = "List all scopes" },
     ["<Leader>ma"] = { function() require("grapple").tag() end, desc = "Add Grapple tag to file" },
     ["<Leader>md"] = { function() require("grapple").untag() end, desc = "Remove file from Grapple tag list" },
 
