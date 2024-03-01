@@ -1,5 +1,5 @@
 session_name: Whiplash
-start_directory: "~/Code/Whiplash"
+start_directory: "~/Code/whiplash-middleware"
 windows:
   - window_name: Project
     panes:
