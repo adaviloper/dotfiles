@@ -16,7 +16,7 @@
     - [ ] JS
 - [?] Do we have some kind of docker integration?
 - [ ] Need a way integrate `nvim-dap`
-- [ ] Configure Grapple to scope by directory _and_ git branch
+- [x] Configure Grapple to scope by directory _and_ git branch
 
 ## Autocommands
 - [ ] Skeletons for populating new files with boilerplate
