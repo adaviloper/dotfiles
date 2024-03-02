@@ -1,32 +1,32 @@
 session_name: QMK Firmware
+start_directory: ~/Code/qmk_firmware
 windows:
   - window_name: Userland
-    start_directory: "~/Code/qmk_firmware/users/adaviloper"
+    start_directory: ./users/adaviloper
     panes:
       - shell_command:
         - cmd: 'c'
   - window_name: Lily58
-    start_directory: "~/Code/qmk_firmware/keyboards/lily58/keymaps/adaviloper"
+    start_directory: ./keyboards/lily58/keymaps/adaviloper
     panes:
       - shell_command:
         - cmd: 'c'
   - window_name: Lulu
-    start_directory: "~/Code/qmk_firmware/keyboards/boardsource/lulu/keymaps/adaviloper"
+    start_directory: ./keyboards/boardsource/lulu/keymaps/adaviloper
     panes:
       - shell_command:
         - cmd: 'c'
   - window_name: Unicorne
-    start_directory: "~/Code/qmk_firmware/keyboards/boardsource/unicorne/keymaps/default"
+    start_directory: ./keyboards/boardsource/unicorne/keymaps/default
     panes:
       - shell_command:
         - cmd: 'c'
   - window_name: DZ60
-    start_directory: "~/Code/qmk_firmware/keyboards/dz60/keymaps/adaviloper"
+    start_directory: ./keyboards/dz60/keymaps/adaviloper
     panes:
       - shell_command:
         - cmd: 'c'
   - window_name: Root
-    start_directory: "~/Code/qmk_firmware"
     panes:
       - shell_command:
         - cmd: 'c'

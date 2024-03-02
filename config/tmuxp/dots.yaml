@@ -1,7 +1,7 @@
 session_name: Dotfiles
+start_directory: ~/.dotfiles
 windows:
   - window_name: .dotfiles
-    start_directory: '~/.dotfiles'
     panes:
       - shell_command:
         - cmd: 'c'
