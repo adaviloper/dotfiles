@@ -80,7 +80,7 @@ return {
         {
           -- "python",
           "js-debug-adapter",
-          "php-debug-adapter"
+          "php-debug-adapter",
         }
       )
     end,
