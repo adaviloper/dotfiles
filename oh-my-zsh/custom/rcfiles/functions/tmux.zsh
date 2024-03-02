@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Function to create or attach to a tmux session with specified windows and directories
 function tm() {
-    SESSION_NAME="main"
-    PROJECTS=("dots" "loop" "qmk" "figs" "whiplash")
-    DIRECTORIES=("~/.dotfiles" "~/Code/loop-returns-app" "~/Code/qmk_firmware" "~/Code/figs-recycling-campaign" "~/Code/whiplash-middleware")
+    SESSIONS=("dots" "loop" "qmk" "figs" "whiplash")
+    CONFIG_DIR="$HOME/.config/tmuxp"
 
     # Function to check if a directory exists
     check_directory() {
@@ -22,13 +20,28 @@ function tm() {
         # Execute tmux commands passed as arguments
         tmux "$@"
     else
-        for ((i=1; i<=${#DIRECTORIES[@]}; i++)); do
-            if check_directory "${DIRECTORIES[$i]}"; then
-                tmuxp load -d $PROJECTS[$i]
+        for session in "${SESSIONS[@]}"; do
+            local config_path="$CONFIG_DIR/$session.yaml"
+            # Check if the tmuxp config file exists
+            if [ -f "$config_path" ]; then
+                # Parse session_name from the YAML file
+                local session_name=$(yq e '.session_name' "$config_path")
+                # Parse the first start_directory from the YAML file
+                local start_directory=$(yq e '.start_directory' "$config_path" | awk 'NR==1')
+                
+                if [ -z "$start_directory" ] || check_directory "$start_directory"; then
+                    # Load the tmuxp session using the parsed session name
+                    tmuxp load -d "$config_path"
+                else
+                    echo "Start directory '$start_directory' for project '$session' does not exist."
+                fi
             else
-                echo "Directory '${DIRECTORIES[$i]//\~/$HOME}' does not exist."
+                echo "tmuxp config for '$session' does not exist."
             fi
         done
         tmux attach -t Dotfiles
     fi
 }
+
+# To use this function, source this script from your shell or add it to your .bashrc or .zshrc file.
+# Then you can call it from the terminal by typing `tm` or `tm <tmux command>`.
