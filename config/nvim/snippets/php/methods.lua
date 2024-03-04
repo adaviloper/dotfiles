@@ -5,6 +5,14 @@ local function file_exists(file)
   return f ~= nil
 end
 
+local return_types = {
+  bool = 'false',
+  null = 'null',
+  int = '0',
+  float = '0.0',
+  array = '[]',
+}
+
 local function lines_from(file)
   if not file_exists(file) then return {} end
   local lines = {}
@@ -20,13 +28,20 @@ return
   -- Snippets
   {
     -- Public function 
-    s('pubf',
+    s('meth',
       fmt(
-        'public function {}(){}',
+        '{} function {}(){}',
         {
-          i(1, 'method_name'),
-          d(2, function (args)
+          c(1, { t('public'), t('protected'), t('private') } ),
+          i(2, 'method_name'),
+          d(3, function (args)
+            local current_line = vim.api.nvim_get_current_line()
+            if string.match(current_line, 'abstract') then
+              return sn(nil, t(';'))
+            end
+
             local lines = lines_from(vim.fn.expand('%'))
+
             --- @param line string
             for _, line in pairs(lines) do
               if line:match('class ') then
@@ -34,10 +49,25 @@ return
                   [[: {}
 {{
     {}
+    return{};
 }}
                   ]], {
                     i(1, 'return_value'),
                     i(2, ''),
+                    f(
+                      function (args, parent, user_args)
+                        local key = args[1][1]
+                        vim.notify(vim.inspect(key))
+                        if return_types[key] == nil then
+                          return ''
+                        end
+                        if key == 'void' then
+                          return return_types[key]
+                        end
+                        return ' ' .. return_types[key]
+                      end,
+                      {1}
+                    ),
                   }
                 ))
               end
@@ -49,43 +79,6 @@ return
         }
       )
     ),
-    -- Private function
-    s('prif',
-      fmt(
-        [[
-private function {}(): {}
-{{
-    {}
-}}
-    ]], {
-          i(1, 'method_name'),
-          i(2, ''),
-          i(3, ''),
-        })),
-    s('pubsf',
-      fmt(
-        [[
-public static function {}(): {}
-{{
-    {}
-}}
-    ]], {
-          i(1, 'method_name'),
-          i(2, ''),
-          i(3, ''),
-        })),
-    s('prisf',
-      fmt(
-        [[
-public static function {}(): {}
-{{
-    {}
-}}
-    ]], {
-          i(1, 'method_name'),
-          i(2, ''),
-          i(3, ''),
-        })),
     s('__construct',
       fmt(
         [[
