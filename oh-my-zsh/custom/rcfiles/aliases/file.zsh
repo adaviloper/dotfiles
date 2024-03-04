@@ -11,7 +11,7 @@ alias cdh="cd ~/Homestead"
 alias cloc="git ls-files | xargs wc -l"
 alias code="cd ~/Code"
 alias ls="exa"
-alias l="ls -alh --color=auto --git --icons"
+alias l="ls -alh --color=auto -F --git --icons --group-directories-first"
 alias pup="php -S localhost:3000"
 
 # Testing
