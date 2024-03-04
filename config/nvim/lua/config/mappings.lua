@@ -273,8 +273,8 @@ return {
     },
     ['<C-j>'] = {
       function ()
-        if ls.jumpable(1) then
-          ls.jump(1)
+        if ls.expand_or_jumpable() then
+          ls.expand_or_jump(1)
         end
       end,
       desc = 'Jump to previous snippet',
