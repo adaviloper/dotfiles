@@ -1,0 +1,11 @@
+session_name: Core10
+start_directory: ~/Code/core10
+windows:
+  - window_name: Project
+    panes:
+      - shell_command:
+        - cmd: 'c'
+  - window_name: Terminals
+    panes:
+      - shell_command:
+        - cmd: 'c'
