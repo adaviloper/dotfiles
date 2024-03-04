@@ -1,12 +1,3 @@
-local ls = require('luasnip')
-local s = ls.s
-local fmt = ls.fmt
-local c = ls.c
-local d = ls.d
-local i = ls.i
-local rep = ls.rep
-local sn = ls.sn
-
 return
   {
     s(
