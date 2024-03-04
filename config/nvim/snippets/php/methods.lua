@@ -57,7 +57,6 @@ return
                     f(
                       function (args, parent, user_args)
                         local key = args[1][1]
-                        vim.notify(vim.inspect(key))
                         if return_types[key] == nil then
                           return ''
                         end
