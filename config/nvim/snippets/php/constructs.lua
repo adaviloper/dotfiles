@@ -1,7 +1,24 @@
+local not_in_nodes_condition = function (ignored_nodes)
+  return function ()
+    local pos = vim.api.nvim_win_get_cursor(0)
+    local row, col = pos[1] - 1, pos[2] - 1
+
+    local node_type = vim.treesitter.get_node({
+      pos = { row, col }
+    }):type()
+
+    return not vim.tbl_contains(ignored_nodes, node_type)
+  end
+end
+
 return
   {
     s(
-      { trig = "for([%w_]+)", regTrig = true },
+      {
+        trig = "for([%w_]+)",
+        regTrig = true
+        condition = not_in_nodes_condition({ 'string', 'comment' })
+      },
       fmt([[
       for (${} = 0; ${} < {}; ${}++) {{
           {}
@@ -21,7 +38,10 @@ return
   },
   {
     s(
-      'el ',
+      {
+        trig = 'el ',
+        condition = not_in_nodes_condition({ 'string', 'comment' })
+      },
       fmt(
         [[
         else {{
@@ -34,7 +54,10 @@ return
       )
     ),
     s(
-      'elif ',
+      {
+        trig = 'elif ',
+        condition = not_in_nodes_condition({ 'string', 'comment' })
+      },
       fmt(
         [[
         else if (${}) {{
@@ -48,7 +71,10 @@ return
       )
     ),
     s(
-      'if ',
+      {
+        trig = 'if ',
+        condition = not_in_nodes_condition({ 'string', 'comment' })
+      },
       fmt(
         [[
         if (${}) {{
@@ -79,7 +105,10 @@ return
       )
     ),
     s(
-      'match ',
+      {
+        trig = 'match ',
+        condition = not_in_nodes_condition({ 'string', 'comment' })
+      },
       fmt(
         [[
         match (${}) {{
@@ -96,7 +125,10 @@ return
       )
     ),
     s(
-      'try ',
+      {
+        trig = 'try ',
+        condition = not_in_nodes_condition({ 'string', 'comment' })
+      },
       fmt(
         [[
         try {{
