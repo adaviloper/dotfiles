@@ -12,6 +12,13 @@
     - [ ] Shell
 - [ ] Add snippets for different languages
     - [.] PHP
+        - Methods
+            - [x] Make method bodies dynamic based on class and return types
+            - [ ] Make __construct method dynamic based on params passed in
+                - Docblocks update with param types
+                - If not declared in the parameter list, then assign parameters in the body
+        - Language Constructs
+        - Debugging
     - [ ] Vue
     - [ ] JS
 - [?] Do we have some kind of docker integration?
