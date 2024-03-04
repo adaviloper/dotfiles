@@ -34,7 +34,7 @@ return
         {
           c(1, { t('public'), t('protected'), t('private') } ),
           i(2, 'method_name'),
-          d(3, function (args)
+          d(3, function (_)
             local current_line = vim.api.nvim_get_current_line()
             if string.match(current_line, 'abstract') then
               return sn(nil, t(';'))
@@ -55,8 +55,8 @@ return
                     i(1, 'return_value'),
                     i(2, ''),
                     f(
-                      function (args, parent, user_args)
-                        local key = args[1][1]
+                      function (return_value_args)
+                        local key = return_value_args[1][1]
                         if return_types[key] == nil then
                           return ''
                         end
