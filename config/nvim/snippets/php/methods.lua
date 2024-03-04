@@ -24,6 +24,50 @@ local function lines_from(file)
   return lines
 end
 
+local get_default_return_type = function (return_value_args)
+  local key = return_value_args[1][1]
+  if return_types[key] == nil then
+    return ''
+  end
+  if key == 'void' then
+    return return_types[key]
+  end
+  return ' ' .. return_types[key]
+end
+
+local determine_method_body = function (_)
+  local current_line = vim.api.nvim_get_current_line()
+  if string.match(current_line, 'abstract') then
+    return sn(nil, t(';'))
+  end
+
+  local lines = lines_from(vim.fn.expand('%'))
+
+  --- @param line string
+  for _, line in pairs(lines) do
+    if line:match('class ') then
+      return sn(nil, fmt(
+        [[: {}
+{{
+    {}
+    return{};
+}}
+                  ]], {
+          i(1, 'return_value'),
+          i(2, ''),
+          f(
+            get_default_return_type,
+            {1}
+          ),
+        }
+      ))
+    end
+    if line:match('interface ') then
+      return sn(nil, t(';'))
+    end
+  end
+end
+
 return
   -- Snippets
   {
@@ -34,47 +78,7 @@ return
         {
           c(1, { t('public'), t('protected'), t('private') } ),
           i(2, 'method_name'),
-          d(3, function (_)
-            local current_line = vim.api.nvim_get_current_line()
-            if string.match(current_line, 'abstract') then
-              return sn(nil, t(';'))
-            end
-
-            local lines = lines_from(vim.fn.expand('%'))
-
-            --- @param line string
-            for _, line in pairs(lines) do
-              if line:match('class ') then
-                return sn(nil, fmt(
-                  [[: {}
-{{
-    {}
-    return{};
-}}
-                  ]], {
-                    i(1, 'return_value'),
-                    i(2, ''),
-                    f(
-                      function (return_value_args)
-                        local key = return_value_args[1][1]
-                        if return_types[key] == nil then
-                          return ''
-                        end
-                        if key == 'void' then
-                          return return_types[key]
-                        end
-                        return ' ' .. return_types[key]
-                      end,
-                      {1}
-                    ),
-                  }
-                ))
-              end
-              if line:match('interface ') then
-                return sn(nil, t(';'))
-              end
-            end
-          end)
+          d(3, determine_method_body)
         }
       )
     ),
