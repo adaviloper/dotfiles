@@ -57,7 +57,7 @@ local determine_method_body = function (_)
 }}
                   ]], {
           i(1, 'void'),
-          i(2, ''),
+          i(0, ''),
           f(
             get_default_return_type,
             {1}
@@ -81,7 +81,7 @@ return
         {
           c(1, { t('public'), t('protected'), t('private') } ),
           i(2, 'method_name'),
-          d(3, determine_method_body)
+          d(0, determine_method_body)
         }
       )
     ),
@@ -95,7 +95,7 @@ return
         ]],
         {
           i(1, ''),
-          i(2, ''),
+          i(0, ''),
         }
       )
     ),
@@ -109,7 +109,7 @@ return
         ]],
         {
           i(1, ''),
-          i(2, ''),
+          i(0, ''),
         }
       )
     ),
