@@ -12,6 +12,9 @@ function get_ticket_prefix()
       "Code/ultimate-tic-tac-toe")
           mapped_string="UTTT"
           ;;
+      "Code/figs-recycling-campaign")
+          mapped_string="LPR"
+          ;;
       "Code/loop-returns-app")
         eval "prefixes=(RET LPR)"
         
