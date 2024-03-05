@@ -83,14 +83,13 @@ return {
         hl = { fg = mocha.text },
         filename = {
           modify = ':.',
-          padding = { right = 1},
         },
         filetype = false,
         -- file_modified = true,
         -- file_read_only = true,
         surround = {
           separator = 'tab',
-          color = mocha.mantle,
+          color = mocha.surface0,
         },
       }),
       status.component.fill({ hl = { bg = "tabline_bg" } }), -- fill the rest of the tabline with background color
