@@ -26,13 +26,17 @@ end
 
 local get_default_return_type = function (return_value_args)
   local key = return_value_args[1][1]
+  if key == 'void' then
+    return ''
+  end
   if return_types[key] == nil then
     return ''
   end
-  if key == 'void' then
-    return return_types[key]
-  end
-  return ' ' .. return_types[key]
+  return {
+    '',
+    '',
+    '    return ' .. return_types[key] .. ';',
+  }
 end
 
 local determine_method_body = function (_)
@@ -49,11 +53,10 @@ local determine_method_body = function (_)
       return sn(nil, fmt(
         [[: {}
 {{
-    {}
-    return{};
+    {}{}
 }}
                   ]], {
-          i(1, 'return_value'),
+          i(1, 'void'),
           i(2, ''),
           f(
             get_default_return_type,
