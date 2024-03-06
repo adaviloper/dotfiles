@@ -1,5 +1,4 @@
 local not_in_nodes_condition = function (ignored_nodes)
-  vim.pretty_print('hit')
   return function ()
     local pos = vim.api.nvim_win_get_cursor(0)
     local row, col = pos[1] - 1, pos[2] - 1
@@ -7,7 +6,6 @@ local not_in_nodes_condition = function (ignored_nodes)
     local node_type = vim.treesitter.get_node({
       pos = { row, col }
     }):type()
-    vim.pretty_print(vim.tbl_contains(ignored_nodes, node_type))
 
     return not vim.tbl_contains(ignored_nodes, node_type)
   end

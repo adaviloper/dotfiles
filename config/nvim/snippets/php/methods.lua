@@ -85,7 +85,7 @@ return
         }
       )
     ),
-    s('__construct',
+    s('mcon',
       fmt(
         [[
         public function __construct({})
@@ -99,16 +99,19 @@ return
         }
       )
     ),
-    s('__call',
+    s('mcall',
       fmt(
         [[
-        public function __call({})
+        public function __call{}($name, $arguments)
         {{
             {}
         }}
         ]],
         {
-          i(1, ''),
+          c(1, {
+            t(''),
+            t('Static')
+          }),
           i(0, ''),
         }
       )
