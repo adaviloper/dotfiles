@@ -52,7 +52,15 @@ end
 return {
   -- first key is the mode
   n = {
-    ["<Leader><Leader>s"] = { "<cmd>source ~/.config/nvim/lua/plugins/luasnip.lua<cr>"},
+    ["<Leader><Leader>s"] = {
+      function ()
+        local file_type = vim.bo.filetype
+        local files = vim.split(vim.fn.glob('~/.config/nvim/snippets/' .. file_type .. '/*'), '\n')
+        for _, file in pairs(files) do
+          require("luasnip.loaders").reload_file(file)
+        end
+      end
+    },
     ["<Leader>un"] = { function() vim.o.relativenumber = vim.o.relativenumber ~= true end, desc = 'Toggle relativenumber'},
     ["<Leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- second key is the lefthand side of the map
