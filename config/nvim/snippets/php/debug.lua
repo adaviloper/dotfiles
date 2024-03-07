@@ -26,7 +26,7 @@ dd({}__METHOD__ . ':' . __LINE__);
         [[
 Log::{}({}{});
     ]], {
-          i(1, 'info'),
+          c(1, { t('info'), t('error'), t('warn') }),
           f(function ()
             local node = get_target_node('method_declaration')
             if not node then

@@ -57,7 +57,7 @@ local determine_method_body = function (_)
 }}
                   ]], {
           i(1, 'void'),
-          i(2, ''),
+          i(0, ''),
           f(
             get_default_return_type,
             {1}

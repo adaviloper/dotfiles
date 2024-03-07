@@ -26,7 +26,7 @@ return
       ]],
         {
           d(1, function (_, snip)
-            return sn(1, i(1, snip.captures[1]))
+            return sn(1, t(snip.captures[1]))
           end),
           rep(1),
           i(2, 'limit'),
