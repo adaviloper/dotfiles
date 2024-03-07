@@ -17,29 +17,37 @@ vim.filetype.add {
   },
 }
 
+local empty_file_template = require("helpers.au").empty_file_template
+
 -- Autocommands
--- local php_group = 'PHP Autocommands'
--- vim.api.nvim_create_augroup(php_group, {
---   clear = true,
--- })
---
--- vim.api.nvim_create_autocmd('BufNewFile', {
---   group = php_group,
---   pattern = '*.php',
---   callback = function(event)
---     vim.notify('hit')
---     vim.api.nvim_buf_set_lines(
---       event.buf,
---       0,
---       1,
---       true,
---       {
---         '<?php',
---         '',
---         '',
---       }
---     )
---     vim.cmd('G')
---   end
--- })
+local php = {
+  group = 'PHP Autocommands',
+  pattern = '*.php',
+}
+local vue = {
+  group = 'Vue Autocommands',
+  pattern = '*.vue',
+}
+
+empty_file_template(php['group'], php['pattern'], {
+  '<?php',
+  '',
+  '',
+})
+
+empty_file_template(vue['group'], vue['pattern'], {
+  '<template>',
+  '  <div>',
+  '',
+  '  </div>',
+  '</template>',
+  '',
+  '<script lang="ts" setup>',
+  '',
+  '</script>',
+  '',
+  '<style scoped>',
+  '',
+  '</style>',
+})
 
