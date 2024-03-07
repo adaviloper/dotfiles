@@ -15,6 +15,12 @@ function get_ticket_prefix()
       "Code/figs-recycling-campaign")
           mapped_string="LPR"
           ;;
+      "Code/figs-recycling-campaign/logistics")
+          mapped_string="LPR"
+          ;;
+      "Code/figs-recycling-campaign/infra")
+          mapped_string="LPR"
+          ;;
       "Code/loop-returns-app")
         eval "prefixes=(RET LPR)"
         
