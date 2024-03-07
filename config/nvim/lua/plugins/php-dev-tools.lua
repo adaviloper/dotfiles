@@ -8,7 +8,11 @@ return {
         {
           dir = '~/Code/loop-returns-app',
           cmd = 'docker exec -it core vendor/bin/phpunit --filter',
-        }
+        },
+        {
+          dir = '~/Code/figs-recycling-campaign/logistics',
+          cmd = 'sail test --filter',
+        },
       }
     })
   end,
