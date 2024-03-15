@@ -1,7 +1,6 @@
 #!/bin/bash
 
 function tm() {
-    # SESSIONS=("dots" "loop" "qmk" "figs" "whiplash")
     CONFIG_DIR="$HOME/.config/tmuxp"
 
     # Function to check if a directory exists
@@ -20,22 +19,24 @@ function tm() {
         # Execute tmux commands passed as arguments
         tmux "$@"
     else
-        for config_path in "$CONFIG_DIR"/*.yaml; do
-        # Check if the tmuxp config file exists
-        if [ -f "$config_path" ]; then
-            # Parse session_name from the YAML file
-            local session_name=$(yq e '.session_name' "$config_path")
-            # Parse the first start_directory from the YAML file
-            local start_directory=$(yq e '.start_directory' "$config_path" | awk 'NR==1')
-            
-            if [ -z "$start_directory" ] || check_directory "$start_directory"; then
-                # Load the tmuxp session using the config file
-                tmuxp load -d "$config_path"
-            else
-                echo "Start directory '$start_directory' for config '$config_path' does not exist."
+        SESSIONS="$(gum choose --no-limit "$CONFIG_DIR"/*.yaml)"
+        eval "CONFIG_FILES=($SESSIONS)"
+        for config_path in $CONFIG_FILES; do
+            # Check if the tmuxp config file exists
+            if [ -f "$config_path" ]; then
+                # Parse session_name from the YAML file
+                local session_name=$(yq e '.session_name' "$config_path")
+                # Parse the first start_directory from the YAML file
+                local start_directory=$(yq e '.start_directory' "$config_path" | awk 'NR==1')
+
+                if [ -z "$start_directory" ] || check_directory "$start_directory"; then
+                    # Load the tmuxp session using the config file
+                    tmuxp load -d "$config_path"
+                else
+                    echo "Start directory '$start_directory' for config '$config_path' does not exist."
+                fi
             fi
-        fi
-    done
+        done
         tmux attach -t Dotfiles
     fi
 }
