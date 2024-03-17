@@ -22,13 +22,14 @@ function get_ticket_prefix()
           mapped_string="LPR"
           ;;
       "Code/loop-returns-app")
-        eval "prefixes=(RET LPR)"
+        # eval "prefixes=(RET LPR)"
+        mapped_string=$(gum choose "RET" "LPR")
         
-        select prefix in $prefixes
-        do
-          echo $prefix
-          break
-        done
+        # select prefix in $prefixes
+        # do
+        #   echo $prefix
+        #   break
+        # done
         ;;
       *)
           mapped_string="Unknown directory"
@@ -52,21 +53,8 @@ function clean_local_branches () {
 
 function select_from_matching_branches()
 {
-  grepped_branches=$(git branch ${@:2} | grep "$1" | sed 's/*//')
-  eval "branches=($grepped_branches)"
-  branch_count=${#branches[*]}
-  if (( $branch_count == 0 )); then
-    echo $1
-  elif (( $branch_count == 1 )); then
-    echo "${branches[1]}"
-  else
-    PS3="Select a branch: "
-    select branch in $branches
-    do
-      echo $branch
-      break
-    done
-  fi
+  grepped_branches=$(git branch ${@:2} | grep "$1" | sed 's/^[[:space:]]*[*]*//' | gum choose --select-if-one | sed 's/^[[:space:]]*[*]*//')
+  echo $grepped_branches
 }
 
 function gco () {
