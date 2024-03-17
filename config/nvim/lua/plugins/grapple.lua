@@ -31,6 +31,9 @@ return {
       popup_options = {
         width = 150,
       },
+		  quick_select = 'bcfmnoprtuyz',
+		  style = 'basename',
     })
+    require("telescope").load_extension("grapple")
   end,
 }

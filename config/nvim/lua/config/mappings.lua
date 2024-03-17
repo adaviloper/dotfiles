@@ -95,7 +95,8 @@ return {
     ["<Leader>m"] = { name = "󰓾 Handle file tags" },
     ["<Leader>'"] = { name = "󰓾 Jump to file tags" },
     ["<Leader>mf"] = { function() require('grapple').open_tags() end, desc = "List all tags" },
-    ["<Leader>mF"] = { function() require('grapple').open_scopes() end, desc = "List all scopes" },
+    ["<Leader>mT"] = { "<cmd>Telescope grapple tags", desc = "List all tags" },
+    ["<Leader>mF"] = { function() require('grapple').open_loaded() end, desc = "List all scopes" },
     ["<Leader>ma"] = { function() require("grapple").tag() end, desc = "Add Grapple tag to file" },
     ["<Leader>md"] = { function() require("grapple").untag() end, desc = "Remove file from Grapple tag list" },
 
@@ -236,39 +237,39 @@ return {
     --   desc = 'Auto-add quotes for HTML attributes',
     --   expr = true,
     -- },
-    ["="] = {
-      function()
-        -- The cursor location does not give us the correct node in this case, so we
-        -- need to get the node to the left of the cursor
-        local cursor = vim.api.nvim_win_get_cursor(0)
-        local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
-
-        local language = require('nvim-treesitter.parsers').get_parser():lang()
-        if not vim.tbl_contains({'javascript'}, language) then
-          return '='
-        end
-
-        local node = vim.treesitter.get_node { pos = left_of_cursor_range }
-        if not node then
-          return '='
-        end
-        local html_nodes_active_in = {
-          'attribute_name',
-          'directive_argument',
-          'directive_name',
-          'property_identifier',
-        }
-
-        if vim.tbl_contains(html_nodes_active_in, node:type()) then
-          -- The cursor is not on an attribute node
-          return '=""<left>'
-        end
-
-        return '='
-      end,
-      desc = 'Auto-add quotes for HTML attributes',
-      expr = true,
-    },
+    -- ["="] = {
+    --   function()
+    --     -- The cursor location does not give us the correct node in this case, so we
+    --     -- need to get the node to the left of the cursor
+    --     local cursor = vim.api.nvim_win_get_cursor(0)
+    --     local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
+    --
+    --     local language = require('nvim-treesitter.parsers').get_parser():lang()
+    --     if not vim.tbl_contains({'javascript'}, language) then
+    --       return '='
+    --     end
+    --
+    --     local node = vim.treesitter.get_node { pos = left_of_cursor_range }
+    --     if not node then
+    --       return '='
+    --     end
+    --     local html_nodes_active_in = {
+    --       'attribute_name',
+    --       'directive_argument',
+    --       'directive_name',
+    --       'property_identifier',
+    --     }
+    --
+    --     if vim.tbl_contains(html_nodes_active_in, node:type()) then
+    --       -- The cursor is not on an attribute node
+    --       return '=""<left>'
+    --     end
+    --
+    --     return '='
+    --   end,
+    --   desc = 'Auto-add quotes for HTML attributes',
+    --   expr = true,
+    -- },
     -- Luasnip
     ['<C-k>'] = {
       function ()
