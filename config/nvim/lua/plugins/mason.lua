@@ -39,13 +39,13 @@ return {
       lspconfig.pest_ls.setup({ capabilities = capabilities })
       lspconfig.phpactor.setup({
         capabilities = capabilities,
-        init_options = {
+        -- init_options = {
           -- ['language_server_phpstan.enabled'] = true,
           -- ['language_server_psalm.enabled'] = false,
-        },
-        handlers = {
+        -- },
+        -- handlers = {
           -- ['textDocument/publishDiagnostics'] = function() end,
-        },
+        -- },
       })
       -- lspconfig.tailwindcss.setup({ capabilities = capabilities })
       lspconfig.volar.setup({
@@ -73,6 +73,10 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     -- overrides `require("mason-nvim-dap").setup(...)`
+    enabled = false,
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+    },
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(
