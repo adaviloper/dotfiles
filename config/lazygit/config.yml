@@ -49,6 +49,19 @@ gui:
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
   border: 'single' # one of 'single' | 'double' | 'rounded' | 'hidden'
 git:
+  commitPrefixes:
+    core10:
+      pattern: "^\\w+\\/(\\w+-\\w+)-.*"
+      replace: '[$1] - '
+    whiplash-middleware:
+      pattern: "^\\w+\\/(\\w+-\\w+)-.*"
+      replace: '[$1] - '
+    figs-recycling-campaign:
+      pattern: "^\\w+\\/(\\w+-\\w+)-.*"
+      replace: '[$1] - '
+    loop-returns-app:
+      pattern: "^\\w+\\/(\\w+-\\w+)-.*"
+      replace: '[$1] - '
   paging:
     colorArg: always
     useConfig: false
