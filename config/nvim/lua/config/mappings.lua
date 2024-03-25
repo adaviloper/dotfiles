@@ -143,10 +143,21 @@ return {
     ["<C-o>"] = { "<C-o>zz", desc = "Jump backward and center" },
 
     -- Copying
-    ['<localleader>y'] = { name = '󰆏 Copy...' },
-    ['<localleader>yp'] = { function() vim.fn.setreg('+', vim.fn.expand('%:p:.')) end, desc = 'Copy file path' },
-    ['<localleader>yd'] = { function() vim.fn.setreg('+', vim.fn.expand('%:h')) end, desc = 'Copy directory path' },
-    ['<localleader>yf'] = { function() vim.fn.setreg('+', vim.fn.expand('%:t:r')) end, desc = 'Copy file name' },
+    ['<LocalLeader>y'] = { name = '󰆏 Copy...' },
+    ['<LocalLeader>yp'] = { function() vim.fn.setreg('+', vim.fn.expand('%:p:.')) end, desc = 'Copy file path' },
+    ['<LocalLeader>yd'] = { function() vim.fn.setreg('+', vim.fn.expand('%:h')) end, desc = 'Copy directory path' },
+    ['<LocalLeader>yf'] = { function() vim.fn.setreg('+', vim.fn.expand('%:t:r')) end, desc = 'Copy file name' },
+    ['<LocalLeader>g'] = { name = 'Miscellaneous' },
+    ['<LocalLeader>gx'] = {
+      function()
+        if vim.bo.filetype ~= 'lua' then
+          return
+        end
+        local path = vim.treesitter.get_node_text(vim.treesitter.get_node(), 0)
+        vim.cmd('!open https://github.com/'..path)
+      end,
+      desc = 'Open plugin repo in browser'
+    },
 
     -- Scratch
     ['<C-n>'] = {
