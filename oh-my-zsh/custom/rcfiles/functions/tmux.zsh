@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function load() {
+    tmuxp load -d $1
+}
+
 function tm() {
     CONFIG_DIR="$HOME/.config/tmuxp"
 
