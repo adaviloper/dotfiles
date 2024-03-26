@@ -321,6 +321,7 @@ return {
     ["<"] = { "<gv", desc = "Unindent without losing selection" },
     [">"] = { ">gv", desc = "Indent without losing selection" },
     ["p"] = { '"_dP', desc = "Paste yanked text without losing the original contents" },
+    ["y"] = { "ymy", desc = "Yank in visual mode without losing cursor position" },
     ["<Leader>/"] = {
       "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>j",
       desc = "Toggle comment for selection",
