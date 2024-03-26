@@ -1,0 +1,13 @@
+session_name: Plugins
+start_directory: ~/Code/
+windows:
+  - window_name: php-dev-tools
+    start_directory: ~/Code/php-dev-tools.nvim/
+    panes:
+      - shell_command:
+        - cmd: 'c'
+  - window_name: telescope-env
+    start_directory: ~/Code/telescope-env/
+    panes:
+      - shell_command:
+        - cmd: 'c'
