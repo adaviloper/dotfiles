@@ -6,6 +6,11 @@ windows:
       - shell_command:
         - cmd: 'c'
         - cmd: 'vim'
+  - window_name: AstroNvim
+    start_directory: '~/.local/share/nvim/lazy/AstroNvim/'
+    panes:
+      - shell_command:
+        - cmd: 'c'
   - window_name: AstroCore
     start_directory: '~/.local/share/nvim/lazy/astrocore'
     panes:
