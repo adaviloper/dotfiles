@@ -168,7 +168,19 @@ return {
           {prompt = 'Filetype:'},
           function (choice)
             local ft = getFileExtension(choice)
-            require('scratch').scratchByType(ft)
+            vim.ui.input(
+              {
+                prompt = 'File name',
+                default = nil,
+              },
+              function (name)
+                if name ~= nil and name ~= '' then
+                  require('scratch').scratchByName(name .. '.' .. ft)
+                else
+                  require('scratch').scratchByType(ft)
+                end
+              end
+            )
           end
         )
       end,
