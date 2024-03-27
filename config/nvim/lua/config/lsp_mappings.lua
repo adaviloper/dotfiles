@@ -5,7 +5,7 @@ return {
       function ()
         -- require('php-dev-tools.go_to').go_to_definition()
         require('telescope.builtin').lsp_definitions()
-        -- vim.cmd('norm zt')
+        vim.cmd('norm zt')
       end,
       desc = "Go to definition",
     },
