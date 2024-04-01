@@ -122,6 +122,7 @@ return {
 
     -- NeoTeset
     ["<F4>"] = { name = "Testing", },
+    ["<F4><F4>"] = { function() require('php-dev-tools.test_utils').test_last_test() end, desc = "Rerun the previous test", },
     ["<F4>n"] = { function() require('php-dev-tools.test_utils').test_nearest_method() end, desc = "Run nearest test" },
     ["<F4>f"] = { function() require('php-dev-tools.test_utils').test_current_file() end, desc = "Test the entire file" },
 
@@ -158,6 +159,8 @@ return {
       end,
       desc = 'Open plugin repo in browser'
     },
+
+    ['<F3>'] = { '<cmd>PhpactorContextMenu<CR>', desc = 'Show the context menu for the current cursor position' },
 
     -- Scratch
     ['<C-n>'] = {
