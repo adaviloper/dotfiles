@@ -5,10 +5,10 @@ return
         'console.{}("{}", {});',
         {
           c(1, {
-            t('table'),
             t('log'),
             t('error'),
             t('warn'),
+            t('table'),
             t('info'),
           }),
           f(function (args)
