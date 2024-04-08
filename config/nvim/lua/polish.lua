@@ -42,11 +42,11 @@ empty_file_template(vue['group'], vue['pattern'], {
   '  </div>',
   '</template>',
   '',
-  '<script lang="ts" setup>',
+  '<script setup lang="ts">',
   '',
   '</script>',
   '',
-  '<style scoped>',
+  '<style lang="scss" scoped>',
   '',
   '</style>',
 })
