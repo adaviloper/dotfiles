@@ -1,21 +1,49 @@
 #!/bin/bash
 
+# Function to check if a directory exists
+function check_directory() {
+    local expanded_path=$(eval echo $1)
+    if [ -d "$expanded_path" ]; then
+        return 0  # Directory exists
+    else
+        return 1  # Directory does not exist
+    fi
+}
+
+_load_completion() {
+    CONFIG_DIR="$HOME/.config/tmuxp"
+    local cur_word
+    COMPREPLY=()
+    cur_word="${COMP_WORDS[COMP_CWORD]}"
+    YAML_FILES=("$CONFIG_DIR"/*.yaml)
+
+    # Filter YAML files based on the start_directory key
+    VALID_YAML_FILES=()
+    for yaml_file in "${YAML_FILES[@]}"; do
+        start_directory=$(yq e '.start_directory' "$yaml_file" | awk 'NR==1')
+        if [ -z "$start_directory" ] || check_directory "$start_directory"; then
+            VALID_YAML_FILES+=("$yaml_file")
+        fi
+    done
+
+    # Extract just the file names without the path or extension
+    YAML_FILES_BASENAMES=()
+    for file in "${VALID_YAML_FILES[@]}"; do
+        file_basename=$(basename "$file" .yaml)
+        YAML_FILES_BASENAMES+=("$file_basename")
+    done
+
+    # Generate autocomplete suggestions
+    COMPREPLY=($(compgen -W "${YAML_FILES_BASENAMES[*]}" -- "$cur_word"))
+}
+
 function load() {
     tmuxp load -d $1
 }
+complete -F _load_completion load
 
 function tm() {
     CONFIG_DIR="$HOME/.config/tmuxp"
-
-    # Function to check if a directory exists
-    check_directory() {
-        local expanded_path=$(eval echo $1)
-        if [ -d "$expanded_path" ]; then
-            return 0  # Directory exists
-        else
-            return 1  # Directory does not exist
-        fi
-    }
 
     # Check if there are any arguments
     if [ "$#" -gt 0 ]; then
