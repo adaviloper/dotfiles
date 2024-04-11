@@ -7,7 +7,7 @@ return {
       test_utils = {
         {
           dir = '~/Code/loop-returns-app',
-          cmd = 'docker exec -it core vendor/bin/phpunit --filter',
+          cmd = './script/tests --filter',
         },
         {
           dir = '~/Code/figs-recycling-campaign/logistics',
