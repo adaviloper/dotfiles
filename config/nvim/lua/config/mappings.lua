@@ -89,6 +89,43 @@ return {
       end,
       desc = "Close buffer",
     },
+    ["<Leader>f<C-w>"] = {
+      function()
+        vim.ui.select(
+          {
+            'blade.php',
+            'css',
+            'html',
+            'js',
+            'json',
+            'jsx',
+            'md',
+            'php',
+            'sass',
+            'scss',
+            'spec.js',
+            'spec.ts',
+            'ts',
+            'tsx',
+            'txt',
+            'vue',
+          },
+          {
+            prompt = 'Select File Extension'
+          },
+          function (selection)
+            local type = selection
+            if type ~= nil then
+              require("telescope.builtin").live_grep({
+                use_regex = false,
+                glob_pattern = '*.'..type,
+              })
+            end
+          end
+        )
+      end,
+      desc = "Find regex words"
+    },
     -- Bookmarks
     ["<Leader>fS"] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = "Search for symbol in workspace" },
     -- Grapple
