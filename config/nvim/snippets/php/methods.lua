@@ -33,9 +33,7 @@ local get_default_return_type = function (return_value_args)
     return ''
   end
   return {
-    '',
-    '',
-    '    return ' .. return_types[key] .. ';',
+    'return ' .. return_types[key] .. ';',
   }
 end
 
@@ -116,8 +114,22 @@ return
         }
       )
     ),
+    s('prov',
+      fmt([[
+      public static function {}(): array
+      {{
+          return [
+              {}
+          ];
+      }}
+      ]],
+        {
+          i(1, ''),
+          i(0, ''),
+        }
+      )
+    )
   },
   -- Autosnippets
   {
-
   }
