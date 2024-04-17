@@ -94,21 +94,28 @@ return {
         vim.ui.select(
           {
             'blade.php',
+            'conf',
             'css',
             'html',
             'js',
             'json',
             'jsx',
+            'lua',
             'md',
             'php',
             'sass',
             'scss',
+            'sh',
             'spec.js',
             'spec.ts',
+            'toml',
             'ts',
             'tsx',
             'txt',
             'vue',
+            'yaml',
+            'yml',
+            'zsh',
           },
           {
             prompt = 'Select File Extension'
@@ -236,6 +243,9 @@ return {
 
     -- Git
     ["<Leader>gB"] = { '<cmd>G blame<cr>', desc = 'Commit annotations'},
+
+    ["ga"] = { 'GA', desc = 'Start inserting at the end of the last line'},
+    ["go"] = { 'Go', desc = 'Start inserting after the last line'},
   },
   i = {
     -- [":"] = {
