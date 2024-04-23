@@ -1,10 +1,10 @@
 prSections:
-- title: My Pull Requests
-  filters: is:open author:@me
 - title: Needs My Review
-  filters: is:open review-requested:@me
+  filters: is:open review-requested:@me draft:false -base:main
 - title: Involved
   filters: is:open involves:@me -author:@me
+- title: My Pull Requests
+  filters: is:open author:@me
 issuesSections:
 - title: My Issues
   filters: is:open author:@me
@@ -15,7 +15,7 @@ issuesSections:
 defaults:
   preview:
     open: true
-    width: 50
+    width: 80
   prsLimit: 20
   issuesLimit: 20
   view: prs
