@@ -16,6 +16,36 @@ return
         }
       )
     ),
+    s(
+      '/**',
+      fmt(
+        [[
+        /** @var {} {} */
+        ]],
+        {
+          i(1, ''),
+          d(2, function (args)
+            local pos = vim.api.nvim_win_get_cursor(0)
+            local next_line = vim.api.nvim_buf_get_lines(0, pos[1] + 0, pos[1] + 1, false)
+            vim.notify(vim.inspect(next_line))
+            local statement = vim.split(next_line[1], '=', { trimempty = true })
+
+            if string.find(next_line[1], '=') ~= nil then
+              return sn(0,
+                {
+                  t(vim.trim(statement[1])),
+                  i(0, ''),
+                }
+              )
+            end
+
+            return sn(nil, {
+              i(1, '')
+            })
+          end)
+        }
+      )
+    ),
   },
   {
     -- s(
