@@ -4,7 +4,35 @@ local ls = require('luasnip')
 local function setFileTag(tagName)
   return {
     function()
-      require('grapple').tag({ name = tagName })
+      local grapple = require("grapple")
+      if not grapple.exists({ name = tagName }) then
+        grapple.tag({ name = tagName })
+      else
+        local tag = grapple.find({ name = tagName })
+        if tag == nil then
+          return
+        end
+        local file_path = tag.path
+        local root = vim.loop.cwd()
+
+        local file_name = string.gsub(file_path, tostring(root), '')
+
+        vim.ui.select(
+          {
+            'yes',
+            'no',
+            -- file_path,
+            -- file_name,
+            -- root,
+          },
+          { prompt = 'Overwrite [' .. tag.name .. ']'},
+          function (selection)
+            if selection ~= nil and selection == 'yes' then
+              grapple.tag({ name = tagName })
+            end
+          end
+        )
+      end
     end,
     desc = 'Tag as [' .. tagName .. ']'
   }
@@ -154,6 +182,8 @@ return {
     ["<Leader>'e"] = jumpToFileTag("secondary"),
     ["<Leader>mr"] = setFileTag("tertiary"),
     ["<Leader>'r"] = jumpToFileTag("tertiary"),
+    ["<Leader>mu"] = setFileTag("scratch"),
+    ["<Leader>'u"] = jumpToFileTag("scratch"),
     ["<Leader>ml"] = setFileTag("log"),
     ["<Leader>'l"] = jumpToFileTag("log"),
 
