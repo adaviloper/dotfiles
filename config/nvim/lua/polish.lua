@@ -51,3 +51,18 @@ empty_file_template(vue['group'], vue['pattern'], {
   '</style>',
 })
 
+empty_file_template(php['group'], '*Test.php', {
+  '<?php',
+  '',
+  'namespace CoreReturns;',
+  '',
+  'use PHPUnit\\Framework\\Attributes\\CoversClass;',
+  'use PHPUnit\\Framework\\Attributes\\Group;',
+  'use Tests\\Feature\\TestCase;',
+  '',
+  '#[CoversClass(), Group()]',
+  'class TestClass extends TestCase',
+  '{',
+  '    ',
+  '}',
+})
