@@ -11,7 +11,7 @@ local get_target_node = function(node_name)
 end
 
 return
-  -- Autosnippets
+  -- Snippets
   {
     -- Public function 
     s('dml',
