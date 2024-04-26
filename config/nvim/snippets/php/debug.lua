@@ -36,11 +36,9 @@ dd({}__METHOD__ . ':' . __LINE__);
                   )
                 end
 
-                if statement[1] == nil or statement[1] == '' then
-                  return sn(nil, {
-                    i(1, '')
-                  })
-                end
+                return sn(nil, {
+                  i(1, '')
+                })
               end)
             }
           ),
