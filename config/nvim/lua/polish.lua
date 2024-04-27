@@ -28,10 +28,18 @@ local php = {
   group = 'PHP Autocommands',
   pattern = '*.php',
 }
+local bash = {
+  group = 'Bash Autocommands',
+  pattern = '*.sh',
+}
 local vue = {
   group = 'Vue Autocommands',
   pattern = '*.vue',
 }
+
+empty_file_template(bash['group'], bash['pattern'], {
+  '#!/bin/bash'
+})
 
 empty_file_template(php['group'], php['pattern'], {
   '<?php',
