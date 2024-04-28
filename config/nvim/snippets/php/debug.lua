@@ -1,3 +1,5 @@
+local ts = vim.treesitter
+local get_node_text = ts.get_node_text
 local get_target_node = function(node_name)
   local node = vim.treesitter.get_node()
 
@@ -7,6 +9,34 @@ local get_target_node = function(node_name)
     end
 
     node = node:parent()
+  end
+end
+
+local get_above_assignment = function ()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  vim.api.nvim_win_set_cursor(0, { pos[1] - 1, pos[2] })
+  vim.cmd('norm $')
+  --- @type TSNode|nil {node}
+  local node = ts.get_node()
+
+  if not node then
+    vim.notify('No target node found.')
+    return
+  end
+
+  local assignment_query = [[
+  (expression_statement
+    (assignment_expression
+      left: (_) @var
+      )
+    ) @expression
+]]
+  local query = ts.query.parse('php', assignment_query)
+  for i, match, _ in query:iter_captures(node, 0) do
+    local name = query.captures[i]
+    if name == 'var' then
+      return get_node_text(match, 0)
+    end
   end
 end
 
@@ -25,13 +55,20 @@ dd({}__METHOD__ . ':' . __LINE__);
               d(1, function (args)
                 local pos = vim.api.nvim_win_get_cursor(0)
                 local prev_line = vim.api.nvim_buf_get_lines(0, pos[1] - 2, pos[1] - 1, false)
-                local statement = vim.split(prev_line[1], '=', { trimempty = true })
+                if prev_line[1] == '' then
+                  return sn(nil, {
+                    i(1, '')
+                  })
+                end
+                local target_variable = get_above_assignment()
 
-                if string.find(prev_line[1], '=') ~= nil then
+                if target_variable ~= nil then
+                  vim.api.nvim_win_set_cursor(0, pos)
                   return sn(0,
                     {
-                      t(vim.trim(statement[1]) .. ', '),
+                      t(vim.trim(target_variable) .. ''),
                       i(0, ''),
+                      t(', '),
                     }
                   )
                 end
