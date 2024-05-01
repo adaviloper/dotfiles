@@ -159,7 +159,7 @@ return {
           end
         )
       end,
-      desc = "Find regex words"
+      desc = "Find regex words by file type"
     },
     -- Bookmarks
     ["<Leader>fS"] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = "Search for symbol in workspace" },
