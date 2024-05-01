@@ -37,14 +37,12 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 info "Running [rcup]"
 rcup -f
 
-info "Running [nvim.sh]"
-sh ~/.dotfiles/scripts/nvim.sh
-
-info "Switching shell to ZSH"
-chsh -s $(which zsh)
-
 info "Installing TPM"
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 info "Updating OSX default settings"
 sh ~/.dotfiles/scripts/osx.sh
+
+info "Switching shell to ZSH"
+chsh -s $(which zsh)
+
