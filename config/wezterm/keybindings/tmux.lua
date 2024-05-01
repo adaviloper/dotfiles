@@ -7,7 +7,23 @@ local tmuxPrefix = act.SendKey({ key = ' ', mods = 'CTRL' })
 
 function M.getKeybindings()
   return {
-    { -- Switch to previously client
+    { -- Switch to Dotfiles session
+      key = '.',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = '.' }),
+      })
+    },
+    { -- Kill current session
+      key = 'w',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'q' }),
+      })
+    },
+    { -- Switch to previous window
       key = 'l',
       mods = 'CMD',
       action = act.Multiple({
@@ -15,7 +31,7 @@ function M.getKeybindings()
         act.SendKey({ key = 'l' }),
       })
     },
-    { -- Switch to previously client
+    { -- Switch to previous session
       key = 'h',
       mods = 'CMD',
       action = act.Multiple({
