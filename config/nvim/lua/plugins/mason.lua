@@ -14,6 +14,7 @@ return {
           'marksman',
           'phpactor',
           'tailwindcss',
+          'tsserver',
           'volar',
         }
       )
@@ -47,11 +48,8 @@ return {
           -- ['textDocument/publishDiagnostics'] = function() end,
         -- },
       })
-      -- lspconfig.tailwindcss.setup({ capabilities = capabilities })
-      lspconfig.volar.setup({
-        capabilities = capabilities,
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-      })
+      lspconfig.tailwindcss.setup({ capabilities = capabilities })
+
       return opts
     end
   },

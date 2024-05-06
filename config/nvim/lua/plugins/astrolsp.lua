@@ -50,6 +50,39 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' }
+            }
+          }
+        }
+      },
+      tsserver = {
+        init_options = {
+          plugins = {
+            {
+              name = '@vue/typescript-plugin',
+              location = '/opt/homebrew/lib/node_modules/@vue/typescript-plugin',
+              languages = {
+                'javascript',
+                'typescript',
+                'vue',
+              },
+            },
+          },
+        },
+        -- capabilities = capabilities,
+        filetypes = {
+          'javascript',
+          'typescript',
+          'vue',
+        },
+      },
+      volar = {
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+      },
     },
     -- customize how language servers are attached
     handlers = {
