@@ -82,7 +82,7 @@ return {
       status.component.file_info({
         hl = { fg = mocha.text },
         filename = {
-          modify = ':.',
+          modify = ':t',
         },
         filetype = false,
         -- file_modified = true,
