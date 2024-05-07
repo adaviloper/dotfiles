@@ -1,11 +1,13 @@
 local not_in_nodes_condition = function (ignored_nodes)
   return function ()
     local pos = vim.api.nvim_win_get_cursor(0)
-    local row, col = pos[1] - 1, pos[2] - 1
+    local row, col = pos[1], pos[2]
 
     local node_type = vim.treesitter.get_node({
       pos = { row, col }
     }):type()
+    -- P(node_type)
+    -- P(ignored_nodes)
 
     return not vim.tbl_contains(ignored_nodes, node_type)
   end
@@ -36,11 +38,12 @@ return
       )
     ),
   },
+  -- Autosnippets
   {
     s(
       {
         trig = 'el ',
-        condition = not_in_nodes_condition({ 'string', 'comment' }),
+        condition = not_in_nodes_condition({ 'name', 'string', 'comment' }),
       },
       fmt(
         [[
@@ -73,7 +76,7 @@ return
     s(
       {
         trig = 'if ',
-        condition = not_in_nodes_condition({ 'string', 'comment' }),
+        condition = not_in_nodes_condition({ 'name', 'string', 'comment' }),
       },
       fmt(
         [[
