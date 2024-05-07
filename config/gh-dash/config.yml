@@ -5,6 +5,8 @@ prSections:
   filters: is:open involves:@me -author:@me
 - title: My Pull Requests
   filters: is:open author:@me
+- title: Team Pull Requests
+  filters: is:open team:LoopReturns/team-logisticats
 issuesSections:
 - title: My Issues
   filters: is:open author:@me
