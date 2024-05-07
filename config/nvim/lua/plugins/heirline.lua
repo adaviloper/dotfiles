@@ -4,7 +4,8 @@ return {
   "rebelot/heirline.nvim",
   opts = function(_, opts)
     local status = require("astroui.status")
-    local hl = require "astroui.status.hl"
+    local grapple = require('grapple')
+    local conditions = require('heirline.conditions')
 
     opts.statusline = { -- statusline
       hl = { fg = "fg", bg = "bg" },
@@ -27,8 +28,6 @@ return {
       status.component.git_branch(),
       status.component.file_info({
         provider = function (self)
-          local grapple = require('grapple')
-          local conditions = require('heirline.conditions')
           -- first, trim the pattern relative to the current directory. For other
           -- options, see :h filename-modifers
           local filename = vim.fn.fnamemodify(self.filename, ":.")
