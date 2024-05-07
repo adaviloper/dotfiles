@@ -1,3 +1,4 @@
+local astro = require "astrocore"
 local utils = require('helpers.utils')
 local ls = require('luasnip')
 
@@ -62,6 +63,34 @@ local function getFileTypes()
   }
 end
 
+local function getFileExtensions()
+  return {
+    'blade.php',
+    'conf',
+    'css',
+    'html',
+    'js',
+    'json',
+    'jsx',
+    'lua',
+    'md',
+    'php',
+    'sass',
+    'scss',
+    'sh',
+    'spec.js',
+    'spec.ts',
+    'toml',
+    'ts',
+    'tsx',
+    'txt',
+    'vue',
+    'yaml',
+    'yml',
+    'zsh',
+  }
+end
+
 local function getFileExtension(ft)
   local ext_map = {
     ['CSS'] = 'css',
@@ -75,6 +104,26 @@ local function getFileExtension(ft)
     ['TypeScript'] = 'ts',
   }
   return ext_map[ft]
+end
+
+local function searchThroughFileType(command)
+  return function ()
+    vim.ui.select(
+      getFileExtensions(),
+      {
+        prompt = 'Select File Extension'
+      },
+      function (selection)
+        local extension = selection
+        if extension ~= nil then
+          require("telescope.builtin")[command]({
+            use_regex = false,
+            glob_pattern = '*.'..extension,
+          })
+        end
+      end
+    )
+  end
 end
 
 return {
@@ -117,52 +166,6 @@ return {
       end,
       desc = "Close buffer",
     },
-    ["<Leader>f<C-w>"] = {
-      function()
-        vim.ui.select(
-          {
-            'blade.php',
-            'conf',
-            'css',
-            'html',
-            'js',
-            'json',
-            'jsx',
-            'lua',
-            'md',
-            'php',
-            'sass',
-            'scss',
-            'sh',
-            'spec.js',
-            'spec.ts',
-            'toml',
-            'ts',
-            'tsx',
-            'txt',
-            'vue',
-            'yaml',
-            'yml',
-            'zsh',
-          },
-          {
-            prompt = 'Select File Extension'
-          },
-          function (selection)
-            local type = selection
-            if type ~= nil then
-              require("telescope.builtin").live_grep({
-                use_regex = false,
-                glob_pattern = '*.'..type,
-              })
-            end
-          end
-        )
-      end,
-      desc = "Find regex words by file type"
-    },
-    -- Bookmarks
-    ["<Leader>fS"] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = "Search for symbol in workspace" },
     -- Grapple
     ["<Leader>m"] = { name = "󰓾 Handle file tags" },
     ["<Leader>'"] = { name = "󰓾 Jump to file tags" },
@@ -194,6 +197,11 @@ return {
     n = { utils.better_search "nzz", desc = "Next search" },
     N = { utils.better_search "Nzz", desc = "Previous search" },         -- quick save
 
+    -- CLI TUIs
+    ["<F8>"] = { name = "CLI TUIs" },
+    ["tg"] = { function () astro.toggle_term_cmd('gh dash') end, desc = "Toggleterm Github Dash" },
+    ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
+
     -- NeoTeset
     ["<F4>"] = { name = "Testing", },
     ["<F4><F4>"] = { function() require('php-dev-tools.test_utils').test_last_test() end, desc = "Rerun the previous test", },
@@ -205,6 +213,15 @@ return {
     ['<Leader>fd'] = { '<cmd>Telescope dir live_grep<CR>', desc = 'Find words in directory' },
     ['<Leader>fe'] = { '<cmd>Telescope telescope-env env_values theme=dropdown<CR>', desc = 'Find env values' },
     ["<Leader>f_"] = { '<cmd>ScratchOpen<cr>', desc = "Open a Scratch file" },
+    ["<Leader>fS"] = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = "Search for symbol in workspace" },
+    ["<Leader>f<C-w>"] = {
+      searchThroughFileType('live_grep'),
+      desc = "Find regex words by file type"
+    },
+    ["<Leader>f<C-f>"] = {
+      searchThroughFileType('find_files'),
+      desc = "Find regex files by file type"
+    },
 
     -- Notify
     ["<Leader>uD"] = { function() require('notify').dismiss() end, desc = 'Dismiss all displayed notifications'},
