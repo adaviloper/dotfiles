@@ -7,12 +7,15 @@ return {
       test_utils = {
         {
           dir = '~/Code/loop-returns-app',
-          cmd = './script/tests --filter',
+          cmd = './script/tests',
           -- cmd = 'docker exec -it core vendor/bin/phpunit --filter',
+          groups = {
+            'easyship',
+          },
         },
         {
           dir = '~/Code/figs-recycling-campaign/logistics',
-          cmd = 'sail test --filter',
+          cmd = 'sail test',
         },
       }
     })
