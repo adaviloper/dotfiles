@@ -207,6 +207,7 @@ return {
     ["<F4><F4>"] = { function() require('php-dev-tools.test_utils').test_last_test() end, desc = "Rerun the previous test", },
     ["<F4>n"] = { function() require('php-dev-tools.test_utils').test_nearest_method() end, desc = "Run nearest test" },
     ["<F4>f"] = { function() require('php-dev-tools.test_utils').test_current_file() end, desc = "Test the entire file" },
+    ["<F4>g"] = { function() require('php-dev-tools.test_utils').test_group() end, desc = "Select a group to test" },
 
     -- Telescope
     ["<Leader>fo"] = { function() require("telescope.builtin").oldfiles({ cwd_only = true }) end, desc = "Find history" },
