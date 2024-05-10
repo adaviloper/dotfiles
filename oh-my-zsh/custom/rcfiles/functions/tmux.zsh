@@ -36,10 +36,6 @@ _load_completion() {
     # Generate autocomplete suggestions
     COMPREPLY=($(compgen -W "${YAML_FILES_BASENAMES[*]}" -- "$cur_word"))
 }
-
-function load() {
-    tmuxp load -d $1
-}
 complete -F _load_completion load
 
 function tm() {

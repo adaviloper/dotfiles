@@ -1,5 +1,5 @@
 EXCLUDES="apps Brewfile phpstorm scripts work-settings.jar xbindkeysrc.scm"
 
-SYMLINK_DIRS="config/nvim config/wezterm config/tmuxp"
+SYMLINK_DIRS="config/bin config/nvim config/tmuxp config/wezterm"
 
 UNDOTTED="intelephense Library"
