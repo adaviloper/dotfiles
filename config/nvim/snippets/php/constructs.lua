@@ -76,7 +76,7 @@ return
     s(
       {
         trig = 'if ',
-        condition = not_in_nodes_condition({ 'name', 'string', 'comment' }),
+        condition = not_in_nodes_condition({ 'string', 'comment' }),
       },
       fmt(
         [[
