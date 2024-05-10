@@ -15,6 +15,30 @@ function M.getKeybindings()
         act.SendKey({ key = '.' }),
       })
     },
+    { -- Switch to Dotfiles session
+      key = 'u',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'u' }),
+      })
+    },
+    { -- Switch to Dotfiles session
+      key = 'i',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'i' }),
+      })
+    },
+    { -- Switch to Dotfiles session
+      key = 'o',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'o' }),
+      })
+    },
     { -- Kill current session
       key = 'w',
       mods = 'CMD',
