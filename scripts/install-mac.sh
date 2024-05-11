@@ -31,8 +31,8 @@ sh ~/.dotfiles/scripts/post-install.sh
 info "Installing Oh-My-ZSH"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -- --unattended)"
 
-info "Installing Zsh-AutoSuggestions"
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+# info "Installing Zsh-AutoSuggestions"
+# git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 info "Running [rcup]"
 rcup -f
