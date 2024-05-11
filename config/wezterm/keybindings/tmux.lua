@@ -40,7 +40,7 @@ function M.getKeybindings()
       })
     },
     { -- Kill current session
-      key = 'w',
+      key = 'y',
       mods = 'CMD',
       action = act.Multiple({
         tmuxPrefix,
