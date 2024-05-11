@@ -64,7 +64,6 @@ plugins=(
   composer
   git
   zoxide
-  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
