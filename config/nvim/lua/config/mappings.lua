@@ -129,6 +129,8 @@ end
 return {
   -- first key is the mode
   n = {
+    ["<C-Tab>"] = { "gt", desc = "Go to next tab"},
+    ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab"},
     ["<Leader><Leader>s"] = {
       function ()
         local file_type = vim.bo.filetype
