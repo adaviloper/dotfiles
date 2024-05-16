@@ -42,10 +42,17 @@ return {
         layout_config = {
           prompt_position = 'top',
         },
-        path_display = function (opts, path)
-          local tail = require('telescope.utils').path_tail(path)
-          return string.format("%s -- (%s)", tail, path)
-        end,
+        -- path_display = function (opts, path)
+        --   local tail = require('telescope.utils').path_tail(path)
+        --   return string.format("%s -- (%s)", tail, path)
+        -- end,
+        path_display = {
+          shorten = {
+            len = 4,
+            exclude = { 1, -1 },
+          },
+          truncate = 3,
+        },
         sorting_strategy = 'ascending',
       },
       pickers = {
