@@ -8,7 +8,7 @@ session_name=$(yq e '.session_name' "$yaml_file_path" | awk 'NR==1')
 
 tmux has-session -t "$session_name" 2>/dev/null
 if [ $? -ne 0 ]; then
-    tmuxp load -d "$session_name"
+    tmuxp load -d "$session_file"
 fi
 
 tmux switch-client -t "$session_name"
