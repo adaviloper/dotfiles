@@ -15,7 +15,7 @@ function M.getKeybindings()
         act.SendKey({ key = '.' }),
       })
     },
-    { -- Switch to Dotfiles session
+    { -- Switch to Loop session
       key = 'u',
       mods = 'CMD',
       action = act.Multiple({
@@ -23,7 +23,7 @@ function M.getKeybindings()
         act.SendKey({ key = 'u' }),
       })
     },
-    { -- Switch to Dotfiles session
+    { -- Switch to Plugins session
       key = 'i',
       mods = 'CMD',
       action = act.Multiple({
@@ -31,7 +31,7 @@ function M.getKeybindings()
         act.SendKey({ key = 'i' }),
       })
     },
-    { -- Switch to Dotfiles session
+    { -- Switch to QMK session
       key = 'o',
       mods = 'CMD',
       action = act.Multiple({
