@@ -1,0 +1,132 @@
+name "Catppuccin"
+
+base {
+    appearance "dark"
+    background #1e1e2e
+    separator #282e36
+    text #cdd6f4
+}
+
+actionBar {
+    separator #252729
+
+    button {
+        hotkey #89b4fa
+        text #cdd6f4
+    }
+}
+
+asyncProgressBar {
+    border #757871
+    progress #a7aba2
+    itemProgress #d9ded3
+}
+
+breadcrumbs {
+    color1 #1e1e2e
+    color2 #2c3641
+    color3 #3c4958
+    separator #5f6265
+    text #89b4fa
+}
+
+files {
+    background {
+        alternate #1e1e2e
+        current #89b4fa
+        currentSelected #89b4fa
+        selected #14191f
+    }
+
+    dragDropSelection {
+        color #bababa
+        width 1
+    }
+
+    text {
+        current #ffffff
+        currentSelected #fab387
+        hidden #9399b2
+        matched #f38ba8
+        selected #fab387
+
+        highlighting1 #89dceb
+        highlighting2 #a6e3a1
+        highlighting3 #f5c2e7
+        highlighting4 #cba6f7
+    }
+}
+
+searchBar {
+    query {
+        border #363731
+        placeholder #66c0c5c8
+    }
+
+    results {
+        highlighting #ffffff
+        selection #89b4fa
+        subtitle #6c7086
+    }
+
+    rowSeparator {
+        color #313437
+        show true
+    }
+}
+
+statusBar {
+    border #1f2429
+    text #9399b2
+    quickSelectNoResultsHighlighting #a60b02
+}
+
+tableHeader {
+    separator #f5c2e7
+    text #fab387
+
+    pressed {
+        background #282e36
+    }
+}
+
+tabs {
+    active {
+        text #989da2
+    }
+
+    inactive {
+        background #171b20
+        text #656666
+    }
+}
+
+terminal {
+    caret {
+        background #3a424a
+        text #ffffff
+    }
+}
+
+textEditor {
+    error #f38ba8
+    warning #402f0d
+    keyword #a6e3a1
+    comment #6c7086
+    identifier #dfbe95
+
+    literal {
+        string #98b884
+        number #6897bb
+        color #6897bb
+    }
+
+    gutter {
+        background #2d3743
+        text #99c0c5c8
+    }
+}
+
+titleBar {
+    text #a7aba2
+}

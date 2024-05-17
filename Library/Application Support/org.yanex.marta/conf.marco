@@ -1,0 +1,18 @@
+behavior {
+    theme "Catppuccin"
+
+    dateFormat {
+        normal "%Y-%M-%D"
+    }
+}
+
+fonts {
+    actionBar [ "Default" 16 ]
+    breadcrumbs [ "Default" 16 ]
+    virtualTabs [ "Default Bold" 16 ]
+    files [ "Default" 16 ]
+    statusBar [ "Default Light" 12 ]
+    tableHeader [ "Default" 16 ]
+    tabs [ "Default" 16 ]
+    preferences [ "Monaco" 16 ]
+}
