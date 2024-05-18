@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function ticket_number()
+{
+  echo $(git_current_branch) | grep -e '[A-Z]*-[0-9]*' -ow
+}
+

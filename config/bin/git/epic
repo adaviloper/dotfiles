@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function epic()
+{
+  ticket_branch 'epic' $1 $2
+}
+
