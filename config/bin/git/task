@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 
-function task()
-{
-  ticket_branch 'task' $1 $2
-}
+ticket_branch 'task' $1 $2
 

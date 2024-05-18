@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 
-function bug()
-{
-  ticket_branch 'bugfix' $1 $2
-}
+ticket_branch 'bugfix' $1 $2
 

@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 
-function story()
-{
-  ticket_branch 'feature' $1 $2
-}
+ticket_branch 'feature' $1 $2
 

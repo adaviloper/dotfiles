@@ -1,6 +1,3 @@
 #!/usr/bin/env bash
 
-function git_commit_prefix()
-{
-  echo "$(ticket_number): "
-}
+echo "$(ticket_number): "
