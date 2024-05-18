@@ -11,6 +11,7 @@ function M.setup(_)
 
       local padding = 30
       local menu_bar_height = 25
+      local laptop_menu_bar_height = 38
       local monitor_ratio = 31 / 9
       local current_ratio = active_screen.width / active_screen.height
 
@@ -18,8 +19,8 @@ function M.setup(_)
         window:gui_window():set_position((active_screen.width) / 4 + padding, padding + menu_bar_height)
         window:gui_window():set_inner_size((active_screen.width - (padding * 4)) / 2, active_screen.height - (padding * 2) - menu_bar_height)
       else
-        window:gui_window():set_position(padding * 2, padding * 2 + menu_bar_height * 2)
-        window:gui_window():set_inner_size((active_screen.width - padding * 4), active_screen.height - (padding * 2) - menu_bar_height)
+        window:gui_window():set_position(padding * 2, padding * 2 + laptop_menu_bar_height * 2)
+        window:gui_window():set_inner_size((active_screen.width - padding * 4), active_screen.height - (padding * 2) - laptop_menu_bar_height)
       end
     end
   )
