@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function gco () {
+  if [[ "$1" == "-" ]]; then
+    git checkout -
+    return
+  else
+    local branch=$(select_from_matching_branches $1)
+    git checkout $branch
+  fi
+}
+

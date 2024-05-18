@@ -1,6 +1,6 @@
 export PATH="/Applications/PhpStorm.app/Contents/bin:$PATH"
 export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.config/bin/git:$PATH"
 export PATH="$HOME/.config/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/opt/arm-none-eabi-gcc@8/bin:$PATH"

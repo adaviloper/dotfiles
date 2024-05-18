@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function revert()
+{
+  ticket_branch 'revert' $1 $2
+}
+

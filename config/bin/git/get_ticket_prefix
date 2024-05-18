@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+function get_ticket_prefix()
+{
+  current_directory="${PWD#$HOME/}"
+
+  PS3="Select a prefix: "
+  case "$current_directory" in
+      "Code/ultimate-tic-tac-toe")
+          mapped_string="UTTT"
+          ;;
+      "Code/figs-recycling-campaign")
+          mapped_string="LPR"
+          ;;
+      "Code/figs-recycling-campaign/logistics")
+          mapped_string="LPR"
+          ;;
+      "Code/figs-recycling-campaign/infra")
+          mapped_string="LPR"
+          ;;
+      "Code/loop-returns-app")
+        # eval "prefixes=(RET LPR)"
+        mapped_string=$(gum choose "RET" "LPR")
+        
+        # select prefix in $prefixes
+        # do
+        #   echo $prefix
+        #   break
+        # done
+        ;;
+      *)
+          mapped_string="Unknown directory"
+          ;;
+  esac
+
+  echo "$mapped_string"
+}
