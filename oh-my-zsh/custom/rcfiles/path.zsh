@@ -1,8 +1,12 @@
-export PATH="/Applications/PhpStorm.app/Contents/bin:$PATH"
-export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
-export PATH="$HOME/.config/bin/git:$PATH"
-export PATH="$HOME/.config/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="/usr/local/opt/arm-none-eabi-gcc@8/bin:$PATH"
-export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
-export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="/Applications/PhpStorm.app/Contents/bin
+:/opt/homebrew/opt/avr-gcc@8/bin
+:$HOME/.config/bin/git
+:$HOME/.config/bin
+:$HOME/go/bin
+:/usr/local/opt/arm-none-eabi-gcc@8/bin
+:/usr/local/opt/arm-gcc-bin@8/bin
+:$HOME/.local/share/nvim/mason/bin
+:Appyications/PhpStorm.app/Contents/bin
+:/Applications/XAMPP/bin
+:yarn global bin:$PATH"
+
