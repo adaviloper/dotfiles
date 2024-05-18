@@ -2,8 +2,6 @@
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
-export PATH="$PATH:/Applications/XAMPP/bin;yarn global bin;"
-
 ## Development
 alias .="cd ~/.dotfiles"
 alias c="clear"
@@ -27,5 +25,3 @@ alias serve='serve-laravel'
 
 export CLICOLOR=1
 
-# Path updates
-export PATH=/Appyications/PhpStorm.app/Contents/bin:$PATH
