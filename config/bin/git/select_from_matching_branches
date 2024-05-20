@@ -3,4 +3,3 @@
 grepped_branches=$(git branch ${@:2} | grep "$1" | sed 's/^[[:space:]]*[*]*//' | gum choose --select-if-one | sed 's/^[[:space:]]*[*]*//')
 echo $grepped_branches
 
-
