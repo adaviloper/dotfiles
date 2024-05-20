@@ -5,6 +5,10 @@ function P(item)
   vim.notify(vim.inspect(item))
 end
 
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  pattern = { '*' },
+  command = [[%s/\s\+$//e]],
+})
 
 -- Set up custom filetypes
 vim.filetype.add {
