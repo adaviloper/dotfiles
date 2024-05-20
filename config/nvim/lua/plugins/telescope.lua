@@ -42,19 +42,18 @@ return {
         layout_config = {
           prompt_position = 'top',
         },
-        path_display = {
-          function (opts, path)
-            local utils = require("telescope.utils")
-            local tail = utils.path_tail(path)
-            path = string.gsub(path, tail, '')
-            return string.format("%s -- %s", tail, path)
-          end
-        },
+        path_display = function (opts, path)
+          local utils = require("telescope.utils")
+          local tail = utils.path_tail(path)
+          return string.format("%s -- %s", tail, path)
+        end,
         sorting_strategy = 'ascending',
       },
       pickers = {
         buffers = {
-          path_display = { "smart" },
+          path_display = {
+            "smart",
+          },
         },
         find_files = {
           -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
