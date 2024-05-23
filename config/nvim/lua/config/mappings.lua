@@ -296,6 +296,10 @@ return {
 
     ["ga"] = { 'GA', desc = 'Start inserting at the end of the last line'},
     ["go"] = { 'Go', desc = 'Start inserting after the last line'},
+
+    -- Undotree
+    ["<Leader>z"] = { name = "Undotree" },
+    ["<Leader>zz"] = { function() require('undotree').toggle() end, desc = "Toggle Undotree" },
   },
   i = {
     -- [":"] = {
