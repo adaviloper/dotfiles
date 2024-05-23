@@ -44,7 +44,7 @@ end
 return
   -- Snippets
   {
-    -- Public function 
+    -- Public function
     s('dml',
       fmt(
         [[
@@ -73,6 +73,7 @@ dd({}__METHOD__ . ':' . __LINE__);
                   )
                 end
 
+                vim.api.nvim_win_set_cursor(0, pos)
                 return sn(nil, {
                   i(1, '')
                 })
