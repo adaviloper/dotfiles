@@ -17,7 +17,7 @@ windows:
       - shell_command:
         - cmd: 'c'
   - window_name: Unicorne
-    start_directory: ./keyboards/boardsource/unicorne/keymaps/default
+    start_directory: ./keyboards/boardsource/unicorne
     panes:
       - shell_command:
         - cmd: 'c'
