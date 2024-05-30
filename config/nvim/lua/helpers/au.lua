@@ -5,9 +5,6 @@ local M = {}
 --- @param pattern string
 --- @param contents string[]
 M.empty_file_template = function (au_group, pattern, contents)
-  vim.api.nvim_create_augroup(au_group, {
-    clear = true,
-  })
 
   vim.api.nvim_create_autocmd('BufEnter', {
     group = au_group,
