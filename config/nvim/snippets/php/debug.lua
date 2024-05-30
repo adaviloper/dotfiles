@@ -35,7 +35,6 @@ local get_above_assignment = function ()
   for i, match, _ in query:iter_captures(node, 0) do
     local name = query.captures[i]
     if name == 'var' then
-      vim.api.nvim_win_set_cursor(0, pos)
       return get_node_text(match, 0)
     end
   end
@@ -62,6 +61,7 @@ dd({}__METHOD__ . ':' . __LINE__);
                   })
                 end
                 local target_variable = get_above_assignment()
+                vim.api.nvim_win_set_cursor(0, pos)
 
                 if target_variable ~= nil then
                   return sn(1,
@@ -73,7 +73,6 @@ dd({}__METHOD__ . ':' . __LINE__);
                   )
                 end
 
-                vim.api.nvim_win_set_cursor(0, pos)
                 return sn(nil, {
                   i(1, '')
                 })
