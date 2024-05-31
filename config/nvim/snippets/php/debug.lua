@@ -17,10 +17,9 @@ local get_above_assignment = function ()
   vim.api.nvim_win_set_cursor(0, { pos[1] - 1, pos[2] })
   vim.cmd('norm $')
   --- @type TSNode|nil {node}
-  local node = ts.get_node()
+  local node = get_target_node('expression_statement')
 
   if not node then
-    vim.notify('No target node found.')
     return
   end
 
