@@ -72,7 +72,7 @@ end
 return
   -- Snippets
   {
-    -- Public function 
+    -- Public function
     s('meth',
       fmt(
         '{} function {}(){}',
@@ -83,7 +83,7 @@ return
         }
       )
     ),
-    s('mcon',
+    s('__con',
       fmt(
         [[
         public function __construct({})
@@ -97,10 +97,10 @@ return
         }
       )
     ),
-    s('mcall',
+    s('__call',
       fmt(
         [[
-        public function {}($name, $arguments)
+        public function {}(string $name, $arguments)
         {{
             {}
         }}
