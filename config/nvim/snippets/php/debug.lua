@@ -1,16 +1,5 @@
-local ts = vim.treesitter
-local get_node_text = ts.get_node_text
-local get_target_node = function(node_name)
-  local node = vim.treesitter.get_node()
-
-  while node ~= nil do
-    if node:type() == node_name then
-      return node
-    end
-
-    node = node:parent()
-  end
-end
+local get_target_node = require('helpers.treesitter').get_target_node
+local parse_query_for_capture = require('helpers.treesitter').parse_query_for_capture
 
 local get_above_assignment = function ()
   local pos = vim.api.nvim_win_get_cursor(0)
@@ -30,14 +19,7 @@ local get_above_assignment = function ()
       )
     ) @expression
 ]]
-  local query = ts.query.parse('php', assignment_query)
-  for i, match, _ in query:iter_captures(node, 0) do
-    local name = query.captures[i]
-    if name == 'var' then
-      vim.api.nvim_win_set_cursor(0, pos)
-      return get_node_text(match, 0)
-    end
-  end
+  return parse_query_for_capture(node, assignment_query, 'var')
 end
 
 return
