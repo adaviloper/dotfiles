@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-ticket_branch 'feature' $1 $2
+ticket_branch 'feature' $1 "$2"
 

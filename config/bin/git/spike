@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-ticket_branch 'spike' $1 $2
+ticket_branch 'spike' $1 "$2"
 
