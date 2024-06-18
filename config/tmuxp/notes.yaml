@@ -1,0 +1,8 @@
+session_name: Obsidian
+start_directory: "~/Documents/Loop"
+windows:
+  - window_name: Root
+    panes:
+      - shell_command:
+        - cmd: 'c'
+        - cmd: "vim"
