@@ -41,16 +41,37 @@ local vue = {
   pattern = '*.vue',
 }
 
+vim.api.nvim_create_augroup(bash['group'], {
+  clear = true,
+})
 empty_file_template(bash['group'], bash['pattern'], {
   '#!/bin/bash'
 })
 
+vim.api.nvim_create_augroup(php['group'], {
+  clear = true,
+})
+empty_file_template(php['group'], '*Test.php', {
+  '<?php',
+  '',
+  'namespace CoreReturns;',
+  '',
+  'use Tests\\Feature\\TestCase;',
+  '',
+  'class TestClass extends TestCase',
+  '{',
+  '    ',
+  '}',
+})
 empty_file_template(php['group'], php['pattern'], {
   '<?php',
   '',
   '',
 })
 
+vim.api.nvim_create_augroup(vue['group'], {
+  clear = true,
+})
 empty_file_template(vue['group'], vue['pattern'], {
   '<template>',
   '  <div>',
@@ -65,20 +86,4 @@ empty_file_template(vue['group'], vue['pattern'], {
   '<style lang="scss" scoped>',
   '',
   '</style>',
-})
-
-empty_file_template(php['group'], '*Test.php', {
-  '<?php',
-  '',
-  'namespace CoreReturns;',
-  '',
-  'use PHPUnit\\Framework\\Attributes\\CoversClass;',
-  'use PHPUnit\\Framework\\Attributes\\Group;',
-  'use Tests\\Feature\\TestCase;',
-  '',
-  '#[CoversClass(), Group()]',
-  'class TestClass extends TestCase',
-  '{',
-  '    ',
-  '}',
 })

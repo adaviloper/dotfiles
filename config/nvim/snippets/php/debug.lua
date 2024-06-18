@@ -43,6 +43,7 @@ dd({}__METHOD__ . ':' . __LINE__);
                   })
                 end
                 local target_variable = get_above_assignment()
+                vim.api.nvim_win_set_cursor(0, pos)
 
                 if target_variable ~= nil then
                   return sn(1,
@@ -54,7 +55,6 @@ dd({}__METHOD__ . ':' . __LINE__);
                   )
                 end
 
-                vim.api.nvim_win_set_cursor(0, pos)
                 return sn(nil, {
                   i(1, '')
                 })
