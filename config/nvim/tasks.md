@@ -4,6 +4,7 @@
 - [ ] Phpactor LSP does not respect PhpStan rules
 
 ## Plugins
+- [ ] Check to see if the `gh-dash` extension is enabled before launching the `gh-dash` terminal
 - [x] Things to synchronize Nvim state with git branch:
     - auto-session context
     - Grapple scopes
