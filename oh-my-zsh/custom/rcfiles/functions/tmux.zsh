@@ -48,7 +48,7 @@ function tm() {
     else
         # Get a list of YAML files in the CONFIG_DIR
         YAML_FILES=("$CONFIG_DIR"/*.yaml)
-        
+
         # Filter YAML files based on start_directory existence
         FILTERED_YAML=()
         for yaml_file in "${YAML_FILES[@]}"; do
