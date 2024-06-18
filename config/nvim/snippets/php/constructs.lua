@@ -37,6 +37,7 @@ return
         }
       )
     ),
+    s('rn', {t('return null;')}),
   },
   -- Autosnippets
   {
