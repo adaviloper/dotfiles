@@ -201,7 +201,8 @@ return {
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
-    ["tg"] = { function () astro.toggle_term_cmd('gh dash') end, desc = "Toggleterm Github Dash" },
+    ["<Leader>tg"] = { function () astro.toggle_term_cmd('gh dash') end, desc = "Toggleterm Github Dash" },
+    ["<Leader>ty"] = { function () astro.toggle_term_cmd('yazi') end, desc = "Toggleterm Yazi" },
     ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
 
     -- NeoTeset
