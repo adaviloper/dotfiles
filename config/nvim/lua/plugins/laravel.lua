@@ -5,6 +5,7 @@ return {
     "tpope/vim-dotenv",
     "MunifTanjim/nui.nvim",
   },
+  enabled = false,
   cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
   keys = {
     { "<leader>La", ":Laravel artisan<cr>" },
