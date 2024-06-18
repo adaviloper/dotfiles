@@ -201,7 +201,8 @@ return {
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
-    ["tg"] = { function () astro.toggle_term_cmd('gh dash') end, desc = "Toggleterm Github Dash" },
+    ["<Leader>tg"] = { function () astro.toggle_term_cmd('gh dash') end, desc = "Toggleterm Github Dash" },
+    ["<Leader>ty"] = { function () astro.toggle_term_cmd('yazi') end, desc = "Toggleterm Yazi" },
     ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
 
     -- NeoTeset
@@ -230,10 +231,6 @@ return {
     ["<Leader>uD"] = { function() require('notify').dismiss() end, desc = 'Dismiss all displayed notifications'},
 
     X = { "x~", desc = "Delete current character and capitalize the next" },
-    ["<Leader>/"] = {
-      "<esc><cmd>lua require('Comment.api').toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>j",
-      desc = "Toggle comment line",
-    },
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
     ["<C-o>"] = { "<C-o>zz", desc = "Jump backward and center" },
 
