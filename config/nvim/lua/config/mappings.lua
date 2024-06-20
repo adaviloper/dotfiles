@@ -201,7 +201,10 @@ return {
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
+    ["<Leader>t?"] = { function () astro.toggle_term_cmd('btm') end, desc = "Toggleterm Btm" },
+    ["<Leader>tb"] = { function () astro.toggle_term_cmd('dbash') end, desc = "Toggleterm Artisan Tinker for current Docker container" },
     ["<Leader>tg"] = { function () astro.toggle_term_cmd('gh dash') end, desc = "Toggleterm Github Dash" },
+    ["<Leader>tt"] = { function () astro.toggle_term_cmd('dart tinker') end, desc = "Toggleterm Artisan Tinker for current Docker container" },
     ["<Leader>ty"] = { function () astro.toggle_term_cmd('yazi') end, desc = "Toggleterm Yazi" },
     ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
 
