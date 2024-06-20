@@ -79,7 +79,7 @@ return {
 
 
       status.component.file_info({
-        hl = { fg = mocha.text },
+        hl = { fg = mocha.maroon },
         filename = {
           modify = ':p:.',
         },
