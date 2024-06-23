@@ -9,6 +9,7 @@ return {
         {
           'bashls',
           'cssls',
+          'gopls',
           'jsonls',
           'lua_ls',
           'marksman',
@@ -19,15 +20,29 @@ return {
         }
       )
       local lspconfig = require('lspconfig')
-      local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      -- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require('astrolsp.config').capabilities
+      local on_attach = require('astrolsp').on_attach
 
       lspconfig.bashls.setup({
         capabilities = capabilities,
         filetypes = { 'sh', 'ttyfast', 'zsh' }
       })
-      -- lspconfig.intelephense.setup({
-      --   capabilities = capabilities,
-      -- })
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { 'go', 'gomod', 'gowork', 'gotmpl'},
+        root_dir = lspconfig.util.root_pattern('go.work', 'go.mod', '.git'),
+        settings = {
+          gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+              unusedParams = true,
+            }
+          }
+        }
+      })
       lspconfig.jsonls.setup({
         capabilities = capabilities,
         settings = {
@@ -62,6 +77,13 @@ return {
       opts.ensure_installed = require("astrocore").list_insert_unique(
         opts.ensure_installed,
         {
+          "gofumpt",
+          "goimports-reviser",
+          "golines",
+          "gomodifytags",
+          "iferr",
+          "impl",
+          "prettier",
           "stylua",
         }
       )
