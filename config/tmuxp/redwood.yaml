@@ -1,0 +1,19 @@
+session_name: Redwood
+start_directory: "~/Code/redwood"
+windows:
+  - window_name: Root
+    panes:
+      - shell_command:
+          - cmd: "c"
+          - cmd: "vim"
+  - window_name: KanCli
+    start_directory: "~/Code/kancli"
+    panes:
+      - shell_command:
+          - cmd: "c"
+          - cmd: "vim"
+  - window_name: Terminals
+    layout: main-vertical
+    panes:
+      - shell_command:
+          - cmd: "c"
