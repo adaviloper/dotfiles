@@ -37,9 +37,9 @@ return {
         [[N  E  O  V  I  M]],
       }
       opts.section.header.opts.hl = {
-        { { "NeovimDashboardLogo1", 2, 45 }, },
-        { { "NeovimDashboardLogo1", 2, 45 }, },
-        { { "NeovimDashboardLogo1", 2, 45 }, },
+        { { "NeovimDashboardLogo1", 2, 45 } },
+        { { "NeovimDashboardLogo1", 2, 45 } },
+        { { "NeovimDashboardLogo1", 2, 45 } },
         { { "NeovimDashboardLogo3", 2, 14 }, { "NeovimDashboardLogo1", 15, 20 }, { "NeovimDashboardLogo3", 20, 45 } },
         { { "NeovimDashboardLogo1", 2, 17 }, { "NeovimDashboardLogo3", 18, 41 } },
         { { "NeovimDashboardLogo1", 2, 19 }, { "NeovimDashboardLogo3", 16, 45 } },
