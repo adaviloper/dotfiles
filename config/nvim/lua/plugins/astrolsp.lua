@@ -42,7 +42,6 @@ return {
         "prettier",
         "prettierd",
         "tsserver",
-        "eslint",
       },
     },
     -- enable servers that you already have installed without mason

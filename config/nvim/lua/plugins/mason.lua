@@ -83,7 +83,6 @@ return {
           "gomodifytags",
           "iferr",
           "impl",
-          "prettier",
           "stylua",
         }
       )
