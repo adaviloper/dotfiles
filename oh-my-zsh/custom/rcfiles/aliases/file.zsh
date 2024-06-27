@@ -25,3 +25,4 @@ alias serve='serve-laravel'
 
 export CLICOLOR=1
 
+alias -s md="nvim"
