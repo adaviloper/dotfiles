@@ -8,6 +8,9 @@ case $current_dir in
     "loop-returns-app")
         container_name="core"
         ;;
+    "admin")
+        container_name="admin-frontend"
+        ;;
     "whiplash-middleware")
         container_name="whiplash-app"
         ;;
