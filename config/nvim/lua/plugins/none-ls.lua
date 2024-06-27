@@ -11,7 +11,35 @@ return {
     config.sources = {
       -- Set a formatter
       -- null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.prettier,
+      null_ls = {
+        builtins = {
+          formatting = {
+            prettierd = {
+              generator_opts = {},
+              filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "css",
+                "scss",
+                "less",
+                "html",
+                "json",
+                "jsonc",
+                "yaml",
+                "markdown",
+                "markdown.mdx",
+                "graphql",
+                "handlebars",
+                "svelte",
+                "astro",
+              }
+
+            },
+          },
+        },
+      }
     }
     return config -- return final config table
   end,
