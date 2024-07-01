@@ -1,6 +1,7 @@
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
--- NOTE: We highly recommend settig up the Lua Language Server (lua_ls) as this provides autocomplete and documentation while editing
+-- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
+--       as this provides autocomplete and documentation while editing
 
 ---@type LazySpec
 return {
@@ -11,24 +12,14 @@ return {
     features = {
       autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
-      inlay_hints = false, -- enable/disable inlay hints on start
-      lsp_handlers = true, -- enable/disable setting of lsp_handlers
+      inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
-    },
-    -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
-    diagnostics = {
-      virtual_text = true,
-      underline = true,
     },
     -- customize lsp formatting options
     formatting = {
-      filter = function (_)
-        return false
-      end,
       -- control auto formatting on save
       format_on_save = {
-        enabled = false, -- enable or disable format on save globally
+        enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -39,10 +30,11 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
-        "prettier",
-        "prettierd",
-        "tsserver",
       },
+      timeout_ms = 1000, -- default format timeout
+      -- filter = function(client) -- fully override the default formatting function
+      --   return true
+      -- end
     },
     -- enable servers that you already have installed without mason
     servers = {
@@ -52,84 +44,6 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
-      gopls = {
-        settings = {
-          gopls = {
-            analyses = {
-              ST1003 = true,
-              fieldalignment = false,
-              fillreturns = true,
-              nilness = true,
-              nonewvars = true,
-              shadow = true,
-              undeclaredname = true,
-              unreachable = true,
-              unusedparams = true,
-              unusedwrite = true,
-              useany = true,
-            },
-            codelenses = {
-              gc_details = true, -- Show a code lens toggling the display of gc's choices.
-              generate = true, -- show the `go generate` lens.
-              regenerate_cgo = true,
-              test = true,
-              tidy = true,
-              upgrade_dependency = true,
-              vendor = true,
-            },
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
-            buildFlags = { "-tags", "integration" },
-            completeUnimported = true,
-            diagnosticsDelay = "500ms",
-            matcher = "Fuzzy",
-            semanticTokens = true,
-            staticcheck = true,
-            symbolMatcher = "fuzzy",
-            usePlaceholders = true,
-          },
-        },
-      },
-      lua_ls = {
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' }
-            }
-          }
-        }
-      },
-      tsserver = {
-        init_options = {
-          plugins = {
-            {
-              name = '@vue/typescript-plugin',
-              location = '/opt/homebrew/lib/node_modules/@vue/typescript-plugin',
-              languages = {
-                'javascript',
-                'typescript',
-                'vue',
-              },
-            },
-          },
-        },
-        -- capabilities = capabilities,
-        filetypes = {
-          'javascript',
-          'typescript',
-          'vue',
-        },
-      },
-      volar = {
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -143,50 +57,48 @@ return {
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
       -- first key is the `augroup` to add the auto commands to (:h augroup)
-      lsp_document_highlight = {
+      lsp_codelens_refresh = {
         -- Optional condition to create/delete auto command group
         -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
         -- condition will be resolved for each client on each execution and if it ever fails for all clients,
         -- the auto commands will be deleted for that buffer
-        cond = "textDocument/documentHighlight",
+        cond = "textDocument/codeLens",
         -- cond = function(client, bufnr) return client.name == "lua_ls" end,
         -- list of auto commands to set
         {
           -- events to trigger
-          event = { "CursorHold", "CursorHoldI" },
+          event = { "InsertLeave", "BufEnter" },
           -- the rest of the autocmd options (:h nvim_create_autocmd)
-          desc = "Document Highlighting",
-          callback = function() vim.lsp.buf.document_highlight() end,
-        },
-        {
-          event = { "CursorMoved", "CursorMovedI", "BufLeave" },
-          desc = "Document Highlighting Clear",
-          callback = function() vim.lsp.buf.clear_references() end,
+          desc = "Refresh codelens (buffer)",
+          callback = function(args)
+            if require("astrolsp").config.features.codelens then vim.lsp.codelens.refresh { bufnr = args.buf } end
+          end,
         },
       },
     },
     -- mappings to be set up on attaching of a language server
-    mappings = require('config.lsp_mappings'),
+    mappings = {
+      n = {
+        -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
+        gD = {
+          function() vim.lsp.buf.declaration() end,
+          desc = "Declaration of current symbol",
+          cond = "textDocument/declaration",
+        },
+        ["<Leader>uY"] = {
+          function() require("astrolsp.toggles").buffer_semantic_tokens() end,
+          desc = "Toggle LSP semantic highlight (buffer)",
+          cond = function(client)
+            return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
+          end,
+        },
+      },
+    },
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
     on_attach = function(client, bufnr)
       -- this would disable semanticTokensProvider for all clients
       -- client.server_capabilities.semanticTokensProvider = nil
-      local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-      if client.supports_method('textDocument/formatting') then
-        vim.api.nvim_clear_autocmds({
-          group = augroup,
-          buffer = bufnr,
-        })
-        vim.api.nvim_create_autocmd('BufWritePre', {
-          group = augroup,
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format({ bufnr = bufnr })
-          end
-        })
-      end
     end,
   },
 }
-

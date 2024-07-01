@@ -4,10 +4,10 @@ return {
     number = true, -- sets vim.opt.number
     relativenumber = true, -- sets vim.opt.relativenumber
     scrolloff = 8,
+    signcolumn = "yes:1", -- sets vim.opt.signcolumn to auto
     spell = true, -- sets vim.opt.spell
-    spelloptions = 'camel',
-    signcolumn = 'yes:1', -- sets vim.opt.signcolumn to auto
-    whichwrap = 'b,s,<,>',
+    spelloptions = "camel",
+    whichwrap = "b,s,<,>",
     wrap = true, -- sets vim.opt.wrap
   },
   g = { -- vim.g.<key>
