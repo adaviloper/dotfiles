@@ -10,7 +10,7 @@ return {
   opts = {
     -- Configuration table of features provided by AstroLSP
     features = {
-      autoformat = false, -- enable or disable auto formatting on start
+      autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
       inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
@@ -21,7 +21,7 @@ return {
       format_on_save = {
         enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
+          "go",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
@@ -44,6 +44,51 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      gopls = {
+        settings = {
+          gopls = {
+            analyses = {
+              ST1003 = true,
+              fieldalignment = false,
+              fillreturns = true,
+              nilness = true,
+              nonewvars = true,
+              shadow = true,
+              undeclaredname = true,
+              unreachable = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+            },
+            codelenses = {
+              gc_details = true, -- Show a code lens toggling the display of gc's choices.
+              generate = true, -- show the `go generate` lens.
+              regenerate_cgo = true,
+              test = true,
+              tidy = true,
+              upgrade_dependency = true,
+              vendor = true,
+            },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            buildFlags = { "-tags", "integration" },
+            completeUnimported = true,
+            diagnosticsDelay = "500ms",
+            matcher = "Fuzzy",
+            semanticTokens = true,
+            staticcheck = true,
+            symbolMatcher = "fuzzy",
+            usePlaceholders = true,
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -77,23 +122,7 @@ return {
       },
     },
     -- mappings to be set up on attaching of a language server
-    mappings = {
-      n = {
-        -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
-        gD = {
-          function() vim.lsp.buf.declaration() end,
-          desc = "Declaration of current symbol",
-          cond = "textDocument/declaration",
-        },
-        ["<Leader>uY"] = {
-          function() require("astrolsp.toggles").buffer_semantic_tokens() end,
-          desc = "Toggle LSP semantic highlight (buffer)",
-          cond = function(client)
-            return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
-          end,
-        },
-      },
-    },
+    mappings = require "config.lsp_mappings",
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
     on_attach = function(client, bufnr)

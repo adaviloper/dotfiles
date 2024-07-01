@@ -9,7 +9,9 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        -- add more arguments for adding more language servers
+        "gopls",
+        "phpactor",
+        "volar",
       },
     },
   },
