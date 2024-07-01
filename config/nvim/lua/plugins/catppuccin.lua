@@ -3,7 +3,7 @@ return {
   name = 'catppuccin',
   opts = {
     load = {
-      'catppuccin-mocha-cursor',
+      -- 'catppuccin-mocha-cursor',
     },
   },
 }

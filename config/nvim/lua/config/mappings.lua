@@ -117,8 +117,8 @@ end
 return {
   -- first key is the mode
   n = {
-    ["<C-[>"] = { "<cmd>Gitsigns prev_hunk<CR>", desc = "Previous git hunk" },
-    ["<C-]>"] = { "<cmd>Gitsigns next_hunk<CR>", desc = "Next git hunk" },
+    ["<A-[>"] = { "<cmd>Gitsigns prev_hunk<CR>", desc = "Previous git hunk" },
+    ["<A-]>"] = { "<cmd>Gitsigns next_hunk<CR>", desc = "Next git hunk" },
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
     ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab" },
     ["<Leader><Leader>s"] = {
@@ -398,14 +398,14 @@ return {
       function()
         if ls.jumpable(-1) then ls.jump(-1) end
       end,
-      desc = "Jump to next snippet",
+      desc = "Jump to previous snippet",
       silent = true,
     },
     ["<C-j>"] = {
       function()
-        if ls.expand_or_jumpable() then ls.expand_or_jump() end
+        if ls.jumpable() then ls.jump(1) end
       end,
-      desc = "Jump to previous snippet",
+      desc = "Jump to next snippet",
       silent = true,
     },
     ["<C-h>"] = {
