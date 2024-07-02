@@ -3,7 +3,6 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
-local ls = require "luasnip"
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
