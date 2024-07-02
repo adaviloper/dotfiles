@@ -86,7 +86,7 @@ return {
 					-- file_read_only = true,
 					surround = {
 						separator = "tab",
-						color = mocha.surface0,
+						color = mocha.base,
 					},
 				}),
 				status.component.fill(),
@@ -128,7 +128,9 @@ return {
 							scss = mocha.red,
 							typescript = mocha.blue,
 						}
-						return { fg = ft_color[vim.bo.filetype] or mocha.green }
+						return {
+							fg = ft_color[vim.bo.filetype] or mocha.green,
+						}
 					end,
 					file_icon = { padding = { left = 0 } },
 					filename = {
