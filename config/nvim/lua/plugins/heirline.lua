@@ -126,6 +126,7 @@ return {
 							vue = mocha.green,
 							css = mocha.blue,
 							scss = mocha.red,
+							toml = mocha.red,
 							typescript = mocha.blue,
 						}
 						return {
