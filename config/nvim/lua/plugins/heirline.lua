@@ -63,8 +63,52 @@ return {
 			status.component.mode({ surround = { separator = "blank" } }),
 		}
 
-		opts.winbar = nil
+		opts.winbar = { -- create custom winbar
+      -- store the current buffer number
+      init = function(self)
+        self.bufnr = vim.api.nvim_get_current_buf()
+      end,
+      fallthrough = false, -- pick the correct winbar based on condition
+      -- inactive winbar
+      {
+        condition = function()
+          return not status.condition.is_active()
+        end,
+        -- add the file name and icon
+				status.component.file_info({
+					hl = { fg = mocha.text },
+					filename = {
+						modify = ":p:.",
+					},
+					filetype = false,
+					-- file_modified = true,
+					-- file_read_only = true,
+					surround = {
+						separator = "tab",
+						color = mocha.surface0,
+					},
+				}),
+      },
+      -- active winbar
+      {
+        -- add the file name and icon
+				status.component.file_info({
+					hl = { fg = mocha.green },
+					filename = {
+						modify = ":p:.",
+					},
+					filetype = false,
+					-- file_modified = true,
+					-- file_read_only = true,
+					surround = {
+						separator = "tab",
+						color = mocha.surface0,
+					},
+				}),
+      },
+    }
 
+		-- Disabling tabline in `options.lua`
 		opts.tabline = { -- tabline
 			{ -- file tree padding
 				condition = function(self)
