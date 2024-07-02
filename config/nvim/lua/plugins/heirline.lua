@@ -93,7 +93,16 @@ return {
       {
         -- add the file name and icon
 				status.component.file_info({
-					hl = { fg = mocha.green },
+					hl = function ()
+						local ft_color = {
+							php = mocha.mauve,
+							vue = mocha.green,
+							css = mocha.blue,
+							scss = mocha.red,
+							typescript = mocha.blue,
+						}
+						return { fg = ft_color[vim.bo.filetype] or mocha.green }
+					end,
 					filename = {
 						modify = ":p:.",
 					},
