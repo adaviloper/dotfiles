@@ -95,6 +95,7 @@ return {
 				status.component.file_info({
 					hl = function ()
 						local ft_color = {
+							lua = mocha.sky,
 							php = mocha.mauve,
 							vue = mocha.green,
 							css = mocha.blue,
