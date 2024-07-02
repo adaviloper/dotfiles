@@ -1,5 +1,3 @@
--- Snippets
--- Snippets
 local function file_exists(file)
   if vim.fn.filereadable(file) ~= 1 then return nil end
   local f = io.open(file, "rb")
@@ -51,7 +49,7 @@ local determine_method_body = function(_)
 }}
 ]],
           {
-            i(1, "void"),
+            c(1, {t('array'), t('bool'), t('int'), t('float'), t('void')}),
             i(0, ""),
             f(get_default_return_type, { 1 }),
           }
