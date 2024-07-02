@@ -49,7 +49,7 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 
 [directory]
 fish_style_pwd_dir_length = 3
-format = '[$path]($style)[$read_only]($read_only_style bg:peach)'
+format = '[$path ]($style)[$read_only]($read_only_style bg:peach)'
 style = 'mantle bg:peach'
 truncation_length = 4
 
@@ -86,7 +86,7 @@ format = '[$time]($style rosewater) '
 [username]
 style_user = "bg:sapphire"
 style_root = "bg:pink"
-format = '[adaviloper]($style mantle)'
+format = '[adaviloper ]($style mantle)'
 show_always = true
 
 [palettes.catppuccin_mocha]
