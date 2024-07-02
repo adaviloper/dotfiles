@@ -77,6 +77,7 @@ return {
         -- add the file name and icon
 				status.component.file_info({
 					hl = { fg = mocha.text },
+					file_icon = { padding = { left = 0 } },
 					filename = {
 						modify = ":p:.",
 					},
@@ -104,6 +105,7 @@ return {
 						}
 						return { fg = ft_color[vim.bo.filetype] or mocha.green }
 					end,
+					file_icon = { padding = { left = 0 } },
 					filename = {
 						modify = ":p:.",
 					},
