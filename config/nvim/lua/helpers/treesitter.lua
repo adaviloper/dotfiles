@@ -25,7 +25,6 @@ M.parse_query_for_capture = function (node, query_to_parse, target)
   local captures = {}
   for i, match, _ in query:iter_captures(node, 0) do
     local name = query.captures[i]
-    vim.notify(name)
     if name == target then
       table.insert(captures, ts.get_node_text(match, 0))
     end
@@ -33,6 +32,21 @@ M.parse_query_for_capture = function (node, query_to_parse, target)
 
   return captures
 
+end
+
+
+M.in_nodes_condition = function (node_names)
+  return function (_, _, _)
+  local node = vim.treesitter.get_node()
+  while node ~= nil do
+    if vim.tbl_contains(node_names, node:type()) then
+      return true
+    end
+
+    node = node:parent()
+  end
+    return false
+  end
 end
 
 return M
