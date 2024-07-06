@@ -1,5 +1,6 @@
 local get_target_node = require('helpers.treesitter').get_target_node
 local parse_query_for_capture = require('helpers.treesitter').parse_query_for_capture
+local in_nodes_condition = require('helpers.treesitter').in_nodes_condition
 
 local get_above_assignment = function ()
   local pos = vim.api.nvim_win_get_cursor(0)
@@ -61,15 +62,17 @@ local get_above_assignment = function ()
     )
     return params:join(', ')
   end
-
-  return
 end
 
 return
   -- Snippets
   {
     -- Public function
-    s('dml',
+    s({
+      trig = 'dml',
+      condition = in_nodes_condition({'method_declaration'}),
+      show_condition = in_nodes_condition({'method_declaration'}),
+    },
       fmt(
         [[
 dd({}__METHOD__ . ':' . __LINE__);
