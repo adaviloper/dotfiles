@@ -8,18 +8,61 @@ local get_above_assignment = function ()
   --- @type TSNode|nil {node}
   local node = get_target_node('expression_statement')
 
-  if not node then
-    return
-  end
-
-  local assignment_query = [[
+  if node then
+    local assignment_query = [[
   (expression_statement
     (assignment_expression
       left: (_) @var
       )
     ) @expression
 ]]
-  return parse_query_for_capture(node, assignment_query, 'var')
+    return parse_query_for_capture(node, assignment_query, 'var')[1]
+  end
+
+  local params = {}
+  node = get_target_node({'anonymous_function_creation_expression'})
+  if node then
+    local assignment_query = [[
+(_
+  (formal_parameters
+    (_ name: (variable_name) @var)
+    )
+  )
+]]
+    params = vim.iter(parse_query_for_capture(node, assignment_query, 'var')
+    )
+    return params:join(', ')
+  end
+
+  node = get_target_node({'method_declaration'})
+  if node then
+    local assignment_query = [[
+(method_declaration
+  (formal_parameters
+    (_ name: (variable_name) @var)
+    )
+  )
+]]
+    params = vim.iter(parse_query_for_capture(node, assignment_query, 'var')
+    )
+    return params:join(', ')
+  end
+
+  node = get_target_node({'anonymous_function_creation_expression'})
+  if node then
+    local assignment_query = [[
+(_
+  (formal_parameters
+    (_ name: (variable_name) @var)
+    )
+  )
+]]
+    params = vim.iter(parse_query_for_capture(node, assignment_query, 'var')
+    )
+    return params:join(', ')
+  end
+
+  return
 end
 
 return
