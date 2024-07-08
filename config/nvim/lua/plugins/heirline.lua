@@ -122,6 +122,7 @@ return {
 					hl = function ()
 						local ft_color = {
 							lua = mocha.sky,
+							json = mocha.text,
 							php = mocha.mauve,
 							vue = mocha.green,
 							css = mocha.blue,
