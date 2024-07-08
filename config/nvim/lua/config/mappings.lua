@@ -242,6 +242,8 @@ return {
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
     ["<C-o>"] = { "<C-o>zz", desc = "Jump backward and center" },
 
+    ["<LocalLeader>e"] = { "<cmd>e<CR>",desc = "Copy file path" },
+
     -- Copying
     ["<LocalLeader>y"] = { name = "󰆏 Copy..." },
     ["<LocalLeader>yp"] = { function() vim.fn.setreg("+", vim.fn.expand "%:p:.") end, desc = "Copy file path" },
