@@ -5,12 +5,13 @@
 -- Set up custom filetypes
 vim.filetype.add {
   extension = {
-    foo = "fooscript",
+    -- log = "json",
   },
   filename = {
     ["Foofile"] = "fooscript",
   },
   pattern = {
     ["~/%.config/foo/.*"] = "fooscript",
+    ["laravel.*log"] = "json",
   },
 }
