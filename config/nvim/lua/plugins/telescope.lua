@@ -60,9 +60,28 @@ return {
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
           prompt_prefix = ' '
         },
-        -- git_commits = {
-        --   git_command = { "git", "log", "--format=format:%cs %h %s", "--", "." }
-        -- },
+        git_bcommits = {
+          git_command = {
+            "git",
+            "log",
+            -- "--pretty=oneline",
+            -- "--abbrev-commit",
+            "--date=format:%Y-%m-%d",
+            "--pretty=format:%C(auto) %h %ad %s",
+            "--follow",
+          }
+        },
+        git_commits = {
+          git_command = {
+            "git",
+            "log",
+            -- "--pretty=oneline",
+            -- "--abbrev-commit",
+            "--date=format:%Y-%m-%d",
+            "--pretty=format:%C(auto) %h %ad %s",
+            "--follow",
+          }
+        },
       },
     })
 
