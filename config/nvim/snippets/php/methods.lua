@@ -6,11 +6,11 @@ local function file_exists(file)
 end
 
 local return_types = {
-  bool = "false",
-  null = "null",
-  int = "0",
-  float = "0.0",
-  array = "[]",
+ [' bool'] = "false",
+ [' null'] = "null",
+ [' int'] = "0",
+ [' float'] = "0.0",
+ [' array'] = "[]",
 }
 
 local function lines_from(file)
@@ -33,7 +33,9 @@ end
 
 local determine_method_body = function(_)
   local current_line = vim.api.nvim_get_current_line()
-  if string.match(current_line, "abstract") then return sn(nil, t ";") end
+  if string.match(current_line, "abstract") then
+    return sn(nil, t ";")
+  end
 
   local lines = lines_from(vim.fn.expand "%")
 
@@ -49,7 +51,14 @@ local determine_method_body = function(_)
 }}
 ]],
           {
-            c(1, { i(''), t('array'), t('bool'), t('int'), t('float'), t('void')}),
+            c(1, {
+              i(''),
+              t(' array'),
+              t(' bool'),
+              t(' int'),
+              t(' float'),
+              t(' void'),
+            }),
             i(0, ""),
             f(get_default_return_type, { 1 }),
           }
