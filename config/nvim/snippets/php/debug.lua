@@ -108,11 +108,12 @@ dd({}__METHOD__ . ':' . __LINE__);
             }
           ),
         })),
-    s('ll',
-      fmt(
+        s('ll',
+        fmt(
         [[
-Log::{}({}{});
-    ]], {
+        Log::{}('{} - {}');
+        ]],
+        {
           c(1, { t('info'), t('error'), t('warning') }),
           f(function ()
             local node = get_target_node('method_declaration')
@@ -128,13 +129,15 @@ Log::{}({}{});
             end
 
             if method_name ~= nil then
-              return "'".. vim.fn.expand('%:t:r') .."#" .. method_name .. "'"
+              return vim.fn.expand('%:t:r') .."#" .. method_name
             end
 
-            return "'".. vim.fn.expand('%:t:r') .. "'"
+            return vim.fn.expand('%:t:r')
           end),
-          i(2, '')
-        })),
+          i(2, ''),
+        }
+        )
+        ),
   },
   -- Autosnippets
   {
