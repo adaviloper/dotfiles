@@ -21,6 +21,7 @@ return {
   -- the second is the table of options as set up in Lazy with the `opts` key
   config = function(plugin, opts)
     local telescope = require("telescope")
+    local actions = require("telescope.actions")
     local telescopeConfig = require("telescope.config")
 
     -- Clone the default Telescope configuration
@@ -48,6 +49,11 @@ return {
           return string.format("%s -- %s", tail, path)
         end,
         sorting_strategy = 'ascending',
+        mappings = {
+          i = {
+            ["<CR>"] = actions.select_vertical
+          },
+        },
       },
       pickers = {
         buffers = {
