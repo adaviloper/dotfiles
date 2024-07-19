@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "@context.shopId:{clipboard}",
+    "uid" : "CB71F36E-4276-4B4B-A5CF-73078F0424CB",
+    "name" : "DataDog Shop ID",
+    "keyword" : "ddshop"
+  }
+}

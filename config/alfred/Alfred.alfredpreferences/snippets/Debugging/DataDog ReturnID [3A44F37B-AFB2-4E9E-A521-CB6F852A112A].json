@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "@context.returnId:{clipboard}",
+    "uid" : "3A44F37B-AFB2-4E9E-A521-CB6F852A112A",
+    "name" : "DataDog ReturnID",
+    "keyword" : "ddret"
+  }
+}
