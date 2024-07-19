@@ -49,11 +49,11 @@ return {
           return string.format("%s -- %s", tail, path)
         end,
         sorting_strategy = 'ascending',
-        mappings = {
-          i = {
-            ["<CR>"] = actions.select_vertical
-          },
-        },
+        -- mappings = {
+        --   i = {
+        --     ["<CR>"] = actions.select_vertical
+        --   },
+        -- },
       },
       pickers = {
         buffers = {
