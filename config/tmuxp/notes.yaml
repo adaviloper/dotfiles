@@ -1,7 +1,13 @@
-session_name: Obsidian
+session_name: Notes
 start_directory: "~/Documents/Loop"
 windows:
-  - window_name: Root
+  - window_name: Obsidian
+    panes:
+      - shell_command:
+        - cmd: 'c'
+        - cmd: "vim"
+  - window_name: Technical Docs
+    start_directory: "~/Code/technical-docs/"
     panes:
       - shell_command:
         - cmd: 'c'
