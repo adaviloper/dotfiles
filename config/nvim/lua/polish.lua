@@ -6,6 +6,7 @@
 vim.filetype.add {
   extension = {
     -- log = "json",
+    neon = "yaml"
   },
   filename = {
     ["Foofile"] = "fooscript",
