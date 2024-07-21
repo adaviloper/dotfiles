@@ -1,13 +1,13 @@
 session_name: Notes
-start_directory: "~/Documents/Loop"
 windows:
-  - window_name: Obsidian
+  - window_name: Loop
+    start_directory: "~/Documents/Loop"
     panes:
       - shell_command:
         - cmd: 'c'
         - cmd: "vim"
-  - window_name: Technical Docs
-    start_directory: "~/Code/technical-docs/"
+  - window_name: GRIN
+    start_directory: "~/Documents/GRIN-Vault/"
     panes:
       - shell_command:
         - cmd: 'c'
