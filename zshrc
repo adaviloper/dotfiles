@@ -124,6 +124,8 @@ sourceFileInConfig rcfiles
 #   export EDITOR='mvim'
 # fi
 export EDITOR=$(which nvim)
+export TERM="xterm-256color"
+[[ -n $TMUX ]] && export TERM="screen-256color"
 
 
 unalias g
