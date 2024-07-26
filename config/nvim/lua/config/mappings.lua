@@ -234,6 +234,9 @@ return {
       searchThroughFileType "find_files",
       desc = "Find regex files by file type",
     },
+    ["<Leader>fl"] = { name = "Laravel" },
+    ["<Leader>fla"] = { "<cmd>Telescope laravel artisan<CR>", desc = "Laravel artisan commands" },
+    ["<Leader>flr"] = { "<cmd>Telescope laravel routes<CR>", desc = "Laravel artisan routes" },
 
     -- Notify
     ["<Leader>uD"] = { function() require("notify").dismiss() end, desc = "Dismiss all displayed notifications" },
