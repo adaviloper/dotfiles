@@ -1,24 +1,33 @@
 #!/bin/bash
 
 # Get the current working directory
-current_dir=$(basename "$PWD")
+current_dir=$(pwd)
 
-# Map the current working directory to the corresponding container name
-case $current_dir in
-    "loop-returns-app")
-        container_name="core"
-        ;;
-    "admin")
-        container_name="admin-frontend"
-        ;;
-    "whiplash-middleware")
-        container_name="whiplash-app"
-        ;;
-    *)
-        echo "No container mapping found for the current directory: $current_dir"
-        exit 1
-        ;;
-esac
+get_container_name() {
+    # Map the current working directory to the corresponding container name
+    case $current_dir in
+        */"admin"/*|*/"admin")
+            echo "admin-frontend"
+            ;;
+        */"loop-returns-app"/*|*/"loop-returns-app")
+            echo "core"
+            ;;
+        */"whiplash-middleware"/*|*/"whiplash-middleware")
+            echo "whiplash-app"
+            ;;
+        *)
+            echo ""
+            ;;
+    esac
+}
+
+container_name=$(get_container_name "$current_dir")
+
+# Check if a valid container name was found
+if [ -z "$container_name" ]; then
+    echo "No container mapping found for the current directory: $current_dir"
+    exit 1
+fi
 
 # Execute the docker command with the mapped container name
 docker exec -it "$container_name" $@
