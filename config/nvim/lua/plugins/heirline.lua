@@ -87,6 +87,7 @@ return {
 					surround = {
 						separator = "tab",
 						color = mocha.base,
+						condition = status.condition.is_file
 					},
 				}),
 				status.component.fill(),
@@ -144,6 +145,7 @@ return {
 					surround = {
 						separator = "tab",
 						color = mocha.surface0,
+						condition = status.condition.is_file,
 					},
 				}),
 				status.component.fill(),
@@ -201,6 +203,7 @@ return {
 				surround = {
 					separator = "tab",
 					color = mocha.surface0,
+					condition = status.condition.is_file,
 				},
 			}),
 			status.component.fill({ hl = { bg = "tabline_bg" } }), -- fill the rest of the tabline with background color
