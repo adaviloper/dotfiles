@@ -15,7 +15,10 @@ vim.filetype.add {
   },
   pattern = {
     ["~/%.config/foo/.*"] = "fooscript",
+    ["~/%.config/bin/.*"] = "sh",
+    ["~/%.dotfiles/config/bin/.*"] = "sh",
     ["laravel.*log"] = "json",
+    ["*"] = "text",
   },
 }
 
