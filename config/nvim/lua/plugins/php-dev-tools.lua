@@ -11,6 +11,7 @@ return {
           -- cmd = 'docker exec -it core vendor/bin/phpunit --filter',
           groups = {
             'easyship',
+            'multi-label',
           },
         },
         {
