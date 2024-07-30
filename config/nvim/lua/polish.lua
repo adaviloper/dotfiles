@@ -8,7 +8,8 @@ require('config.highlights')
 vim.filetype.add {
   extension = {
     -- log = "json",
-    neon = "yaml"
+    neon = "yaml",
+    zsh = "sh",
   },
   filename = {
     ["Foofile"] = "fooscript",
