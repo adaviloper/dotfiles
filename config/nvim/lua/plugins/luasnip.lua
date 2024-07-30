@@ -11,7 +11,7 @@ return {
     require("luasnip.loaders.from_lua").load {
       paths = { "~/.config/nvim/snippets/" },
     } -- load snippets paths
-    ls.setup {
+    ls.setup({
       history = true,
       updateevents = "TextChanged,TextChangedI",
       enable_autosnippets = true,
@@ -23,6 +23,14 @@ return {
           },
         },
       },
-    }
+		-- Also load both lua and json when a markdown-file is opened,
+		-- javascript for html.
+		-- Other filetypes just load themselves.
+      load_ft_func = require("luasnip.extras.filetype_functions").extend_load_ft({
+			  markdown = {"lua", "json"},
+			  html = {"javascript"},
+			  vue = {"javascript", "sass", "scss", "typescript"},
+		  })
+    })
   end,
 }
