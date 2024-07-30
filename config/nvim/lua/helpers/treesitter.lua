@@ -1,13 +1,22 @@
 local ts = vim.treesitter
-local parsers = require "nvim-treesitter.parsers"
 
 local M = {}
 
 M.get_target_node = function(node_names)
-  if type(node_names) ~= 'table' then
+  if type(node_names) == 'string' then
     node_names = { node_names }
   end
-  local node = vim.treesitter.get_node()
+
+	local cursor = require("luasnip.util.util").get_cursor_0ind()
+	local _, parser = pcall(vim.treesitter.get_parser)
+  local lang = parser:language_for_range({
+		cursor[1],
+		cursor[2],
+		cursor[1],
+		cursor[2],
+	})
+		:lang()
+  local node = vim.treesitter.get_node({ ignore_injections = false, lang = lang })
 
   while node ~= nil do
     if vim.tbl_contains(node_names, node:type()) then
@@ -21,7 +30,17 @@ M.get_target_node = function(node_names)
 end
 
 M.parse_query_for_capture = function (node, query_to_parse, target)
-  local query = ts.query.parse(parsers.get_buf_lang(), query_to_parse)
+
+	local cursor = require("luasnip.util.util").get_cursor_0ind()
+	local _, parser = pcall(vim.treesitter.get_parser)
+  local lang = parser:language_for_range({
+		cursor[1],
+		cursor[2],
+		cursor[1],
+		cursor[2],
+	})
+		:lang()
+  local query = ts.query.parse(lang, query_to_parse)
   local captures = {}
   for i, match, _ in query:iter_captures(node, 0) do
     local name = query.captures[i]
