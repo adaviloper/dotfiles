@@ -130,6 +130,10 @@ return {
         end
       end,
     },
+    ["<Leader>uG"] = {
+      '<cmd>Gitsigns toggle_current_line_blame<CR>',
+      desc = "Toggle current line blame",
+    },
     ["<Leader>un"] = {
       function() vim.o.relativenumber = vim.o.relativenumber ~= true end,
       desc = "Toggle relativenumber",
@@ -190,18 +194,18 @@ return {
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
-    ["<Leader>t?"] = { function() astro.toggle_term_cmd "btm" end, desc = "Toggleterm Btm" },
+    ["<Leader>t?"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = 'btm' }) end, desc = "Toggleterm Btm" },
     ["<Leader>dt"] = {
-      function() astro.toggle_term_cmd "dart tinker" end,
+      function() astro.toggle_term_cmd({ direction = 'float', cmd = 'dart tinker' }) end,
       desc = "Toggleterm Artisan for current Docker container",
     },
     ["<Leader>db"] = {
-      function() astro.toggle_term_cmd "dbash" end,
+      function() astro.toggle_term_cmd({ direction = 'float', cmd = 'dbash' }) end,
       desc = "Toggleterm Artisan Tinker for current Docker container",
     },
-    ["<Leader>tg"] = { function() astro.toggle_term_cmd "gh dash" end, desc = "Toggleterm Github Dash" },
-    ["<Leader>tn"] = { function() astro.toggle_term_cmd "lazynpm" end, desc = "Toggleterm LazyNPM" },
-    ["<Leader>ty"] = { function() astro.toggle_term_cmd "yazi" end, desc = "Toggleterm Yazi" },
+    ["<Leader>tg"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = "gh dash"} ) end, desc = "Toggleterm Github Dash" },
+    ["<Leader>tn"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = "lazynpm"} ) end, desc = "Toggleterm LazyNPM" },
+    ["<Leader>ty"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = "yazi"} ) end, desc = "Toggleterm Yazi" },
     ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
 
     -- NeoTeset
