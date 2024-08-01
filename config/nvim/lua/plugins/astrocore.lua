@@ -15,7 +15,6 @@ return {
       cmp = true, -- enable completion at start
       diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
       highlighturl = true, -- highlight URLs at start
-      inlay_hints = true,
       notifications = true, -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
@@ -24,9 +23,9 @@ return {
       underline = true,
     },
     -- vim options can be configured here
-    options = require "config.options",
+    options = require('config.options'),
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
-    mappings = require "config.mappings",
+    mappings = require('config.mappings'),
   },
 }
