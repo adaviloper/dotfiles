@@ -3,6 +3,7 @@
 -- fit in the normal config locations above can go here
 
 require('config.highlights')
+require('config.autocmds')
 
 -- Set up custom filetypes
 vim.filetype.add {
@@ -31,7 +32,7 @@ vim.ui.open = function (path)
   
   local is_uri = path:match('%w+:')
   local is_half_url = path:match('%.com$') or path:match('%.com%.')
-  local is_repo = vim.bo.filetype == 'lua' and path:match('%w/%w') and vim.fn.count(path, '/') == 1
+  local is_repo = vim.tbl_contains({'lua', 'tmux'}, vim.bo.filetype) and path:match('%w/%w') and vim.fn.count(path, '/') == 1
   local is_dir = path:match('/%w')
 
   if not is_uri then
