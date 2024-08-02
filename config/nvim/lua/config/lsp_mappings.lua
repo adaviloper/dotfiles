@@ -25,6 +25,26 @@ return {
       end,
       desc = "Hover symbol details",
     },
+    ["<Leader>lt"] = { name = "PhpActor Templates" },
+    ["<Leader>ltt"] = {
+      function ()
+        vim.lsp.buf.code_action({
+          filter = function (ca)
+            if ca.command ~= nil and ca.command.title ~= nil then
+              local file = vim.fn.expand("%:p:.")
+              for _, type in ipairs({ 'Feature', 'Unit', 'Job', 'Listener', 'Model' }) do
+                if file:find(type) then
+                  return ca.command.title:find(type) ~= nil
+                end
+              end
+            end
+            return false
+          end,
+          apply = true
+        })
+      end,
+      desc = 'Auto-generate template for the current file',
+    },
     ["<Leader>lo"] = {
       function ()
         vim.lsp.buf.code_action({

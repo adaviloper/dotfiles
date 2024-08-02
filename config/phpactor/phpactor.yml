@@ -1,0 +1,8 @@
+code_transform.class_new.variants:
+    Job: laravel_job
+    Listener: laravel_listener
+    Model: laravel_model
+    Feature: phpunit_feature
+    Unit: phpunit_unit
+phpunit.enabled: true
+language_server_worse_reflection.inlay_hints.enable: true
