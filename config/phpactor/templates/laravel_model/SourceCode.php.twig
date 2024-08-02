@@ -1,0 +1,27 @@
+<?php
+
+{# /path/to/project/.phpactor/templates/phpunit_test/SourceCode.php.twig #}
+namespace {{ prototype.namespace }};
+
+use App\Clients\ApiClient;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+{% for class in prototype.classes %}
+class {{ class.name }} implements ShouldQueue
+{
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [];
+
+    protected $guarded = [];
+
+    //
+}
+{% endfor %}
+

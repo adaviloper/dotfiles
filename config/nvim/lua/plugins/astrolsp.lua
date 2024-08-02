@@ -93,7 +93,10 @@ return {
         init_options = {
           ["language_server_phpstan.enabled"] = true,
           ["language_server_php_cs_fixer.enabled"] = true,
-        }
+          ["code_transform.template_paths"] = {
+            '~/.config/phpactor/templates/'
+          }
+        },
       },
     },
     -- customize how language servers are attached

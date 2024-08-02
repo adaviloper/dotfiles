@@ -1,0 +1,29 @@
+<?php
+
+{# /path/to/project/.phpactor/templates/phpunit_test/SourceCode.php.twig #}
+namespace {{ prototype.namespace }};
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+{% for class in prototype.classes %}
+class {{ class.name }} implements ShouldQueue
+{
+    /**
+     * Create the event listener.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     */
+    public function handle(object $event): void
+    {
+        //
+    }
+}
+{% endfor %}
+
