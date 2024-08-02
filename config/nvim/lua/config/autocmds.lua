@@ -1,0 +1,20 @@
+-- local php_group = vim.api.nvim_create_augroup('PHP AutoTemplates', { clear = true })
+--
+-- vim.api.nvim_create_autocmd({ 'BufNew' }, {
+--   pattern = '*Test.php',
+--   group = php_group,
+--   callback = function (params)
+--     vim.lsp.buf.code_action({
+--       filter = function (ca)
+--         if ca.command ~= nil then
+--           return string.match(ca.command.title, "unit_test") ~= nil
+--         end
+--         return false
+--       end,
+--       apply = true
+--     })
+--     vim.notify(vim.fs.basename(params.file))
+--     vim.notify('hisdf')
+--   end,
+--   once = true,
+-- })
