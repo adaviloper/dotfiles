@@ -117,6 +117,7 @@ end
 return {
   -- first key is the mode
   n = {
+    ["<F7>"] = { '<Cmd>execute v:count . "ToggleTerm direction=float"<CR>', desc = 'Toggle terminal' },
     ["<A-[>"] = { "<cmd>Gitsigns prev_hunk<CR>", desc = "Previous git hunk" },
     ["<A-]>"] = { "<cmd>Gitsigns next_hunk<CR>", desc = "Next git hunk" },
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
@@ -307,6 +308,7 @@ return {
     ["<Leader>zz"] = { function() require("undotree").toggle() end, desc = "Toggle Undotree" },
   },
   i = {
+    ["<F7>"] = { '<Esc><Cmd>ToggleTerm direction=float<CR>', desc = 'Toggle terminal' },
     -- [":"] = {
     --   function()
     --     -- The cursor location does not give us the correct node in this case, so we
