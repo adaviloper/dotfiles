@@ -7,6 +7,7 @@ return { -- override nvim-cmp plugin
     local cmp = require("cmp")
     -- modify the sources part of the options table
     opts.sources = cmp.config.sources({
+      { name = "laravel", priority = 1002 },
       { name = "laravel_config", priority = 1001 },
       { name = "nvim_lsp", priority = 1000 },
       { name = "luasnip", priority = 750 },
