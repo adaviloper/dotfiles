@@ -70,6 +70,7 @@
   "nvim-window-picker": { "branch": "main", "commit": "41cfaa428577c53552200a404ae9b3a0b5719706" },
   "package-info.nvim": { "branch": "master", "commit": "018bc10e28b00e28e239b1fff7c497304f8b1bf5" },
   "php-dev-tools.nvim": { "branch": "main", "commit": "27db40ca3136d4941c34b829400c07c26ad0203c" },
+  "phpactor": { "branch": "master", "commit": "aa9198df47ffede65921d50dbb0d85fe7ff14ae7" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },

@@ -1,0 +1,19 @@
+<?php
+
+{# /path/to/project/.phpactor/templates/phpunit_test/SourceCode.php.twig #}
+namespace {{ prototype.namespace }};
+
+{% block includes %}
+{% endblock %}
+
+{% for class in prototype.classes %}
+class {{ class.name }}{% block parentClass %}{% endblock %}{% block implements %}{% endblock %}
+
+{
+{% block traits %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+}
+{% endfor %}

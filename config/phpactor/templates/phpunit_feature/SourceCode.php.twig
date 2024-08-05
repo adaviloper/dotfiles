@@ -1,13 +1,7 @@
-<?php
+{% extends "php_class_layout/SourceCode.php.twig" %}
 
-{# /path/to/project/.phpactor/templates/phpunit_test/SourceCode.php.twig #}
-namespace {{ prototype.namespace }};
-
+{% block includes %}
 use Tests\Feature\TestCase;
+{% endblock %}
 
-{% for class in prototype.classes %}
-class {{ class.name }} extends TestCase
-{
-    
-}
-{% endfor %}
+{% block parentClass %} extends TestCase{% endblock %}

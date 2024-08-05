@@ -1,3 +1,39 @@
+local function select_template(template)
+  return function ()
+    vim.lsp.buf.code_action({
+      filter = function (ca)
+        if ca.command ~= nil and ca.command.title ~= nil then
+          if ca.command.title:find(template) then
+            return true
+          end
+        end
+        return false
+      end,
+      apply = true
+    })
+  end
+end
+
+local function lksjdfsf()
+  vim.lsp.buf.code_action({
+    filter = function (ca)
+      if ca.command ~= nil and ca.command.title ~= nil then
+        local file = vim.fn.expand("%:p:.")
+        for _, type in ipairs({ 'Feature', 'Unit', 'Job', 'Listener', 'Model' }) do
+          if file:find(type) then
+            return ca.command.title:find(type) ~= nil
+          end
+        end
+        if ca.command.title:find('default') then
+          return true
+        end
+      end
+      return false
+    end,
+    apply = true
+  })
+end
+
 return {
   n = {
     gl = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
@@ -26,23 +62,12 @@ return {
       desc = "Hover symbol details",
     },
     ["<Leader>lt"] = { name = "PhpActor Templates" },
+    ["<Leader>lta"] = {
+      lksjdfsf,
+      desc = 'Auto-generate template for the current file',
+    },
     ["<Leader>ltt"] = {
-      function ()
-        vim.lsp.buf.code_action({
-          filter = function (ca)
-            if ca.command ~= nil and ca.command.title ~= nil then
-              local file = vim.fn.expand("%:p:.")
-              for _, type in ipairs({ 'Feature', 'Unit', 'Job', 'Listener', 'Model' }) do
-                if file:find(type) then
-                  return ca.command.title:find(type) ~= nil
-                end
-              end
-            end
-            return false
-          end,
-          apply = true
-        })
-      end,
+      select_template('trait'),
       desc = 'Auto-generate template for the current file',
     },
     ["<Leader>lo"] = {
