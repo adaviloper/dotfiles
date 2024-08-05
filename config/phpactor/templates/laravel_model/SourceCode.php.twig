@@ -1,17 +1,18 @@
-<?php
+{% extends "php_class_layout/SourceCode.php.twig" %}
 
-{# /path/to/project/.phpactor/templates/phpunit_test/SourceCode.php.twig #}
-namespace {{ prototype.namespace }};
-
+{% block includes %}
 use App\Clients\ApiClient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+{% endblock %}
 
-{% for class in prototype.classes %}
-class {{ class.name }} implements ShouldQueue
-{
+{% block parentClass %}Model{% endblock %}
+
+{% block traits %}
     use HasFactory;
+{% endblock %}
 
+{% block content %}
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +23,5 @@ class {{ class.name }} implements ShouldQueue
     protected $guarded = [];
 
     //
-}
-{% endfor %}
+{% endblock %}
 

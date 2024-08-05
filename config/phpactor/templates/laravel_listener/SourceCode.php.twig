@@ -1,14 +1,13 @@
-<?php
+{% extends "php_class_layout/SourceCode.php.twig" %}
 
-{# /path/to/project/.phpactor/templates/phpunit_test/SourceCode.php.twig #}
-namespace {{ prototype.namespace }};
-
+{% block includes %}
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+{% endblock %}
 
-{% for class in prototype.classes %}
-class {{ class.name }} implements ShouldQueue
-{
+{% block implements %} implements ShouldQueue {% endblock %}
+
+{% block content %}
     /**
      * Create the event listener.
      */
@@ -24,6 +23,5 @@ class {{ class.name }} implements ShouldQueue
     {
         //
     }
-}
-{% endfor %}
+{% endblock %}
 

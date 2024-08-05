@@ -1,20 +1,21 @@
-<?php
+{% extends "php_class_layout/SourceCode.php.twig" %}
 
-{# /path/to/project/.phpactor/templates/phpunit_test/SourceCode.php.twig #}
-namespace {{ prototype.namespace }};
-
+{% block includes %}
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+{% endblock %}
 
-{% for class in prototype.classes %}
-class {{ class.name }} implements ShouldQueue
-{
+{% block implements %} implements ShouldQueue{% endblock %}
+
+{% block traits %}
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+{% endblock %}
 
+{% block content %}
     /**
      * Create a new job instance.
      */
@@ -30,6 +31,5 @@ class {{ class.name }} implements ShouldQueue
     {
         //
     }
-}
-{% endfor %}
+{% endblock %}
 
