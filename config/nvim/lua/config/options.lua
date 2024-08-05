@@ -1,6 +1,7 @@
 return {
   opt = { -- vim.opt.<key>
     autoread = true,
+    breakindentopt = 'shift:2',
     conceallevel = 2,
     number = true, -- sets vim.opt.number
     relativenumber = true, -- sets vim.opt.relativenumber
