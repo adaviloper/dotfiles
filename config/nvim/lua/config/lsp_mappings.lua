@@ -14,7 +14,7 @@ local function select_template(template)
   end
 end
 
-local function lksjdfsf()
+local function auto_select_template()
   vim.lsp.buf.code_action({
     filter = function (ca)
       if ca.command ~= nil and ca.command.title ~= nil then
@@ -63,7 +63,11 @@ return {
     },
     ["<Leader>lt"] = { name = "PhpActor Templates" },
     ["<Leader>lta"] = {
-      lksjdfsf,
+      auto_select_template,
+      desc = 'Auto-generate template for the current file',
+    },
+    ["<Leader>ltd"] = {
+      select_template('default'),
       desc = 'Auto-generate template for the current file',
     },
     ["<Leader>ltt"] = {
