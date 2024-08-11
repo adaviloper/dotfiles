@@ -4,9 +4,10 @@
 
 require('config.highlights')
 require('config.autocmds')
+require('config.commands.run_shell_current_line')
 
 -- Set up custom filetypes
-vim.filetype.add {
+vim.filetype.add({
   extension = {
     -- log = "json",
     neon = "yaml",
@@ -22,7 +23,7 @@ vim.filetype.add {
     ["laravel.*log"] = "json",
     ["*"] = "text",
   },
-}
+})
 
 -- Function overwrites
 vim.ui.open = function (path)
