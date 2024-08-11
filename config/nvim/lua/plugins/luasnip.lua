@@ -26,11 +26,12 @@ return {
 		-- Also load both lua and json when a markdown-file is opened,
 		-- javascript for html.
 		-- Other filetypes just load themselves.
-      load_ft_func = require("luasnip.extras.filetype_functions").extend_load_ft({
-			  markdown = {"lua", "json"},
-			  html = {"javascript"},
-			  vue = {"javascript", "sass", "scss", "typescript"},
-		  })
+    --   load_ft_func = require("luasnip.extras.filetype_functions").extend_load_ft({
+			 --  markdown = {"lua", "json"},
+			 --  html = {"javascript"},
+			 --  vue = {"javascript", "sass", "scss", "typescript"},
+		  -- })
+      load_ft_func = require("luasnip.extras.filetype_functions").from_cursor_pos
     })
   end,
 }
