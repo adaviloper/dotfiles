@@ -41,20 +41,6 @@ local function jumpToFileTag(tagName)
   }
 end
 
-local function getFileTypes()
-  return {
-    "CSS",
-    "HTML",
-    "JavaScript",
-    "JSON",
-    "Lua",
-    "Markdown",
-    "PHP",
-    "Text",
-    "TypeScript",
-  }
-end
-
 local function getFileExtensions()
   return {
     "blade.php",
@@ -270,22 +256,23 @@ return {
 
     -- Scratch
     ["<C-n>"] = {
-      function()
-        -- local ft = vim.fn.input('Filetype: ', '', 'file')
-        vim.ui.select(getFileTypes(), { prompt = "Filetype:" }, function(choice)
-          local ft = getFileExtension(choice)
-          vim.ui.input({
-            prompt = "File name",
-            default = nil,
-          }, function(name)
-            if name ~= nil and name ~= "" then
-              require("scratch").scratchByName(name .. "." .. ft)
-            else
-              require("scratch").scratchByType(ft)
-            end
-          end)
-        end)
-      end,
+      -- function()
+      --   -- local ft = vim.fn.input('Filetype: ', '', 'file')
+      --   vim.ui.select(getFileTypes(), { prompt = "Filetype:" }, function(choice)
+      --     local ft = getFileExtension(choice)
+      --     vim.ui.input({
+      --       prompt = "File name",
+      --       default = nil,
+      --     }, function(name)
+      --       if name ~= nil and name ~= "" then
+      --         require("scratch").scratchByName(name .. "." .. ft)
+      --       else
+      --         require("scratch").scratchByType(ft)
+      --       end
+      --     end)
+      --   end)
+      -- end,
+      "<cmd>Scratch<CR>",
       desc = "Open new scratch file",
     },
 
