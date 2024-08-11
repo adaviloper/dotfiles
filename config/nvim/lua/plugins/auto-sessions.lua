@@ -6,8 +6,9 @@ return {
       log_level = "error",
       auto_restore_enabled = true,
       auto_save_enabled = true,
-      auto_session_suppress_dirs = { "~/", "~/Downloads", "/"},
       auto_session_use_git_branch = true,
+      auto_restore_lazy_delay_enabled = true,
+      silent_restore = true,
 
       -- auto_session_enable_last_session = true,
       -- auto_session_last_session_dir = '',
