@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
   group = php_group,
   callback = function (params)
     local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-    if #lines > 1 and lines[1] == '' then
+    if #lines == 1 and lines[1] == '' then
       local client = vim.lsp.get_client_by_id(params.data.client_id)
       if client == nil then return end
 
@@ -28,8 +28,8 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
           apply = true
         })
       end
-    elseif #lines == 1 then
-      vim.api.nvim_buf_set_lines(0, 0, -1, false, {"<?php", "", ""})
+    -- elseif #lines == 1 then
+    --   vim.api.nvim_buf_set_lines(0, 0, -1, false, {"<?php", "", ""})
     end
   end,
 })
