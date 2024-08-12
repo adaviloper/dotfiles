@@ -1,7 +1,7 @@
 code_transform.class_new.variants:
-    Job: laravel_job
-    Listener: laravel_listener
-    Model: laravel_model
+    Jobs: laravel_job
+    Listeners: laravel_listener
+    Models: laravel_model
     Feature: phpunit_feature
     Unit: phpunit_unit
 phpunit.enabled: true
