@@ -107,6 +107,7 @@ return {
     ["<A-]>"] = { "<cmd>Gitsigns next_hunk<CR>", desc = "Next git hunk" },
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
     ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab" },
+    ["<Leader><Leader>e"] = { "<cmd>e<CR>", desc = "Reload the file"},
     ["<Leader><Leader>s"] = {
       function()
         local file_type = vim.bo.filetype
