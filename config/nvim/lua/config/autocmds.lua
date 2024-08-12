@@ -8,28 +8,39 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
     if #lines == 1 and lines[1] == '' then
       local client = vim.lsp.get_client_by_id(params.data.client_id)
       if client == nil then return end
+      local file = vim.fn.expand("%:p:.")
+      local match_position = -1
+      local target_type = 'default'
+      for _, type in ipairs({ 'Feature', 'Unit', 'Jobs', 'Listeners', 'Models' }) do
+        local pos = file:find(type)
+        if pos ~= nil then
+          if match_position == -1 or pos < match_position then
+            target_type = type
+            match_position = pos
+          end
+        end
+      end
 
       if client.supports_method('textDocument/codeAction') then
         vim.lsp.buf.code_action({
           filter = function (ca)
             if ca.command ~= nil and ca.command.title ~= nil then
-              local file = vim.fn.expand("%:p:.")
-              for _, type in ipairs({ 'Feature', 'Unit', 'Job', 'Listener', 'Model' }) do
-                if file:find(type) then
-                  return ca.command.title:find(type) ~= nil
-                end
-              end
-              if ca.command.title:find('default') then
+              if ca.command.title:find(target_type) ~= nil then
                 return true
               end
             end
-            return false
           end,
           apply = true
         })
       end
-    -- elseif #lines == 1 then
-    --   vim.api.nvim_buf_set_lines(0, 0, -1, false, {"<?php", "", ""})
+    -- elseif #lines == 1 and lines[1] == '' then
+    --   vim.api.nvim_buf_set_lines(
+    --     0,
+    --     0,
+    --     -1,
+    --     false,
+    --     {"<?php", "", ""}
+    --   )
     end
   end,
 })
