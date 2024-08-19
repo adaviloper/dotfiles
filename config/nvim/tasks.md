@@ -1,7 +1,7 @@
 # Tasks
 ## Issues
 - [x] Files/buffers do not update when files are changed externally via Git or some other mechanism
-- [ ] Phpactor LSP does not respect PhpStan rules
+- [x] Phpactor LSP does not respect PhpStan rules
 
 ## Plugins
 - [ ] Check to see if the `gh-dash` extension is enabled before launching the `gh-dash` terminal
@@ -29,10 +29,10 @@
 ## Autocommands
 - [ ] Skeletons for populating new files with boilerplate
     - [ ] A way to store different types of files per language
-        - Interface
-        - Empty PHP file
-        - PHP Class
-        - Vue Single-File Components
+        - [x] Interface
+        - [x] Empty PHP file
+        - [x] PHP Class
+        - [ ] Vue Single-File Components
 
 ## Plugins to look into
 - https://github.com/danymat/neogen
