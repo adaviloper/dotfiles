@@ -256,26 +256,10 @@ return {
     ["<F3>"] = { "<cmd>PhpactorContextMenu<CR>", desc = "Show the context menu for the current cursor position" },
 
     -- Scratch
-    -- ["<C-n>"] = {
-    --   -- function()
-    --   --   -- local ft = vim.fn.input('Filetype: ', '', 'file')
-    --   --   vim.ui.select(getFileTypes(), { prompt = "Filetype:" }, function(choice)
-    --   --     local ft = getFileExtension(choice)
-    --   --     vim.ui.input({
-    --   --       prompt = "File name",
-    --   --       default = nil,
-    --   --     }, function(name)
-    --   --       if name ~= nil and name ~= "" then
-    --   --         require("scratch").scratchByName(name .. "." .. ft)
-    --   --       else
-    --   --         require("scratch").scratchByType(ft)
-    --   --       end
-    --   --     end)
-    --   --   end)
-    --   -- end,
-    --   "<cmd>Scratch<CR>",
-    --   desc = "Open new scratch file",
-    -- },
+    ["<C-n>"] = {
+      "<cmd>Scratch<CR>",
+      desc = "Open new scratch file",
+    },
 
     -- TreeSJ
     ["gS"] = {
