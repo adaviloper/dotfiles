@@ -14,11 +14,9 @@ command_timeout = 1000
 
 format = """
 [∙](bold sky)$fill[∙ ](bold sky)$time
-[](bold sapphire)\
-$username\
-[ ](sapphire bg:peach)\
+[](bold blue)\
 $directory\
-[ ](peach bg:green)\
+[ ](blue bg:green)\
 $git_branch\
 $git_state\
 $git_status\
@@ -49,15 +47,15 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 
 [directory]
 fish_style_pwd_dir_length = 3
-format = '[$path ]($style)[$read_only]($read_only_style bg:peach)'
-style = 'mantle bg:peach'
+format = '[$path ]($style)[$read_only]($read_only_style bg:blue)'
+style = 'mantle bg:blue'
 truncation_length = 4
 
 [directory.substitutions]
 # Add any substitions here
 # 'some/path' = 'alias'
-'.dotfiles' = ' .dotfiles'
-'~/Code' = ' Code'
+'.dotfiles' = '  .dotfiles'
+'~/Code' = '  Code'
 'loop-returns-app' = ' Loop'
 'qmk_firmware' = '󰌓 QMK'
 
