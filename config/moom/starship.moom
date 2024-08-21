@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Custom Controls (4001)</key>
+	<array>
+		<dict>
+			<key>Action</key>
+			<integer>10001</integer>
+			<key>Chain Mode</key>
+			<integer>0</integer>
+			<key>Children</key>
+			<array>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>12</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>4</integer>
+					</dict>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>5882E487-6CDD-4727-8094-9C13190A41C4</string>
+						<key>Key Code</key>
+						<integer>12</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>Q</string>
+					</dict>
+					<key>Identifier</key>
+					<string>5882E487-6CDD-4727-8094-9C13190A41C4</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {0.49999999999999994, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>12</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>4</integer>
+					</dict>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>DF182677-A768-45F5-BB55-3FAD5A19FB89</string>
+						<key>Key Code</key>
+						<integer>13</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>W</string>
+					</dict>
+					<key>Identifier</key>
+					<string>DF182677-A768-45F5-BB55-3FAD5A19FB89</string>
+					<key>Relative Frame</key>
+					<string>{{0.25, 0}, {0.24999999999999994, 1}}</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>1Password</string>
+						<key>Available Screen Frame</key>
+						<string>{{0, 0}, {5120, 1415}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.1password.1password</string>
+						<key>Screen Frame</key>
+						<string>{{0, 0}, {5120, 1440}}</string>
+						<key>Window Frame</key>
+						<string>{{3877, 209}, {1024, 800}}</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>Our Family + 1 — All Items — 1Password</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>A69426C3-0E56-4D54-B868-6A06FB0853B5</string>
+						<key>Key Code</key>
+						<integer>14</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>E</string>
+					</dict>
+					<key>Identifier</key>
+					<string>A69426C3-0E56-4D54-B868-6A06FB0853B5</string>
+					<key>Relative Frame</key>
+					<string>{{0.16666666666666666, 0}, {0.66666666666666674, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>246017F5-C10F-40F9-AD2E-54B35B238960</string>
+						<key>Key Code</key>
+						<integer>15</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>R</string>
+					</dict>
+					<key>Identifier</key>
+					<string>246017F5-C10F-40F9-AD2E-54B35B238960</string>
+					<key>Relative Frame</key>
+					<string>{{0.49999999999999994, 0}, {0.25000000000000006, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>0012F907-AD55-41DA-8C96-D03762F549CF</string>
+						<key>Key Code</key>
+						<integer>17</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>T</string>
+					</dict>
+					<key>Identifier</key>
+					<string>0012F907-AD55-41DA-8C96-D03762F549CF</string>
+					<key>Relative Frame</key>
+					<string>{{0.49999999999999994, 0}, {0.5, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>F0FAB0D6-F01F-44BA-8C48-A5F2D1A99FC0</string>
+						<key>Key Code</key>
+						<integer>0</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>A</string>
+					</dict>
+					<key>Identifier</key>
+					<string>F0FAB0D6-F01F-44BA-8C48-A5F2D1A99FC0</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {0.25, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>6E89E814-7E2A-44E2-BC83-168D03FA060A</string>
+						<key>Key Code</key>
+						<integer>1</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>S</string>
+					</dict>
+					<key>Identifier</key>
+					<string>6E89E814-7E2A-44E2-BC83-168D03FA060A</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {0.75, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>16FB9FAF-282D-4995-9921-3A781319FCB8</string>
+						<key>Key Code</key>
+						<integer>2</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>D</string>
+					</dict>
+					<key>Identifier</key>
+					<string>16FB9FAF-282D-4995-9921-3A781319FCB8</string>
+					<key>Relative Frame</key>
+					<string>{{0.25, 0}, {0.5, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>5F6F05C2-3DE3-4D5E-A4BD-6B5D696D222C</string>
+						<key>Key Code</key>
+						<integer>3</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>F</string>
+					</dict>
+					<key>Identifier</key>
+					<string>5F6F05C2-3DE3-4D5E-A4BD-6B5D696D222C</string>
+					<key>Relative Frame</key>
+					<string>{{0.25, 0}, {0.75, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>3570749B-CD24-485D-8DAA-0BBA9E55DF78</string>
+						<key>Key Code</key>
+						<integer>5</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>G</string>
+					</dict>
+					<key>Identifier</key>
+					<string>3570749B-CD24-485D-8DAA-0BBA9E55DF78</string>
+					<key>Relative Frame</key>
+					<string>{{0.75, 0}, {0.25, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>EA648A35-D3CE-47EC-AE48-0EE0E8EED94E</string>
+						<key>Key Code</key>
+						<integer>6</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>Z</string>
+					</dict>
+					<key>Identifier</key>
+					<string>EA648A35-D3CE-47EC-AE48-0EE0E8EED94E</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {0.33333333333333331, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>E8E228BF-8C85-4429-AD4D-1CF17594491D</string>
+						<key>Key Code</key>
+						<integer>7</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>X</string>
+					</dict>
+					<key>Identifier</key>
+					<string>E8E228BF-8C85-4429-AD4D-1CF17594491D</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {0.66666666666666663, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>11148B05-51A9-421B-87AB-1B53CA6D7CE7</string>
+						<key>Key Code</key>
+						<integer>8</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>C</string>
+					</dict>
+					<key>Identifier</key>
+					<string>11148B05-51A9-421B-87AB-1B53CA6D7CE7</string>
+					<key>Relative Frame</key>
+					<string>{{0.33333333333333331, 0}, {0.33333333333333331, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>6C999501-0401-445A-9503-BFAB81D84976</string>
+						<key>Key Code</key>
+						<integer>9</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>V</string>
+					</dict>
+					<key>Identifier</key>
+					<string>6C999501-0401-445A-9503-BFAB81D84976</string>
+					<key>Relative Frame</key>
+					<string>{{0.33333333333333331, 0}, {0.66666666666666674, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>A15B37DC-429C-423A-B87A-0F56A419783D</string>
+						<key>Key Code</key>
+						<integer>11</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>B</string>
+					</dict>
+					<key>Identifier</key>
+					<string>A15B37DC-429C-423A-B87A-0F56A419783D</string>
+					<key>Relative Frame</key>
+					<string>{{0.66666666666666663, 0}, {0.33333333333333337, 1}}</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>0</integer>
+					<key>Identifier</key>
+					<string>648388B0-1BB6-4464-B710-D904C8C0A8B5</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>-101</integer>
+					<key>Identifier</key>
+					<string>88051AAE-6CDC-409B-9582-F8BE40EDB51C</string>
+					<key>Title</key>
+					<string>Layouts</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>1001</integer>
+					<key>Apply to Overlapping Windows</key>
+					<false/>
+					<key>Auto-Trigger</key>
+					<false/>
+					<key>Auto-Trigger Display Count</key>
+					<integer>1</integer>
+					<key>Generic</key>
+					<false/>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>80399942-4A1C-4B2E-8010-80258982E761</string>
+						<key>Key Code</key>
+						<integer>38</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>J</string>
+					</dict>
+					<key>Identifier</key>
+					<string>80399942-4A1C-4B2E-8010-80258982E761</string>
+					<key>Snapshot</key>
+					<array>
+						<dict>
+							<key>Application Name</key>
+							<string>Firefox</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>org.mozilla.firefox</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{3840, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>ShipByLoopWorldwide Component Refactor – FigJam</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Firefox</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>org.mozilla.firefox</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{1310, 30}, {2500, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>[LPR-1123] Refactor ShipByLoopWorldwide components to reduce load on ShipByLoopWorldwide - JIRA</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>WezTerm</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.github.wez.wezterm</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{1310, 30}, {2500, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Loop Returns:2:Admin - "settings.js (~/Code/loop-returns-app/admin/src/router) - NVIM" </string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Slack</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.tinyspeck.slackmacgap</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{30, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>eng-team (Channel) - Loop - Slack</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Notion</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>notion.id</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{3840, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>The Logisticats</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Obsidian</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>md.obsidian</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{3840, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>2024-05-02 - Multi-label Sync - Loop - Obsidian v1.5.12</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>PhpStorm</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.jetbrains.phpstorm</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{1310, 30}, {2500, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>loop-returns-app – loop-returns.carriers [Local]</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>OrbStack</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>dev.kdrag0n.macvirt</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{292, 415}, {850, 600}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Containers – 8 running</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Alfred Preferences</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.runningwithcrayons.alfred-preferences</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{62, 282}, {1180, 766}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Alfred Preferences</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Google Calendar</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.google.chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{3840, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Postman</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.postmanlabs.mac</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{1310, 30}, {2500, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>USPS (US) - Services - Loop</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Activity Monitor</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.apple.activitymonitor</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{2711, 262}, {960, 640}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Activity Monitor – My Processes</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Advanced Screen Share</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>de.jurekbarth.advancedscreenshare</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{2160, 611}, {800, 600}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string></string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>QMK Toolbox</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>fm.qmk.toolbox</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{367, 487}, {802, 668}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>QMK Toolbox</string>
+						</dict>
+					</array>
+					<key>Snapshot Screens</key>
+					<array>
+						<string>{{0, 0}, {5120, 1440}}</string>
+					</array>
+					<key>Stubborn</key>
+					<false/>
+					<key>Title</key>
+					<string>Work</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>1001</integer>
+					<key>Apply to Overlapping Windows</key>
+					<false/>
+					<key>Auto-Trigger</key>
+					<false/>
+					<key>Auto-Trigger Display Count</key>
+					<integer>1</integer>
+					<key>Generic</key>
+					<false/>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>088E4449-C8E1-4AC0-A6D6-D5A2F236C045</string>
+						<key>Key Code</key>
+						<integer>40</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>K</string>
+					</dict>
+					<key>Identifier</key>
+					<string>088E4449-C8E1-4AC0-A6D6-D5A2F236C045</string>
+					<key>Snapshot</key>
+					<array>
+						<dict>
+							<key>Application Name</key>
+							<string>WezTerm</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.github.wez.wezterm</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{1310, 30}, {2500, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Loop Returns:2:Admin - "settings.js (~/Code/loop-returns-app/admin/src/router) - NVIM" </string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Firefox</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>org.mozilla.firefox</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{3840, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>ShipByLoopWorldwide Component Refactor – FigJam</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Firefox</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>org.mozilla.firefox</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{1310, 30}, {2500, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>[LPR-1123] Refactor ShipByLoopWorldwide components to reduce load on ShipByLoopWorldwide - JIRA</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Slack</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.tinyspeck.slackmacgap</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{30, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>eng-team (Channel) - Loop - Slack</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Notion</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>notion.id</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{3840, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>The Logisticats</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Obsidian</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>md.obsidian</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{3840, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>2024-05-02 - Multi-label Sync - Loop - Obsidian v1.5.12</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>PhpStorm</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.jetbrains.phpstorm</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{1310, 30}, {2500, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>loop-returns-app – loop-returns.carriers [Local]</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>OrbStack</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>dev.kdrag0n.macvirt</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{292, 415}, {850, 600}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Containers – 8 running</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Alfred Preferences</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.runningwithcrayons.alfred-preferences</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{62, 282}, {1180, 766}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Alfred Preferences</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Google Calendar</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.google.chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{3840, 30}, {1250, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Postman</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.postmanlabs.mac</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{1310, 30}, {2500, 1355}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>USPS (US) - Services - Loop</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Activity Monitor</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.apple.activitymonitor</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{2711, 262}, {960, 640}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Activity Monitor – My Processes</string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>Advanced Screen Share</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>de.jurekbarth.advancedscreenshare</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{2160, 611}, {800, 600}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string></string>
+						</dict>
+						<dict>
+							<key>Application Name</key>
+							<string>QMK Toolbox</string>
+							<key>Available Screen Frame</key>
+							<string>{{0, 0}, {5120, 1415}}</string>
+							<key>Bundle Identifier</key>
+							<string>fm.qmk.toolbox</string>
+							<key>Screen Frame</key>
+							<string>{{0, 0}, {5120, 1440}}</string>
+							<key>Window Frame</key>
+							<string>{{367, 487}, {802, 668}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>QMK Toolbox</string>
+						</dict>
+					</array>
+					<key>Snapshot Screens</key>
+					<array>
+						<string>{{0, 0}, {5120, 1440}}</string>
+					</array>
+					<key>Stubborn</key>
+					<false/>
+					<key>Title</key>
+					<string>Development</string>
+				</dict>
+			</array>
+			<key>Identifier</key>
+			<string>4D574EF4-9516-4D17-B3D2-203E09DF9E0F</string>
+			<key>Title</key>
+			<string>Ultrawide</string>
+		</dict>
+	</array>
+</dict>
+</plist>
