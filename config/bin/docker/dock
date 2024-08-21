@@ -6,6 +6,9 @@ current_dir=$(pwd)
 get_container_name() {
     # Map the current working directory to the corresponding container name
     case $current_dir in
+        */"frontend"/*|*/"frontend")
+            echo "core-frontend"
+            ;;
         */"admin"/*|*/"admin")
             echo "admin-frontend"
             ;;
