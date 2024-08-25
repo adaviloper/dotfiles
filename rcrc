@@ -1,4 +1,4 @@
-EXCLUDES="apps Brewfile phpstorm scripts work-settings.jar xbindkeysrc.scm"
+EXCLUDES="apps assets Brewfile Brewfile.lock.json phpstorm scripts vim vimrc work-settings.jar xbindkeysrc.scm"
 
 SYMLINK_DIRS="config/bin config/nvim config/phpactor config/tmuxp config/wezterm Library/Application\ Support/org.yanex.marta"
 
