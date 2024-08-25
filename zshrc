@@ -132,6 +132,18 @@ export TERM="xterm-256color"
 unalias g
 unalias gco
 
+# Check if already inside a tmux session
+if [ -z "$TMUX" ]; then
+  # Check if a tmux server is running
+  if ! pgrep -x "tmux" > /dev/null; then
+    # If no tmux server is running, run your command
+    tm
+  else
+    # If a tmux server is running, attach to it
+    tm a
+  fi
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
