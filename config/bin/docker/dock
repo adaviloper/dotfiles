@@ -18,6 +18,9 @@ get_container_name() {
         */"whiplash-middleware"/*|*/"whiplash-middleware")
             echo "whiplash-app"
             ;;
+        */"vtest"/*|*/"vtest")
+            echo "vtest-ui-app"
+            ;;
         *)
             echo ""
             ;;
