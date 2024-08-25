@@ -21,6 +21,31 @@ return {
         position = "top",
       }
     }
+
+    opts.environments = {
+      definitions = {
+        {
+          name = "docker-compose",
+          condition = {
+            file_exists = { "docker-compose.yml" },
+            executable = { "docker" },
+          },
+          commands = {
+            compose = { "docker", "compose" },
+            {
+              commands = { "php", "composer", "npm" },
+              docker = {
+                container = {
+                  env = "APP_SERVICE",
+                  default = "core",
+                },
+                exec = { "docker", "compose", "exec", "-it" },
+              },
+            },
+          },
+        },
+      }
+    }
   end,
   config = true,
 }
