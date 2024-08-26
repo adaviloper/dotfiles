@@ -137,7 +137,18 @@ if [ -z "$TMUX" ]; then
   # Check if a tmux server is running
   if ! pgrep -x "tmux" > /dev/null; then
     # If no tmux server is running, run your command
-    tm
+
+    tmuxp load -d dots
+
+    if [[ -f "~/.config/work_computer" ]]; then
+      tmuxp load -d loop
+    else
+      tmuxp load -d core10
+      tmuxp load -d notes
+      tmuxp load -d redwood
+    fi
+
+    tmux attach
   else
     # If a tmux server is running, attach to it
     tm a
