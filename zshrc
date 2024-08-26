@@ -140,7 +140,7 @@ if [ -z "$TMUX" ]; then
 
     tmuxp load -d dots
 
-    if [[ -f "~/.config/work_computer" ]]; then
+    if [[ -f "$HOME/.config/work_computer" ]]; then
       tmuxp load -d loop
     else
       tmuxp load -d core10
