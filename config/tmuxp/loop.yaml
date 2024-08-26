@@ -2,6 +2,7 @@ session_name: Loop Returns
 start_directory: "~/Code/loop-returns-app"
 windows:
   - window_name: Root
+    focus: true
     panes:
       - shell_command:
         - cmd: 'c'
@@ -19,11 +20,9 @@ windows:
         - cmd: 'c'
         - cmd: "vim"
   - window_name: Terminals
-    layout: main-vertical
-    focus: true
+    layout: 4ebf,173x47,0,0{86x47,0,0,22,86x47,87,0[86x23,87,0,23,86x23,87,24,24]}
     panes:
       - pane:
-        focus: true
       - shell_command:
         - cd admin
         - clear
