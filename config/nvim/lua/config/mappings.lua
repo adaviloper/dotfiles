@@ -243,15 +243,6 @@ return {
     ["<LocalLeader>yp"] = { function() vim.fn.setreg("+", vim.fn.expand "%:p:.") end, desc = "Copy file path" },
     ["<LocalLeader>yd"] = { function() vim.fn.setreg("+", vim.fn.expand "%:h") end, desc = "Copy directory path" },
     ["<LocalLeader>yf"] = { function() vim.fn.setreg("+", vim.fn.expand "%:t:r") end, desc = "Copy file name" },
-    ["<LocalLeader>g"] = { name = "Miscellaneous" },
-    ["<LocalLeader>gx"] = {
-      function()
-        if vim.bo.filetype ~= "lua" then return end
-        local path = vim.treesitter.get_node_text(vim.treesitter.get_node(), 0)
-        vim.cmd("!open https://github.com/" .. path)
-      end,
-      desc = "Open plugin repo in browser",
-    },
 
     ["<F3>"] = { "<cmd>PhpactorContextMenu<CR>", desc = "Show the context menu for the current cursor position" },
 
