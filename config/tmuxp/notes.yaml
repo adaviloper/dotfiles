@@ -6,8 +6,8 @@ windows:
       - shell_command:
         - cmd: 'c'
         - cmd: "vim"
-  - window_name: GRIN
-    start_directory: "~/Documents/GRIN-Vault/"
+  - window_name: Standards
+    start_directory: "~/Code/technical-docs/"
     panes:
       - shell_command:
         - cmd: 'c'
