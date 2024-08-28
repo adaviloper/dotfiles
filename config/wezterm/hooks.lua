@@ -9,7 +9,7 @@ function M.setup(_)
       local active_screen = wezterm.gui.screens()['active']
       local _, _, window = wezterm.mux.spawn_window(cmd or {})
 
-      local padding = 30
+      local padding = 32
       local menu_bar_height = 25
       local laptop_menu_bar_height = 38
       local monitor_ratio = 31 / 9
