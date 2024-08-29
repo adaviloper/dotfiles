@@ -14,14 +14,14 @@ command_timeout = 1000
 
 format = """
 [∙](bold sky)$fill[∙ ](bold sky)$time
-[](bold blue)\
+[](bold mauve)\
 $directory\
-[ ](blue bg:green)\
+[ ](mauve bg:teal)\
 $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
-[ ](green)
+[ ](teal)
 """
 
 # [└─∙ ](bold sky)
@@ -47,8 +47,8 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 
 [directory]
 fish_style_pwd_dir_length = 3
-format = '[$path ]($style)[$read_only]($read_only_style bg:blue)'
-style = 'mantle bg:blue'
+format = '[$path ]($style)[$read_only]($read_only_style bg:mauve)'
+style = 'mantle bg:mauve'
 truncation_length = 4
 
 [directory.substitutions]
@@ -64,14 +64,14 @@ symbol = '─'
 style = 'bold sky'
 
 [git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style bg:green)'
+format = '[$symbol$branch(:$remote_branch)]($style bg:teal)'
 style = 'mantle'
-symbol = '[ ](mantle bg:green)'
+symbol = '[ ](mantle bg:teal)'
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
 disabled = false
-style = 'mantle bg:green'
+style = 'mantle bg:teal'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
