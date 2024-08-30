@@ -53,6 +53,7 @@ sh ~/.dotfiles/scripts/post-install.sh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     info "Installing Oh-My-Zsh"
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -- --unattended)"
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 fi
 
 info "Running [rcup]"
