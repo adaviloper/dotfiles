@@ -210,8 +210,29 @@ return {
 
     -- Telescope
     ["<Leader>fo"] = {
-      function() require("telescope.builtin").oldfiles { cwd_only = true } end,
+      function() require("telescope.builtin").oldfiles({ cwd_only = true }) end,
       desc = "Find history",
+    },
+    ["<Leader>fH"] = {
+      function()
+        vim.ui.select(
+          {
+            'vendor',
+            'node_modules',
+          },
+          {
+            prompt = 'Select an ignored directory:',
+          },
+          function (selection)
+            require("telescope.builtin").find_files {
+              prompt_title = selection .. "Files",
+              cwd = vim.fn.getcwd() .. "/" .. selection,
+              follow = true,
+            }
+          end
+        )
+      end,
+      desc = "Find in node_modules",
     },
     ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find words in directory" },
     ["<Leader>fe"] = { "<cmd>Telescope telescope-env env_values theme=dropdown<CR>", desc = "Find env values" },
