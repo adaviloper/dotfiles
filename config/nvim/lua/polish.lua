@@ -11,6 +11,7 @@ vim.filetype.add({
   extension = {
     -- log = "json",
     neon = "yaml",
+    tmux = "sh",
     zsh = "sh",
   },
   filename = {
