@@ -8,6 +8,7 @@ return {
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = {
       ensure_installed = {
+        "bashls",
         "lua_ls",
         "gopls",
         "phpactor",
@@ -21,6 +22,7 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       ensure_installed = {
+        "shellcheck",
         "stylua",
         -- add more arguments for adding more null-ls sources
       },
