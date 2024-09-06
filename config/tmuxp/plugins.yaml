@@ -11,3 +11,8 @@ windows:
     panes:
       - shell_command:
         - cmd: 'c'
+  - window_name: t-sessions
+    start_directory: ~/Code/t-session/
+    panes:
+      - shell_command:
+        - cmd: 'c'
