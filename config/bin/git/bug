@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-ticket_branch 'bugfix' $1 "$2"
+ticket_branch 'bugfix' "$1" "$2"
 
