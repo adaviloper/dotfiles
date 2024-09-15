@@ -2,7 +2,6 @@
 -- things like custom filetypes. This just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
 
-require('config.highlights')
 require('config.autocmds')
 require('config.commands.run_shell_current_line')
 
