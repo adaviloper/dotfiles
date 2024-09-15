@@ -80,7 +80,7 @@ dd({}__METHOD__ . ':' . __LINE__);
           sn(
             1,
             {
-              d(1, function (args)
+              d(1, function ()
                 local pos = vim.api.nvim_win_get_cursor(0)
                 local prev_line = vim.api.nvim_buf_get_lines(0, pos[1] - 2, pos[1] - 1, false)
                 if prev_line[1] == '' then
