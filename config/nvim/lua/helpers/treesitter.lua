@@ -56,14 +56,14 @@ end
 
 M.in_nodes_condition = function (node_names)
   return function (_, _, _)
-  local node = vim.treesitter.get_node()
-  while node ~= nil do
-    if vim.tbl_contains(node_names, node:type()) then
-      return true
-    end
+    local node = vim.treesitter.get_node()
+    while node ~= nil do
+      if vim.tbl_contains(node_names, node:type()) then
+        return true
+      end
 
-    node = node:parent()
-  end
+      node = node:parent()
+    end
     return false
   end
 end
