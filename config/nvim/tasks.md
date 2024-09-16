@@ -32,7 +32,7 @@
         - [x] Interface
         - [x] Empty PHP file
         - [x] PHP Class
-        - [ ] Vue Single-File Components
+        - [x] Vue Single-File Components
 
 ## Plugins to look into
 - https://github.com/danymat/neogen
