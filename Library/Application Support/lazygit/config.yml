@@ -51,16 +51,16 @@ gui:
 git:
     commitPrefixes:
         core10:
-            pattern: "^\\w+\\/(\\w+-\\w+)-.*"
+            pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
             replace: "$1: "
         whiplash-middleware:
-            pattern: "^\\w+\\/(\\w+-\\w+)-.*"
+            pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
             replace: "$1: "
         figs-recycling-campaign:
-            pattern: "^\\w+\\/(\\w+-\\w+)-.*"
+            pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
             replace: "$1: "
         loop-returns-app:
-            pattern: "^\\w+\\/(\\w+-\\w+)-.*"
+            pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
             replace: "$1: "
     paging:
         colorArg: always
