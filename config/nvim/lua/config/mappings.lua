@@ -237,6 +237,7 @@ return {
     ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find words in directory" },
     ["<Leader>fe"] = { "<cmd>Telescope telescope-env env_values theme=dropdown<CR>", desc = "Find env values" },
     ["<Leader>f_"] = { "<cmd>ScratchOpen<cr>", desc = "Open a Scratch file" },
+    ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
     ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
     ["<Leader>f<C-w>"] = {
       searchThroughFileType "live_grep",
