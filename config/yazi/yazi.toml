@@ -1,11 +1,13 @@
-# [plugins]
-# preload = [
-#   "~/.config/yazi/ui.lua"
-# ]
+[plugins]
+preload = [
+  # "~/.config/yazi/ui.lua"
+]
 
 [manager]
 folder_offset = [2,0,2,0]
+linemode = "size_and_mtime"
 preview_offset = [2,1,2,1]
+ratio = [2, 3, 3]
 scrolloff = 8
 show_hidden = true
 show_symlink = true
@@ -14,3 +16,12 @@ sort_dir_first = true
 sort_reverse = false
 sort_sensitive = false
 
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
