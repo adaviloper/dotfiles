@@ -36,6 +36,11 @@ fi
 info "Installing Brewfile packages"
 brew bundle --file=~/.dotfiles/Brewfile
 
+if !command -v brew >/dev/null 2>&1; then
+    info "Installing Yazi plugins"
+    ya pack -a yazi-rs/plugins:git
+fi
+
 if [ ! -d ~/.config/tmux/plugins/tpm ]; then
     info "Installing TPM"
     git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
