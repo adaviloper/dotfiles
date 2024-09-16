@@ -24,6 +24,14 @@ function M.getKeybindings()
       })
     },
     { -- Switch to Plugins session
+      key = 'n',
+      mods = 'CMD',
+      action = act.Multiple({
+        tmuxPrefix,
+        act.SendKey({ key = 'n' }),
+      })
+    },
+    { -- Switch to Plugins session
       key = 'i',
       mods = 'CMD',
       action = act.Multiple({
@@ -68,7 +76,7 @@ function M.getKeybindings()
       mods = 'CMD',
       action = act.Multiple({
         tmuxPrefix,
-        act.SendKey({ key = 'n' }),
+        act.SendKey({ key = 'j' }),
       })
     },
     { -- Switch to next window
@@ -76,7 +84,7 @@ function M.getKeybindings()
       mods = 'CMD',
       action = act.Multiple({
         tmuxPrefix,
-        act.SendKey({ key = 'p' }),
+        act.SendKey({ key = 'k' }),
       })
     },
     { -- Switch to upper pane

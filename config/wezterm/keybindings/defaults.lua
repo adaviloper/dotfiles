@@ -7,7 +7,6 @@ function M.getKeybindings()
 	return {
 		{ key = "c", mods = "SUPER", action = act.CopyTo("Clipboard") },
 		{ key = "f", mods = "SUPER", action = act.Search("CurrentSelectionOrEmptyString") },
-		{ key = "n", mods = "SUPER", action = act.SpawnWindow },
 		{ key = "p", mods = "SUPER", action = act.ActivateCommandPalette },
 		{ key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
 		{ key = "q", mods = "SUPER", action = act.QuitApplication },
