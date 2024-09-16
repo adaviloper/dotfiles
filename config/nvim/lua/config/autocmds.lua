@@ -33,14 +33,14 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
           apply = true
         })
       end
-    -- elseif #lines == 1 and lines[1] == '' then
-    --   vim.api.nvim_buf_set_lines(
-    --     0,
-    --     0,
-    --     -1,
-    --     false,
-    --     {"<?php", "", ""}
-    --   )
     end
   end,
+})
+
+local win_group = vim.api.nvim_create_augroup('Split Manager', { clear = true })
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  group = win_group,
+  pattern = { 'help', 'man' },
+  command = 'wincmd L',
 })
