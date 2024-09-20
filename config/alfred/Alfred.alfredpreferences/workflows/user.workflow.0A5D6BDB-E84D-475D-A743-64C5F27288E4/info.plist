@@ -8,6 +8,19 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>184E12A5-6EAE-43C2-A210-A98ED829CA51</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6FBCF24A-DF6D-45E5-A641-E744D1A5FD7D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>287CF763-9C1F-4450-ADEC-E80320662FEF</key>
 		<array>
 			<dict>
@@ -294,6 +307,58 @@
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
 			<string>9ACFE091-A925-4196-B964-9B2C241E4BE2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>5</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>G</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>184E12A5-6EAE-43C2-A210-A98ED829CA51</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/adaviloper/dotfiles</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>6FBCF24A-DF6D-45E5-A641-E744D1A5FD7D</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -642,19 +707,26 @@ Hotkeys are stripped on import, to ensure that they don't clash with your existi
 A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character at least, but your best bet is to use slightly less common combinations (e.g. two modifiers) to avoid clashing with default OS X hotkeys or other apps on your Mac.</string>
 	<key>uidata</key>
 	<dict>
+		<key>184E12A5-6EAE-43C2-A210-A98ED829CA51</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>345</real>
+		</dict>
 		<key>274CDCE6-F5A2-4DBE-BCFC-2B841461D5A3</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>660</real>
+			<real>765</real>
 		</dict>
 		<key>287CF763-9C1F-4450-ADEC-E80320662FEF</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>765</real>
+			<real>870</real>
 		</dict>
 		<key>44BEE7B6-6286-4594-90C8-1CB234B0F121</key>
 		<dict>
@@ -675,42 +747,49 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>345</real>
+			<real>450</real>
 		</dict>
 		<key>59B27131-4636-46C4-8733-B2115651AD49</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>975</real>
+			<real>1080</real>
 		</dict>
 		<key>64393916-85B3-4F13-A1F8-0644CA316262</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>870</real>
+			<real>975</real>
 		</dict>
-		<key>763D961C-A650-4E21-81A3-A056E1D637EA</key>
+		<key>6FBCF24A-DF6D-45E5-A641-E744D1A5FD7D</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
 			<real>345</real>
 		</dict>
+		<key>763D961C-A650-4E21-81A3-A056E1D637EA</key>
+		<dict>
+			<key>xpos</key>
+			<real>270</real>
+			<key>ypos</key>
+			<real>450</real>
+		</dict>
 		<key>84857419-16FC-4004-8DCD-31F9A48E8E6B</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>660</real>
+			<real>765</real>
 		</dict>
 		<key>9A3649B1-0523-422C-9F17-AEE10D0FFEE8</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>450</real>
+			<real>555</real>
 		</dict>
 		<key>9ACFE091-A925-4196-B964-9B2C241E4BE2</key>
 		<dict>
@@ -724,14 +803,14 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>555</real>
+			<real>660</real>
 		</dict>
 		<key>A03F2284-9199-4857-80E6-96CE137B09D2</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>450</real>
+			<real>555</real>
 		</dict>
 		<key>A83EB02D-EA04-4D9B-AB1D-ED474DA51DF8</key>
 		<dict>
@@ -745,21 +824,21 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>555</real>
+			<real>660</real>
 		</dict>
 		<key>DE8D6931-E01C-4018-8C14-64F6778A7896</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>975</real>
+			<real>1080</real>
 		</dict>
 		<key>E06E0DFF-F676-45CB-9434-A242EBC7CF15</key>
 		<dict>
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>765</real>
+			<real>870</real>
 		</dict>
 		<key>ECACCEB5-20CA-455F-A37A-5FD8CDD9E979</key>
 		<dict>
@@ -773,7 +852,7 @@ A hotkey needs to contain a modifier (Cmd, Ctrl or Alt) and a keyboard character
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>870</real>
+			<real>975</real>
 		</dict>
 		<key>F9853120-ADC7-4973-8392-7009482ED60B</key>
 		<dict>
