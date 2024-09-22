@@ -40,6 +40,7 @@ brew 'zsh'
 brew 'zsh-autosuggestions'
 brew 'zsh-completions'
 
+cask '1password'
 cask 'alfred'
 cask 'contexts'
 cask 'font-symbols-only-nerd-font'
