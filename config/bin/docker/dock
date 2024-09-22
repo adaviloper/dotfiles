@@ -21,6 +21,12 @@ get_container_name() {
         */"vtest"/*|*/"vtest")
             echo "vtest-ui-app"
             ;;
+        */"advent-of-code/2020"/*|*/"advent-of-code/2020")
+            echo "aoc-2020"
+            ;;
+        */"advent-of-code/2023"/*|*/"advent-of-code/2023")
+            echo "aoc-2023"
+            ;;
         *)
             echo ""
             ;;
@@ -36,4 +42,5 @@ if [ -z "$container_name" ]; then
 fi
 
 # Execute the docker command with the mapped container name
+# docker compose run "$container_name" $@
 docker exec -it "$container_name" $@
