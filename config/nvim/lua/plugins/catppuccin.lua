@@ -22,6 +22,7 @@ return {
           DiagnosticUnderlineWarn = { undercurl = true, sp = mocha.yellow },
           DiagnosticUnderlineInfo = { undercurl = true, sp = mocha.sky },
           SpellBad = { undercurl = true, sp = mocha.green },
+          WindowPickerWinBarNC = { bg = mocha.sky, fg = mocha.surface1 },
         }
       end,
     },
