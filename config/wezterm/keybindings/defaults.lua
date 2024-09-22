@@ -11,7 +11,6 @@ function M.getKeybindings()
 		{ key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
 		{ key = "q", mods = "SUPER", action = act.QuitApplication },
 		{ key = "r", mods = "SUPER", action = act.ReloadConfiguration },
-		{ key = "t", mods = "SUPER", action = act.SpawnTab("CurrentPaneDomain") },
 		{
 			key = "u",
 			mods = "SUPER",
