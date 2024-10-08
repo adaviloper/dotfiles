@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Store the list of changed files in a variable
+changed_files=$(git diff --name-only --diff-filter=ACM $(git merge-base HEAD develop))
+
+# Store PHP files in a separate variable
+php_files=$(echo "$changed_files" | grep '\.php$')
+
+# Store admin files in a separate variable and strip the 'admin/' prefix
+admin_files=$(echo "$changed_files" | grep '^admin/' | sed 's|^admin/||')
+
+# Store frontend files in a separate variable and strip the 'frontend/' prefix
+frontend_files=$(echo "$changed_files" | grep '^frontend/' | sed 's|^frontend/||')
+
+# Count the number of files
+file_count=$(echo "$changed_files" | wc -l)
+
+# Check if there are any PHP files and run the commands if they exist
+if [[ -n "$php_files" ]]; then
+  echo "Linting PHP files"
+  ./script/fix --config=.php-cs-fixer.php "$php_files"
+  ./script/analyse "$php_files"
+fi
+
+# Check if there are any files in the admin directory and run the command if they exist
+if [[ -n "$admin_files" ]]; then
+  echo "Linting admin files"
+  (cd admin && dock npm run lint:fix $admin_files)
+fi
+
+# Check if there are any files in the frontend directory and run the command if they exist
+if [[ -n "$frontend_files" ]]; then
+  echo "Linting frontend files"
+  (cd frontend && npm run lint:fix $frontend_files)
+fi
+
+# Print the number of files
+echo "Number of files processed: $file_count"
+
