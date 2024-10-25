@@ -39,7 +39,7 @@ return {
                   env = "APP_SERVICE",
                   default = "core",
                 },
-                exec = { "docker", "compose", "exec", "-it" },
+                exec = { "docker", "compose", "exec", },
               },
             },
           },
@@ -58,7 +58,7 @@ return {
                 container = {
                   default = "app",
                 },
-                exec = { "docker", "compose", "exec", "-it" },
+                exec = { "docker", "compose", "exec", },
               },
             },
           },
