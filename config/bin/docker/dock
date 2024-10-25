@@ -3,7 +3,7 @@
 # Get the current working directory
 current_dir=$(pwd)
 
-get_service_name() {
+get_container_name() {
     # Map the current working directory to the corresponding container name
     case $current_dir in
         */"design-system-2"/*|*/"design-system-2")
@@ -42,14 +42,14 @@ get_service_name() {
     esac
 }
 
-service_name=$(get_service_name "$current_dir")
+container_name=$(get_container_name "$current_dir")
 
 # Check if a valid container name was found
-if [ -z "$service_name" ]; then
+if [ -z "$container_name" ]; then
     echo "No container mapping found for the current directory: $current_dir"
     exit 1
 fi
 
 # Execute the docker command with the mapped container name
 # docker compose run "$container_name" $@
-docker exec -it "$service_name" "$@"
+docker exec -it "$container_name" $@
