@@ -25,7 +25,7 @@ return {
     opts.environments = {
       definitions = {
         {
-          name = "docker-compose",
+          name = "loop",
           condition = {
             file_exists = { "docker-compose.yml" },
             executable = { "docker" },
@@ -44,8 +44,26 @@ return {
             },
           },
         },
+        {
+          name = "redwood",
+          condition = {
+            file_exists = { "docker-compose.yml" },
+            executable = { "docker" },
+          },
+          commands = {
+            compose = { "docker", "compose" },
+            {
+              commands = { "php", "composer" },
+              docker = {
+                container = {
+                  default = "app",
+                },
+                exec = { "docker", "compose", "exec", "-it" },
+              },
+            },
+          },
+        },
       }
     }
   end,
-  config = true,
 }
