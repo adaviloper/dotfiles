@@ -1,13 +1,13 @@
 session_name: Redwood
 start_directory: "~/Code/redwood"
 windows:
-  - window_name: Root
+  - window_name: Backend
     panes:
       - shell_command:
           - cmd: "c"
           - cmd: "vim"
-  - window_name: KanCli
-    start_directory: "~/Code/kancli"
+  - window_name: Frontend
+    start_directory: "./frontend"
     panes:
       - shell_command:
           - cmd: "c"
