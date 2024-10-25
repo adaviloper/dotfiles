@@ -15,6 +15,10 @@ return {
           },
         },
         {
+          dir = '~/Code/redwood',
+          cmd = 'dart test',
+        },
+        {
           dir = '~/Code/figs-recycling-campaign/logistics',
           cmd = 'sail test',
         },
