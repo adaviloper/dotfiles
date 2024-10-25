@@ -251,6 +251,13 @@ return {
     ["<Leader>fla"] = { "<cmd>Telescope laravel artisan<CR>", desc = "Laravel artisan commands" },
     ["<Leader>flr"] = { "<cmd>Telescope laravel routes<CR>", desc = "Laravel artisan routes" },
 
+    -- Laravel.nvim
+    ['<Leader>L'] = { name = "Laravel.nvim mappings" },
+    ['<Leader>Lr'] = { "<cmd>Laravel routes<cr>", desc = "Laravel routes" },
+    ['<Leader>La'] = { "<cmd>Laravel artisan<cr>", desc = "Laravel artisan" },
+    ['<Leader>Lc'] = { "<cmd>Laravel commands<cr>", desc = "Laravel commands" },
+    ['<Leader>Lm'] = { "<cmd>Laravel make<cr>", desc = "Laravel routes" },
+
     -- Notify
     ["<Leader>uD"] = { function() require("notify").dismiss() end, desc = "Dismiss all displayed notifications" },
 
@@ -266,7 +273,10 @@ return {
     ["<LocalLeader>yd"] = { function() vim.fn.setreg("+", vim.fn.expand "%:h") end, desc = "Copy directory path" },
     ["<LocalLeader>yf"] = { function() vim.fn.setreg("+", vim.fn.expand "%:t:r") end, desc = "Copy file name" },
 
-    ["<F3>"] = { "<cmd>PhpactorContextMenu<CR>", desc = "Show the context menu for the current cursor position" },
+    -- Phpactor.nvim
+    ['<LocalLeader>p'] = { name = "Phpactor.nvim mappings" },
+    ['<LocalLeader>pc'] = { '<cmd>PhpactorContextMenu<cr>', desc = "Context Menu" },
+    ['<LocalLeader>pt'] = { '<cmd>PhpactorTransform<cr>', desc = "Transform file" },
 
     -- Scratch
     ["<C-n>"] = {
