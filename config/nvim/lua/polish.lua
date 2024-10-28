@@ -15,6 +15,7 @@ vim.filetype.add({
   },
   filename = {
     ["Foofile"] = "fooscript",
+    ["phpstan.neon.dist"] = "phpstan",
   },
   pattern = {
     ["~/%.config/foo/.*"] = "fooscript",
