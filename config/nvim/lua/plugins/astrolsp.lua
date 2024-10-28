@@ -98,6 +98,9 @@ return {
           }
         },
       },
+      tailwindcss = {
+        filetypes = { 'html', 'css', 'scss', 'postcss', 'tsx', 'jsx', 'js', 'ts', 'vue', },
+      },
       -- snyk_ls = {
       --   cmd = { 'snyk-ls', '-f', '~/.local/share/logs/snyk-ls-vim.log' },
       --   root_dir = function(name)
