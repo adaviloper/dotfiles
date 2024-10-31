@@ -6,26 +6,6 @@ windows:
       - shell_command:
         - cmd: 'c'
         - cmd: 'vim'
-  - window_name: AstroNvim
-    start_directory: '~/.local/share/nvim/lazy/AstroNvim/'
-    panes:
-      - shell_command:
-        - cmd: 'c'
-  - window_name: AstroCore
-    start_directory: '~/.local/share/nvim/lazy/astrocore'
-    panes:
-      - shell_command:
-        - cmd: 'c'
-  - window_name: AstroLSP
-    start_directory: '~/.local/share/nvim/lazy/astrolsp'
-    panes:
-      - shell_command:
-        - cmd: 'c'
-  - window_name: AstroUi
-    start_directory: '~/.local/share/nvim/lazy/astroui'
-    panes:
-      - shell_command:
-        - cmd: 'c'
   - window_name: Plugins
     start_directory: '~/.local/share/nvim/lazy'
     panes:
