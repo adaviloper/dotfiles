@@ -103,6 +103,8 @@ end
 return {
   -- first key is the mode
   n = {
+    ["<A-j>"] = { "5j" },
+    ["<A-k>"] = { "5k" },
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
     ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab" },
 
