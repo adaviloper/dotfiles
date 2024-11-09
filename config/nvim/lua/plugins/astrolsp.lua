@@ -91,7 +91,7 @@ return {
       },
       phpactor = {
         init_options = {
-          ["language_server_phpstan.enabled"] = true,
+          ["language_server_phpstan.enabled"] = false,
           ["language_server_php_cs_fixer.enabled"] = false,
           ["code_transform.template_paths"] = {
             '~/.config/phpactor/templates/'
