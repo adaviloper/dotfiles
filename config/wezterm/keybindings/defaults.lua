@@ -5,6 +5,9 @@ local M = {}
 
 function M.getKeybindings()
 	return {
+    { key = "+", mods = "SUPER", action = act.IncreaseFontSize },
+    { key = "-", mods = "SUPER", action = act.DecreaseFontSize },
+    { key = "0", mods = "SUPER", action = act.ResetFontSize },
 		{ key = "c", mods = "SUPER", action = act.CopyTo("Clipboard") },
 		{ key = "f", mods = "SUPER", action = act.Search("CurrentSelectionOrEmptyString") },
 		{ key = "p", mods = "SUPER", action = act.ActivateCommandPalette },
