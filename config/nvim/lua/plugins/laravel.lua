@@ -56,7 +56,7 @@ return {
               commands = { "php", "composer" },
               docker = {
                 container = {
-                  default = "app",
+                  default = "redwood_api",
                 },
                 exec = { "docker", "compose", "exec", },
               },
