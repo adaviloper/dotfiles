@@ -2,7 +2,7 @@
 
 # Check if the current directory has a node_modules directory
 if [ -d "node_modules" ]; then
-    dnr test
+    dnr vitest
 
 # Check if the current directory has a vendor directory
 elif [ -d "vendor" ]; then
