@@ -32,8 +32,8 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
           end,
           apply = true
         })
-      else
-        vim.api.nvim_buf_set_lines(0, 0, -1, false, { '<?php', '', '' })
+      -- else
+      --   vim.api.nvim_buf_set_lines(0, 0, -1, false, { '<?php', '', '' })
       end
     end
   end,
