@@ -27,6 +27,7 @@ return {
             "public/.*",
             "./assets/fonts/.*",
           },
+          file_sorter = require('telescope.sorters').get_fzy_sorter,
           layout_config = {
             prompt_position = 'top',
           },
