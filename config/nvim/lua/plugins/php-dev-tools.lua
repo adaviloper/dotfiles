@@ -12,6 +12,7 @@ return {
           groups = {
             'easyship',
             'multi-label',
+            'shipping_protection',
           },
         },
         {
