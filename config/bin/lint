@@ -7,10 +7,10 @@ changed_files=$(git diff --name-only --diff-filter=ACM $(git merge-base HEAD dev
 php_files=$(echo "$changed_files" | grep '\.php$')
 
 # Store admin files in a separate variable and strip the 'admin/' prefix
-admin_files=$(echo "$changed_files" | grep '^admin/' | sed 's|^admin/||')
+admin_files=$(echo "$changed_files" | grep '^admin/src/' | sed 's|^admin/||')
 
 # Store frontend files in a separate variable and strip the 'frontend/' prefix
-frontend_files=$(echo "$changed_files" | grep '^frontend/' | sed 's|^frontend/||')
+frontend_files=$(echo "$changed_files" | grep '^frontend/src/' | sed 's|^frontend/||')
 
 # Count the number of files
 file_count=$(echo "$changed_files" | wc -l)
