@@ -2,11 +2,11 @@
 
 # Check if the current directory has a node_modules directory
 if [ -d "node_modules" ]; then
-    dnr vitest
+    dnr vitest $@
 
 # Check if the current directory has a vendor directory
 elif [ -d "vendor" ]; then
-    dock ./vendor/bin/phpunit
+    dock ./vendor/bin/phpunit $@
 
 # Default case if neither directory is found
 else
