@@ -8,17 +8,7 @@ return {
     -- the second is the table of options as set up in Lazy with the `opts` key
     config = function(plugin, opts)
       local telescope = require("telescope")
-      local actions = require("telescope.actions")
-      local telescopeConfig = require("telescope.config")
 
-      -- Clone the default Telescope configuration
-      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-
-      -- I want to search in hidden/dot files.
-      table.insert(vimgrep_arguments, "--hidden")
-      -- I don't want to search in the `.git` directory.
-      table.insert(vimgrep_arguments, "--glob")
-      table.insert(vimgrep_arguments, "!**/.git/*")
       telescope.setup({
         defaults = {
           hidden = true,
@@ -80,8 +70,6 @@ return {
       })
 
       -- require telescope and load extensions as necessary
-      -- local telescope = require "telescope"
-      -- telescope.load_extension("harpoon")
       require('telescope').load_extension('luasnip')
     end,
   },
