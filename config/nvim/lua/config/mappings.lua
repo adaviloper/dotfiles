@@ -11,17 +11,10 @@ local function setFileTag(tagName)
       else
         local tag = grapple.find { name = tagName }
         if tag == nil then return end
-        local file_path = tag.path
-        local root = vim.loop.cwd()
-
-        local file_name = string.gsub(file_path, tostring(root), "")
 
         vim.ui.select({
           "yes",
           "no",
-          -- file_path,
-          -- file_name,
-          -- root,
         }, { prompt = "Overwrite [" .. tag.name .. "]" }, function(selection)
           if selection ~= nil and selection == "yes" then grapple.tag { name = tagName } end
         end)
@@ -35,69 +28,9 @@ local function jumpToFileTag(tagName)
   return {
     function()
       require("grapple").select { name = tagName }
-      -- vim.cmd('norm zt')
     end,
     desc = "Jump to the [" .. tagName .. "] tag",
   }
-end
-
-local function getFileExtensions()
-  return {
-    "blade.php",
-    "conf",
-    "css",
-    "html",
-    "js",
-    "json",
-    "jsx",
-    "lua",
-    "md",
-    "php",
-    "sass",
-    "scss",
-    "sh",
-    "spec.js",
-    "spec.ts",
-    "toml",
-    "ts",
-    "tsx",
-    "txt",
-    "vue",
-    "yaml",
-    "yml",
-    "zsh",
-  }
-end
-
-local function getFileExtension(ft)
-  local ext_map = {
-    ["CSS"] = "css",
-    ["HTML"] = "html",
-    ["JavaScript"] = "js",
-    ["JSON"] = "json",
-    ["Lua"] = "lua",
-    ["Markdown"] = "md",
-    ["PHP"] = "php",
-    ["Text"] = "txt",
-    ["TypeScript"] = "ts",
-  }
-  return ext_map[ft]
-end
-
-local function searchThroughFileType(command)
-  return function()
-    vim.ui.select(getFileExtensions(), {
-      prompt = "Select File Extension",
-    }, function(selection)
-      local extension = selection
-      if extension ~= nil then
-        require("telescope.builtin")[command] {
-          use_regex = false,
-          glob_pattern = "*." .. extension,
-        }
-      end
-    end)
-  end
 end
 
 return {
@@ -140,8 +73,6 @@ return {
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<Leader>b"] = { name = "Buffers" },
-    -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     ["<Leader>c"] = {
       function()
         local bufs = vim.fn.getbufinfo { buflisted = true }
@@ -241,14 +172,7 @@ return {
     ["<Leader>f_"] = { "<cmd>ScratchOpen<cr>", desc = "Open a Scratch file" },
     ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
     ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
-    ["<Leader>f<C-w>"] = {
-      searchThroughFileType "live_grep",
-      desc = "Find regex words by file type",
-    },
-    ["<Leader>f<C-f>"] = {
-      searchThroughFileType "find_files",
-      desc = "Find regex files by file type",
-    },
+    ["<Leader>ff"] = { function() require('config.telescope.multigrep').live_multigrep() end, desc = "Search for symbol in workspace" },
     ["<Leader>fl"] = { name = "Laravel" },
     ["<Leader>fla"] = { "<cmd>Telescope laravel artisan<CR>", desc = "Laravel artisan commands" },
     ["<Leader>flr"] = { "<cmd>Telescope laravel routes<CR>", desc = "Laravel artisan routes" },
@@ -304,101 +228,6 @@ return {
     ["<Leader>zz"] = { function() require("undotree").toggle() end, desc = "Toggle Undotree" },
   },
   i = {
-    -- [":"] = {
-    --   function()
-    --     -- The cursor location does not give us the correct node in this case, so we
-    --     -- need to get the node to the left of the cursor
-    --     local cursor = vim.api.nvim_win_get_cursor(0)
-    --     local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
-    --     local language = require('nvim-treesitter.parsers').get_parser():lang()
-    --
-    --     if not vim.tbl_contains({'php', 'javascript'}, language) then
-    --       return ':'
-    --     end
-    --     local node = vim.treesitter.get_node { pos = left_of_cursor_range }
-    --     local html_nodes_active_in = {
-    --       'shorthand_property_identifier',
-    --       'object',
-    --     }
-    --     if not node then
-    --       return ':'
-    --     end
-    --
-    --     if vim.tbl_contains(html_nodes_active_in, node:type()) then
-    --       -- The cursor is not on an attribute node
-    --       return ': ,<left>'
-    --     end
-    --
-    --     return ':'
-    --   end,
-    --   desc = 'Auto-add quotes for HTML attributes',
-    --   expr = true,
-    -- },
-    -- [">"] = {
-    --   function()
-    --     -- The cursor location does not give us the correct node in this case, so we
-    --     -- need to get the node to the left of the cursor
-    --     local cursor = vim.api.nvim_win_get_cursor(0)
-    --     local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
-    --
-    --     local language = require('nvim-treesitter.parsers').get_parser():lang()
-    --     if not vim.tbl_contains({'php'}, language) then
-    --       return '>'
-    --     end
-    --
-    --     local node = vim.treesitter.get_node({ pos = left_of_cursor_range }):parent()
-    --     if not node then
-    --       vim.notify('no node found')
-    --       return '>'
-    --     end
-    --
-    --     local php_nodes_active_in = {
-    --       'array_creation_expression',
-    --       'array_element_initializer',
-    --     }
-    --     if vim.tbl_contains(php_nodes_active_in, node:type()) then
-    --       -- The cursor is not on an attribute node
-    --       return '> ,<left>'
-    --     end
-    --
-    --     return '>'
-    --   end,
-    --   desc = 'Auto-add quotes for HTML attributes',
-    --   expr = true,
-    -- },
-    -- ["="] = {
-    --   function()
-    --     -- The cursor location does not give us the correct node in this case, so we
-    --     -- need to get the node to the left of the cursor
-    --     local cursor = vim.api.nvim_win_get_cursor(0)
-    --     local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
-    --
-    --     local language = require('nvim-treesitter.parsers').get_parser():lang()
-    --     if not vim.tbl_contains({'javascript'}, language) then
-    --       return '='
-    --     end
-    --
-    --     local node = vim.treesitter.get_node { pos = left_of_cursor_range }
-    --     if not node then
-    --       return '='
-    --     end
-    --     local html_nodes_active_in = {
-    --       'attribute_name',
-    --       'directive_argument',
-    --       'directive_name',
-    --       'property_identifier',
-    --     }
-    --
-    --     if vim.tbl_contains(html_nodes_active_in, node:type()) then
-    --       -- The cursor is not on an attribute node
-    --       return '=""<left>'
-    --     end
-    --
-    --     return '='
-    --   end,
-    --   desc = 'Auto-add quotes for HTML attributes',
-    --   expr = true,
-    -- },
     -- Luasnip
     ["<C-k>"] = {
       function()
