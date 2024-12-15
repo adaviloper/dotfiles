@@ -30,6 +30,9 @@ get_service_name() {
         */"vtest"/*|*/"vtest")
             echo "vtest-ui-app"
             ;;
+        */"advent-of-code/2024"/*|*/"advent-of-code/2024")
+            echo "aoc-2024"
+            ;;
         */"advent-of-code/2020"/*|*/"advent-of-code/2020")
             echo "aoc-2020"
             ;;
