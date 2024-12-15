@@ -107,6 +107,7 @@ return {
     ["<A-k>"] = { "5k" },
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
     ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab" },
+    ["<F3>"] = { function() vim.cmd('TermExec cmd="dock deno run ' .. vim.fn.expand('%:t') .. '"' ) end, desc = "Run current AoC file" },
 
     ["<Leader><Leader>e"] = { "<cmd>e<CR>", desc = "Reload the file"},
     ["<Leader><Leader>s"] = {
