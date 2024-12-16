@@ -1,0 +1,14 @@
+<?php
+
+{# /path/to/project/.phpactor/templates/phpunit_test/SourceCode.php.twig #}
+namespace {{ prototype.namespace }};
+
+{% for class in prototype.classes %}
+enum {{ class.name }}
+
+{
+
+{% block content %}
+{% endblock %}
+}
+{% endfor %}

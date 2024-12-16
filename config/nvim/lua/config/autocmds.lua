@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
       local file = vim.fn.expand("%:p:.")
       local match_position = -1
       local target_type = 'default'
-      for _, type in ipairs({ 'Feature', 'Unit', 'Jobs', 'Listeners', 'Models' }) do
+      for _, type in ipairs({ 'Enum', 'Feature', 'Unit', 'Jobs', 'Listeners', 'Models' }) do
         local pos = file:find(type)
         if pos ~= nil then
           if match_position == -1 or pos < match_position then

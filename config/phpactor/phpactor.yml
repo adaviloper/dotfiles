@@ -1,4 +1,5 @@
 code_transform.class_new.variants:
+    Enum: php_enum
     Jobs: laravel_job
     Listeners: laravel_listener
     Models: laravel_model
