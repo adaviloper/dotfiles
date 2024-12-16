@@ -172,7 +172,7 @@ return {
     ["<Leader>f_"] = { "<cmd>ScratchOpen<cr>", desc = "Open a Scratch file" },
     ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
     ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
-    ["<Leader>ff"] = { function() require('config.telescope.multigrep').live_multigrep() end, desc = "Search for symbol in workspace" },
+    ["<Leader>fw"] = { function() require('config.telescope.multigrep').live_multigrep() end, desc = "Search for symbol in workspace" },
     ["<Leader>fl"] = { name = "Laravel" },
     ["<Leader>fla"] = { "<cmd>Telescope laravel artisan<CR>", desc = "Laravel artisan commands" },
     ["<Leader>flr"] = { "<cmd>Telescope laravel routes<CR>", desc = "Laravel artisan routes" },
