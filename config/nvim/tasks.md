@@ -6,7 +6,7 @@
 ## Plugins
 - [ ] Check to see if the `gh-dash` extension is enabled before launching the `gh-dash` terminal
 - [ ] Add snippets for different languages
-    - [.] PHP
+    - [x] PHP
         - Methods
             - [ ] Make __construct method dynamic based on params passed in
                 - Docblocks update with param types
@@ -27,12 +27,13 @@
     - [x] Shell
 
 ## Autocommands
-- [ ] Skeletons for populating new files with boilerplate
-    - [ ] A way to store different types of files per language
+- [x] Skeletons for populating new files with boilerplate
+    - [x] A way to store different types of files per language
         - [x] Interface
         - [x] Empty PHP file
         - [x] PHP Class
         - [x] Vue Single-File Components
+
 
 ## Plugins to look into
 - https://github.com/danymat/neogen
