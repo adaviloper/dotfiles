@@ -5,6 +5,22 @@ local M = {}
 
 function M.getKeybindings()
 	return {
+    { -- Switch to next tab
+      key = 'Tab',
+      mods = 'CTRL',
+      action = act.Multiple({
+        act.SendKey({ key = 'g' }),
+        act.SendKey({ key = 't' }),
+      })
+    },
+    { -- Switch to previous tab
+      key = 'Tab',
+      mods = 'CTRL|SHIFT',
+      action = act.Multiple({
+        act.SendKey({ key = 'g' }),
+        act.SendKey({ key = 'T' }),
+      })
+    },
     { key = "+", mods = "SUPER", action = act.IncreaseFontSize },
     { key = "-", mods = "SUPER", action = act.DecreaseFontSize },
     { key = "0", mods = "SUPER", action = act.ResetFontSize },
