@@ -6,10 +6,13 @@ return {
   opts = {
     auto_install = true,
     ensure_installed = {
+      "c",
       "javascript",
       "lua",
+      "query",
       "typescript",
       "vim",
+      "vimdoc",
       "vue",
       "yaml",
       -- add more arguments for adding more treesitter parsers
