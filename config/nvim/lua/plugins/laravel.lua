@@ -1,6 +1,5 @@
 return {
   "adalessa/laravel.nvim",
-  branch = "feature/container",
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "tpope/vim-dotenv",
