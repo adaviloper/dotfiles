@@ -14,11 +14,18 @@ case "$current_directory" in
       mapped_string="LPR"
       ;;
   "Code/figs-recycling-campaign/infra")
-      mapped_string="LPR"
+    mapped_string="LPR"
+    ;;
+  "Code/component-library")
+    mapped_string="RET"
       ;;
-  "Code/loop-returns-app")
+  "Code/design-system-2")
+    mapped_string="RET"
+    ;;
+  */"loop-returns-app"/*|*/"loop-returns-app")
     # eval "prefixes=(RET LPR)"
-    mapped_string=$(gum choose "RET" "LPR")
+    # mapped_string=$(gum choose "RET" "LPR")
+    mapped_string="RET"
     
     # select prefix in $prefixes
     # do
