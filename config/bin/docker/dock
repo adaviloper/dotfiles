@@ -15,6 +15,9 @@ get_service_name() {
         */"redwood"/*|*/"redwood")
             echo "redwood_api"
             ;;
+        */"mx-backend"/*|*/"mx-backend")
+            echo "core-frontend"
+            ;;
         */"loop-returns-app/frontend"/*|*/"loop-returns-app/frontend")
             echo "core-frontend"
             ;;
