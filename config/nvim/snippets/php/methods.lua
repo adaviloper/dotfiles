@@ -81,21 +81,21 @@ return
       d(3, determine_method_body, { 1 }),
     })
   ),
-  -- s(
-  --   '__con',
-  --   fmt(
-  --     [[
-  --       public function __construct({})
-  --       {{
-  --           {}
-  --       }}
-  --       ]],
-  --     {
-  --       i(1, ''),
-  --       i(0, ''),
-  --     }
-  --   )
-  -- ),
+  s(
+    'ptest',
+    fmt(
+      [[
+        public function test{}(): void
+        {{
+            {}
+        }}
+        ]],
+      {
+        i(1, ''),
+        i(0, ''),
+      }
+    )
+  ),
   -- s(
   --   '__call',
   --   fmt(
