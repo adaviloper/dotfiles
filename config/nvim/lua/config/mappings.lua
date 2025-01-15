@@ -54,6 +54,17 @@ return {
         end
       end,
     },
+
+    ["<Leader>uB"] = {
+      -- toggle copilot
+      function ()
+        if vim.g.copilot_enabled == nil then
+          vim.g.copilot_enabled = true
+        else
+          vim.g.copilot_enabled = not vim.g.copilot_enabled
+        end
+      end
+    },
     ["<Leader>uG"] = {
       '<cmd>Gitsigns toggle_current_line_blame<CR>',
       desc = "Toggle current line blame",
@@ -62,6 +73,7 @@ return {
       function() vim.o.relativenumber = vim.o.relativenumber ~= true end,
       desc = "Toggle relativenumber",
     },
+
     ["<Leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
