@@ -9,7 +9,6 @@ log_file="storage/logs/laravel-$today.log"
 # Check if the log file exists
 if [ ! -f "$log_file" ]; then
     echo "Log file '$log_file' does not exist."
-    return 1
 fi
 
 # Tail the log file with the -f flag
