@@ -59,6 +59,12 @@ git:
         figs-recycling-campaign:
             pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
             replace: "$1: "
+        component-library:
+            pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
+            replace: "$1: "
+        design-system-2:
+            pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
+            replace: "$1: "
         loop-returns-app:
             pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
             replace: "$1: "
