@@ -36,6 +36,8 @@ end
 return {
   -- first key is the mode
   n = {
+    ["<A-e>"] = { "5<C-e>" },
+    ["<A-y>"] = { "5<C-y>" },
     ["<A-j>"] = { "5j" },
     ["<A-k>"] = { "5k" },
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
@@ -173,16 +175,14 @@ return {
     ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
     ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
     ["<Leader>fw"] = { function() require('config.telescope.multigrep').live_multigrep() end, desc = "Search for symbol in workspace" },
-    ["<Leader>fl"] = { name = "Laravel" },
-    ["<Leader>fla"] = { "<cmd>Telescope laravel artisan<CR>", desc = "Laravel artisan commands" },
-    ["<Leader>flr"] = { "<cmd>Telescope laravel routes<CR>", desc = "Laravel artisan routes" },
 
     -- Laravel.nvim
-    ['<Leader>L'] = { name = "Laravel.nvim mappings" },
-    ['<Leader>Lr'] = { "<cmd>Laravel routes<cr>", desc = "Laravel routes" },
-    ['<Leader>La'] = { "<cmd>Laravel artisan<cr>", desc = "Laravel artisan" },
-    ['<Leader>Lc'] = { "<cmd>Laravel commands<cr>", desc = "Laravel commands" },
-    ['<Leader>Lm'] = { "<cmd>Laravel make<cr>", desc = "Laravel routes" },
+    ["<Leader>fl"] = { name = "Laravel" },
+    ["<Leader>fll"] = { "<cmd>Laravel artisan<CR>", desc = "Laravel picker" },
+    ["<Leader>fla"] = { "<cmd>Laravel artisan<CR>", desc = "Laravel artisan commands" },
+    ["<Leader>flr"] = { "<cmd>Laravel routes<CR>", desc = "Laravel artisan routes" },
+    ['<Leader>flc'] = { "<cmd>Laravel commands<cr>", desc = "Laravel commands" },
+    ['<Leader>flm'] = { "<cmd>Laravel make<cr>", desc = "Laravel routes" },
 
     -- Notify
     ["<Leader>uD"] = { function() require("notify").dismiss() end, desc = "Dismiss all displayed notifications" },
