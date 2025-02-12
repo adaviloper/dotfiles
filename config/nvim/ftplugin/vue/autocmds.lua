@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
   pattern = '*.vue',
   group = ts_group,
   callback = function (params)
-    require('config.commands.tpl').insert_template({
+    local template_inserted = require('config.commands.tpl').insert_template({
       '<template>',
       '  <div>',
       '  </div>',
@@ -18,6 +18,8 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
       '',
       '</style>',
     })
-    vim.api.nvim_win_set_cursor(0, { 7, 1 })
+    if template_inserted then
+      vim.api.nvim_win_set_cursor(0, { 7, 1 })
+    end
   end,
 })
