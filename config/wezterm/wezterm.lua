@@ -4,7 +4,12 @@ local ui = require("ui")
 local hooks = require("hooks")
 local config = {}
 
-for _, value in pairs({ keybindings, font, ui, hooks }) do
+for _, value in pairs({
+	hooks,
+	keybindings,
+	font,
+	ui,
+}) do
 	value.setup(config)
 end
 
