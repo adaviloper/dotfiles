@@ -21,6 +21,7 @@ function M.getKeybindings()
         act.SendKey({ key = 'T' }),
       })
     },
+    { key = "/", mods = "SUPER", action = act.ShowDebugOverlay },
     { key = "+", mods = "SUPER", action = act.IncreaseFontSize },
     { key = "-", mods = "SUPER", action = act.DecreaseFontSize },
     { key = "0", mods = "SUPER", action = act.ResetFontSize },
