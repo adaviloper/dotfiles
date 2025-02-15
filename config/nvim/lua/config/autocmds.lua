@@ -46,3 +46,17 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = { 'help', 'man' },
   command = 'wincmd L',
 })
+
+local misc_group = vim.api.nvim_create_augroup('Miscellaneous', { clear = true })
+
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  group = misc_group,
+  pattern = {
+    '*.js',
+    '*.lua',
+    '*.php',
+    '*.ts',
+    '*.vue',
+  },
+  command = 'e',
+})
