@@ -1,5 +1,9 @@
 local wezterm = require('wezterm')
 
+local padding = 32
+local menu_bar_height = 76
+local laptop_menu_bar_height = 76
+
 local M = {}
 
 function M.setup(_)
@@ -9,21 +13,33 @@ function M.setup(_)
       local active_screen = wezterm.gui.screens()['active']
       local _, _, window = wezterm.mux.spawn_window(cmd or {})
 
-      local padding = 32
-      local menu_bar_height = 25
-      local laptop_menu_bar_height = 38
       local monitor_ratio = 31 / 9
       local current_ratio = active_screen.width / active_screen.height
 
       if current_ratio >= monitor_ratio then
         window:gui_window():set_position((active_screen.width) / 4 + padding, padding + menu_bar_height)
-        window:gui_window():set_inner_size((active_screen.width - (padding * 4)) / 2, active_screen.height - (padding * 2) - menu_bar_height)
+        window:gui_window():set_inner_size(
+          (active_screen.width - (padding * 2)) / 2,
+          active_screen.height - (padding * 2) - menu_bar_height
+        )
       else
-        window:gui_window():set_position(padding * 2, padding * 2 + laptop_menu_bar_height * 2)
-        window:gui_window():set_inner_size((active_screen.width - padding * 4), active_screen.height - (padding * 2) - laptop_menu_bar_height)
+        window:gui_window():set_position(padding * 2, padding * 2 + laptop_menu_bar_height)
+        window:gui_window():set_inner_size(
+          (active_screen.width - padding * 4),
+          active_screen.height - (padding * 4) - laptop_menu_bar_height
+        )
       end
     end
   )
+
+  -- wezterm.on('window-config-reloaded', function(window, pane)
+  --   local active_screen = wezterm.gui.screens()['active']
+  --
+  --   wezterm.log_info('screen height', active_screen.height)
+  --   wezterm.log_info('window height', window:get_dimensions().pixel_height)
+  --   wezterm.log_info('laptop menu bar height', laptop_menu_bar_height)
+  --   wezterm.log_info('calculated space', active_screen.height - laptop_menu_bar_height - (padding * 4))
+  -- end)
 end
 
 return M
