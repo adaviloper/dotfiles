@@ -1,5 +1,5 @@
 session_name: MX-Tool
-start_directory: ~/Code
+start_directory: ~/Code/mx-backend
 windows:
   - window_name: Backend
     start_directory: ./mx-backend
