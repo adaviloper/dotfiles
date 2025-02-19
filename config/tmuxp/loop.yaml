@@ -6,19 +6,16 @@ windows:
     panes:
       - shell_command:
         - cmd: 'c'
-        - cmd: "vim"
   - window_name: Admin
     start_directory: ./admin
     panes:
       - shell_command:
         - cmd: 'c'
-        - cmd: "vim"
   - window_name: Frontend
     start_directory: ./frontend
     panes:
       - shell_command:
         - cmd: 'c'
-        - cmd: "vim"
   - window_name: Terminals
     layout: 4ebf,173x47,0,0{86x47,0,0,22,86x47,87,0[86x23,87,0,23,86x23,87,24,24]}
     panes:
