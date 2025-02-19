@@ -18,11 +18,11 @@ vim.filetype.add({
     ["phpstan.neon.dist"] = "phpstan",
   },
   pattern = {
+    ["*"] = "text",
     ["~/%.config/foo/.*"] = "fooscript",
     ["~/%.config/bin/.*"] = "sh",
     ["~/%.dotfiles/config/bin/.*"] = "sh",
     ["laravel.*log"] = "json",
-    ["*"] = "text",
   },
 })
 
