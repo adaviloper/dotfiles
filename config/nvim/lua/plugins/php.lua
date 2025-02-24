@@ -14,10 +14,12 @@ return {
             dir = '~/Code/loop-returns-app',
             cmd = './script/tests',
             -- cmd = 'docker exec -it core vendor/bin/phpunit --filter',
+            group_cmd = 'dock ./vendor/bin/phpunit --list-groups',
             groups = {
               'easyship',
               'multi-label',
               'shipping-protection',
+              'stripe'
             },
           },
           {
