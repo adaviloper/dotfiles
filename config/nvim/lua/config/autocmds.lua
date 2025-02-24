@@ -58,5 +58,5 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
     '*.ts',
     '*.vue',
   },
-  command = 'e',
+  command = 'checktime',
 })
