@@ -2,12 +2,11 @@ session_name: MX-Tool
 start_directory: ~/Code/mx-backend
 windows:
   - window_name: Backend
-    start_directory: ./mx-backend
     panes:
       - shell_command:
         - cmd: 'c'
   - window_name: Frontend
-    start_directory: ./mx-frontend
+    start_directory: ../mx-frontend
     panes:
       - shell_command:
         - cmd: 'c'
