@@ -8,8 +8,9 @@ alias c="clear"
 alias cdh="cd ~/Homestead"
 alias cloc="git ls-files | xargs wc -l"
 alias code="cd ~/Code"
-alias ls="eza"
-alias l="ls -alh --color=auto -F --git --icons --group-directories-first"
+alias ls="eza --color=always"
+alias l="ls -alh"
+# alias l="ls -alh --color=auto -F --git --icons --group-directories-first"
 alias pup="php -S localhost:3000"
 
 # Testing
