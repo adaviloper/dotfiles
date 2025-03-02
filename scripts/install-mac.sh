@@ -39,6 +39,7 @@ brew bundle --file=~/.dotfiles/Brewfile
 if !command -v brew >/dev/null 2>&1; then
     info "Installing Yazi plugins"
     ya pack -a yazi-rs/plugins:git
+    ya pack -a yazi-rs/flavors:catppuccin-mocha
 fi
 
 if [ ! -d ~/.config/tmux/plugins/tpm ]; then
