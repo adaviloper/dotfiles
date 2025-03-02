@@ -2,7 +2,7 @@ require("git"):setup()
 
 function Linemode:size_and_mtime()
 	local year = os.date("%Y")
-	local time = math.floor(self._file.cha.modified or 0)
+	local time = math.floor(self._file.cha.mtime or 0)
 
 	if time > 0 and os.date("%Y", time) == year then
 		time = os.date("%b %d %H:%M", time)
