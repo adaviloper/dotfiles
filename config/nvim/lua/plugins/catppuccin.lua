@@ -23,6 +23,7 @@ return {
           DiagnosticUnderlineInfo = { undercurl = true, sp = mocha.sky },
           SpellBad = { undercurl = true, sp = mocha.green },
           WindowPickerWinBarNC = { bg = mocha.sky, fg = mocha.surface1 },
+          WinSeparator = { fg = mocha.mauve },
         }
       end,
     },
