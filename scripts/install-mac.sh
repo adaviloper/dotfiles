@@ -65,6 +65,9 @@ fi
 info "Running [rcup]"
 rcup -f
 
+# Prepare Neorg notes
+mkdir -p ~/Code/notes
+
 info "Updating OSX default settings"
 sh ~/.dotfiles/scripts/osx.sh
 
