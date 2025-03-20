@@ -142,19 +142,6 @@ return {
     ["<Leader>ty"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = "yazi"} ) end, desc = "Toggleterm Yazi" },
     ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
 
-    -- NeoTeset
-    ["<F4>"] = { name = "Testing" },
-    ["<F4><F4>"] = {
-      function() require("php-dev-tools.test_utils").test_last_test() end,
-      desc = "Rerun the previous test",
-    },
-    ["<F4>n"] = { function() require("php-dev-tools.test_utils").test_nearest_method() end, desc = "Run nearest test" },
-    ["<F4>f"] = {
-      function() require("php-dev-tools.test_utils").test_current_file() end,
-      desc = "Test the entire file",
-    },
-    ["<F4>g"] = { function() require("php-dev-tools.test_utils").test_group() end, desc = "Select a group to test" },
-
     -- Telescope
     ["<Leader>fo"] = {
       function() require("telescope.builtin").oldfiles({ cwd_only = true }) end,
@@ -188,14 +175,6 @@ return {
     ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
     ["<Leader>fw"] = { function() require('config.telescope.multigrep').live_multigrep() end, desc = "Search for symbol in workspace" },
 
-    -- Laravel.nvim
-    ["<Leader>fl"] = { name = "Laravel" },
-    ["<Leader>fll"] = { "<cmd>Laravel artisan<CR>", desc = "Laravel picker" },
-    ["<Leader>fla"] = { "<cmd>Laravel artisan<CR>", desc = "Laravel artisan commands" },
-    ["<Leader>flr"] = { "<cmd>Laravel routes<CR>", desc = "Laravel artisan routes" },
-    ['<Leader>flc'] = { "<cmd>Laravel commands<cr>", desc = "Laravel commands" },
-    ['<Leader>flm'] = { "<cmd>Laravel make<cr>", desc = "Laravel routes" },
-
     -- Notify
     ["<Leader>uD"] = { function() require("notify").dismiss() end, desc = "Dismiss all displayed notifications" },
 
@@ -210,11 +189,6 @@ return {
     ["<LocalLeader>yp"] = { function() vim.fn.setreg("+", vim.fn.expand "%:p:.") end, desc = "Copy file path" },
     ["<LocalLeader>yd"] = { function() vim.fn.setreg("+", vim.fn.expand "%:h") end, desc = "Copy directory path" },
     ["<LocalLeader>yf"] = { function() vim.fn.setreg("+", vim.fn.expand "%:t:r") end, desc = "Copy file name" },
-
-    -- Phpactor.nvim
-    ['<LocalLeader>p'] = { name = "Phpactor.nvim mappings" },
-    ['<LocalLeader>pc'] = { '<cmd>PhpactorContextMenu<cr>', desc = "Context Menu" },
-    ['<LocalLeader>pt'] = { '<cmd>PhpactorTransform<cr>', desc = "Transform file" },
 
     -- Scratch
     ["<C-n>"] = {
@@ -241,7 +215,7 @@ return {
   },
   i = {
     -- AI
-    ["<A-CR>"] = { 'copilot#Accept("\\<CR>")', desc = "Accept AI suggestion", expr = true, replace_keycodes = false },
+    -- ["<A-CR>"] = { 'copilot#Accept("\\<CR>")', desc = "Accept AI suggestion", expr = true, replace_keycodes = false },
 
     -- Luasnip
     ["<C-k>"] = {
