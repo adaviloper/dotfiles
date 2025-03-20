@@ -1,14 +1,12 @@
 session_name: Notes
 windows:
   - window_name: Loop
-    start_directory: "~/Documents/Loop"
+    start_directory: "~/Documents/Neorg/"
     panes:
       - shell_command:
         - cmd: 'c'
-        - cmd: "vim"
   - window_name: Standards
     start_directory: "~/Code/technical-docs/"
     panes:
       - shell_command:
         - cmd: 'c'
-        - cmd: "vim"
