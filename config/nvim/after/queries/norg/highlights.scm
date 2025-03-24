@@ -1,5 +1,13 @@
 ; extends
 
+; bug 
+; info 󰋽
+; note 
+; question 
+; quote 󱆧
+; success 󰄬
+; warning 
+
 (quote
   (strong_carryover_set
     (strong_carryover
