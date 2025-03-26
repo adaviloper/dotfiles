@@ -89,9 +89,11 @@ return {
     ["<Leader>b"] = { name = "Buffers" },
     ["<Leader>c"] = {
       function()
-        local bufs = vim.fn.getbufinfo { buflisted = true }
+        local bufs = vim.fn.getbufinfo({ buflisted = true })
         require("astrocore.buffer").close(0)
-        if require("astrocore").is_available "alpha-nvim" and not bufs[2] then require("alpha").start(true) end
+        if not bufs[2] then
+          require("snacks").dashboard()
+        end
       end,
       desc = "Close buffer",
     },
