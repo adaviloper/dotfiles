@@ -1,12 +1,13 @@
 session_name: Notes
+start_directory: "~/Code/notes"
 windows:
-  - window_name: Loop
-    start_directory: "~/Documents/Neorg/"
+  - window_name: Work
+    start_directory: "~/Code/notes/work/"
     panes:
       - shell_command:
         - cmd: 'c'
-  - window_name: Standards
-    start_directory: "~/Code/technical-docs/"
+  - window_name: Personal
+    start_directory: "~/Code/notes/personal/"
     panes:
       - shell_command:
         - cmd: 'c'
