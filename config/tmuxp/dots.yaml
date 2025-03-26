@@ -12,7 +12,7 @@ windows:
       - shell_command:
         - cmd: 'c'
   - window_name: Tmux Plugins
-    start_directory: '~/.config/tmux/plugins/t-session'
+    start_directory: '~/.config/tmux/plugins/tmux-theme'
     panes:
       - shell_command:
         - cmd: 'c'
