@@ -1,22 +1,22 @@
-local astro = require "astrocore"
-local utils = require "helpers.utils"
-local ls = require "luasnip"
+local astro = require("astrocore")
+local utils = require("helpers.utils")
+local ls = require("luasnip")
 
 local function setFileTag(tagName)
   return {
     function()
-      local grapple = require "grapple"
-      if not grapple.exists { name = tagName } then
-        grapple.tag { name = tagName }
+      local grapple = require("grapple")
+      if not grapple.exists({ name = tagName }) then
+        grapple.tag({ name = tagName })
       else
-        local tag = grapple.find { name = tagName }
+        local tag = grapple.find({ name = tagName })
         if tag == nil then return end
 
         vim.ui.select({
           "yes",
           "no",
         }, { prompt = "Overwrite [" .. tag.name .. "]" }, function(selection)
-          if selection ~= nil and selection == "yes" then grapple.tag { name = tagName } end
+          if selection ~= nil and selection == "yes" then grapple.tag({ name = tagName }) end
         end)
       end
     end,
@@ -26,9 +26,7 @@ end
 
 local function jumpToFileTag(tagName)
   return {
-    function()
-      require("grapple").select { name = tagName }
-    end,
+    function() require("grapple").select({ name = tagName }) end,
     desc = "Jump to the [" .. tagName .. "] tag",
   }
 end
@@ -42,9 +40,12 @@ return {
     ["<A-k>"] = { "5k" },
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
     ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab" },
-    ["<F3>"] = { function() vim.cmd('TermExec cmd="dock deno run ' .. vim.fn.expand('%:t') .. '"' ) end, desc = "Run current AoC file" },
+    ["<F3>"] = {
+      function() vim.cmd('TermExec cmd="dock deno run ' .. vim.fn.expand("%:t") .. '"') end,
+      desc = "Run current AoC file",
+    },
 
-    ["<Leader><Leader>e"] = { "<cmd>e<CR>", desc = "Reload the file"},
+    ["<Leader><Leader>e"] = { "<cmd>e<CR>", desc = "Reload the file" },
     ["<Leader><Leader>s"] = {
       function()
         local file_type = vim.bo.filetype
@@ -57,16 +58,16 @@ return {
 
     ["<Leader>uB"] = {
       -- toggle copilot
-      function ()
+      function()
         if vim.g.copilot_enabled == nil then
           vim.g.copilot_enabled = true
         else
           vim.g.copilot_enabled = not vim.g.copilot_enabled
         end
-      end
+      end,
     },
     ["<Leader>uG"] = {
-      '<cmd>Gitsigns toggle_current_line_blame<CR>',
+      "<cmd>Gitsigns toggle_current_line_blame<CR>",
       desc = "Toggle current line blame",
     },
     ["<Leader>un"] = {
@@ -91,9 +92,7 @@ return {
       function()
         local bufs = vim.fn.getbufinfo({ buflisted = true })
         require("astrocore.buffer").close(0)
-        if not bufs[2] then
-          require("snacks").dashboard()
-        end
+        if not bufs[2] then require("snacks").dashboard() end
       end,
       desc = "Close buffer",
     },
@@ -106,42 +105,54 @@ return {
     ["<Leader>ma"] = { function() require("grapple").tag() end, desc = "Add Grapple tag to file" },
     ["<Leader>md"] = { function() require("grapple").untag() end, desc = "Remove file from Grapple tag list" },
 
-    ["<Leader>mt"] = setFileTag "test",
-    ["<Leader>'t"] = jumpToFileTag "test",
-    ["<Leader>ms"] = setFileTag "subject",
-    ["<Leader>'s"] = jumpToFileTag "subject",
-    ["<Leader>mw"] = setFileTag "primary",
-    ["<Leader>'w"] = jumpToFileTag "primary",
-    ["<Leader>me"] = setFileTag "secondary",
-    ["<Leader>'e"] = jumpToFileTag "secondary",
-    ["<Leader>mr"] = setFileTag "tertiary",
-    ["<Leader>'r"] = jumpToFileTag "tertiary",
-    ["<Leader>mu"] = setFileTag "scratch",
-    ["<Leader>'u"] = jumpToFileTag "scratch",
-    ["<Leader>ml"] = setFileTag "log",
-    ["<Leader>'l"] = jumpToFileTag "log",
+    ["<Leader>mt"] = setFileTag("test"),
+    ["<Leader>'t"] = jumpToFileTag("test"),
+    ["<Leader>ms"] = setFileTag("subject"),
+    ["<Leader>'s"] = jumpToFileTag("subject"),
+    ["<Leader>mw"] = setFileTag("primary"),
+    ["<Leader>'w"] = jumpToFileTag("primary"),
+    ["<Leader>me"] = setFileTag("secondary"),
+    ["<Leader>'e"] = jumpToFileTag("secondary"),
+    ["<Leader>mr"] = setFileTag("tertiary"),
+    ["<Leader>'r"] = jumpToFileTag("tertiary"),
+    ["<Leader>mu"] = setFileTag("scratch"),
+    ["<Leader>'u"] = jumpToFileTag("scratch"),
+    ["<Leader>ml"] = setFileTag("log"),
+    ["<Leader>'l"] = jumpToFileTag("log"),
 
     -- ISwap
     ["Q"] = { "<cmd>ISwapWith<cr>" },
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
     ["<p"] = { "<cmd>ISwapWithLeft<cr>", desc = "Swap node with left" }, -- better search
-    n = { utils.better_search "nzz", desc = "Next search" },
-    N = { utils.better_search "Nzz", desc = "Previous search" }, -- quick save
+    n = { utils.better_search("nzz"), desc = "Next search" },
+    N = { utils.better_search("Nzz"), desc = "Previous search" }, -- quick save
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
-    ["<Leader>t?"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = 'btm' }) end, desc = "Toggleterm Btm" },
+    ["<Leader>t?"] = {
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "btm" }) end,
+      desc = "Toggleterm Btm",
+    },
     ["<Leader>dt"] = {
-      function() astro.toggle_term_cmd({ direction = 'float', cmd = 'dart tinker' }) end,
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
       desc = "Toggleterm Artisan for current Docker container",
     },
     ["<Leader>db"] = {
-      function() astro.toggle_term_cmd({ direction = 'float', cmd = 'dbash' }) end,
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "dbash" }) end,
       desc = "Toggleterm Artisan Tinker for current Docker container",
     },
-    ["<Leader>tg"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = "gh dash"} ) end, desc = "Toggleterm Github Dash" },
-    ["<Leader>tn"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = "lazynpm"} ) end, desc = "Toggleterm LazyNPM" },
-    ["<Leader>ty"] = { function() astro.toggle_term_cmd({ direction = 'float', cmd = "yazi"} ) end, desc = "Toggleterm Yazi" },
+    ["<Leader>tg"] = {
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "gh dash" }) end,
+      desc = "Toggleterm Github Dash",
+    },
+    ["<Leader>tn"] = {
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "lazynpm" }) end,
+      desc = "Toggleterm LazyNPM",
+    },
+    ["<Leader>ty"] = {
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "yazi" }) end,
+      desc = "Toggleterm Yazi",
+    },
     ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
 
     -- Telescope
@@ -153,18 +164,18 @@ return {
       function()
         vim.ui.select(
           {
-            'vendor',
-            'node_modules',
+            "vendor",
+            "node_modules",
           },
           {
-            prompt = 'Select an ignored directory:',
+            prompt = "Select an ignored directory:",
           },
-          function (selection)
-            require("telescope.builtin").find_files {
+          function(selection)
+            require("telescope.builtin").find_files({
               prompt_title = selection .. "Files",
               cwd = vim.fn.getcwd() .. "/" .. selection,
               follow = true,
-            }
+            })
           end
         )
       end,
@@ -175,7 +186,10 @@ return {
     ["<Leader>f_"] = { "<cmd>ScratchOpen<cr>", desc = "Open a Scratch file" },
     ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
     ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
-    ["<Leader>fw"] = { function() require('config.telescope.multigrep').live_multigrep() end, desc = "Search for symbol in workspace" },
+    ["<Leader>fw"] = {
+      function() require("config.telescope.multigrep").live_multigrep() end,
+      desc = "Search for symbol in workspace",
+    },
 
     -- Notify
     ["<Leader>uD"] = { function() require("notify").dismiss() end, desc = "Dismiss all displayed notifications" },
@@ -184,13 +198,13 @@ return {
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
     ["<C-o>"] = { "<C-o>zz", desc = "Jump backward and center" },
 
-    ["<LocalLeader>e"] = { "<cmd>e<CR>",desc = "Copy file path" },
+    ["<LocalLeader>e"] = { "<cmd>e<CR>", desc = "Copy file path" },
 
     -- Copying
     ["<LocalLeader>y"] = { name = "󰆏 Copy..." },
-    ["<LocalLeader>yp"] = { function() vim.fn.setreg("+", vim.fn.expand "%:p:.") end, desc = "Copy file path" },
-    ["<LocalLeader>yd"] = { function() vim.fn.setreg("+", vim.fn.expand "%:h") end, desc = "Copy directory path" },
-    ["<LocalLeader>yf"] = { function() vim.fn.setreg("+", vim.fn.expand "%:t:r") end, desc = "Copy file name" },
+    ["<LocalLeader>yp"] = { function() vim.fn.setreg("+", vim.fn.expand("%:p:.")) end, desc = "Copy file path" },
+    ["<LocalLeader>yd"] = { function() vim.fn.setreg("+", vim.fn.expand("%:h")) end, desc = "Copy directory path" },
+    ["<LocalLeader>yf"] = { function() vim.fn.setreg("+", vim.fn.expand("%:t:r")) end, desc = "Copy file name" },
 
     -- Scratch
     ["<C-n>"] = {
