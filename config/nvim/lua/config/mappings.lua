@@ -183,7 +183,6 @@ return {
     },
     ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find words in directory" },
     ["<Leader>fe"] = { "<cmd>Telescope telescope-env env_values theme=dropdown<CR>", desc = "Find env values" },
-    ["<Leader>f_"] = { "<cmd>ScratchOpen<cr>", desc = "Open a Scratch file" },
     ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
     ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
     ["<Leader>fw"] = {
@@ -206,10 +205,46 @@ return {
     ["<LocalLeader>yd"] = { function() vim.fn.setreg("+", vim.fn.expand("%:h")) end, desc = "Copy directory path" },
     ["<LocalLeader>yf"] = { function() vim.fn.setreg("+", vim.fn.expand("%:t:r")) end, desc = "Copy file name" },
 
+    -- Local Git Operations
+    ["<LocalLeader>g"] = { name = "󰊢 Git..." },
+    ["<LocalLeader>go"] = { function() require('snacks').gitbrowse() end, desc = "Copy file path" },
+
     -- Scratch
-    ["<C-n>"] = {
-      "<cmd>Scratch<CR>",
+    ["<LocalLeader>sn"] = {
+      function()
+        vim.ui.select(
+          {'markdown', 'json', 'php'},
+          {},
+          function(choice)
+            require('snacks').scratch({
+              -- name = os.date("%Y-%M-%d_%H-%m-%S"),
+              ft = choice,
+            })
+          end
+        )
+      end,
       desc = "Open new scratch file",
+    },
+    ["<LocalLeader>st"] = {
+      function()
+        vim.ui.input({}, function(file_name)
+          vim.ui.select(
+            {'markdown', 'json', 'php'},
+            {},
+            function(choice)
+              require('snacks').scratch({
+                -- name = file_name,
+                ft = choice,
+              })
+            end
+          )
+        end)
+      end,
+      desc = "Open and name a new scratch file",
+    },
+    ["<LocalLeader>sf"] = {
+      function() require('snacks').scratch.select() end,
+      desc = "Find a Scratch file",
     },
 
     -- TreeSJ
