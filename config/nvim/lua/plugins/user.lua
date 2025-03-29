@@ -51,6 +51,8 @@ return {
       --   {},
       --   { { 'NeovimDashboardFooter1', 0, 8 }, { 'NeovimDashboardFooter2', 9, 22 } },
       -- }
+
+      return opts
     end
   },
 
