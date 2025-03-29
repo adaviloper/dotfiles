@@ -1,6 +1,6 @@
 return {
   'nat-418/boole.nvim',
-  enabled = false,
+  enabled = true,
   config = function()
     require('boole').setup({
       mappings = {
@@ -14,14 +14,9 @@ return {
         {'let', 'const', 'var'},
         {'production', 'development', 'local', 'testing'},
         {'protected', 'public', 'private'},
-        {'up', 'right', 'down', 'left'},
-        {'top', 'bottom'},
         {'==', '==='},
         {'!=', '!=='},
       },
-      allow_caps_additions = {
-        {'enable', 'disable'}
-      }
     })
   end,
   event = { "BufReadPost" }, -- lazy load after reading a buffer
