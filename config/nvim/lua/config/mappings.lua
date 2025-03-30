@@ -182,16 +182,38 @@ return {
       desc = "Find in node_modules",
     },
     ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find words in directory" },
-    ["<Leader>fe"] = { "<cmd>Telescope telescope-env env_values theme=dropdown<CR>", desc = "Find env values" },
-    ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
-    ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
-    ["<Leader>fw"] = {
-      function() require("config.telescope.multigrep").live_multigrep() end,
-      desc = "Search for symbol in workspace",
+    -- ["<Leader>fe"] = { "<cmd>Telescope telescope-env env_values theme=dropdown<CR>", desc = "Find env values" },
+    ["<Leader>fe"] = {
+      "<cmd>Telescope telescope-env env_values theme=dropdown<CR>",
+      -- function ()
+      --   local fruits = { "apple", "orange", "banana" }
+      --   local fruit_list = {}
+      --   for _, item in ipairs(fruits) do
+      --     table.insert(fruit_list, {
+      --       text = item,
+      --       preview = { text = item },
+      --     })
+      --   end
+      --   require('snacks').picker({
+      --     items = fruit_list,
+      --     format = "text",
+      --     preview = "preview",
+      --     actions = {
+      --       confirm = function(picker, item)
+      --         picker.close(picker)
+      --         -- next_func(item.text)
+      --       end,
+      --     },
+      --   })
+      -- end,
+      desc = "Find env values",
     },
-
-    -- Notify
-    ["<Leader>uD"] = { function() require("notify").dismiss() end, desc = "Dismiss all displayed notifications" },
+    ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
+    -- ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
+    -- ["<Leader>fw"] = {
+    --   function() require("config.pickers.multigrep").live_multigrep() end,
+    --   desc = "Search for symbol in workspace",
+    -- },
 
     X = { "x~", desc = "Delete current character and capitalize the next" },
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
