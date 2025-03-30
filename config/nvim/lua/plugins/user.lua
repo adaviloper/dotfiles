@@ -1,4 +1,5 @@
 local mocha = require("catppuccin.palettes").get_palette("mocha")
+local Snacks = require("snacks")
 
 -- You can also add new plugins here as well using the lazy syntax:
 return {
@@ -48,18 +49,43 @@ return {
       --   {},
       --   { { 'NeovimDashboardFooter1', 0, 8 }, { 'NeovimDashboardFooter2', 9, 22 } },
       -- }
+      -- 
 
-      -- require("snacks").picker.pick(nil, {
-      --   title = 'Groups',
-      --   live = true,
-      --   layout = 'select',
-      --   format = 'text',
-      --   finder = function()
-      --     return {
-      --       text = "hit",
-      --     }
-      --   end,
-      -- })
+      opts.dashboard.sections = {
+        { section = 'header' },
+        function()
+          local in_git = Snacks.git.get_root() ~= nil
+          local cmds = {
+            {
+              icon = " ",
+              title = "Git Status",
+              cmd = "git --no-pager status --short",
+              height = 10,
+            },
+            {
+              icon = " ",
+              title = "Open PRs",
+              cmd = "gh pr list -L 3 -a adaviloper",
+              key = "P",
+              action = function()
+                vim.fn.jobstart("gh pr list --web", { detach = true })
+              end,
+              height = 4,
+            },
+          }
+          return vim.tbl_map(function(cmd)
+            return vim.tbl_extend("force", {
+              -- pane = 2,
+              section = "terminal",
+              enabled = in_git,
+              padding = { 0, 1 },
+              ttl = 5 * 60,
+              indent = 3,
+            }, cmd)
+          end, cmds)
+        end,
+        { section = 'startup', padding = 1 },
+      }
 
       return opts
     end,
