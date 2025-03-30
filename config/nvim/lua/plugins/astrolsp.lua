@@ -12,7 +12,7 @@ return {
     features = {
       autoformat = false, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
@@ -20,9 +20,10 @@ return {
       -- control auto formatting on save
       format_on_save = {
         enabled = true, -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          "go",
-        },
+        -- allow_filetypes = { -- enable format on save for specified filetypes only
+        --   "go",
+        --   "php",
+        -- },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
         },
@@ -91,8 +92,8 @@ return {
       },
       phpactor = {
         init_options = {
-          ["language_server_phpstan.enabled"] = false,
-          ["language_server_php_cs_fixer.enabled"] = false,
+          ["language_server_phpstan.enabled"] = true,
+          ["language_server_php_cs_fixer.enabled"] = true,
           ["code_transform.template_paths"] = {
             '~/.config/phpactor/templates/'
           }
