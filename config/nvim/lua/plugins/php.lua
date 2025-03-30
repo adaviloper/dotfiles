@@ -1,11 +1,12 @@
 return {
   {
     'ccaglak/phptools.nvim',
-    enabled = false,
+    enabled = true,
   },
   {
     'adaviloper/php-dev-tools.nvim',
     -- dir = '~/Code/php-dev-tools.nvim',
+    enabled = true,
     -- ft = 'php',
     event = 'VeryLazy',
     config = function ()
