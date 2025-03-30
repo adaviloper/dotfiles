@@ -45,6 +45,31 @@ return {
       desc = "Run current AoC file",
     },
 
+
+    ["<Leader>SS"] = {
+      function()
+        require("resession").save(
+          utils.get_session_name(),
+          {
+            -- dir = "dirsession",
+          }
+        )
+      end,
+      desc = "Save this dirsession",
+    },
+    -- update load dirsession mapping to get the correct session name
+    ["<Leader>S."] = {
+      function()
+        require("resession").load(
+          utils.get_session_name(),
+          {
+            -- dir = "dirsession",
+          }
+        )
+      end,
+      desc = "Load current dirsession",
+    },
+
     ["<Leader><Leader>e"] = { "<cmd>e<CR>", desc = "Reload the file" },
     ["<Leader><Leader>s"] = {
       function()
@@ -78,7 +103,7 @@ return {
     ["<Leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
-    ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+    -- ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<Leader>bD"] = {
       function()
         require("astroui.status").heirline.buffer_picker(function(bufnr) require("astroui.buffer").close(bufnr) end)
@@ -208,12 +233,6 @@ return {
       -- end,
       desc = "Find env values",
     },
-    ["<Leader>fs"] = { "<cmd>Telescope luasnip<cr>", desc = "Search for snippets" },
-    -- ["<Leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search for symbol in workspace" },
-    -- ["<Leader>fw"] = {
-    --   function() require("config.pickers.multigrep").live_multigrep() end,
-    --   desc = "Search for symbol in workspace",
-    -- },
 
     X = { "x~", desc = "Delete current character and capitalize the next" },
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
