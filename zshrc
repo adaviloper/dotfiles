@@ -144,7 +144,6 @@ if [ -z "$TMUX" ]; then
     if [[ -f "$HOME/.config/work_computer" ]]; then
       tmuxp load -d loop
     else
-      tmuxp load -d core10
       tmuxp load -d notes
       tmuxp load -d redwood
     fi
