@@ -5,14 +5,19 @@ windows:
     start_directory: ~/Code/php-dev-tools.nvim/
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: telescope-env
     start_directory: ~/Code/telescope-env/
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: t-sessions
     start_directory: ~/Code/t-session/
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
+  - window_name: tmux-theme
+    start_directory: ~/Code/tmux-theme/
+    panes:
+      - shell_command:
+          - cmd: "c"
