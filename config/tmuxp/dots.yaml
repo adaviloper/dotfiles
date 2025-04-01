@@ -4,22 +4,19 @@ windows:
   - window_name: .dotfiles
     panes:
       - shell_command:
-        - cmd: 'c'
-        - cmd: 'vim'
+          - cmd: "c"
   - window_name: Neovim Plugins
-    start_directory: '~/.local/share/nvim/lazy'
+    start_directory: "~/.local/share/nvim/lazy"
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: Tmux Plugins
-    start_directory: '~/.config/tmux/plugins/tmux-theme'
+    start_directory: "~/.config/tmux/plugins/tmux-theme"
     panes:
       - shell_command:
-        - cmd: 'c'
-        - cmd: 'vim'
+          - cmd: "c"
   - window_name: Tmux Fork
-    start_directory: '~/Code/catppuccin-tmux/'
+    start_directory: "~/Code/catppuccin-tmux/"
     panes:
       - shell_command:
-        - cmd: 'c'
-        - cmd: 'vim'
+          - cmd: "c"

@@ -5,13 +5,11 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-          - cmd: "vim"
   - window_name: Frontend
     start_directory: "./frontend"
     panes:
       - shell_command:
           - cmd: "c"
-          - cmd: "vim"
   - window_name: Terminals
     layout: main-vertical
     panes:
