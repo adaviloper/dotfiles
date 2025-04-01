@@ -5,22 +5,19 @@ windows:
     start_directory: ./logistics
     panes:
       - shell_command:
-        - cmd: 'c'
-        - cmd: "vim"
+          - cmd: "c"
   - window_name: Infrastructure
     start_directory: ./infra
     panes:
       - shell_command:
-        - cmd: 'c'
-        - cmd: "vim"
+          - cmd: "c"
   - window_name: Terminals
     layout: main-vertical
     focus: true
     panes:
       - shell_command:
-        - cd logistics
-        - clear
+          - cd logistics
+          - clear
       - shell_command:
-        - cd infra
-        - clear
-
+          - cd infra
+          - clear
