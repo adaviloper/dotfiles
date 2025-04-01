@@ -1,6 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
-  version = "*",  -- recommended, use latest release instead of latest commit
+  version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   enabled = false,
   ft = "markdown",
@@ -18,16 +18,7 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   opts = {
-    workspaces = {
-      {
-        name = "personal",
-        path = "~/Documents/GRIN-Vault/",
-      },
-      {
-        name = "work",
-        path = "~/Documents/Loop",
-      },
-    },
+    workspaces = {},
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
       folder = "daily",
@@ -38,10 +29,10 @@ return {
       -- Optional, default tags to add to each new daily note created.
       default_tags = { "daily-notes" },
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = "Daily Note"
+      template = "Daily Note",
     },
     templates = {
-      folder = "_templates"
-    }
+      folder = "_templates",
+    },
   },
 }

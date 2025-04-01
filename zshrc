@@ -142,7 +142,7 @@ if [ -z "$TMUX" ]; then
     tmuxp load -d dots
 
     if [[ -f "$HOME/.config/work_computer" ]]; then
-      tmuxp load -d loop
+      #
     else
       tmuxp load -d notes
       tmuxp load -d redwood

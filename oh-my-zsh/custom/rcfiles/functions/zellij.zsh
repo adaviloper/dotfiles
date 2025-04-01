@@ -4,9 +4,6 @@ function zj() {
       "dots")
         zellij -l "dotfiles" a -c "dotfiles" 
         ;;
-      "loop")
-        zellij -l "loop-returns-app" a -c "loop-returns-app" 
-        ;;
       "qmk")
         zellij -l "qmk" a -c "qmk" 
         ;;
