@@ -16,13 +16,6 @@ layout {
         pane
         pane size="20%"
     }
-    tab name="Loop" cwd="/Users/adriandavilla/Code/loop-returns-app" split_direction="vertical" {
-        pane
-        pane size="20%" stacked=true {
-            pane name="cli"
-            pane name="tests"
-        }
-    }
     tab name="Whiplash" cwd="/Users/adriandavilla/Code/whiplash-middleware" split_direction="vertical" {
         pane
         pane size="20%" stacked=true {

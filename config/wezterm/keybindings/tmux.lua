@@ -23,7 +23,7 @@ function M.getKeybindings()
 				act.SendKey({ key = "." }),
 			}),
 		},
-		{ -- Switch to Loop session
+		{ -- Switch to Primary session
 			key = "u",
 			mods = "CMD",
 			action = act.Multiple({

@@ -56,7 +56,6 @@ truncation_length = 4
 # 'some/path' = 'alias'
 '.dotfiles' = '  .dotfiles'
 '~/Code' = '  Code'
-'loop-returns-app' = ' Loop'
 'qmk_firmware' = '󰌓 QMK'
 
 [fill]
