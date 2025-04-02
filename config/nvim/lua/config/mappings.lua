@@ -45,27 +45,20 @@ return {
       desc = "Run current AoC file",
     },
 
-
     ["<Leader>SS"] = {
       function()
-        require("resession").save(
-          utils.get_session_name(),
-          {
-            -- dir = "dirsession",
-          }
-        )
+        require("resession").save(utils.get_session_name(), {
+          -- dir = "dirsession",
+        })
       end,
       desc = "Save this dirsession",
     },
     -- update load dirsession mapping to get the correct session name
     ["<Leader>S."] = {
       function()
-        require("resession").load(
-          utils.get_session_name(),
-          {
-            -- dir = "dirsession",
-          }
-        )
+        require("resession").load(utils.get_session_name(), {
+          -- dir = "dirsession",
+        })
       end,
       desc = "Load current dirsession",
     },
@@ -207,32 +200,7 @@ return {
       desc = "Find in node_modules",
     },
     ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find words in directory" },
-    -- ["<Leader>fe"] = { "<cmd>Telescope telescope-env env_values theme=dropdown<CR>", desc = "Find env values" },
-    ["<Leader>fe"] = {
-      "<cmd>Telescope telescope-env env_values theme=dropdown<CR>",
-      -- function ()
-      --   local fruits = { "apple", "orange", "banana" }
-      --   local fruit_list = {}
-      --   for _, item in ipairs(fruits) do
-      --     table.insert(fruit_list, {
-      --       text = item,
-      --       preview = { text = item },
-      --     })
-      --   end
-      --   require('snacks').picker({
-      --     items = fruit_list,
-      --     format = "text",
-      --     preview = "preview",
-      --     actions = {
-      --       confirm = function(picker, item)
-      --         picker.close(picker)
-      --         -- next_func(item.text)
-      --       end,
-      --     },
-      --   })
-      -- end,
-      desc = "Find env values",
-    },
+    ["<Leader>fe"] = { function() require("config.pickers.env").read_env() end, desc = "Find env values", },
 
     X = { "x~", desc = "Delete current character and capitalize the next" },
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
@@ -248,44 +216,47 @@ return {
 
     -- Local Git Operations
     ["<LocalLeader>g"] = { name = "󰊢 Git..." },
-    ["<LocalLeader>go"] = { function() require('snacks').gitbrowse() end, desc = "Copy file path" },
+    ["<LocalLeader>go"] = { function() require("snacks").gitbrowse() end, desc = "Copy file path" },
 
     -- Scratch
     ["<LocalLeader>sn"] = {
-      function()
-        vim.ui.select(
-          {'markdown', 'json', 'php'},
-          {},
-          function(choice)
-            require('snacks').scratch({
-              -- name = os.date("%Y-%M-%d_%H-%m-%S"),
-              ft = choice,
-            })
-          end
-        )
-      end,
+      "<cmd>Scratch<CR>",
       desc = "Open new scratch file",
     },
     ["<LocalLeader>st"] = {
-      function()
-        vim.ui.input({}, function(file_name)
-          vim.ui.select(
-            {'markdown', 'json', 'php'},
-            {},
-            function(choice)
-              require('snacks').scratch({
-                -- name = file_name,
-                ft = choice,
-              })
+      function ()
+        vim.ui.select(
+          vim.g.scratch_config.filetypes,
+          {
+            prompt = 'Extension'
+          },
+          function (extension)
+            if extension ~= nil then
+              vim.ui.input(
+                {
+                  prompt = 'File name:'
+                },
+                function (file_name)
+                  if file_name ~= nil then
+                    require('scratch').scratchByName(file_name .. '.' .. extension)
+                  else
+                    require('scratch').scratchByType(extension)
+                  end
+                end
+              )
             end
-          )
-        end)
+          end
+        )
       end,
       desc = "Open and name a new scratch file",
     },
     ["<LocalLeader>sf"] = {
-      function() require('snacks').scratch.select() end,
-      desc = "Find a Scratch file",
+      "<cmd>ScratchOpen<CR>",
+      desc = "Find a scratch file",
+    },
+    ["<LocalLeader>s/"] = {
+      "<cmd>ScratchOpenFzf<CR>",
+      desc = "Search through all scratch files",
     },
 
     -- TreeSJ
