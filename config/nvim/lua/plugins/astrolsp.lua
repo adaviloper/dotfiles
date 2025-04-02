@@ -19,7 +19,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = false, -- enable or disable format on save globally
         -- allow_filetypes = { -- enable format on save for specified filetypes only
         --   "go",
         --   "php",
@@ -95,12 +95,12 @@ return {
           ["language_server_phpstan.enabled"] = true,
           ["language_server_php_cs_fixer.enabled"] = true,
           ["code_transform.template_paths"] = {
-            '~/.config/phpactor/templates/'
-          }
+            "~/.config/phpactor/templates/",
+          },
         },
       },
       tailwindcss = {
-        filetypes = { 'html', 'css', 'scss', 'postcss', 'tsx', 'jsx', 'js', 'ts', 'vue', },
+        filetypes = { "html", "css", "scss", "postcss", "tsx", "jsx", "js", "ts", "vue" },
       },
       -- snyk_ls = {
       --   cmd = { 'snyk-ls', '-f', '~/.local/share/logs/snyk-ls-vim.log' },
@@ -145,13 +145,13 @@ return {
           -- the rest of the autocmd options (:h nvim_create_autocmd)
           desc = "Refresh codelens (buffer)",
           callback = function(args)
-            if require("astrolsp").config.features.codelens then vim.lsp.codelens.refresh { bufnr = args.buf } end
+            if require("astrolsp").config.features.codelens then vim.lsp.codelens.refresh({ bufnr = args.buf }) end
           end,
         },
       },
     },
     -- mappings to be set up on attaching of a language server
-    mappings = require "config.lsp_mappings",
+    mappings = require("config.lsp_mappings"),
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
     on_attach = function(client, bufnr)
