@@ -96,7 +96,8 @@ return {
     ["<Leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
-    -- ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+    ["<Leader>b"] = { name = "Buffers" },
+    ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<Leader>bD"] = {
       function()
         require("astroui.status").heirline.buffer_picker(function(bufnr) require("astroui.buffer").close(bufnr) end)
@@ -105,7 +106,6 @@ return {
     },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
-    ["<Leader>b"] = { name = "Buffers" },
     ["<Leader>c"] = {
       function()
         local bufs = vim.fn.getbufinfo({ buflisted = true })
@@ -219,6 +219,7 @@ return {
     ["<LocalLeader>go"] = { function() require("snacks").gitbrowse() end, desc = "Copy file path" },
 
     -- Scratch
+    ["<LocalLeader>s"] = { name = "Scratch files" },
     ["<LocalLeader>sn"] = {
       "<cmd>Scratch<CR>",
       desc = "Open new scratch file",
