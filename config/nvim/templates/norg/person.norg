@@ -1,0 +1,11 @@
+@document.meta
+created: {TODAY}
+name: {FILE_NAME_TITLE_CASE}
+date_of_birth:
+@end
+
+* {FILE_NAME_TITLE_CASE}
+
+** Likes
+   - 
+

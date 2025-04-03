@@ -1,0 +1,27 @@
+@document.meta
+created: {TODAY}
+version: 1.0.0
+@end
+
+* {TITLE}
+
+** Monday {MONDAY_DATE}
+   - {CURSOR}
+
+** Tuesday {TUESDAY_DATE}
+   - {CURSOR}
+
+** Wednesday {WEDNESDAY_DATE}
+   - {CURSOR}
+
+** Thursday {THURSDAY_DATE}
+   - {CURSOR}
+
+** Friday {FRIDAY_DATE}
+   - {CURSOR}
+
+** Saturday {SATURDAY_DATE}
+   - {CURSOR}
+
+** Sunday {SUNDAY_DATE}
+   - {CURSOR}
