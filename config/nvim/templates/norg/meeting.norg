@@ -1,0 +1,16 @@
+@document.meta
+created: {TODAY}
+title: {FILE_NAME_TITLE_CASE}
+@end
+
+* {FILE_NAME_TITLE_CASE}
+
+** Attendees
+   - {CURSOR}
+
+** Notes
+   -
+
+**    Action Items
+   - ( ) 
+

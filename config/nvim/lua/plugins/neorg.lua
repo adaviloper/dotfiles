@@ -1,4 +1,7 @@
 local neorg_templates = require("helpers.neorg_templates")
+local ls = require('luasnip')
+local t = ls.text_node
+local c = ls.choice_node
 
 return {
   "nvim-neorg/neorg",
@@ -51,13 +54,19 @@ return {
             SATURDAY_DATE = function() return neorg_templates.weekdate(7) end,
             SUNDAY_DATE = function() return neorg_templates.weekdate(8) end,
 
-            CARRYOVER_TODOS = function() return require("luasnip").text_node(neorg_templates.get_carryover_todos()) end,
+            CARRYOVER_TODOS = function() return ls.text_node(neorg_templates.get_carryover_todos()) end,
+
+            INSERT_2 = function() return ls.insert_node(1) end,
+            INSERT_3 = function() return ls.insert_node(1) end,
+            INSERT_4 = function() return ls.insert_node(1) end,
 
             FILE_NAME_TITLE_CASE = function ()
               local name = vim.fn.fnamemodify(vim.fn.expand('%'), ':t:r')
 
-              return require("luasnip").text_node(require('helpers.str_utils').title_case(name))
-            end
+              return ls.text_node(require('helpers.str_utils').title_case(name))
+            end,
+
+            APPLICATION_STATUS = c(1, { t("applied"), t("rejected") })
           },
           snippets_overwrite = {},
         },
@@ -69,5 +78,7 @@ return {
     neorg_templates.template("*/journal/*index.norg", "weekly", ".*/journal/%d%d%d%d/%d%d/w%d%d/index.norg")
     neorg_templates.template("*/journal/*.norg", "daily", ".*/journal/%d%d%d%d/%d%d/w%d%d/%d%d%.norg")
     neorg_templates.template("*/people/*.norg", "person")
+    neorg_templates.template("*/job-search/companies/*.norg", "company")
+    neorg_templates.template("*/meetings/*.norg", "meeting")
   end,
 }

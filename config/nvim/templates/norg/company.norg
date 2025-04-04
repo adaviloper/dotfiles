@@ -1,0 +1,12 @@
+@document.meta
+created: {TODAY}
+name: {FILE_NAME_TITLE_CASE}
+website: {INSERT}
+date_applied: {TODAY}
+status: {APPLICATION_STATUS}
+@end
+
+* {FILE_NAME_TITLE_CASE}
+
+** Notes
+
