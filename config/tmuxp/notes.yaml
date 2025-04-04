@@ -5,9 +5,9 @@ windows:
     start_directory: "~/Code/notes/work/"
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: Personal
     start_directory: "~/Code/notes/personal/"
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"

@@ -6,8 +6,8 @@ windows:
     start_directory: ../component-library
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: Design System 2
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"

@@ -4,13 +4,13 @@ windows:
   - window_name: Project
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: Terminals
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: VTest
     start_directory: ~/Code/vtest/
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
