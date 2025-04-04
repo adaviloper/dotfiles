@@ -93,6 +93,8 @@ return {
       desc = "Toggle relativenumber",
     },
 
+    ["<Leader>e"] = { "<Cmd>Neotree reveal toggle<CR>", desc = "Toggle Explorer" },
+
     ["<Leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
