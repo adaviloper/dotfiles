@@ -5,19 +5,19 @@ windows:
     start_directory: ./2024
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: "2023"
     start_directory: ./2023
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: "2020"
     start_directory: ./2020
     panes:
       - shell_command:
-        - cmd: 'c'
+          - cmd: "c"
   - window_name: Docker
     panes:
       - shell_command:
-        - cmd: 'c'
-        - cmd: 'dup'
+          - cmd: "c"
+          - cmd: "dup"
