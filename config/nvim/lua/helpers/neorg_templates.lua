@@ -41,7 +41,18 @@ end
 M.createCompany = function ()
   vim.ui.input({ prompt = 'Company Name:' }, function (name)
     if name ~= nil then
-      local path = string.format("/job-search/company/%s.norg", str_utils.slug(name))
+      local path = string.format("/job-search/companies/%s.norg", str_utils.slug(name))
+
+      createJournalEntry(path)
+    end
+  end)
+end
+
+M.createMeetingNote = function ()
+  vim.ui.input({ prompt = 'Meeting title:' }, function (name)
+    if name ~= nil then
+      local year, month, day = os.date("%Y"), os.date("%m"), os.date("%d")
+      local path = string.format("/meetings/%s/%s/%s/%s.norg", year, month, day, str_utils.slug(name))
 
       createJournalEntry(path)
     end
