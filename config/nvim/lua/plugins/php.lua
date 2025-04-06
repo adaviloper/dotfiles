@@ -1,24 +1,27 @@
 return {
   {
-    'ccaglak/phptools.nvim',
+    "ccaglak/phptools.nvim",
     enabled = true,
   },
   {
-    'adaviloper/php-dev-tools.nvim',
+    "phpactor/phpactor",
+  },
+  {
+    "adaviloper/php-dev-tools.nvim",
     -- dir = '~/Code/php-dev-tools.nvim',
     enabled = true,
     -- ft = 'php',
-    event = 'VeryLazy',
-    config = function ()
-      require('php-dev-tools').setup({
+    event = "VeryLazy",
+    config = function()
+      require("php-dev-tools").setup({
         test_utils = {
           {
-            dir = '~/Code/redwood',
-            cmd = 'dart test',
-            group_cmd = 'dock ./vendor/bin/phpunit --list-groups',
+            dir = "~/Code/redwood",
+            cmd = "dart test",
+            group_cmd = "dock ./vendor/bin/phpunit --list-groups",
           },
-        }
+        },
       })
     end,
-  }
+  },
 }
