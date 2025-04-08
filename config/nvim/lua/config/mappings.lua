@@ -1,6 +1,7 @@
 local astro = require("astrocore")
 local utils = require("helpers.utils")
 local ls = require("luasnip")
+local git_utils = require("helpers.git_utils")
 
 local function setFileTag(tagName)
   return {
@@ -271,6 +272,26 @@ return {
 
     -- Git
     ["<Leader>gB"] = { "<cmd>G blame<cr>", desc = "Commit annotations" },
+
+    ["<Leader>pa"] = {
+      function()
+        require("astrocore").update_packages()
+
+        git_utils.commit_lazy_lock_file()
+      end,
+      desc = "Update Lazy and Mason",
+    },
+
+    ["<Leader>pU"] = {
+      function()
+        vim.notify('Updating')
+        require("lazy").update()
+
+        vim.notify('before committing')
+        git_utils.commit_lazy_lock_file()
+      end,
+      desc = "Plugins Update",
+    },
 
     ["ga"] = { "GA", desc = "Start inserting at the end of the last line" },
     ["go"] = { "Go", desc = "Start inserting after the last line" },
