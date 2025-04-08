@@ -34,9 +34,20 @@ local function toggle_arrow_function_under_cursor()
   -- Find the smallest node at the cursor
   local node = root:named_descendant_for_range(cursor_row, cursor_col, cursor_row, cursor_col)
 
+  -- Ensure we found a node and it's an arrow_function
+  if not node then
+    print("No node found under cursor.")
+    return
+  end
+
   -- Walk up to the arrow_function node
   while node and node:type() ~= "arrow_function" do
     node = node:parent()
+  end
+
+  if not node then
+    print("No arrow function under cursor.")
+    return
   end
 
   for _, match, metadata in q:iter_matches(node, buf) do
@@ -65,22 +76,46 @@ local function toggle_arrow_function_under_cursor()
       if body_type ~= "statement_block" then
         -- Concise → Block
         local expr = vim.treesitter.get_node_text(body_node, buf)
-        vim.api.nvim_buf_set_text(buf, start_row, start_col, end_row, end_col, {
+        local expr_lines = vim.split(expr, "\n")
+        local output = {
           "{",
-          "  return " .. expr .. ";",
-          "}",
-        })
-        vim.cmd('norm $=%')
+        }
+        if #expr_lines > 1 then
+          expr_lines[1] = 'return {'
+          expr_lines[#expr_lines] = '};'
+          for _, key_val in ipairs(expr_lines) do
+            table.insert(output, key_val)
+          end
+        else
+          table.insert(output, "  return " .. expr .. ";")
+        end
+        table.insert(output, "}")
+        vim.api.nvim_buf_set_text(buf, start_row, start_col, end_row, end_col, output)
+        vim.cmd('norm =af')
       else
         -- Block → Concise
         for child in body_node:iter_children() do
           if child:type() == "return_statement" and child:child(1) then
             local expr = type .. ' => ' .. vim.treesitter.get_node_text(child:child(1), buf)
-            vim.api.nvim_buf_set_text(buf, start_row, param_end_col, end_row, end_col, { expr })
+
+            local expr_lines = vim.split(expr, "\n")
+            local output = {
+            }
+            if #expr_lines > 1 then
+              expr_lines[1] = '({'
+              expr_lines[#expr_lines] = '})'
+              for _, key_val in ipairs(expr_lines) do
+                table.insert(output, key_val)
+              end
+            else
+              table.insert(output, expr)
+            end
+
+            vim.api.nvim_buf_set_text(buf, start_row, start_col, end_row, end_col, output)
+            vim.cmd('norm =af')
             return
           end
         end
-        vim.cmd('norm ==')
       end
 
       return
@@ -91,3 +126,4 @@ local function toggle_arrow_function_under_cursor()
 end
 
 vim.api.nvim_create_user_command("ToggleArrowFunction", toggle_arrow_function_under_cursor, {})
+
