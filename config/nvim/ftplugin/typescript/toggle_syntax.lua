@@ -83,6 +83,7 @@ local function toggle_arrow_function_under_cursor()
         if #expr_lines > 1 then
           expr_lines[1] = 'return {'
           expr_lines[#expr_lines] = '};'
+
           for _, key_val in ipairs(expr_lines) do
             table.insert(output, key_val)
           end
@@ -96,7 +97,7 @@ local function toggle_arrow_function_under_cursor()
         -- Block → Concise
         for child in body_node:iter_children() do
           if child:type() == "return_statement" and child:child(1) then
-            local expr = type .. ' => ' .. vim.treesitter.get_node_text(child:child(1), buf)
+            local expr = vim.treesitter.get_node_text(child:child(1), buf)
 
             local expr_lines = vim.split(expr, "\n")
             local output = {
