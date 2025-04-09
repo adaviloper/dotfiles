@@ -32,4 +32,7 @@ astrocore.set_mappings({
     ['<LocalLeader>pt'] = { '<cmd>PhpactorTransform<cr>', desc = "Transform file" },
 
   },
+  v = {
+    ['<LocalLeader>xv'] = { '<cmd>ExtractToVariable<cr>', desc = "Extract to a variable" },
+  },
 })
