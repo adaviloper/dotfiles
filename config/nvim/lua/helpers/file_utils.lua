@@ -10,6 +10,7 @@ M.file_exists = function(filepath)
 end
 
 M.file_is_empty = function (file)
+  file = file or io.open(vim.fn.expand('%'), "r")
   if file ~= nil then
     local content = file:read("*all") -- Read the entire content of the file
     file:close()                      -- Close the file
