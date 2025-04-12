@@ -203,7 +203,7 @@ return {
       desc = "Find in node_modules",
     },
     ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find words in directory" },
-    ["<Leader>fe"] = { function() require("config.pickers.env").read_env() end, desc = "Find env values", },
+    ["<Leader>fe"] = { function() require("config.pickers.env").read_env() end, desc = "Find env values" },
 
     X = { "x~", desc = "Delete current character and capitalize the next" },
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
