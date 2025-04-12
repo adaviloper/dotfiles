@@ -228,29 +228,22 @@ return {
       desc = "Open new scratch file",
     },
     ["<LocalLeader>st"] = {
-      function ()
-        vim.ui.select(
-          vim.g.scratch_config.filetypes,
-          {
-            prompt = 'Extension'
-          },
-          function (extension)
-            if extension ~= nil then
-              vim.ui.input(
-                {
-                  prompt = 'File name:'
-                },
-                function (file_name)
-                  if file_name ~= nil then
-                    require('scratch').scratchByName(file_name .. '.' .. extension)
-                  else
-                    require('scratch').scratchByType(extension)
-                  end
-                end
-              )
-            end
+      function()
+        vim.ui.select(vim.g.scratch_config.filetypes, {
+          prompt = "Extension",
+        }, function(extension)
+          if extension ~= nil then
+            vim.ui.input({
+              prompt = "File name:",
+            }, function(file_name)
+              if file_name ~= nil then
+                require("scratch").scratchByName(file_name .. "." .. extension)
+              else
+                require("scratch").scratchByType(extension)
+              end
+            end)
           end
-        )
+        end)
       end,
       desc = "Open and name a new scratch file",
     },
@@ -284,10 +277,8 @@ return {
 
     ["<Leader>pU"] = {
       function()
-        vim.notify('Updating')
         require("lazy").update()
 
-        vim.notify('before committing')
         git_utils.commit_lazy_lock_file()
       end,
       desc = "Plugins Update",
