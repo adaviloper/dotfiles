@@ -23,7 +23,7 @@ local function toggle_arrow_function_under_cursor()
     [[
     (arrow_function
       parameters: (formal_parameters) @params
-      return_type: (type_annotation) @return_type
+      return_type: (type_annotation)* @return_type
       body: (_) @body)
   ]]
   )
