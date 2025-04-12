@@ -1,4 +1,4 @@
- iiiiZP{":::Xcds"}#!/bin/bash
+ !/usr/bin/env bash
 sudo xcodebuild -license accept
 
 set -e
@@ -54,6 +54,7 @@ tmux run-shell '~/.config/tmux/plugins/tpm/bin/install_plugins'
 
 info "Running [post-install.sh]"
 sh ~/.dotfiles/scripts/post-install.sh
+sh ~/.dotfiles/scripts/go-dependencies.sh
 
 # Setup OhMyZsh for Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then

@@ -16,8 +16,8 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: tmux-theme
-    start_directory: ~/Code/tmux-theme/
+  - window_name: gco
+    start_directory: ~/go/src/gco/
     panes:
       - shell_command:
           - cmd: "c"
