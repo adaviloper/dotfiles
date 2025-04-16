@@ -1,4 +1,3 @@
-tap 'homebrew/bundle'
 tap 'jakehilborn/jakehilborn'
 tap 'jesseduffield/lazynpm'
 tap 'thoughtbot/formulae'
