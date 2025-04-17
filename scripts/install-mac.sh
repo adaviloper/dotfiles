@@ -69,6 +69,9 @@ rcup -f
 # Prepare Neorg notes
 mkdir -p ~/Code/notes
 
+# Initialize nvim
+nvim --headless +q
+
 info "Updating OSX default settings"
 sh ~/.dotfiles/scripts/osx.sh
 
