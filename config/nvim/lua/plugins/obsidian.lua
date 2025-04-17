@@ -18,7 +18,12 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   opts = {
-    workspaces = {},
+    workspaces = {
+      {
+        name = 'Personal',
+        path = '~/Documents/pkm/',
+      }
+    },
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
       folder = "daily",
