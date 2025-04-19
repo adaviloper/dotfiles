@@ -1,5 +1,22 @@
 local php_group = vim.api.nvim_create_augroup('PHP AutoTemplates', { clear = true })
 
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('adaviloper/close_with_q', { clear = true }),
+  desc = 'Close with <q>',
+  pattern = {
+    'fugitiveblame',
+    'git',
+    'help',
+    'man',
+    'qf',
+    'query',
+    'scratch',
+  },
+  callback = function(args)
+    vim.keymap.set('n', 'q', '<cmd>quit<cr>', { buffer = args.buf })
+  end,
+})
+
 vim.api.nvim_create_autocmd({ 'LspAttach' }, {
   pattern = '*.php',
   group = php_group,
