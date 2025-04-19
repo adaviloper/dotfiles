@@ -6,8 +6,8 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: telescope-env
-    start_directory: ~/Code/telescope-env/
+  - window_name: juggle
+    start_directory: ~/Code/juggle/
     panes:
       - shell_command:
           - cmd: "c"
