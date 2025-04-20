@@ -18,7 +18,7 @@ return {
 
       markview.setup({
         heading = presets.headings.glow_labels,
-        hybrid_modes = { 'i', 'n' }
+        preview = { 'i', 'n' }
       })
     end,
   }
