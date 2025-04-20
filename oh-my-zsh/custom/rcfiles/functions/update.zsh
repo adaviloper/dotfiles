@@ -32,6 +32,10 @@ function u() {
     echo "\n" >>/tmp/u-$NOW.txt
     echo "✅ 🌳 nvim-treesitter updated"
 
+    gum spin --spinner globe --title "🦆 yazi plugins updating" -- ya pack -u
+    echo "\n" >>/tmp/u-$NOW.txt
+    echo "✅ 🦆 yazi plugins updating"
+
     gum spin --spinner globe --title "🍻 brew updating" --show-output -- brew update >>/tmp/u-$NOW.txt
     echo "\n" >>/tmp/u-$NOW.txt
     echo "✅ 🍻 brew updated"
