@@ -14,7 +14,6 @@ return {
       "javascript",
       "json",
       "lua",
-      "norg",
       "php",
       "query",
       "scss",
