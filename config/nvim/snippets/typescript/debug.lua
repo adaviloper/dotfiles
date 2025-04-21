@@ -1,7 +1,7 @@
 return
   {
     s(
-      'cml',
+      'dml',
       fmt(
         [[console.{}('{}'{});]],
         {
