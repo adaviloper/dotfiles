@@ -2,7 +2,7 @@ local astrocore = require("astrocore")
 
 astrocore.set_mappings({
   n = {
-    ["<LocalLeader>ts"] = { "<cmd>ToggleAccessType<CR>", desc = "Toggle property access type" },
+    ["<LocalLeader>ts"] = { "<cmd>ToggleSyntax<CR>", desc = "Toggle property access type" },
     -- NeoTeset
     ["<F4>"] = { name = "Testing" },
     ["<F4><F4>"] = {
