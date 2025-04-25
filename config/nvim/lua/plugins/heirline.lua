@@ -55,6 +55,30 @@ return {
 					hl = { fg = mocha.red },
 				},
 			}),
+			{ -- tab list
+				condition = function()
+					return #vim.api.nvim_list_tabpages() >= 2
+				end, -- only show tabs if there are more than one
+				status.heirline.make_tablist({ -- component for each tab
+					provider = status.provider.tabnr(),
+					hl = function(self)
+						return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true)
+					end,
+				}),
+				{ -- close button for current tab
+					provider = status.provider.close_button({
+						kind = "TabClose",
+						padding = { left = 1, right = 1 },
+					}),
+					hl = status.hl.get_attributes("tab_close", true),
+					on_click = {
+						callback = function()
+							require("astroui.buffer").close_tab()
+						end,
+						name = "heirline_tabline_close_tab_callback",
+					},
+				},
+			},
 			status.component.fill(),
 			status.component.lsp(),
 			status.component.virtual_env(),
@@ -90,31 +114,6 @@ return {
 						condition = status.condition.is_file
 					},
 				}),
-				status.component.fill(),
-				{ -- tab list
-					condition = function()
-						return #vim.api.nvim_list_tabpages() >= 2
-					end, -- only show tabs if there are more than one
-					status.heirline.make_tablist({ -- component for each tab
-						provider = status.provider.tabnr(),
-						hl = function(self)
-							return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true)
-						end,
-					}),
-					{ -- close button for current tab
-						provider = status.provider.close_button({
-							kind = "TabClose",
-							padding = { left = 1, right = 1 },
-						}),
-						hl = status.hl.get_attributes("tab_close", true),
-						on_click = {
-							callback = function()
-								require("astroui.buffer").close_tab()
-							end,
-							name = "heirline_tabline_close_tab_callback",
-						},
-					},
-				},
       },
       -- active winbar
       {
@@ -148,31 +147,6 @@ return {
 						condition = status.condition.is_file,
 					},
 				}),
-				status.component.fill(),
-				{ -- tab list
-					condition = function()
-						return #vim.api.nvim_list_tabpages() >= 2
-					end, -- only show tabs if there are more than one
-					status.heirline.make_tablist({ -- component for each tab
-						provider = status.provider.tabnr(),
-						hl = function(self)
-							return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true)
-						end,
-					}),
-					{ -- close button for current tab
-						provider = status.provider.close_button({
-							kind = "TabClose",
-							padding = { left = 1, right = 1 },
-						}),
-						hl = status.hl.get_attributes("tab_close", true),
-						on_click = {
-							callback = function()
-								require("astroui.buffer").close_tab()
-							end,
-							name = "heirline_tabline_close_tab_callback",
-						},
-					},
-				},
       },
     }
 
