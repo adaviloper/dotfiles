@@ -5,6 +5,7 @@ return {
     'javascript',
     'typescript',
     'php',
+    'vue',
   },
   config = function ()
     require('juggle').setup({})
