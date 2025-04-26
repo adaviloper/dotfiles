@@ -1,5 +1,22 @@
 local mocha = require("catppuccin.palettes").get_palette("mocha")
 
+
+local function get_ft_hl()
+	local ft_color = {
+		css = mocha.blue,
+		json = mocha.text,
+		lua = mocha.sky,
+		markdown = mocha.yellow,
+		php = mocha.mauve,
+		scss = mocha.red,
+		toml = mocha.red,
+		typescript = mocha.blue,
+		vue = mocha.green,
+	}
+
+	return ft_color[vim.bo.filetype] or mocha.green
+end
+
 return {
 	"rebelot/heirline.nvim",
 	opts = function(_, opts)
@@ -62,7 +79,17 @@ return {
 				status.heirline.make_tablist({ -- component for each tab
 					provider = status.provider.tabnr(),
 					hl = function(self)
-						return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true)
+						local is_active_tab = status.heirline.tab_type(self, "tab") == 'tab_active'
+						if is_active_tab then
+							-- return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true)
+							return {
+								bg = mocha.base,
+								fg = get_ft_hl()
+							}
+						end
+						return {
+							bg = mocha.mantle,
+						}
 					end,
 				}),
 				{ -- close button for current tab
@@ -120,19 +147,7 @@ return {
         -- add the file name and icon
 				status.component.file_info({
 					hl = function ()
-						local ft_color = {
-							lua = mocha.sky,
-							json = mocha.text,
-							php = mocha.mauve,
-							vue = mocha.green,
-							css = mocha.blue,
-							scss = mocha.red,
-							toml = mocha.red,
-							typescript = mocha.blue,
-						}
-						return {
-							fg = ft_color[vim.bo.filetype] or mocha.green,
-						}
+						return { fg = get_ft_hl() }
 					end,
 					file_icon = { padding = { left = 0 } },
 					filename = {
