@@ -23,7 +23,7 @@
   "grapple.nvim": { "branch": "main", "commit": "b41ddfc1c39f87f3d1799b99c2f0f1daa524c5f7" },
   "guess-indent.nvim": { "branch": "main", "commit": "84a4987ff36798c2fc1169cbaff67960aed9776f" },
   "heirline.nvim": { "branch": "master", "commit": "cc359b628266cb9a84b2d71c883f2b99e16473a0" },
-  "juggle": { "branch": "main", "commit": "517b61582b8452bdf7852dded016b0ff8d5fa057" },
+  "juggle": { "branch": "main", "commit": "b77edffc1e0e57a1956a97b51e3e7124cb4b7d4c" },
   "kulala.nvim": { "branch": "main", "commit": "f2a5d94d4fe5f67707bf8a36331fdd803044c051" },
   "laravel.nvim": { "branch": "main", "commit": "b8df6033e662260242d9e21cc9fd9c820bb2cedd" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
