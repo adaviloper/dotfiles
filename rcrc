@@ -1,5 +1,5 @@
 EXCLUDES="apps assets Brewfile Brewfile.lock.json phpstorm scripts vim vimrc work-settings.jar xbindkeysrc.scm"
 
-SYMLINK_DIRS="config/bat config/bin config/nvim config/phpactor config/tmuxp config/wezterm config/yazi Library/Application\ Support/org.yanex.marta"
+SYMLINK_DIRS="config/bat config/awesome config/bin config/nvim config/phpactor config/tmuxp config/wezterm config/yazi Library/Application\ Support/org.yanex.marta"
 
 UNDOTTED="intelephense Library"
