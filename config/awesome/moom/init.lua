@@ -1,4 +1,3 @@
-local naughty = require('naughty')
 local M = {}
 
 M.move_focused_client_fraction = function(start_frac, width_frac)
