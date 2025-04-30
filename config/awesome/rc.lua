@@ -18,12 +18,15 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+awful.spawn.with_shell("~/.config/awesome/autostart.sh")
+
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 local client_utils = require('utils.clients')
 local moom = require('moom')
+local meh_key = { 'Control', 'Shift', 'Mod1', }
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -271,7 +274,10 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey, "Shift"   }, "w", function () mymainmenu:show() end,
+              {description = "show main menu", group = "awesome"}),
+
+    awful.key({ modkey, "Shift"   }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
@@ -319,11 +325,11 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
-    awful.key({ 'Control', 'Shift', 'Mod1', }, "Return", function ()
-        client_utils.launch_app("org.wezfurlong.wezterm")
+    awful.key(meh_key, "Return", function ()
+        client_utils.launch_app("terminal")
     end),
-    awful.key({ 'Control', 'Shift', 'Mod1', }, "b", function ()
-        client_utils.launch_app("firefox_firefox")
+    awful.key(meh_key, "b", function ()
+        client_utils.launch_app("browser")
     end),
 
     awful.key({ modkey, "Control" }, "n",
@@ -364,7 +370,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey,           }, "w",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
