@@ -26,7 +26,6 @@ local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 local client_utils = require('utils.clients')
 local moom = require('moom')
-local meh_key = { 'Control', 'Shift', 'Mod1', }
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -55,7 +54,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
+local theme_path = string.format("%s/.config/awesome/theme", os.getenv("HOME"))
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.wallpaper = theme_path .. '/wall.jpeg'
 
 -- This is used later as the default terminal and editor to run.
 terminal = "wezterm"
@@ -68,6 +69,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
+MEH_KEY = { 'Control', 'Shift', 'Mod1', }
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -213,14 +215,22 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
+    s.mytasklist = awful.widget.tasklist({
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons
-    }
+    })
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({
+        position = "top",
+        screen = s,
+        width = s.geometry.width - 64,
+        height = 32,
+        x = s.geometry.width / 4 + 16,
+        y = s.geometry.y + 8,
+        ontop = true,
+    })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -246,18 +256,14 @@ end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 4, awful.tag.viewprev),
+    awful.button({ }, 5, awful.tag.viewnext)
 ))
 -- }}}
-
--- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
@@ -325,10 +331,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
-    awful.key(meh_key, "Return", function ()
+    awful.key(MEH_KEY, "Return", function ()
         client_utils.launch_app("terminal")
     end),
-    awful.key(meh_key, "b", function ()
+    awful.key(MEH_KEY, "b", function ()
         client_utils.launch_app("browser")
     end),
 
