@@ -226,7 +226,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({
         position = "top",
         screen = s,
-        width = s.geometry.width - 64,
+        width = s.geometry.width / 2,
         height = 32,
         x = s.geometry.width / 4 + 16,
         y = s.geometry.y + 8,
@@ -423,49 +423,49 @@ clientkeys = gears.table.join(
                 awful.keygrabber.stop(grabber)
             elseif key == "q" then
                 -- move to 1/4 left
-                moom.move_focused_client_fraction("0", "1/2")
+                moom.move_focused_client_fraction(0, 1/2)
             elseif key == "w" then
                 -- move to 2/4 center-left
-                moom.move_focused_client_fraction("1/4", "1/4")
+                moom.move_focused_client_fraction(1/4, 1/4)
             elseif key == "e" then
                 -- move to 3/4 center-right
-                moom.move_focused_client_fraction("1/6", "2/3")
+                moom.move_focused_client_fraction(1/6, 2/3)
             elseif key == "r" then
                 -- move to 4/4 right
-                moom.move_focused_client_fraction("1/2", "1/4")
+                moom.move_focused_client_fraction(1/2, 1/4)
             elseif key == "t" then
                 -- move to 4/4 right
-                moom.move_focused_client_fraction("1/2", "1/2")
+                moom.move_focused_client_fraction(1/2, 1/2)
             elseif key == "a" then
-                moom.move_focused_client_fraction("0", "1/4")
+                moom.move_focused_client_fraction(0, 1/4)
                 -- move to 1/4 left
             elseif key == "s" then
                 -- move to 2/4 center-left
-                moom.move_focused_client_fraction("0", "3/4")
+                moom.move_focused_client_fraction(0, 3/4)
             elseif key == "d" then
                 -- move to 3/4 center-right
-                moom.move_focused_client_fraction("1/4", "1/2")
+                moom.move_focused_client_fraction(1/4, 1/2)
             elseif key == "f" then
                 -- move to 4/4 right
-                moom.move_focused_client_fraction("1/4", "3/4")
+                moom.move_focused_client_fraction(1/4, 3/4)
             elseif key == "g" then
                 -- move to 4/4 right
-                moom.move_focused_client_fraction("3/4", "1/4")
+                moom.move_focused_client_fraction(3/4, 1/4)
             elseif key == "z" then
                 -- move to 1/4 left
-                moom.move_focused_client_fraction("0", "1/3")
+                moom.move_focused_client_fraction(0, 1/3)
             elseif key == "x" then
                 -- move to 2/4 center-left
-                moom.move_focused_client_fraction("0", "2/3")
+                moom.move_focused_client_fraction(0, 2/3)
             elseif key == "c" then
                 -- move to 3/4 center-right
-                moom.move_focused_client_fraction("1/3", "1/3")
+                moom.move_focused_client_fraction(1/3, 1/3)
             elseif key == "v" then
                 -- move to 4/4 right
-                moom.move_focused_client_fraction("1/3", "2/3")
+                moom.move_focused_client_fraction(1/3, 2/3)
             elseif key == "b" then
                 -- move to 4/4 right
-                moom.move_focused_client_fraction("2/3", "1/3")
+               moom.move_focused_client_fraction(2/3, 1/3)
             else
                 awful.keygrabber.stop(grabber)
             end
