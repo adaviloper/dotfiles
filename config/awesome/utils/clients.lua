@@ -1,4 +1,3 @@
-terminal = "wezterm"
 local awful = require('awful')
 local naughty = require('naughty')
 
@@ -25,9 +24,7 @@ end
 
 M.get_client = function(app)
   for _, c in ipairs(client.get()) do
-    if c.class == app.class then
-      return c
-    end
+    if c.class == app.class then return c end
   end
 
   return nil
@@ -41,8 +38,6 @@ M.launch_app = function(app)
       c:raise()
     end
   else
-    naughty.notify({ title = M.client_mapping[app].name })
-    naughty.notify({ title = M.client_mapping[app].class })
     awful.spawn(M.client_mapping[app].name)
   end
 end

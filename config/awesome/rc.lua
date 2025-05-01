@@ -25,6 +25,9 @@ local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 local client_utils = require('utils.clients')
+border_radius = 6
+menu_offset = 8
+padding = 32
 local moom = require('moom')
 
 -- {{{ Error handling
@@ -85,7 +88,7 @@ awful.layout.layouts = {
     -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
+    -- awful.layout.suit.magnifier,
     -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
@@ -219,18 +222,26 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist({
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        opacity = 0.2,
     })
 
     -- Create the wibox
-    s.mywibox = awful.wibar({
-        position = "top",
+    s.mywibox = wibox({
+        -- position = "top",
         screen = s,
-        width = s.geometry.width / 2,
-        height = 32,
-        x = s.geometry.width / 4 + 16,
-        y = s.geometry.y + 8,
+        visible = true,
+        bg = beautiful.bg_normal,
+        width = (s.geometry.width - padding) / 2,
+        height = padding,
+        x = (s.geometry.width + padding) / 4,
+        -- x = s.geometry.width / 4,
+        y = menu_offset,
         ontop = true,
+        opacity = 0.0,
+        shape = function (cr, w, h)
+            gears.shape.rounded_rect(cr, w, h, border_radius)
+        end
     })
 
     -- Add widgets to the wibox
@@ -327,9 +338,9 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    awful.key({ modkey, "Control" }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+    awful.key({ modkey, "Control", "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
     awful.key(MEH_KEY, "Return", function ()
@@ -352,7 +363,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey },            "space",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
@@ -677,7 +688,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 client.connect_signal("manage", function (c)
     c.shape = function (cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, 6)
+        gears.shape.rounded_rect(cr, w, h, border_radius)
     end
 end)
 -- }}}
