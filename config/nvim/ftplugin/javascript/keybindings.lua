@@ -5,6 +5,6 @@ astrocore.set_mappings({
     ['<LocalLeader>ts'] = { "<cmd>ToggleSyntax<CR>", desc = "Toggle arrow function syntax" },
   },
   v = {
-    ['<LocalLeader>xv'] = { '<cmd>ExtractToVariable<cr>', desc = "Extract to a variable" },
+    ['<LocalLeader>xv'] = { '<cmd>Extract variable<cr>', desc = "Extract to a variable" },
   },
 })

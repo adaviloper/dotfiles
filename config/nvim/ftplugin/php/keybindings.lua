@@ -34,6 +34,6 @@ astrocore.set_mappings({
 
   },
   v = {
-    ['<LocalLeader>xv'] = { '<cmd>ExtractToVariable<cr>', desc = "Extract to a variable" },
+    ['<LocalLeader>xv'] = { '<cmd>Extract variable<cr>', desc = "Extract to a variable" },
   },
 })
