@@ -3,6 +3,7 @@ return {
     autoread = true,
     breakindentopt = 'shift:2',
     conceallevel = 2,
+    jumpoptions = 'view',
     number = true, -- sets vim.opt.number
     relativenumber = true, -- sets vim.opt.relativenumber
     scrolloff = 8,
@@ -11,7 +12,7 @@ return {
     spell = true, -- sets vim.opt.spell
     spelloptions = "camel",
     whichwrap = "b,s,<,>",
-    -- wildmode = 'full',
+    wildmode = 'list:longest',
     wrap = true, -- sets vim.opt.wrap
   },
   g = { -- vim.g.<key>
