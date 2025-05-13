@@ -21,3 +21,9 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
+  - window_name: moover
+    focus: true
+    start_directory: ~/.local/share/gnome-shell/extensions/moover@adaviloper.com/
+    panes:
+      - shell_command:
+          - cmd: "c"
