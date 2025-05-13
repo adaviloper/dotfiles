@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/wezterm
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Terminal
+Comment=Auto start a terminal window

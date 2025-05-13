@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/firefox
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Browser
+Comment=Auto start the browser session
