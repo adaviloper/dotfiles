@@ -79,7 +79,6 @@ plugins=(
   aliases
   composer
   git
-  zoxide
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
