@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for file in gnome-keybindings/*.conf; do
+  schema=$(basename "$file" .conf)
+  while IFS=: read -r key value; do
+    key=$(echo "$key" | xargs)
+    value=$(echo "$value" | cut -d'#' -f1 | xargs)
+    [[ -z "$key" || -z "$value" ]] && continue
+    echo "Setting $schema $key = $value"
+    gsettings set "$schema" "$key" "$value"
+  done < "$file"
+done
+

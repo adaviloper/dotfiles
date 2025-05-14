@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mkdir -p gnome-keybindings
+
+for schema in \
+  org.gnome.shell.keybindings \
+  org.gnome.desktop.wm.keybindings \
+  org.gnome.settings-daemon.plugins.media-keys \
+  org.gnome.settings-daemon.plugins.media-keys.custom-keybindings
+do
+  echo "# $schema" > "gnome-keybindings/$schema.conf"
+  gsettings list-keys $schema | while read key; do
+    echo "$key: $(gsettings get $schema $key)" >> "gnome-keybindings/$schema.conf"
+  done
+done
