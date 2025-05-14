@@ -53,7 +53,6 @@ tmux source ~/.tmux.conf
 tmux run-shell '~/.config/tmux/plugins/tpm/bin/install_plugins'
 
 info "Running [post-install.sh]"
-sh ~/.dotfiles/scripts/post-install.sh
 sh ~/.dotfiles/scripts/go-dependencies.sh
 
 # Setup OhMyZsh for Zsh
