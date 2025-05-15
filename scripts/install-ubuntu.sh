@@ -140,6 +140,12 @@ clone_extension() {
 clone_extension "adaviloper/moover" "moover@adaviloper.com"
 clone_extension "adaviloper/quicker" "quicker@adaviloper.com"
 
+gnome-extensions enable ding@rastersoft.com
+gnome-extensions enable ubuntu-appindicators@ubuntu.com
+gnome-extensions enable ubuntu-dock@ubuntu.com
+gnome-extensions enable apps-menu@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable native-window-placement@gnome-shell-extensions.gcampax.github.com
+
 info "Setup complete."
 
 # Change shell to zsh if not already
