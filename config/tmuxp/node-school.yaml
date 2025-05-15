@@ -1,0 +1,12 @@
+session_name: NodeSchool
+start_directory: ~/Code/node-school/react-tic-tac-toe
+windows:
+  - window_name: Tic-Tac-Toe
+    focus: true
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Terminals
+    panes:
+      - shell_command:
+          - cmd: "c"
