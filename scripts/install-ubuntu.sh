@@ -149,3 +149,5 @@ if [ "$SHELL" != "$(which zsh)" ]; then
 fi
 
 sudo apt autoremove
+
+dconf load / < ~/.dotfiles/config/dconf/user.conf
