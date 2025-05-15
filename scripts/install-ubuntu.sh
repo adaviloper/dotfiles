@@ -161,6 +161,7 @@ gnome-extensions install apps-menu@gnome-shell-extensions.gcampax.github.com
 gnome-extensions install clipboard-indicator@tudmotu.com
 gnome-extensions install ding@rastersoft.com
 gnome-extensions install native-window-placement@gnome-shell-extensions.gcampax.github.com
+gnome-extensions install openbar@neuromorph
 gnome-extensions install ubuntu-appindicators@ubuntu.com
 gnome-extensions install ubuntu-dock@ubuntu.com
 
