@@ -18,11 +18,29 @@ info() {
 info "Updating package lists"
 sudo apt update
 
+while true; do
+  read -rp "Enter your email for the SSH key (e.g. you@example.com): " ssh_email
+  [[ "$ssh_email" =~ ^[^@]+@[^@]+\.[^@]+$ ]] && break
+  info "Invalid email format. Please try again."
+done
+
+key_path="$HOME/.ssh/id_ed25519"
+
+if [ -f "$key_path" ]; then
+  info "⚠️ SSH key already exists at $key_path"
+else
+  ssh-keygen -t ed25519 -C "$ssh_email" -f "$key_path" -N ""
+  info "✅ SSH key generated: $key_path"
+fi
+
+sudo apt install curl wl-clipboard
+wl-copy < ~/.ssh/id_ed25519.pub
+
+read -rp "Press Enter after updating your ssh key in Github"
+
 curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
 echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
 sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
-
-sudo apt update
 
 # Install required dependencies early
 info "Installing core packages"
@@ -31,7 +49,6 @@ sudo apt install -y \
   gnome-browser-connector \
   gnome-shell-extensions \
   gnome-tweaks \
-  curl \
   gcc \
   git \
   libwxgtk3.2-dev \
@@ -140,11 +157,12 @@ clone_extension() {
 clone_extension "adaviloper/moover" "moover@adaviloper.com"
 clone_extension "adaviloper/quicker" "quicker@adaviloper.com"
 
-gnome-extensions enable ding@rastersoft.com
-gnome-extensions enable ubuntu-appindicators@ubuntu.com
-gnome-extensions enable ubuntu-dock@ubuntu.com
-gnome-extensions enable apps-menu@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable native-window-placement@gnome-shell-extensions.gcampax.github.com
+gnome-extensions install apps-menu@gnome-shell-extensions.gcampax.github.com
+gnome-extensions install clipboard-indicator@tudmotu.com
+gnome-extensions install ding@rastersoft.com
+gnome-extensions install native-window-placement@gnome-shell-extensions.gcampax.github.com
+gnome-extensions install ubuntu-appindicators@ubuntu.com
+gnome-extensions install ubuntu-dock@ubuntu.com
 
 info "Setup complete."
 
