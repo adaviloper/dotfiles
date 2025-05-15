@@ -1,13 +1,78 @@
 #!/bin/bash
 
+# Ensure this only runs in GNOME
+if [[ "$XDG_CURRENT_DESKTOP" != *GNOME* ]]; then
+  echo "Not running GNOME. Skipping GNOME shortcut import."
+  exit 0
+fi
+
+echo "Restoring GNOME keyboard shortcuts..."
+
+# Restore standard schemas
 for file in gnome-keybindings/*.conf; do
   schema=$(basename "$file" .conf)
-  while IFS=: read -r key value; do
-    key=$(echo "$key" | xargs)
-    value=$(echo "$value" | cut -d'#' -f1 | xargs)
-    [[ -z "$key" || -z "$value" ]] && continue
-    echo "Setting $schema $key = $value"
-    gsettings set "$schema" "$key" "$value"
+  [[ "$schema" == "custom-bindings-detail" ]] && continue
+
+  while IFS= read -r line; do
+    [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
+
+    key=$(echo "$line" | cut -d':' -f1 | xargs)
+    value=$(echo "$line" | cut -d':' -f2- | sed -E "s/^ //")
+
+    if [[ -n "$key" && -n "$value" ]]; then
+      echo "gsettings set $schema $key $value"
+      gsettings set "$schema" "$key" "$value"
+    fi
   done < "$file"
 done
 
+# Restore custom keybindings
+custom_base="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+custom_bindings=()
+detail_file="gnome-keybindings/custom-bindings-detail.conf"
+
+if [[ -f "$detail_file" ]]; then
+  echo "Restoring custom keybindings..."
+
+  current_binding=""
+  declare -A custom
+
+  while IFS= read -r line; do
+    [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
+
+    key_path=$(echo "$line" | cut -d' ' -f1)
+    field=$(echo "$line" | cut -d' ' -f2 | cut -d':' -f1)
+    value=$(echo "$line" | cut -d':' -f2- | xargs)
+
+    if [[ "$current_binding" != "$key_path" && -n "$current_binding" ]]; then
+      # Write previous binding before moving to next
+      binding_path="${custom_base}/${current_binding##*/}/"
+      custom_bindings+=("'$binding_path'")
+      for k in name command binding; do
+        v=${custom[$k]}
+        [[ -n "$v" ]] && gsettings set "$binding_path" "$k" "$v"
+      done
+      unset custom
+    fi
+
+    current_binding="$key_path"
+    custom[$field]="$value"
+  done < "$detail_file"
+
+  # Final write
+  if [[ -n "$current_binding" ]]; then
+    binding_path="${custom_base}/${current_binding##*/}/"
+    custom_bindings+=("'$binding_path'")
+    for k in name command binding; do
+      v=${custom[$k]}
+      [[ -n "$v" ]] && gsettings set "$binding_path" "$k" "$v"
+    done
+  fi
+
+  # Set the custom keybindings list
+  echo "Setting active custom bindings list..."
+  binding_array="[${custom_bindings[*]}]"
+  gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "$binding_array"
+fi
+
+echo "✔ GNOME keyboard shortcuts restored."
