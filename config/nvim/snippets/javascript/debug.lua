@@ -3,9 +3,8 @@ return
     s(
       'dml',
       fmt(
-        [[console.{}('{}'{});]],
+        [[console.log('{}'{});]],
         {
-          c(1, { t('log'), t('error'), t('table') }),
           f(
             function ()
               local filename = vim.fn.expand('%:t')
@@ -13,7 +12,7 @@ return
               return vim.fn.expand('%:t') .. ':' .. line_number[1]
             end
           ),
-          i(2, '')
+          i(0, '')
         }
       )
     )

@@ -5,7 +5,7 @@ return
     s(
       'req',
       fmt([[const {} = require('{}')]], {
-        d(2, snippet_utils.camelize_var, { 1 }),
+        f(snippet_utils.camelize_var, { 1 }),
         i(1),
       })
     ),

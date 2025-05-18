@@ -6,14 +6,14 @@ local t = ls.t
 
 local M = {}
 
+function M.pascal_case_var(args, _)
+  local text = args[1][1] or ""
+  return str_utils.pascal(text)
+end
+
 function M.camelize_var(args, _)
-    local text = args[1][1] or ""
-    local camel_str = str_utils.camel(text)
-    return sn(nil, {
-      c(1, {
-        t(camel_str)
-        })
-      })
+  local text = args[1][1] or ""
+  return str_utils.camel(text)
 end
 
 return M

@@ -20,7 +20,8 @@ local function strip_special_characters(str)
 end
 
 local function firstToUpper(str)
-  return gsub(lower(str), "^%l", upper)
+  if str == nil or str == "" then return "" end
+  return gsub(str, "^%l", upper)
 end
 
 function M.title_case(str)
@@ -29,10 +30,22 @@ function M.title_case(str)
   str = strip_special_characters(str)
 
   for _, part in ipairs(vim.split(str, " ")) do
-    table.insert(name_parts, firstToUpper(part))
+    if part ~= nil and part ~= "" then
+      local uppered = firstToUpper(part)
+      table.insert(name_parts, uppered)
+    end
   end
 
   return table.concat(name_parts, " ")
+end
+
+function M.pascal(str)
+  return M.title_case(str):gsub(" ", "")
+end
+
+function M.camel(str)
+  local pascal = M.pascal(str)
+  return pascal:gsub("^%u", lower)
 end
 
 function M.slug(str)
@@ -43,13 +56,6 @@ end
 function M.snake(str)
   str = strip_special_characters(str):gsub("-", "_"):lower()
   return str
-end
-
-function M.camel(str)
-  str = strip_special_characters(str)
-  return str
-    :gsub(" (%w)", function(c) return c:upper() end)
-    :gsub("^%u", lower)
 end
 
 return M
