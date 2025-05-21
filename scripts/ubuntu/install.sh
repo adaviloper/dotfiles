@@ -125,19 +125,28 @@ if command -v nvim &>/dev/null; then
   nvim --headless +q
 fi
 
-# Espanso install
-# ESPANSO_DEB="espanso-debian-wayland-amd64.deb"
-# if ! command -v espanso &>/dev/null; then
-#   info "Downloading Espanso"
-#   wget "https://github.com/espanso/espanso/releases/download/v2.2.1/${ESPANSO_DEB}"
-#   info "Installing Espanso"
-#   sudo apt install -y "./${ESPANSO_DEB}"
-#   info "Removing Espanso install script"
-#   rm "${ESPANSO_DEB}"
-#   sudo setcap "cap_dac_override+p" "$(which espanso)"
-#   info "Registering Espanso service"
-#   espanso service register
-# fi
+# 1Password
+## Add key for APT repository
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+## Add 1Password APT repository
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
+## Add debsig-verify policy
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+# Install 1Password
+sudo apt update && sudo apt install 1password
+
+# Install QMK
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv tool install qmk
+qmk setup
+
+# Install flatpak
+sudo apt install flatpak
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # GNOME Shell Extensions
 EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
