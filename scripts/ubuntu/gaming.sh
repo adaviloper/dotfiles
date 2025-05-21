@@ -27,5 +27,6 @@ sudo apt-get install \
 sudo rm /etc/apt/sources.list.d/steam-beta.list
 sudo rm /etc/apt/sources.list.d/steam-stable.list
 
+flatpak install -y flathub com.heroicgameslauncher.hgl
 
 sudo apt update
