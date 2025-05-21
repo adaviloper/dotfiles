@@ -37,6 +37,7 @@ function M.getKeybindings()
 			action = act.CharSelect({ copy_on_select = true, copy_to = "ClipboardAndPrimarySelection" }),
 		},
 		{ key = "v", mods = "SUPER", action = act.PasteFrom("Clipboard") },
+		{ key = "Insert", mods = "SHIFT", action = act.PasteFrom("Clipboard") },
 		{ key = "w", mods = "SUPER", action = act.CloseCurrentTab({ confirm = true }) },
 		{ key = "x", mods = "SUPER", action = act.ActivateCopyMode },
 		{ key = "z", mods = "SUPER", action = act.TogglePaneZoomState },
