@@ -18,11 +18,7 @@ info() {
 info "Updating package lists"
 sudo apt update
 
-while true; do
-  read -rp "Enter your email for the SSH key (e.g. you@example.com): " ssh_email
-  [[ "$ssh_email" =~ ^[^@]+@[^@]+\.[^@]+$ ]] && break
-  info "Invalid email format. Please try again."
-done
+read -rp "Enter your email for the SSH key (e.g. you@example.com): " ssh_email
 
 key_path="$HOME/.ssh/id_ed25519"
 
@@ -138,11 +134,6 @@ curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --d
 # Install 1Password
 sudo apt update && sudo apt install 1password
 
-# Install QMK
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv tool install qmk
-qmk setup
-
 # Install flatpak
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
@@ -152,6 +143,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
 info "Creating extensions path"
 mkdir -p "$EXT_DIR"
+flatpak install flathub com.mattjakeman.ExtensionManager
 
 clone_extension() {
   local repo="$1"
@@ -166,13 +158,13 @@ clone_extension() {
 clone_extension "adaviloper/moover" "moover@adaviloper.com"
 clone_extension "adaviloper/quicker" "quicker@adaviloper.com"
 
-gnome-extensions install apps-menu@gnome-shell-extensions.gcampax.github.com
-gnome-extensions install clipboard-indicator@tudmotu.com
-gnome-extensions install ding@rastersoft.com
-gnome-extensions install native-window-placement@gnome-shell-extensions.gcampax.github.com
-gnome-extensions install openbar@neuromorph
-gnome-extensions install ubuntu-appindicators@ubuntu.com
-gnome-extensions install ubuntu-dock@ubuntu.com
+# gnome-extensions install apps-menu@gnome-shell-extensions.gcampax.github.com
+# gnome-extensions install clipboard-indicator@tudmotu.com
+# gnome-extensions install ding@rastersoft.com
+# gnome-extensions install native-window-placement@gnome-shell-extensions.gcampax.github.com
+# gnome-extensions install openbar@neuromorph
+# gnome-extensions install ubuntu-appindicators@ubuntu.com
+# gnome-extensions install ubuntu-dock@ubuntu.com
 
 info "Setup complete."
 
