@@ -14,7 +14,11 @@ info() {
   yellow "$@"
 }
 
-sudo apt install -y qmk
+# Install QMK
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv tool install qmk
+qmk setup
+
 
 git clone git@github.com:adaviloper/qmk_userspace.git "$HOME/Code/"
 
