@@ -1,5 +1,5 @@
-session_name: Loop Returns
-start_directory: "~/Code/loop-returns-app"
+session_name: Suralink
+start_directory: "~/Code/suralink/"
 windows:
   - window_name: Root
     focus: true
@@ -7,12 +7,10 @@ windows:
       - shell_command:
           - cmd: "c"
   - window_name: Admin
-    start_directory: ./admin
     panes:
       - shell_command:
           - cmd: "c"
   - window_name: Frontend
-    start_directory: ./frontend
     panes:
       - shell_command:
           - cmd: "c"

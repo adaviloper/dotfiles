@@ -15,8 +15,7 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: Tmux Fork
-    start_directory: "~/Code/catppuccin-tmux/"
+  - window_name: System Status
     panes:
       - shell_command:
-          - cmd: "c"
+          - cmd: "btm"
