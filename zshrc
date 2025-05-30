@@ -79,8 +79,8 @@ plugins=(
   aliases
   composer
   git
-  zsh-autosuggestions
   zsh-syntax-highlighting
+  # zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -128,7 +128,6 @@ export EDITOR=$(which nvim)
 export TERM="xterm-256color"
 [[ -n $TMUX ]] && export TERM="screen-256color"
 
-
 unalias g
 unalias gco
 
@@ -162,8 +161,9 @@ fi
 source <(fzf --zsh)
 eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
 
 
 
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"
