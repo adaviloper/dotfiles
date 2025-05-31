@@ -24,7 +24,7 @@ return {
       ["core.dirman"] = {
         config = {
           workspaces = {
-            notes = "~/Code/notes/",
+            notes = vim.env.HOME .. "/Code/neorg/notes/",
           },
         },
       },
@@ -45,6 +45,7 @@ return {
 
       ["external.templates"] = {
         config = {
+          templates_dir = vim.env.HOME .. '/Code/neorg/templates',
           keywords = {
             MONDAY_DATE = function() return neorg_templates.weekdate(2) end,
             TUESDAY_DATE = function() return neorg_templates.weekdate(3) end,
