@@ -45,8 +45,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
             local task_date = parse_date(line)
             if task_date then
               if task_date < today then
-                vim.notify(vim.inspect(task_date))
-                vim.notify(vim.inspect(today))
                 table.insert(pending.past_due, { line = line, date = task_date })
               elseif task_date <= week_later then
                 table.insert(pending.this_week, { line = line, date = task_date })
