@@ -14,6 +14,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
         local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
 
         local pending = {
+          past_due = {},
           this_week = {},
           within_month = {},
           beyond_month = {},
@@ -21,7 +22,12 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
         local completed = {}
 
-        local today = os.time()
+        local now = os.time()
+        local today_table = os.date("*t", now)
+        today_table.hour = 0
+        today_table.min = 0
+        today_table.sec = 0
+        local today = os.time(today_table)
         local week_later = today + 7 * 24 * 60 * 60
         local month_later = today + 30 * 24 * 60 * 60
 
@@ -38,7 +44,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
           elseif line:match("^%s+%- %(%s?%)") then
             local task_date = parse_date(line)
             if task_date then
-              if task_date <= week_later then
+              if task_date < today then
+                vim.notify(vim.inspect(task_date))
+                vim.notify(vim.inspect(today))
+                table.insert(pending.past_due, { line = line, date = task_date })
+              elseif task_date <= week_later then
                 table.insert(pending.this_week, { line = line, date = task_date })
               elseif task_date <= month_later then
                 table.insert(pending.within_month, { line = line, date = task_date })
@@ -53,11 +63,14 @@ vim.api.nvim_create_autocmd('BufWritePost', {
           return a.date < b.date
         end
 
+        table.sort(pending.past_due, sort_by_date)
         table.sort(pending.this_week, sort_by_date)
         table.sort(pending.within_month, sort_by_date)
         table.sort(pending.beyond_month, sort_by_date)
 
-        local output = {}
+        local output = {
+          "* To Do"
+        }
 
         local function insert_group(title, group)
           if #group > 0 then
@@ -69,6 +82,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
           end
         end
 
+        insert_group("Past Due", pending.past_due)
         insert_group("This Week", pending.this_week)
         insert_group("Within One Month", pending.within_month)
         insert_group("Beyond One Month", pending.beyond_month)
