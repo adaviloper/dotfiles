@@ -1,8 +1,13 @@
 session_name: Notes
-start_directory: "~/Code/notes"
+start_directory: "~/Code/neorg"
 windows:
-  - window_name: Work
-    start_directory: "~/Code/notes"
+  - window_name: Notes
+    start_directory: ./notes
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Templates
+    start_directory: ./templates
     panes:
       - shell_command:
           - cmd: "c"
