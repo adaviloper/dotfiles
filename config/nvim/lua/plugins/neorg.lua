@@ -18,6 +18,28 @@ return {
         config = {
           folds = true,
           -- icon_preset = 'varied'
+          icons = {
+            list = {
+              icons = {
+                "•",
+                " •",
+                "  •",
+                "   •",
+                "    •",
+                "     •",
+              },
+            },
+            ordered = {
+              icons = {
+                "1.",
+                " A.",
+                "  a.",
+                "   (1)",
+                "    I.",
+                "     i.",
+              },
+            },
+          },
         },
       },
 
