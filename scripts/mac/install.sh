@@ -66,7 +66,8 @@ info "Running [rcup]"
 rcup -f
 
 # Prepare Neorg notes
-mkdir -p ~/Code/notes
+mkdir -p ~/Code/neorg/notes
+git clone git@github.com:adaviloper/neorg-templates "$HOME/Code/neorg/templates"
 
 # Initialize nvim
 nvim --headless +q
