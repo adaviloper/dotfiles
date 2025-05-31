@@ -113,7 +113,8 @@ if [ -f "$HOME/.dotfiles/scripts/go-dependencies.sh" ]; then
 fi
 
 # Prepare notes directory
-mkdir -p "$HOME/Code/notes"
+mkdir -p "$HOME/Code/neorg/notes"
+git clone git@github.com:adaviloper/neorg-templates "$HOME/Code/neorg/templates"
 
 # Trigger Neovim plugin install
 if command -v nvim &>/dev/null; then
