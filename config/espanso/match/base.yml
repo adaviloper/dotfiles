@@ -18,9 +18,9 @@ matches:
 
   # Print the current date
   - trigger: "%today"
-    replace: "{{mydate}}"
+    replace: "{{todaysDate}}"
     vars:
-      - name: mydate
+      - name: todaysDate
         type: date
         params:
           format: "%Y-%d-%m"
