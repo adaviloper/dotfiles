@@ -10,6 +10,7 @@ astrocore.set_mappings({
     ['<LocalLeader>nm'] = { function () neorg_templates.createMeetingNote() end, desc = 'Create a meeting note' },
     ['<LocalLeader>no'] = { function () neorg_templates.createOneOnOneNote() end, desc = 'Create a One-on-One note' },
     ['<LocalLeader>np'] = { function () neorg_templates.createPerson() end, desc = 'Create a new person note' },
+    ['<LocalLeader>nt'] = { function () neorg_templates.createTicket() end, desc = 'Create a ticket note' },
     ['<LocalLeader>nw'] = { function () neorg_templates.createWeeklyEntry() end, desc = 'Create a weekly note' },
 
     ['<LocalLeader><LocalLeader>t'] = {
