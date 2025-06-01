@@ -84,7 +84,8 @@ vim.api.nvim_create_autocmd('BufWritePost', {
         table.sort(pending.cancelled, sort_by_date)
 
         local output = {
-          "* To Do"
+          "* To Do",
+          ""
         }
 
         local function insert_group(title, group)
