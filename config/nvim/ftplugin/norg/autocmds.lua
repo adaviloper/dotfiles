@@ -9,18 +9,22 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     local expected_path = cwd .. '/to-do.norg'
 
     if file_path == expected_path then
-      -- Paste the group_and_sort_tasks() function here or require it from a module
       local function group_and_sort_tasks()
         local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
 
         local pending = {
+          completed = {},
           past_due = {},
           this_week = {},
           within_month = {},
           beyond_month = {},
+          needs_further_input = {},
+          urgent = {},
+          recurring = {},
+          in_progress = {},
+          on_hold = {},
+          cancelled = {},
         }
-
-        local completed = {}
 
         local now = os.time()
         local today_table = os.date("*t", now)
@@ -39,11 +43,19 @@ vim.api.nvim_create_autocmd('BufWritePost', {
         end
 
         for _, line in ipairs(lines) do
-          if line:match("^%s+%- %([xX]%)") then
-            table.insert(completed, line)
-          elseif line:match("^%s+%- %(%s?%)") then
-            local task_date = parse_date(line)
-            if task_date then
+          local task_date = parse_date(line)
+          if task_date then
+            if line:match("^%s*%- %([xX]%)") then
+              table.insert(pending.completed, { line = line, date = task_date })
+            elseif line:match("^%s*%- %(%?%)") then
+              table.insert(pending.needs_further_input, { line = line, date = task_date })
+            elseif line:match("^%s*%- %(%-%)") then
+              table.insert(pending.in_progress, { line = line, date = task_date })
+            elseif line:match("^%s*%- %(=%)") then
+              table.insert(pending.on_hold, { line = line, date = task_date })
+            elseif line:match("^%s*%- %(_%)") then
+              table.insert(pending.cancelled, { line = line, date = task_date })
+            elseif line:match("^%s*%- %(%s?%)") then
               if task_date < today then
                 table.insert(pending.past_due, { line = line, date = task_date })
               elseif task_date <= week_later then
@@ -65,6 +77,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
         table.sort(pending.this_week, sort_by_date)
         table.sort(pending.within_month, sort_by_date)
         table.sort(pending.beyond_month, sort_by_date)
+        table.sort(pending.needs_further_input, sort_by_date)
+        table.sort(pending.urgent, sort_by_date)
+        table.sort(pending.in_progress, sort_by_date)
+        table.sort(pending.on_hold, sort_by_date)
+        table.sort(pending.cancelled, sort_by_date)
 
         local output = {
           "* To Do"
@@ -76,21 +93,21 @@ vim.api.nvim_create_autocmd('BufWritePost', {
             for _, item in ipairs(group) do
               table.insert(output, item.line)
             end
-            table.insert(output, "") -- Blank line after group
+            table.insert(output, "")
           end
         end
 
+        insert_group("Urgent", pending.urgent)
         insert_group("Past Due", pending.past_due)
+        insert_group("Needs Further Input", pending.needs_further_input)
+        insert_group("On hold", pending.on_hold)
+        insert_group("In Progress", pending.in_progress)
         insert_group("This Week", pending.this_week)
         insert_group("Within One Month", pending.within_month)
         insert_group("Beyond One Month", pending.beyond_month)
 
-        if #completed > 0 then
-          table.insert(output, "** Completed Tasks")
-          for _, line in ipairs(completed) do
-            table.insert(output, line)
-          end
-        end
+        insert_group("Completed", pending.completed)
+        insert_group("Cancelled", pending.cancelled)
 
         vim.api.nvim_buf_set_lines(0, 0, -1, false, output)
       end
