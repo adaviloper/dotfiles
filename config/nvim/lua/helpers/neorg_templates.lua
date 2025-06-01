@@ -38,6 +38,16 @@ M.createPerson = function ()
   end)
 end
 
+M.createTicket = function ()
+  vim.ui.input({ prompt = 'ID:' }, function (name)
+    if name ~= nil then
+      local path = string.format("/tickets/%s.norg", "APP-" .. name)
+
+      createJournalEntry(path)
+    end
+  end)
+end
+
 M.createCompany = function ()
   vim.ui.input({ prompt = 'Company Name:' }, function (name)
     if name ~= nil then

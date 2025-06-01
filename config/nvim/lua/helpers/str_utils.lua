@@ -43,6 +43,10 @@ function M.pascal(str)
   return M.title_case(str):gsub(" ", "")
 end
 
+function M.const(str)
+  return upper(str)
+end
+
 function M.camel(str)
   local pascal = M.pascal(str)
   return pascal:gsub("^%u", lower)

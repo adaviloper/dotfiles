@@ -89,7 +89,8 @@ return {
               return ls.text_node(require('helpers.str_utils').title_case(name))
             end,
 
-            APPLICATION_STATUS = c(1, { t("applied"), t("rejected") })
+            APPLICATION_STATUS = c(1, { t("applied"), t("rejected") }),
+            TICKET_TYPE = c(1, { t("story"), t("bug"), t("task") }),
           },
           snippets_overwrite = {},
         },
@@ -104,5 +105,6 @@ return {
     neorg_templates.template("*/job-search/companies/*.norg", "company")
     neorg_templates.template("*/meetings/one-on-one/*.norg", "one-on-one", ".*/meetings/one%-on%-one/.*.norg")
     neorg_templates.template("*/meetings/*.norg", "meeting", ".*/meetings/%d%d%d%d/.*%.norg")
+    neorg_templates.template("*/tickets/*.norg", "ticket")
   end,
 }
