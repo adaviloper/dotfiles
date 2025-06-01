@@ -59,6 +59,13 @@ M.createMeetingNote = function ()
   end)
 end
 
+M.createOneOnOneNote = function ()
+  local year, month, day = os.date("%Y"), os.date("%m"), os.date("%d")
+  local path = string.format("/meetings/one-on-one/%s/%s/%s.norg", year, month, day)
+
+  createJournalEntry(path)
+end
+
 M.createMeeting = function ()
   vim.ui.input({ prompt = 'Meeting Name:' }, function (name)
     if name ~= nil then
@@ -79,8 +86,16 @@ M.template = function(pattern, template_name, additional_pattern)
       vim.schedule(function()
         if additional_pattern then
           if not args.file:match(additional_pattern) then
+            vim.schedule(function ()
+              vim.notify('pattern: ' .. additional_pattern)
+              vim.notify('additional_pattern match not found against: ' .. args.file)
+            end)
             return
           else
+            vim.schedule(function ()
+              vim.notify('pattern: ' .. additional_pattern)
+              vim.notify('additional_pattern match found')
+            end)
             vim.api.nvim_cmd({
               cmd = "Neorg",
               args = { "templates", "fload", template_name },

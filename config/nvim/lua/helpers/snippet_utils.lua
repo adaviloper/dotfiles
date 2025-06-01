@@ -16,5 +16,10 @@ function M.camelize_var(args, _)
   return str_utils.camel(text)
 end
 
+function M.title_case_var(args, _)
+  local text = args[1][1] or ""
+  return str_utils.title_case(text)
+end
+
 return M
 
