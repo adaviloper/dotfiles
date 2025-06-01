@@ -2,12 +2,12 @@
 
 flatpak install flathub app.zen_browser.zen
 
-sudo apt update && sudo apt install build-essential git wl-clipboard libxkbcommon-dev libdbus-1-dev '^libwxgtk3\.[0-9].*-dev$' libssl-dev
-sudo apt install cargo
+sudo apt update && sudo apt install -y build-essential git wl-clipboard libxkbcommon-dev libdbus-1-dev '^libwxgtk3\.[0-9].*-dev$' libssl-dev
+sudo apt install -y cargo
 cd $HOME/Code/
 git clone https://github.com/espanso/espanso
 cd espanso/
-sudo apt install rustup
+sudo apt install -y rustup
 rustup update
 cargo search cargo-make
 cargo install cargo-make
