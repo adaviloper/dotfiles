@@ -102,6 +102,7 @@ return {
     neorg_templates.template("*/journal/*.norg", "daily", ".*/journal/%d%d%d%d/%d%d/w%d%d/%d%d%.norg")
     neorg_templates.template("*/people/*.norg", "person")
     neorg_templates.template("*/job-search/companies/*.norg", "company")
-    neorg_templates.template("*/meetings/*.norg", "meeting")
+    neorg_templates.template("*/meetings/one-on-one/*.norg", "one-on-one", ".*/meetings/one%-on%-one/.*.norg")
+    neorg_templates.template("*/meetings/*.norg", "meeting", ".*/meetings/%d%d%d%d/.*%.norg")
   end,
 }
