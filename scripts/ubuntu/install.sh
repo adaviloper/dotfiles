@@ -160,6 +160,7 @@ clone_extension "adaviloper/moover" "moover@adaviloper.com"
 clone_extension "adaviloper/quicker" "quicker@adaviloper.com"
 
 # gnome-extensions install apps-menu@gnome-shell-extensions.gcampax.github.com
+# gnome-extensions install appsmenu-is-back@fthx
 # gnome-extensions install clipboard-indicator@tudmotu.com
 # gnome-extensions install ding@rastersoft.com
 # gnome-extensions install native-window-placement@gnome-shell-extensions.gcampax.github.com
@@ -177,4 +178,5 @@ fi
 
 sudo apt autoremove
 
+info "Updating dconf settings"
 dconf load / < ~/.dotfiles/config/dconf/user.conf
