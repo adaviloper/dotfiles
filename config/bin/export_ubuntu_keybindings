@@ -13,3 +13,5 @@ do
     echo "$key: $(gsettings get $schema $key)" >> "gnome-keybindings/$schema.conf"
   done
 done
+
+dconf dump / > ~/.dotfiles/config/dconf/user.conf
