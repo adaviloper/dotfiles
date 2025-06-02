@@ -1,15 +1,15 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "r" ]
 run = '''
 	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
 '''
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "2"
 run  = "plugin smart-switch 1"
 desc = "Switch or create tab 2"
 
-[manager]
+[mgr]
 
 keymap = [
 	{ on = [ "<Esc>" ], run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },

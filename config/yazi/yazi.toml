@@ -3,7 +3,7 @@ preload = [
   # "~/.config/yazi/ui.lua"
 ]
 
-[manager]
+[mgr]
 folder_offset = [2,0,2,0]
 linemode = "size_and_mtime"
 preview_offset = [2,1,2,1]
