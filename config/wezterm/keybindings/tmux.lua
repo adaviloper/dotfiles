@@ -8,6 +8,14 @@ local tmuxPrefix = act.SendKey({ key = " ", mods = "CTRL" })
 function M.getKeybindings()
 	return {
 		{ -- Open Tmux Command bar
+			key = "z",
+			mods = "CMD",
+			action = act.Multiple({
+				tmuxPrefix,
+				act.SendKey({ key = "z" }),
+			}),
+		},
+		{ -- Open Tmux Command bar
 			key = ";",
 			mods = "CMD",
 			action = act.Multiple({
