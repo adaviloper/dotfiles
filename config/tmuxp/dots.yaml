@@ -10,8 +10,8 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: Tmux Plugins
-    start_directory: "~/.config/tmux/plugins/tmux-theme"
+  - window_name: Configs
+    start_directory: "~/.config"
     panes:
       - shell_command:
           - cmd: "c"
