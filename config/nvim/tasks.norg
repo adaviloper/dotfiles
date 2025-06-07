@@ -1,11 +1,12 @@
 * Tasks
 ** Issues
+   - ( ) Yazi configuration is not being loaded on Ubuntu
 - (x) Files/buffers do not update when files are changed externally via Git or some other mechanism
 - (x) Phpactor LSP does not respect PhpStan rules
 
 ** Plugins
 - ( ) Check to see if the `gh-dash` extension is enabled before launching the `gh-dash` terminal
-- ( ) Add snippets for different languages
+- (_) Add snippets for different languages
     - (x) PHP
         - Methods
             - ( ) Make __construct method dynamic based on params passed in
