@@ -13,7 +13,7 @@ astrocore.set_mappings({
     ['<LocalLeader>nt'] = { function () neorg_templates.createTicket() end, desc = 'Create a ticket note' },
     ['<LocalLeader>nw'] = { function () neorg_templates.createWeeklyEntry() end, desc = 'Create a weekly note' },
 
-    ['<LocalLeader><LocalLeader>t'] = {
+    ['<LocalLeader>gt'] = {
       '<Cmd>e to-do.norg<CR>',
       desc = 'Open To Do list'
     },
