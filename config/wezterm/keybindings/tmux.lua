@@ -7,12 +7,20 @@ local tmuxPrefix = act.SendKey({ key = " ", mods = "CTRL" })
 
 function M.getKeybindings()
 	return {
-		{ -- Open Tmux Command bar
+		{ -- Toggle zoomed pane
 			key = "z",
 			mods = "CMD",
 			action = act.Multiple({
 				tmuxPrefix,
 				act.SendKey({ key = "z" }),
+			}),
+		},
+		{ -- Kill current pane
+			key = "x",
+			mods = "CMD",
+			action = act.Multiple({
+				tmuxPrefix,
+				act.SendKey({ key = "x" }),
 			}),
 		},
 		{ -- Open Tmux Command bar
