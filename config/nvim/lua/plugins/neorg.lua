@@ -19,14 +19,24 @@ return {
           folds = true,
           -- icon_preset = 'varied'
           icons = {
+            heading = {
+              icons = {
+                "◉",
+                " ◎",
+                "  ○",
+                "   ✺",
+                "    ▶",
+                "     ⤷",
+              },
+            },
             list = {
               icons = {
-                "•",
                 " •",
                 "  •",
                 "   •",
                 "    •",
                 "     •",
+                "      •",
               },
             },
             ordered = {
@@ -99,12 +109,13 @@ return {
 
     require("neorg").setup({ load = load })
 
-    neorg_templates.template("*/journal/*index.norg", "weekly", ".*/journal/%d%d%d%d/%d%d/w%d%d/index.norg")
-    neorg_templates.template("*/journal/*.norg", "daily", ".*/journal/%d%d%d%d/%d%d/w%d%d/%d%d%.norg")
-    neorg_templates.template("*/people/*.norg", "person")
     neorg_templates.template("*/job-search/companies/*.norg", "company")
-    neorg_templates.template("*/meetings/one-on-one/*.norg", "one-on-one", ".*/meetings/one%-on%-one/.*.norg")
+    neorg_templates.template("*/journal/*.norg", "daily", ".*/journal/%d%d%d%d/%d%d/w%d%d/%d%d%.norg")
+    neorg_templates.template("*/journal/*index.norg", "weekly", ".*/journal/%d%d%d%d/%d%d/w%d%d/index.norg")
     neorg_templates.template("*/meetings/*.norg", "meeting", ".*/meetings/%d%d%d%d/.*%.norg")
+    neorg_templates.template("*/meetings/one-on-one/*.norg", "one-on-one", ".*/meetings/one%-on%-one/.*.norg")
+    neorg_templates.template("*/miscellaneous/*.norg", "miscellaneous")
+    neorg_templates.template("*/people/*.norg", "person")
     neorg_templates.template("*/tickets/*.norg", "ticket")
   end,
 }
