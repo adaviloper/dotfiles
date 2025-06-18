@@ -49,10 +49,9 @@ gui:
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
   border: "single" # one of 'single' | 'double' | 'rounded' | 'hidden'
 git:
-  commitPrefixes:
-    redwood:
-      - pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
-        replace: "$1: "
+  commitPrefix:
+    - pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
+      replace: "$1: "
   paging:
     colorArg: always
     useConfig: false
