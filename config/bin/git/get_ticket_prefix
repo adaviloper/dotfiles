@@ -10,7 +10,7 @@ case "$current_directory" in
   "Code/redwood")
       mapped_string="RW"
       ;;
-  "Code/suralink")
+  *Code/suralink/*)
       mapped_string="APP"
       ;;
   *)
