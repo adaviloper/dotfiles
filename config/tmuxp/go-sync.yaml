@@ -1,0 +1,18 @@
+session_name: GoSync
+start_directory: "~/Code/go-sync/"
+windows:
+  - window_name: TUI
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Testing
+    start_directory: "~/Code"
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Terminals
+    layout: main-vertical
+    panes:
+      - shell_command:
+          - cmd: "c"
+
