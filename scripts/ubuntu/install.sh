@@ -63,6 +63,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 if [ -f "$HOME/.dotfiles/Brewfile" ]; then
   info "Running Brewfile"
   brew bundle --file="$HOME/.dotfiles/Brewfile"
+  bat cache --build
 else
   info "No Brewfile found at ~/.dotfiles/Brewfile"
 fi
