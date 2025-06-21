@@ -35,6 +35,7 @@ fi
 
 info "Installing Brewfile packages"
 brew bundle --file=~/.dotfiles/Brewfile
+bat cache --build
 
 if !command -v brew >/dev/null 2>&1; then
     info "Installing Yazi plugins"
