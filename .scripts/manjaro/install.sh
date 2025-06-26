@@ -37,6 +37,8 @@ sh $OS_INSTALL_DIR/../tmux.sh
 # Apply dotfiles
 chezmoi apply
 
+bat cache --build
+
 # Yazi plugins (if ya is available)
 info "Installing Yazi plugins"
 sh $OS_INSTALL_DIR/../yazi.sh
