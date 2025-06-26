@@ -71,6 +71,30 @@ return {
     },
 
     autocmds = {
+      apply_chez_moi_edits = {
+        {
+          event = "BufWritePost",
+          desc = "Apply Chez Moi edits after saving a buffer",
+          callback = function()
+            local path = vim.fn.expand("%:p")
+
+            if path:find("/.local/share/chezmoi/") then
+              vim.schedule(function()
+                vim.notify("chezmoi source change detected")
+                vim.fn.jobstart({ "chezmoi", "apply" }, {
+                  stdout_buffered = true,
+                  on_stdout = function(_, data)
+                    if data then
+                      vim.notify(table.concat(data, "\n"), vim.log.levels.INFO)
+                    end
+                  end,
+                })
+              end)
+            end
+          end
+        },
+      },
+
       git_branch_sessions = {
         -- auto save directory sessions on leaving
         {
