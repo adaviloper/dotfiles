@@ -153,9 +153,9 @@ if [ -z "$TMUX" ]; then
   fi
 fi
 
-if [[ "$(uname -s)" == "Linux" ]]; then
+{{- if eq .chezmoi.osRelease.idLike "ubuntu" }}
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+{{- end }}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
@@ -163,7 +163,5 @@ eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
 # eval "$(zoxide init --cmd cd zsh)"
 eval "$(zoxide init zsh)"
-
-
 
 # . "$HOME/.local/bin/env"
