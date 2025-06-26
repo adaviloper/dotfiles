@@ -18,7 +18,7 @@ sudo pacman -Syu yay fakeroot --noconfirm
 
 # Update package list
 info "Updating package lists"
-sudo yay -Syu
+sudo yay -Syu --noconfirm
 
 # Install required dependencies early
 info "Installing core packages"
