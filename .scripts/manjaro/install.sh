@@ -24,7 +24,7 @@ sh $OS_INSTALL_DIR/../prep-ssh.sh
 
 # Install required dependencies early
 info "Installing core packages"
-sh $OS_INSTALL_DIR/./packages.sh
+sh $OS_INSTALL_DIR/packages.sh
 
 # Oh-My-Zsh installation
 info "Installing Oh-My-Zsh"
@@ -32,7 +32,7 @@ sh $OS_INSTALL_DIR/../oh-my-zsh.sh
 
 # Tmux installation
 info "Installing Tmux"
-sh .$OS_INSTALL_DIR/./tmux.sh
+sh $OS_INSTALL_DIR/../tmux.sh
 
 # Apply dotfiles
 chezmoi apply
@@ -47,9 +47,12 @@ sh $OS_INSTALL_DIR/../go-dependencies.sh
 
 # Prepare notes directory
 info "Installing go-dependencies.sh"
-sh .$OS_INSTALL_DIR/./neorg.sh
+sh $OS_INSTALL_DIR/../neorg.sh
 
 info "Swap shell"
 sh $OS_INSTALL_DIR/../swap-shell.sh
 
 info "Setup complete."
+
+exit
+

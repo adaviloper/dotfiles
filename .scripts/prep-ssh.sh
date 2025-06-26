@@ -25,8 +25,5 @@ else
   info "✅ SSH key generated: $key_path"
 fi
 
-sudo apt install curl wl-clipboard
-wl-copy < ~/.ssh/id_ed25519.pub
-
 read -rp "Press Enter after updating your ssh key in Github"
 

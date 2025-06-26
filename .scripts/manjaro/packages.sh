@@ -23,8 +23,8 @@ sudo yay -Syu --noconfirm
 # Install required dependencies early
 info "Installing core packages"
 sudo yay -Syu \
-  1password \
   bat \
+  chezmoi \
   composer \
   eza \
   fd \
@@ -36,7 +36,6 @@ sudo yay -Syu \
   gum \
   jq \
   lazygit \
-  lazynpm \
   luarocks \
   neovim \
   nodejs \
@@ -57,3 +56,7 @@ sudo yay -Syu \
   zsh-completions \
   --noconfirm
 
+yay -Syu \
+  1password \
+  lazynpm \
+  --noconfirm
