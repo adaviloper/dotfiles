@@ -18,6 +18,9 @@ get_service_name() {
         */"vtest"/*|*/"vtest")
             echo "vtest-ui-app"
             ;;
+        */"slapi/server"/*|*/"slapi/server")
+            echo "server-api"
+            ;;
         */"advent-of-code/2024"/*|*/"advent-of-code/2024")
             echo "aoc-2024"
             ;;
