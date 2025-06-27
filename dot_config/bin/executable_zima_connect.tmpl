@@ -13,7 +13,11 @@ SMB_URL="smb://$USERNAME:$PASSWORD@$IP"
 echo "Connecting to: $SMB_URL"
 
 # Open the shared path in Finder
+{{ if eq .chezmoi.osRelease.idLike "arch" }}
+xdg-open "$SMB_URL"
+{{- else -}}
 open "$SMB_URL"
+{{- end }}
 
 # Completion message
 echo "SMB connection command executed. Check Finder for the result."
