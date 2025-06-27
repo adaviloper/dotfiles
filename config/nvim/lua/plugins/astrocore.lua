@@ -113,7 +113,6 @@ return {
           event = 'User',
           pattern = 'GitBranchChange',
           callback = function()
-            vim.notify('Loading: ' .. utils.get_session_name())
             require('resession').load(
               utils.get_session_name(),
               {
