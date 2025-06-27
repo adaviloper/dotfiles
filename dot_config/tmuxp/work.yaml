@@ -1,4 +1,4 @@
-session_name: Suralink
+session_name: Work
 start_directory: "~/Code/suralink/"
 windows:
   - window_name: Root

@@ -3,7 +3,7 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 ## Development
-alias .="cd ~/.dotfiles"
+alias .="cd ~/.local/share/chezmoi/"
 alias c="clear"
 alias cdh="cd ~/Homestead"
 alias cloc="git ls-files | xargs wc -l"
