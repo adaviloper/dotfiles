@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 
-if [ "$#" -ne 3 ]; then
-  echo "Usage: $0 <ticket_branch> must be called with exactly 3 arguments"
+if [ "$#" -lt 2 ]; then
+  echo "Usage: $0 <ticket_branch> must be called with at least 2 arguments"
   echo $#
   exit 1
 fi
 
-git checkout -b "$1/$(get_ticket_prefix)-$2-${3// /-}"
+TICKET_TYPE=$1
+TICKET_ID=$2
+DESCRIPTION=""
+
+
+if [ "$#" -eq 3 ] && [ -n "$3" ]; then
+  DESCRIPTION="-${3// /-}"
+fi
+
+git checkout -b "$TICKET_TYPE/$(get_ticket_prefix)-${TICKET_ID}${DESCRIPTION}"
 
