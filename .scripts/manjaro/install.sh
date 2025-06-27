@@ -47,8 +47,12 @@ sh $OS_INSTALL_DIR/../yazi.sh
 info "Installing go-dependencies.sh"
 sh $OS_INSTALL_DIR/../go-dependencies.sh
 
+# Installing Flatpaks
+info "Installing flatpaks"
+sh $OS_INSTALL_DIR/../flatpaks.sh
+
 # Prepare notes directory
-info "Installing go-dependencies.sh"
+info "Installing Neorg"
 sh $OS_INSTALL_DIR/../neorg.sh
 
 info "Swap shell"
