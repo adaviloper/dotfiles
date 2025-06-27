@@ -16,6 +16,8 @@ vim.filetype.add({
   filename = {
     ["Foofile"] = "fooscript",
     ["phpstan.neon.dist"] = "phpstan",
+    [".env"] = "sh",
+    [".env.default"] = "sh",
   },
   pattern = {
     ["*"] = "text",
