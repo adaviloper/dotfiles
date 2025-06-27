@@ -58,5 +58,6 @@ sudo yay -Syu \
 
 yay -Syu \
   1password \
+  1password-cli \
   lazynpm \
   --noconfirm
