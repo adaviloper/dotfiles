@@ -2,7 +2,6 @@ session_name: Suralink
 start_directory: "~/Code/suralink/"
 windows:
   - window_name: Root
-    focus: true
     panes:
       - shell_command:
           - cmd: "c"
@@ -14,13 +13,16 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: Terminals
-    layout: 4ebf,173x47,0,0{86x47,0,0,22,86x47,87,0[86x23,87,0,23,86x23,87,24,24]}
+  - focus: 'true'
+    layout: 535f,249x54,0,0{124x54,0,0,28,124x54,125,0[124x27,125,0,30,124x26,125,28{62x26,125,28,29,61x26,188,28,40}]}
+    options: {}
     panes:
-      - pane:
-      - shell_command:
-          - cd admin
-          - clear
-      - shell_command:
-          - cmd: "cd frontend"
-          - cmd: "clear"
+    - shell_command:
+      - lzd
+    - shell_command: cd ./auditManager/ClientApp/npm
+    - cd ./auth_accounts
+    - focus: 'true'
+      shell_command:
+        - cd ./auditManager/ClientApp/npm
+        - sudo sysctl -p
+    window_name: Terminals
