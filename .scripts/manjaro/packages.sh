@@ -49,6 +49,7 @@ sudo yay -Syu \
   tree \
   unar \
   wezterm \
+  xclip \
   yazi \
   yq \
   zoxide \
