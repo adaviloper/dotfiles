@@ -26,9 +26,9 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: quicker
+  - window_name: kwicker
     focus: true
-    start_directory: ~/.local/share/gnome-shell/extensions/quicker@adaviloper.com/
+    start_directory: ~/.local/share/kwin/scripts/kwicker/
     panes:
       - shell_command:
           - cmd: "c"
