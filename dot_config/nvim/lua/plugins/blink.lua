@@ -16,16 +16,6 @@ return {
       ["<C-i>"] = { "show_signature", "hide_signature", "fallback" },
       ["<Tab>"] = false,
       ["<S-Tab>"] = false,
-      s(
-        "i",
-        fmt([[
-        test{}
-        ]],
-        {
-          
-        }
-        )
-      )
     },
   },
 }

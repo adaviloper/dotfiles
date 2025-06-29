@@ -12,7 +12,7 @@ return {
     spell = true, -- sets vim.opt.spell
     spelloptions = "camel",
     whichwrap = "b,s,<,>",
-    wildmode = 'list:longest',
+    wildmode = 'list:longest,full',
     wrap = true, -- sets vim.opt.wrap
   },
   g = { -- vim.g.<key>
