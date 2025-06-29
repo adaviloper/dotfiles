@@ -1,8 +1,8 @@
 local wezterm = require('wezterm')
 
 local padding = 32
-local menu_bar_height = 25
-local laptop_menu_bar_height = 76
+local menu_bar_height = {{ if eq .chezmoi.osRelease.idLike "arch" -}} 0 {{- else -}} 25 {{- end }}
+local laptop_menu_bar_height = {{ if eq .chezmoi.osRelease.idLike "arch" -}} 0 {{- else -}} 76 {{- end }}
 
 local M = {}
 
@@ -18,11 +18,11 @@ function M.setup(_)
 
       if current_ratio >= monitor_ratio then
         window:gui_window():set_position(
-          active_screen.width / 4 + padding,
+          active_screen.width / 4 + padding / 2,
           padding + menu_bar_height
         )
         window:gui_window():set_inner_size(
-          (active_screen.width - (padding * 4)) / 2,
+          (active_screen.width - (padding * 2)) / 2,
           active_screen.height - padding * 2 - menu_bar_height
         )
       else
