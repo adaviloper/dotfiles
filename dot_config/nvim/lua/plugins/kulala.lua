@@ -1,4 +1,8 @@
 return {
   'mistweaverco/kulala.nvim',
-  opts = {},
+  opts = {
+    additional_curl_options = {
+      "-k"
+    }
+  },
 }
