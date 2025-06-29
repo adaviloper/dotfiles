@@ -24,6 +24,7 @@ sudo yay -Syu --noconfirm
 info "Installing core packages"
 sudo yay -Syu \
   bat \
+  btop \
   chezmoi \
   composer \
   eza \
