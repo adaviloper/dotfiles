@@ -15,8 +15,8 @@
             - (x) Make method bodies dynamic based on class and return types
         - Language Constructs
         - Debugging
-    - ( ) Vue
-    - ( ) JS
+    - (=) Vue
+   - ( ) JS/TS
 - ( ) Need a way integrate `nvim-dap`
 - [?] Do we have some kind of docker integration?
 - (x) Configure Grapple to scope by directory _and_ git branch
