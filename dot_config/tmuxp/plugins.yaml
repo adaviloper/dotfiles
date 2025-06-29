@@ -1,0 +1,34 @@
+session_name: Plugins
+start_directory: ~/Code/
+windows:
+  - window_name: php-dev-tools
+    start_directory: ~/Code/php-dev-tools.nvim/
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: juggle
+    start_directory: ~/Code/juggle/
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: t-sessions
+    start_directory: ~/Code/t-session/
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: gco
+    start_directory: ~/go/src/gco/
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: moover
+    start_directory: ~/.local/share/gnome-shell/extensions/moover@adaviloper.com/
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: kwicker
+    focus: true
+    start_directory: ~/.local/share/kwin/scripts/kwicker/
+    panes:
+      - shell_command:
+          - cmd: "c"
