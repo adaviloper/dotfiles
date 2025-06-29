@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Prompt the user for IP address, username, and password
+IP=$(op read "$ZIMA_IP_REF")
+USERNAME=$(op read "$ZIMA_USERNAME_REF")
+PASSWORD=$(op read "$ZIMA_PASSWORD_REF")
+echo ""
+
+# Build the SMB URL
+SMB_URL="smb://$USERNAME:$PASSWORD@$IP"
+
+# Display connection information
+echo "Connecting to ZimaCube"
+
+# Open the shared path in Finder
+{{ if eq .chezmoi.osRelease.idLike "arch" }}
+xdg-open "$SMB_URL"
+{{- else -}}
+open "$SMB_URL"
+{{- end }}
+
+# Completion message
+echo "SMB connection command executed. Check Finder for the result."

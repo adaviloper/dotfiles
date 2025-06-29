@@ -1,0 +1,21 @@
+session_name: Dotfiles
+start_directory: ~/.local/share/chezmoi/
+windows:
+  - window_name: .dotfiles
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Neovim Plugins
+    start_directory: "~/.local/share/nvim/lazy"
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Configs
+    start_directory: "~/.config"
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: System Status
+    panes:
+      - shell_command:
+          - cmd: "btm"
