@@ -41,6 +41,7 @@ sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
 # Install required dependencies early
 info "Installing core packages"
 sudo apt install -y \
+  btop \
   build-essential \
   gnome-browser-connector \
   gnome-shell-extensions \

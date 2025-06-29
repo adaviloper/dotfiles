@@ -151,8 +151,8 @@ return {
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
     ["<Leader>t?"] = {
-      function() astro.toggle_term_cmd({ direction = "float", cmd = "btm" }) end,
-      desc = "Toggleterm Btm",
+      function() astro.toggle_term_cmd({ cmd = "btop", direction = "float" }) end,
+      desc = "ToggleTerm btop",
     },
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
