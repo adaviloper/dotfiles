@@ -39,6 +39,7 @@ sudo yay -Syu \
   luarocks \
   neovim \
   nodejs \
+  npm \
   php \
   readline \
   ripgrep \
