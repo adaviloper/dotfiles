@@ -3,8 +3,8 @@ return {
   opts = {
     -- preset = 'none',
     keymap = {
-      ["<Up>"] = false,
-      ["<Down>"] = false,
+      ["<Up>"] = {},
+      ["<Down>"] = {},
       ["<C-n>"] = { "select_next", "show" },
       ["<C-p>"] = { "select_prev", "show" },
       ["<C-j>"] = { 'snippet_forward', 'fallback' },
@@ -14,8 +14,8 @@ return {
       ["<C-e>"] = { "hide", "fallback" },
       ["<C-y>"] = { "accept", "fallback" },
       ["<C-i>"] = { "show_signature", "hide_signature", "fallback" },
-      ["<Tab>"] = false,
-      ["<S-Tab>"] = false,
+      ["<Tab>"] = {},
+      ["<S-Tab>"] = {},
     },
   },
 }
