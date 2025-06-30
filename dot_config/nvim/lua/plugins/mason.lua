@@ -10,9 +10,14 @@ return {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
         -- install language servers
+        "bash-language-server",
+        "eslint-lsp",
+        "json-lsp",
         "lua-language-server",
+        "phpactor",
 
         -- install formatters
+        "shfmt",
         "stylua",
 
         -- install debuggers
