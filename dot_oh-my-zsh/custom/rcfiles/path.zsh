@@ -1,7 +1,18 @@
-export PATH="/Applications/PhpStorm.app/Contents/bin:/opt/homebrew/opt/avr-gcc@8/bin:$HOME/.config/bin/docker:$HOME/.config/bin/git:$HOME/.config/bin:$HOME/go/bin:/opt/homebrew/opt/arm-none-eabi-gcc@8/bin:/opt/homebrew/opt/arm-gcc-bin@8/bin:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:Appyications/PhpStorm.app/Contents/bin:/Applications/XAMPP/bin:yarn global bin:$HOME/.luarocks/bin:$PATH"
-export PATH="/home/linuxbrew/.linuxbrew/bin/:$PATH"
-export PATH="$HOME/.docker/cli-plugins:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.config/bin/docker:$PATH"
+export PATH="$HOME/.config/bin/git:$PATH"
+export PATH="$HOME/.config/bin:$PATH"
+export PATH="$HOME/.docker/cli-plugins:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="$HOME/.luarocks/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="/Applications/PhpStorm.app/Contents/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/bin/:$PATH"
+export PATH="/opt/homebrew/opt/arm-gcc-bin@8/bin:$PATH"
+export PATH="/opt/homebrew/opt/arm-none-eabi-gcc@8/bin:$PATH"
+export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
+export PATH="yarn global bin:$PATH"
 
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
 
