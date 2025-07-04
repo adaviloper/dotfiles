@@ -81,7 +81,7 @@ return {
             if path:find("/.local/share/chezmoi/") then
               vim.schedule(function()
                 vim.notify("chezmoi source change detected")
-                vim.fn.jobstart({ "chezmoi", "apply" }, {
+                vim.fn.jobstart({ "chezmoi", "apply", "--source-path", vim.fn.expand("%:p:.") }, {
                   stdout_buffered = true,
                   on_stdout = function(_, data)
                     if data then
