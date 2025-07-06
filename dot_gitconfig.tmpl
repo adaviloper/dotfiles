@@ -1,3 +1,7 @@
 [user]
 	name = {{ onepasswordRead "op://Private/github.com/username" }}
-	email = {{ onepasswordRead "op://Private/github.com/Other Fields/email" }}
+	{{ if eq .purpose "work" -}}
+	email = {{ onepasswordRead "op://Private/github.com/Other Fields/work_email" }}
+	{{ else -}}
+	email = {{ onepasswordRead "op://Private/github.com/Other Fields/personal_email" }}
+	{{ end }}
