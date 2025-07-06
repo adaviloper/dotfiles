@@ -19,6 +19,7 @@ vim.filetype.add({
     [".env"] = "sh",
     [".env.default"] = "sh",
     ["tmux.conf.tmpl"] = "tmux",
+    ["dot_zshrc.tmpl"] = "zsh",
   },
   pattern = {
     ["*"] = "text",
