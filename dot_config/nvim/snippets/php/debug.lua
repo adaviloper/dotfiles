@@ -58,8 +58,7 @@ local get_above_assignment = function ()
     )
   )
 ]]
-    params = vim.iter(parse_query_for_capture(node, assignment_query, 'var')
-    )
+    params = vim.iter(parse_query_for_capture(node, assignment_query, 'var'))
     return params:join(', ')
   end
 end
