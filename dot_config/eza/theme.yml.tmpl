@@ -1,0 +1,102 @@
+colourful: true
+
+filekinds:
+  normal: {foreground: "{{ .colorscheme.subtext1 }}"}
+  directory: {foreground: "{{ .colorscheme.blue }}"}
+  symlink: {foreground: "{{ .colorscheme.sky }}"}
+  pipe: {foreground: "{{ .colorscheme.overlay1 }}"}
+  block_device: {foreground: "{{ .colorscheme.maroon }}"}
+  char_device: {foreground: "{{ .colorscheme.maroon }}"}
+  socket: {foreground: "#{{ .colorscheme.surface2 }}"}
+  special: {foreground: "{{ .colorscheme.mauve }}"}
+  executable: {foreground: "{{ .colorscheme.green }}"}
+  mount_point: {foreground: "{{ .colorscheme.sapphire }}"}
+
+perms:
+  user_read: {foreground: "{{ .colorscheme.text }}"}
+  user_write: {foreground: "{{ .colorscheme.yellow }}"}
+  user_execute_file: {foreground: "{{ .colorscheme.green }}"}
+  user_execute_other: {foreground: "{{ .colorscheme.green }}"}
+  group_read: {foreground: "{{ .colorscheme.subtext1 }}"}
+  group_write: {foreground: "{{ .colorscheme.yellow }}"}
+  group_execute: {foreground: "{{ .colorscheme.green }}"}
+  other_read: {foreground: "{{ .colorscheme.subtext0 }}"}
+  other_write: {foreground: "{{ .colorscheme.yellow }}"}
+  other_execute: {foreground: "{{ .colorscheme.green }}"}
+  special_user_file: {foreground: "{{ .colorscheme.mauve }}"}
+  special_other: {foreground: "#{{ .colorscheme.surface2 }}"}
+  attribute: {foreground: "{{ .colorscheme.subtext0 }}"}
+
+size:
+  major: {foreground: "{{ .colorscheme.subtext0 }}"}
+  minor: {foreground: "{{ .colorscheme.sky }}"}
+  number_byte: {foreground: "{{ .colorscheme.text }}"}
+  number_kilo: {foreground: "{{ .colorscheme.subtext1 }}"}
+  number_mega: {foreground: "{{ .colorscheme.blue }}"}
+  number_giga: {foreground: "{{ .colorscheme.mauve }}"}
+  number_huge: {foreground: "{{ .colorscheme.mauve }}"}
+  unit_byte: {foreground: "{{ .colorscheme.subtext0 }}"}
+  unit_kilo: {foreground: "{{ .colorscheme.blue }}"}
+  unit_mega: {foreground: "{{ .colorscheme.mauve }}"}
+  unit_giga: {foreground: "{{ .colorscheme.mauve }}"}
+  unit_huge: {foreground: "{{ .colorscheme.sapphire }}"}
+
+users:
+  user_you: {foreground: "{{ .colorscheme.text }}"}
+  user_root: {foreground: "{{ .colorscheme.red }}"}
+  user_other: {foreground: "{{ .colorscheme.mauve }}"}
+  group_yours: {foreground: "{{ .colorscheme.subtext1 }}"}
+  group_other: {foreground: "{{ .colorscheme.overlay1 }}"}
+  group_root: {foreground: "{{ .colorscheme.red }}"}
+
+links:
+  normal: {foreground: "{{ .colorscheme.sky }}"}
+  multi_link_file: {foreground: "{{ .colorscheme.sapphire }}"}
+
+git:
+  new: {foreground: "{{ .colorscheme.green }}"}
+  modified: {foreground: "{{ .colorscheme.yellow }}"}
+  deleted: {foreground: "{{ .colorscheme.red }}"}
+  renamed: {foreground: "{{ .colorscheme.teal }}"}
+  typechange: {foreground: "{{ .colorscheme.pink }}"}
+  ignored: {foreground: "{{ .colorscheme.overlay1 }}"}
+  conflicted: {foreground: "{{ .colorscheme.maroon }}"}
+
+git_repo:
+  branch_main: {foreground: "{{ .colorscheme.text }}"}
+  branch_other: {foreground: "{{ .colorscheme.mauve }}"}
+  git_clean: {foreground: "{{ .colorscheme.green }}"}
+  git_dirty: {foreground: "{{ .colorscheme.red }}"}
+
+security_context:
+  colon: {foreground: "{{ .colorscheme.overlay1 }}"}
+  user: {foreground: "{{ .colorscheme.subtext1 }}"}
+  role: {foreground: "{{ .colorscheme.mauve }}"}
+  typ: {foreground: "#{{ .colorscheme.surface2 }}"}
+  range: {foreground: "{{ .colorscheme.mauve }}"}
+
+file_type:
+  image: {foreground: "{{ .colorscheme.yellow }}"}
+  video: {foreground: "{{ .colorscheme.red }}"}
+  music: {foreground: "{{ .colorscheme.green }}"}
+  lossless: {foreground: "{{ .colorscheme.teal }}"}
+  crypto: {foreground: "#{{ .colorscheme.surface2 }}"}
+  document: {foreground: "{{ .colorscheme.text }}"}
+  compressed: {foreground: "{{ .colorscheme.pink }}"}
+  temp: {foreground: "{{ .colorscheme.maroon }}"}
+  compiled: {foreground: "{{ .colorscheme.sapphire }}"}
+  build: {foreground: "#{{ .colorscheme.surface2 }}"}
+  source: {foreground: "{{ .colorscheme.blue }}"}
+
+punctuation: {foreground: "{{ .colorscheme.overlay1 }}"}
+date: {foreground: "{{ .colorscheme.yellow }}"}
+inode: {foreground: "{{ .colorscheme.subtext0 }}"}
+blocks: {foreground: "{{ .colorscheme.overlay2 }}"}
+header: {foreground: "{{ .colorscheme.text }}"}
+octal: {foreground: "{{ .colorscheme.teal }}"}
+flags: {foreground: "{{ .colorscheme.mauve }}"}
+
+symlink_path: {foreground: "{{ .colorscheme.sky }}"}
+control_char: {foreground: "{{ .colorscheme.sapphire }}"}
+broken_symlink: {foreground: "{{ .colorscheme.red }}"}
+broken_path_overlay: {foreground: "{{ .colorscheme.surface2 }}"}

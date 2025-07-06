@@ -18,10 +18,16 @@ vim.filetype.add({
     ["phpstan.neon.dist"] = "phpstan",
     [".env"] = "sh",
     [".env.default"] = "sh",
+    ["tmux.conf.tmpl"] = "tmux",
   },
   pattern = {
     ["*"] = "text",
     [".*/dot_config/bin/.*"] = "sh",
+    [".*.lua.tmpl"] = "toml",
+    [".*.toml.tmpl"] = "toml",
+    [".*.yaml.tmpl"] = "yaml",
+    [".*.yml.tmpl"] = "yaml",
+    [".*.zsh.tmpl"] = "sh",
     ["laravel.*log"] = "json",
   },
 })
