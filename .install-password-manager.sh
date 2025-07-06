@@ -2,7 +2,7 @@
 
 # Exit if password manager is already installed
 if type op >/dev/null 2>&1; then
-  echo "password-manager-binary is already installed."
+  echo "1Password CLI is already installed."
   exit 0
 fi
 
