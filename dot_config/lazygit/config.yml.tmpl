@@ -12,22 +12,22 @@ gui:
   theme:
     lightTheme: false
     activeBorderColor:
-      - "#a6e3a1" # Green
+      - "{{ .colorscheme.green }}" # Green
       - bold
     inactiveBorderColor:
-      - "#89b4fa" # Text
+      - "{{ .colorscheme.blue }}" # Text
     optionsTextColor:
-      - "#89b4fa" # Blue
+      - "{{ .colorscheme.blue }}" # Blue
     selectedLineBgColor:
-      - "#313244" # Surface0
+      - "{{ .colorscheme.surface0 }}" # Surface0
     selectedRangeBgColor:
-      - "#313244" # Surface0
+      - "{{ .colorscheme.surface0 }}" # Surface0
     cherryPickedCommitBgColor:
-      - "#94e2d5" # Teal
+      - "{{ .colorscheme.teal }}" # Teal
     cherryPickedCommitFgColor:
-      - "#89b4fa" # Blue
+      - "{{ .colorscheme.blue }}" # Blue
     unstagedChangesColor:
-      - "#f38ba8" # Red
+      - "{{ .colorscheme.red }}" # Red
     defaultFgColor:
       - default
   commitLength:
@@ -80,7 +80,7 @@ git:
   autoFetch: true
   autoRefresh: true
   fetchAll: true # Pass --all flag when running git fetch. Set to false to fetch only origin (or the current branch's upstream remote if there is one)
-  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
+  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{ "{{" }}branchName{{ "}}" }} --"
   overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing: false
   parseEmoji: false

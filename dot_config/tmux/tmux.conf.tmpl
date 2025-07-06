@@ -117,17 +117,17 @@ set -ogq @tmux_theme_window_left_separator ""
 set -g @tmux_theme_window_middle_separator " | "
 set -ogq @tmux_theme_window_right_separator ""
 
-set -g @tmux_theme_window_inactive_color "#{@thm_peach}"
-set -g @tmux_theme_window_last_color "#f2a57f"
-set -g @tmux_theme_window_active_color "#{@thm_blue}"
+set -g @tmux_theme_window_inactive_color "{{ .colorscheme.peach }}"
+set -g @tmux_theme_window_last_color "{{ .colorscheme.peach }}"
+set -g @tmux_theme_window_active_color "{{ .colorscheme.blue }}"
 
-set -g @tmux_theme_session_name_bg_color "#{@thm_green}"
+set -g @tmux_theme_session_name_bg_color "{{ .colorscheme.green }}"
 
 set -g @tmux_theme_status_left_separator ""
 set -g @tmux_theme_status_right_separator ""
 
-set -g @tmux_theme_datetime_color "#{@thm_teal}"
-set -g @tmux_theme_directory_color "#{@thm_pink}"
+set -g @tmux_theme_datetime_color "{{ .colorscheme.teal }}"
+set -g @tmux_theme_directory_color "{{ .colorscheme.pink }}"
 
 set -g status-left-length 100
 set -g status-right-length 100
