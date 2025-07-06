@@ -1,3 +1,8 @@
+{{- $purposes := list "personal" "work" -}}
+{{- $purpose := promptChoiceOnce . "purpose" "What is this machine used for?" $purposes -}}
+[data]
+  purpose = "{{ $purpose }}"
+
 [data.colorscheme]
   rosewater = "#f5e0dc"
   flamingo = "#f2cdcd"
