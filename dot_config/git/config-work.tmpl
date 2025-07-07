@@ -1,0 +1,4 @@
+{{- if eq .purpose "work" -}}
+[user]
+	email = {{ onepasswordRead .secrets.git.work_email }}
+{{- end -}}

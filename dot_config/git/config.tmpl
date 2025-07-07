@@ -1,0 +1,13 @@
+[user]
+	name = {{ onepasswordRead .secrets.git.username }}
+	email = {{ onepasswordRead .secrets.git.personal_email }}
+
+{{ if eq .purpose "work" -}}
+[includeIf "gitdir:~/Code/suralink/"]
+  path = ~/.config/git/config-work
+{{- end -}}
+
+[color "status"]
+	changed = "{{ .colorscheme.red }}"
+	added = "{{ .colorscheme.green }}"
+	untracked = "{{ .colorscheme.sky }}"
