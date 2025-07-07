@@ -2,15 +2,16 @@
 
 # Exit if password manager is already installed
 if type op >/dev/null 2>&1; then
-  echo "1Password CLI is already installed."
   exit 0
 fi
+
+echo "Installing 1Password CLI."
 
 # Detect platform
 case "$(uname -s)" in
   Darwin)
     echo "Detected macOS"
-    brew install password-manager-binary
+    brew install 1password --cask
     ;;
   Linux)
     # Get base ID from /etc/os-release
