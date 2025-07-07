@@ -1,4 +1,5 @@
 !.env
+!.env_flags
 !feature-flags.json
 *.ttf
 *.min.js
