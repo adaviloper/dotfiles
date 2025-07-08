@@ -1,0 +1,10 @@
+{{- if eq .chezmoi.osRelease.idLike "arch" -}}
+#!/bin/bash
+
+# Update package list
+sudo pacman -Syu yay fakeroot --noconfirm
+
+{{ range .packages.arch.yays }}
+yay -Syu {{ . | quote }} --noconfirm
+{{ end -}}
+{{ end -}}
