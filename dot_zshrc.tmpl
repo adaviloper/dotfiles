@@ -153,7 +153,7 @@ if [ -z "$TMUX" ]; then
   fi
 fi
 
-{{- if eq .chezmoi.osRelease.idLike "ubuntu" }}
+{{- if or (eq .distro "ubuntu") (eq .distro "mac") }}
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
 

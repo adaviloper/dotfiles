@@ -1,10 +1,13 @@
 {{- $purposes := list "personal" "work" -}}
 {{- $purpose := promptChoiceOnce . "purpose" "What is this machine used for?" $purposes -}}
+{{- $distros := list "mac" "arch" "ubuntu" -}}
+{{- $distro := promptChoiceOnce . "purpose" "What OS is this machine running?" $distros -}}
 [hooks.read-source-state.pre]
   command = ".local/share/chezmoi/.install-password-manager.sh"
 
 [data]
   purpose = "{{ $purpose }}"
+  distro = "{{ $distro }}"
 
 [data.colorscheme]
   rosewater = "#f5e0dc"
