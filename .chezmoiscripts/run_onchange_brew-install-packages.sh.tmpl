@@ -1,4 +1,4 @@
-{{- if eq .chezmoi.osRelease.id "ubuntu" -}}
+{{- if or (eq .chezmoi.os "darwin") (eq .chezmoi.osRelease.id "ubuntu") -}}
 #!/bin/bash
 
 brew bundle --file=/dev/stdin <<EOF
