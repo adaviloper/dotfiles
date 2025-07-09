@@ -1,4 +1,4 @@
-{{- if ne .os "mac" -}}
+{{- if ne .distro "mac" -}}
 #!/bin/bash
 
 {{ template "shared_bin_utils.sh.tmpl" . }}
