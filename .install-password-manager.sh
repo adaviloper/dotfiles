@@ -11,7 +11,28 @@ echo "Installing 1Password CLI."
 case "$(uname -s)" in
   Darwin)
     echo "Detected macOS"
-    brew install 1password --cask
+
+    # Check if Homebrew is installed
+    if ! command -v brew >/dev/null 2>&1; then
+      echo "❌ Homebrew is not installed. Please install Homebrew first."
+      info "Installing Homebrew"
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+
+    # Check if 1Password is already installed
+    if [[ -d /Applications/1Password.app ]]; then
+      echo "✅ 1Password is already installed."
+    else
+      echo "1Password is not installed."
+      brew install --cask 1password
+    fi
+
+    # Check if 1Password CLI is already installed
+    if command -v op >/dev/null 2>&1; then
+      echo "✅ 1Password CLI is already installed."
+    else
+      brew install --cask 1password-cli
+    fi
     ;;
   Linux)
     # Get base ID from /etc/os-release
