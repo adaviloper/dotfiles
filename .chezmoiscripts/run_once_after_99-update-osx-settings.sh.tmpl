@@ -1,15 +1,7 @@
+{{- if eq .is_mac true -}}
 #!/bin/bash
 
-yellow() {
-  tput setaf 3
-  echo "$*"
-  tput sgr0
-}
-
-info() {
-  echo
-  yellow "$@"
-}
+{{ template "shared_bin_utils.sh.tmpl" . }}
 
 info "Show hidden files by default"
 defaults write com.apple.Finder AppleShowAllFiles -bool false
@@ -45,4 +37,4 @@ killall Finder
 
 info "Restarting Dock to apply changes"
 killall Dock
-
+{{- end -}}
