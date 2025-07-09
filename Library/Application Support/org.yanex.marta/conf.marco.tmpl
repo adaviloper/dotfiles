@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "darwin" -}}
 behavior {
     theme "Catppuccin"
 
@@ -16,3 +17,4 @@ fonts {
     tabs [ "Default" 16 ]
     preferences [ "Monaco" 16 ]
 }
+{{- end -}}
