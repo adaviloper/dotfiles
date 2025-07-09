@@ -1,13 +1,17 @@
 #!/bin/bash
 
+{{ template "shared_bin_utils.sh" . }}
+
+info "Installing Neorg"
 # Prepare notes directory
 mkdir -p "$HOME/Code/neorg/notes"
 TEMPLATES_DIR="$HOME/Code/neorg/templates/"
 if [ ! -d "$TEMPLATES_DIR" ]; then
   info "Cloning Neorg templates"
-git clone git@github.com:adaviloper/neorg-templates "$TEMPLATES_DIR"
+  git clone git@github.com:adaviloper/neorg-templates "$TEMPLATES_DIR"
+  success "Neorg cloned successfully"
 else
-  info "Templates directory already exists at $TEMPLATES_DIR"
+  warn "Templates directory already exists at $TEMPLATES_DIR"
 fi
 
 # Trigger Neovim plugin install
