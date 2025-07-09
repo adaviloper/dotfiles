@@ -5,7 +5,10 @@
 # Change shell to zsh if not already
 if [ "$SHELL" != "$(which zsh)" ]; then
   info "Changing default shell to zsh"
+  debug "-- Changing from [$SHELL] to [$(which zsh)]"
   chsh -s "$(which zsh)"
   success "Shell updated to zsh"
+else
+  warn "Shell already appropriately set"
 fi
 
