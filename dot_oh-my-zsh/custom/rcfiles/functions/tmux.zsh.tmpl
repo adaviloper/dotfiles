@@ -20,7 +20,7 @@ _load_completion() {
     # Filter YAML files based on the start_directory key
     VALID_YAML_FILES=()
     for yaml_file in "${YAML_FILES[@]}"; do
-        start_directory=$(cat "$yaml_file" | yq {{ if eq .chezmoi.osRelease.idLike "ubuntu" }} e {{ end }} -r '.start_directory' | awk 'NR==1' | tr -d '"')
+        start_directory=$(cat "$yaml_file" | yq {{ if eq .distro "ubuntu" }} e {{ end }} -r '.start_directory' | awk 'NR==1' | tr -d '"')
         if [ -z "$start_directory" ] || check_directory "$start_directory"; then
             VALID_YAML_FILES+=("$yaml_file")
         fi
@@ -52,7 +52,7 @@ function tm() {
         # Filter YAML files based on start_directory existence
         FILTERED_YAML=()
         for yaml_file in "${YAML_FILES[@]}"; do
-            start_directory=$(cat "$yaml_file" | yq {{ if eq .chezmoi.osRelease.idLike "ubuntu" }} e {{ end }} -r '.start_directory' | awk 'NR==1' | tr -d '"')
+            start_directory=$(cat "$yaml_file" | yq {{ if eq .distro "ubuntu" }} e {{ end }} -r '.start_directory' | awk 'NR==1' | tr -d '"')
             if [ -z "$start_directory" ] || check_directory "$start_directory"; then
                 FILTERED_YAML+=("$yaml_file")
             fi

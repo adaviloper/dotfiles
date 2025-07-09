@@ -6,7 +6,8 @@ session_file_name=$1
 yaml_file_path="$CONFIG_DIR/$session_file_name.yaml"
 
 if [ -f "$yaml_file_path" ]; then
-    session_name=$(yq {{ if eq .chezmoi.osRelease.idLike "ubuntu" }} e {{ end }} -r '.session_name' "$yaml_file_path" | awk 'NR==1')
+
+    session_name=$(yq -r '.session_name' "$yaml_file_path" | awk 'NR==1')
 
     tmux has-session -t "$session_name" 2>/dev/null
     if [ $? -ne 0 ]; then

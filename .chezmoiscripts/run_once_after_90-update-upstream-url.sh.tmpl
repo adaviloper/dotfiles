@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo  "Updating origin url for {{ .chezmoi.sourceDir }}"
+git -C "{{ .chezmoi.sourceDir }}" remote set-url origin git@github.com:adaviloper/dotfiles.git
