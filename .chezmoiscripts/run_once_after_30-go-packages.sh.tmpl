@@ -1,6 +1,6 @@
 #!/bin/bash
 
-{{ template "shared_bin_utils.sh" . }}
+{{ template "shared_bin_utils.sh.tmpl" . }}
 
 info "Installing Go packages"
 go install github.com/adaviloper/gco@latest

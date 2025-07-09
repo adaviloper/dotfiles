@@ -1,7 +1,7 @@
 {{- if ne .os "mac" -}}
 #!/bin/bash
 
-{{ template "shared_bin_utils.sh" . }}
+{{ template "shared_bin_utils.sh.tmpl" . }}
 
 info "Installing Flatpak packages"
 flatpak install flathub app.zen_browser.zen
