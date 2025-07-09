@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "darwin" -}}
 Home "~"
 Downloads "${user.downloads}"
 Documents "${user.documents}"
@@ -8,3 +9,4 @@ Applications "${all.applications}"
 Projects null
 
 Code "~/Code/"
+{{- end -}}
