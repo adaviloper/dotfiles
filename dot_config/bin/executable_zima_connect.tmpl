@@ -14,7 +14,7 @@ SMB_URL="smb://$USERNAME:$PASSWORD@$IP"
 echo "Connecting to ZimaCube"
 
 # Open the shared path in Finder
-{{ if eq .distro "arch" }}
+{{ if eq .is_arch true }}
 xdg-open "$SMB_URL"
 {{- else -}}
 open "$SMB_URL"
