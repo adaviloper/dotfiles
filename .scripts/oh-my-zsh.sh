@@ -1,16 +1,6 @@
 #!/bin/bash
 
-# Colors
-yellow() {
-  tput setaf 3
-  printf "%s\n" "$*"
-  tput sgr0
-}
-
-info() {
-  echo
-  yellow "$@"
-}
+{{ template "shared_bin_utils.sh" . }}
 
 # Oh-My-Zsh installation
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
