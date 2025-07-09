@@ -1,0 +1,51 @@
+set -euo pipefail
+
+# Generic hex color echo (foreground only)
+hex_echo() {
+  local hex="$1"
+  shift
+  local r=$((0x${hex:1:2}))
+  local g=$((0x${hex:3:2}))
+  local b=$((0x${hex:5:2}))
+  printf "\033[38;2;%d;%d;%dm%s\033[0m\n" "$r" "$g" "$b" "$*"
+}
+
+# Message types with custom hex colors
+info() {
+  echo
+  hex_echo "{{ .colorscheme.yellow }}" "[INFO] $*"
+}
+
+success() {
+  echo
+  hex_echo "{{ .colorscheme.green }}" "[✔ SUCCESS] $*"
+}
+
+warn() {
+  echo
+  hex_echo "{{ .colorscheme.peach }}" "[!] $*"
+}
+
+error() {
+  echo
+  hex_echo "{{ .colorscheme.red }}" "[✖ ERROR] $*"
+}
+
+debug() {
+  echo
+  hex_echo "{{ .colorscheme.mauve }}" "[DEBUG] $*"
+}
+
+# Optional: print raw hex colors directly
+say_with_color() {
+  local hex="$1"; shift
+  hex_echo "$hex" "$*"
+}
+
+# Example usage:
+# info "Starting script..."
+# success "All checks passed!"
+# warn "Low disk space"
+# error "Build failed"
+# debug "PATH is $PATH"
+# say_with_color "#ffcc00" "Custom yellow-orange"
