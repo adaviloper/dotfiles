@@ -38,6 +38,7 @@ packages:
       - 'zsh-completions'
     casks:
       - '1password'
+      - '1password-cli'
       - 'alfred'
       - 'contexts'
       - 'font-symbols-only-nerd-font'
@@ -49,7 +50,6 @@ packages:
       - 'moom'
       - 'obsidian'
       - 'orbstack'
-      - 'phpstorm'
       - 'postman'
       - 'shottr'
       - 'steermouse'
@@ -60,6 +60,8 @@ packages:
       - 'thoughtbot/formulae'
   arch:
     yays:
+      - 1password
+      - 1password-cli
       - bat
       - btop
       - chezmoi
@@ -74,6 +76,7 @@ packages:
       - gum
       - jq
       - lazygit
+      - lazynpm
       - luarocks
       - neovim
       - nodejs
@@ -94,6 +97,3 @@ packages:
       - zoxide
       - zsh-autosuggestions
       - zsh-completions
-      - 1password
-      - 1password-cli
-      - lazynpm
