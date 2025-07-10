@@ -1,0 +1,21 @@
+#!/bin/bash
+
+{{ template "shared_bin_utils.sh.tmpl" . }}
+
+info "Installing TPM"
+
+TPM_DIR="$HOME/.config/tmux/plugins/tpm"
+
+if [ ! -d "$TPM_DIR" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+fi
+
+info "Installing TPM Plugins"
+tmux start-server
+tmux new-session -d -s __tpm_temp
+tmux source-file "$HOME/.config/tmux/tmux.conf"
+"$TPM_DIR/bin/install_plugins"
+tmux kill-session -t __tpm_temp
+success "TPM Plugins installed"
+
+success "Successfully installed TPM"
