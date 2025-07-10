@@ -58,6 +58,24 @@ packages:
       - 'jakehilborn/jakehilborn'
       - 'jesseduffield/lazynpm'
       - 'thoughtbot/formulae'
+  ubuntu:
+    apts:
+      - '1password'
+      - 'bottom'
+      - 'build-essential'
+      - 'curl'
+      - 'flatpak'
+      - 'gcc'
+      - 'git'
+      - 'gnome-browser-connector'
+      - 'gnome-shell-extensions'
+      - 'gnome-software-plugin-flatpak'
+      - 'gnome-tweaks'
+      - 'libwxgtk3.2-dev'
+      - 'wezterm'
+      - 'wget'
+      - 'wl-clipboard'
+      - 'zsh'
   arch:
     yays:
       - 1password
