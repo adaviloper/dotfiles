@@ -1,0 +1,11 @@
+{{- if eq .is_ubuntu true -}}
+#!/bin/bash
+
+# Update package list
+sudo apt update
+
+{{ range .packages.ubuntu.apts }}
+sudo apt install -y {{ . | quote }}
+{{ end -}}
+
+{{- end -}}
