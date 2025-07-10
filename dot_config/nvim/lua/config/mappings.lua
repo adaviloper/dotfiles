@@ -177,6 +177,11 @@ return {
     ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
 
     -- Telescope
+    ["<Leader>fw"] = {
+      function() require("snacks").picker.grep { hidden = true, ignored = true } end,
+      desc = "Find words in all files",
+    },
+    ["<Leader>f/"] = { function() require("snacks").picker.grep() end, desc = "Find words" },
     ["<Leader>fo"] = {
       function() require("telescope.builtin").oldfiles({ cwd_only = true }) end,
       desc = "Find history",
