@@ -14,6 +14,7 @@ return {
         {'let', 'const', 'var'},
         {'production', 'development', 'local', 'testing'},
         {'protected', 'public', 'private'},
+        {'skip', 'only'},
         {'==', '==='},
         {'!=', '!=='},
       },
