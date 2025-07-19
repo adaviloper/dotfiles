@@ -1,0 +1,39 @@
+[Application settings for org.wezfurlong.wezterm]
+Description=Application settings for org.wezfurlong.wezterm
+clientmachine=localhost
+noborder=true
+noborderrule=4
+wmclass=org.wezfurlong.wezterm
+wmclassmatch=1
+
+[No Title Bar]
+Description=No Title Bar
+noborder=true
+noborderrule=3
+types=1
+wmclass=org.wezfurlong.wezterm
+wmclassmatch=1
+
+[Switch to Browser]
+Description=Switch to Browser
+shortcut=Ctrl+Alt+Shift+B
+shortcutrule=4
+types=1
+wmclass=zen
+wmclassmatch=1
+
+[Switch to Discord]
+Description=Switch to Discord
+shortcut=Ctrl+Alt+Shift+D
+shortcutrule=4
+types=1
+wmclass=discord
+wmclassmatch=1
+
+[Switch to Terminal]
+Description=Switch to Terminal
+shortcut=Ctrl+Alt+Shift+Return
+shortcutrule=4
+types=1
+wmclass=org.wezfurlong.wezterm
+wmclassmatch=1
