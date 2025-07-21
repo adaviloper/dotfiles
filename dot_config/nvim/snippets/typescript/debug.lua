@@ -55,6 +55,12 @@ return
                   end
 
                   local target_variable = get_above_assignment()
+                  if target_variable == nil then
+                    vim.notify('empty prev line')
+                    return sn(nil, {
+                      i(1, '')
+                    })
+                  end
                   vim.notify(vim.inspect(target_variable))
 
                   vim.api.nvim_win_set_cursor(0, pos)
