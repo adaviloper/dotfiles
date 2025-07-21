@@ -21,6 +21,9 @@ get_service_name() {
         */"ocr_orchestrator_service"/*|*/"ocr_orchestrator_service")
             echo "ocr_orchestrator_service"
             ;;
+        */"shared_services"/*|*/"shared_services")
+            echo "localstack"
+            ;;
         */"slapi/server"/*|*/"slapi/server")
             echo "server-api"
             ;;
