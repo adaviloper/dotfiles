@@ -7,7 +7,7 @@
   purpose = "{{ $purpose }}"
   is_mac = {{ if eq .chezmoi.os "darwin" }} true {{ else }} false {{ end }}
   is_linux = {{ if eq .chezmoi.os "linux" }} true {{ else }} false {{ end }}
-  is_ubuntu = {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "ubuntu") }} true {{ else }} false {{ end }}
+  is_ubuntu = {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") }} true {{ else }} false {{ end }}
   is_arch = {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch") }} true {{ else }} false {{ end }}
 
 [data.colorscheme]
