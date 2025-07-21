@@ -1,6 +1,7 @@
 * Tasks
   - (x) Templatize gitconfig
   - ( ) Create test runner command for JS
+  - ( ) Prevent sessions plugin from overriding MANPAGER
   - (x) Create gum choose shell function for `npm run` commands
   - (x) Update `#!` snippet to also modify the file
   - (x) Set filetype for bin files automatically
