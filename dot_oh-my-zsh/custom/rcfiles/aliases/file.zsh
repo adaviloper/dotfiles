@@ -3,7 +3,7 @@ alias .="cd ~/.local/share/chezmoi/"
 alias c="clear"
 alias cloc="git ls-files | xargs wc -l"
 alias code="cd ~/Code"
-alias ls="eza --color=always"
+alias ls="eza --color=always --group-directories-first"
 alias l="ls -alh"
 
 # Testing
