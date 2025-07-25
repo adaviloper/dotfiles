@@ -1,5 +1,4 @@
-{{- if eq .chezmoi.os "linux" -}}
-{{- if eq .chezmoi.osRelease.idLike "arch" -}}
+{{- if eq .is_arch true -}}
 #!/bin/bash
 
 # Update package list
@@ -9,5 +8,4 @@ sudo pacman -Syu yay fakeroot --noconfirm
 yay -Syu {{ . | quote }} --noconfirm
 {{ end -}}
 
-{{- end -}}
 {{- end -}}
