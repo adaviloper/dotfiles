@@ -1,0 +1,19 @@
+{{ if eq .purpose "personal" }}
+#!/bin/bash
+
+{{ template "shared_bin_utils.sh.tmpl" . }}
+
+info "Installing QMK"
+
+uv tool install qmk
+
+CODE_DIR="$HOME/Code"
+
+mkdir -p "$CODE_DIR"
+
+cd $CODE_DIR
+
+qmk setup -y
+
+
+success "Successfully installed QMK"
