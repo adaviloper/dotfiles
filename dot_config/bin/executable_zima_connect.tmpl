@@ -2,9 +2,9 @@
 #!/bin/bash
 
 # Prompt the user for IP address, username, and password
-IP=$(op read "$ZIMA_IP_REF")
-USERNAME=$(op read "$ZIMA_USERNAME_REF")
-PASSWORD=$(op read "$ZIMA_PASSWORD_REF")
+IP="{{ onepasswordRead .secrets.zima.ip }}"
+USERNAME="{{ onepasswordRead .secrets.zima.username }}"
+PASSWORD="{{ onepasswordRead .secrets.zima.password }}"
 echo ""
 
 # Build the SMB URL
