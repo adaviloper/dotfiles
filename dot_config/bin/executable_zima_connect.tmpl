@@ -1,6 +1,8 @@
 {{- if eq .purpose "personal" -}}
 #!/bin/bash
 
+{{ template "shared_bin_utils.sh.tmpl" . }}
+
 # Prompt the user for IP address, username, and password
 IP="{{ onepasswordRead .secrets.zima.ip }}"
 USERNAME="{{ onepasswordRead .secrets.zima.username }}"
@@ -11,7 +13,7 @@ echo ""
 SMB_URL="smb://$USERNAME:$PASSWORD@$IP"
 
 # Display connection information
-echo "Connecting to ZimaCube"
+info "Connecting to ZimaCube"
 
 # Open the shared path in Finder
 {{ if eq .is_arch true }}
@@ -21,5 +23,5 @@ open "$SMB_URL"
 {{- end }}
 
 # Completion message
-echo "SMB connection command executed. Check Finder for the result."
+success "SMB connection command executed. Check Finder for the result."
 {{- end -}}
