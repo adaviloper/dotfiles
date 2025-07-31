@@ -21,6 +21,9 @@ get_service_name() {
         */"ocr_orchestrator_service"/*|*/"ocr_orchestrator_service")
             echo "ocr_orchestrator_service"
             ;;
+        */"files_service"/*|*/"files_service")
+            echo "test"
+            ;;
         */"shared_services"/*|*/"shared_services")
             echo "localstack"
             ;;
