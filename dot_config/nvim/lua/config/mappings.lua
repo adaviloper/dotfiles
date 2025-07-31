@@ -150,10 +150,6 @@ return {
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
-    ["<Leader>t?"] = {
-      function() astro.toggle_term_cmd({ cmd = "btop", direction = "float" }) end,
-      desc = "ToggleTerm btop",
-    },
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
       desc = "Toggleterm Artisan for current Docker container",
@@ -177,6 +173,27 @@ return {
     ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
 
     -- Telescope
+    ["<Leader>ff"] = {
+      function()
+        require("snacks").picker.files({
+          hidden = vim.tbl_get((vim.uv or vim.loop).fs_stat ".git" or {}, "type") == "directory",
+          include = {
+            '.env',
+          },
+          exclude = {
+            "node_modules",
+            "*.min.css",
+            "*_min.css",
+            "*.min.js",
+            "*.min_*.js",
+            "*_min.js",
+            "*min.js.map",
+            "*min.map",
+          },
+        })
+      end,
+      desc = "Find files",
+    },
     ["<Leader>fw"] = {
       function() require("snacks").picker.grep { hidden = true, ignored = true } end,
       desc = "Find words in all files",
