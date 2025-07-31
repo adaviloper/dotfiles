@@ -9,7 +9,7 @@ end
 
 M.commit_lazy_lock_file = function()
   run_shell_command([[
-  git add config/nvim/lazy-lock.json; 
+  git add dot_config/nvim/lazy-lock.json; 
   git commit -m "updating lazy lock file;
   ]])
 end
