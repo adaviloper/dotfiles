@@ -13,7 +13,6 @@ local get_above_assignment = function ()
     return nil
   end
 
-    vim.notify('lexical_declaration found: ' .. vim.treesitter.get_node_text(node, 0))
     local assignment_query = [[
 (lexical_declaration
   (variable_declarator
