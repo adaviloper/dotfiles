@@ -1,0 +1,28 @@
+#!/bin/bash
+
+{{ template "shared_pick_node_package_manager.tmpl" . -}}
+
+if [ ! -f "package.json" ]; then
+  exit 0
+fi
+
+if [ "$#" -gt 0 ]; then
+  if _pick_node_package_manager; then
+    yarn "$@"
+  else
+    npm run "$@"
+  fi
+  exit 0
+fi
+
+COMMAND="$(jq -r '.scripts | keys[]' package.json | gum filter)"
+
+if [ -n $COMMAND ]; then
+  exit 0
+fi
+
+if _pick_node_package_manager; then
+  yarn $COMMAND
+else
+  npm run $COMMAND
+fi

@@ -1,6 +1,7 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.config/bin/docker:$PATH"
 export PATH="$HOME/.config/bin/git:$PATH"
+export PATH="$HOME/.config/bin/node:$PATH"
 export PATH="$HOME/.config/bin:$PATH"
 export PATH="$HOME/.docker/cli-plugins:$PATH"
 export PATH="$HOME/.local/bin:$PATH"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+{{ template "shared_pick_node_package_manager.tmpl" . -}}
+
+if _pick_node_package_manager; then
+  yarn add --dev "$@"
+else
+  npm install -D "$@"
+fi
