@@ -1,0 +1,10 @@
+#!/bin/bash
+
+{{ template "shared_pick_node_package_manager.tmpl" . -}}
+
+if _pick_node_package_manager; then
+  yarn hot "$@"
+else
+  npm run hot "$@"
+fi
+

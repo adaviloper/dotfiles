@@ -1,0 +1,17 @@
+_pick_node_package_manager() {
+  if [ -f yarn.lock ]; then
+    return 0  # use yarn
+  fi
+
+  if [ -f package-lock.json ]; then
+    return 1  # use npm
+  fi
+
+  choice=$(gum choose --header "No lockfile found. Which package manager?" yarn npm)
+  if [ "$choice" = "yarn" ]; then
+    return 0
+  fi
+
+  return 1
+}
+
