@@ -30,7 +30,6 @@ M.get_target_node = function(node_names)
 end
 
 M.parse_query_for_capture = function (node, query_to_parse, target)
-
 	local cursor = require("luasnip.util.util").get_cursor_0ind()
 	local _, parser = pcall(vim.treesitter.get_parser)
   local lang = parser:language_for_range({
