@@ -1,6 +1,5 @@
 local mocha = require("catppuccin.palettes").get_palette("mocha")
 
-
 local function get_ft_hl()
 	local ft_color = {
 		css = mocha.blue,
@@ -25,7 +24,7 @@ return {
 		local conditions = require("heirline.conditions")
 
 		opts.statusline = { -- statusline
-			hl = { fg = "fg", bg = "bg" },
+			hl = { fg = "fg", bg = mocha.base },
 			status.component.mode({
 				-- enable mode text with padding as well as an icon before it
 				mode_text = {
@@ -42,7 +41,17 @@ return {
 					end,
 				},
 			}),
-			status.component.git_branch(),
+			status.component.git_branch(
+				{
+					surround = {
+						color = function()
+							return {
+								main = mocha.mantle,
+							}
+						end
+					}
+				}
+			),
 			status.component.file_info({
 				provider = function(self)
 					-- first, trim the pattern relative to the current directory. For other
@@ -107,9 +116,14 @@ return {
 				},
 			},
 			status.component.fill(),
-			status.component.lsp(),
+			status.component.lsp({
+				hl = function ()
+					return { fg = get_ft_hl() }
+				end,
+				surround = { separator = "tab" }
+			}),
 			status.component.virtual_env(),
-			status.component.treesitter(),
+			status.component.treesitter({ surround = { separator = "tab" } }),
 			status.component.nav(),
 			status.component.mode({ surround = { separator = "blank" } }),
 		}
