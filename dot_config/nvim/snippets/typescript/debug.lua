@@ -8,11 +8,7 @@ local get_above_assignment = function ()
   --- @type TSNode|nil {node}
   local node = get_target_node('lexical_declaration')
 
-  if node == nil then
-    vim.notify('lexical_declaration not found')
-    return nil
-  end
-
+  if node ~= nil then
     local assignment_query = [[
 (lexical_declaration
   (variable_declarator
@@ -22,6 +18,24 @@ local get_above_assignment = function ()
 ]]
     return parse_query_for_capture(node, assignment_query, 'var')[1]
   end
+
+ node = get_target_node('expression_statement')
+
+  if node == nil then
+    vim.notify('expression_statement not found')
+    return nil
+  end
+
+  local assignment_query = [[
+(expression_statement
+  (assignment_expression
+    left: (identifier) @var
+    )
+  )
+]]
+  return parse_query_for_capture(node, assignment_query, 'var')[1]
+end
+
 return
   {
   },
@@ -46,8 +60,7 @@ return
                   local pos = vim.api.nvim_win_get_cursor(0)
                   local prev_line = vim.api.nvim_buf_get_lines(0, pos[1] - 2, pos[1] - 1, false)
 
-                  if prev_line[1] == '' then
-                    vim.notify('empty prev line')
+                  if prev_line[1] and vim.trim(prev_line[1]) == '' then
                     return sn(nil, {
                       i(1, '')
                     })
@@ -55,12 +68,10 @@ return
 
                   local target_variable = get_above_assignment()
                   if target_variable == nil then
-                    vim.notify('empty prev line')
                     return sn(nil, {
                       i(1, '')
                     })
                   end
-                  vim.notify(vim.inspect(target_variable))
 
                   vim.api.nvim_win_set_cursor(0, pos)
 
