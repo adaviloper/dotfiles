@@ -2,9 +2,8 @@
 
 {{ template "shared_pick_node_package_manager.tmpl" . -}}
 
-if _pick_node_package_manager; then
-  yarn watch-poll "$@"
-else
-  npm run watch-poll "$@"
-fi
-
+case "$(_pick_node_package_manager)" in
+  yarn) yarn watch-poll "$@" ;;
+  pnpm) pnpm run watch-poll "$@" ;;
+  npm) npm run watch-poll "$@" ;;
+esac

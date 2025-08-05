@@ -7,22 +7,22 @@ if [ ! -f "package.json" ]; then
 fi
 
 if [ "$#" -gt 0 ]; then
-  if _pick_node_package_manager; then
-    yarn "$@"
-  else
-    npm run "$@"
-  fi
+  case "$(_pick_node_package_manager)" in
+    yarn) yarn "$@" ;;
+    pnpm) pnpm run "$@" ;;
+    npm) npm run "$@" ;;
+  esac
   exit 0
 fi
 
 COMMAND="$(jq -r '.scripts | keys[]' package.json | gum filter)"
 
-if [ -n $COMMAND ]; then
+if [! -n $COMMAND ]; then
   exit 0
 fi
 
-if _pick_node_package_manager; then
-  yarn $COMMAND
-else
-  npm run $COMMAND
-fi
+case "$(_pick_node_package_manager)" in
+  yarn) yarn "$COMMAND" ;;
+  pnpm) pnpm run "$COMMAND" ;;
+  npm) npm run "$COMMAND" ;;
+esac

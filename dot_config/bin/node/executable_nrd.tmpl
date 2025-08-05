@@ -2,8 +2,8 @@
 
 {{ template "shared_pick_node_package_manager.tmpl" . -}}
 
-if _pick_node_package_manager; then
-  yarn dev "$@"
-else
-  npm run dev "$@"
-fi
+case "$(_pick_node_package_manager)" in
+  yarn) yarn dev "$@" ;;
+  pnpm) pnpm run dev "$@" ;;
+  npm) npm run dev "$@" ;;
+esac

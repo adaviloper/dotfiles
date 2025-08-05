@@ -2,9 +2,9 @@
 
 {{ template "shared_pick_node_package_manager.tmpl" . -}}
 
-if _pick_node_package_manager; then
-  yarn hot "$@"
-else
-  npm run hot "$@"
-fi
+case "$(_pick_node_package_manager)" in
+  yarn) yarn hot "$@" ;;
+  pnpm) pnpm run "$@" ;;
+  npm) npm run "$@" ;;
+esac
 
