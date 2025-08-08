@@ -3,6 +3,16 @@ local utils = require("helpers.utils")
 local ls = require("luasnip")
 local git_utils = require("helpers.git_utils")
 
+local search_exclusions = {
+  "node_modules*",
+  "*.min.css",
+  "*_min.css",
+  "*.min.js",
+  "*.min_*.js",
+  "*_min.js",
+  "*min.js.map",
+  "*min.map",
+}
 local function setFileTag(tagName)
   return {
     function()
@@ -180,25 +190,24 @@ return {
           include = {
             '.env',
           },
-          exclude = {
-            "node_modules",
-            "*.min.css",
-            "*_min.css",
-            "*.min.js",
-            "*.min_*.js",
-            "*_min.js",
-            "*min.js.map",
-            "*min.map",
-          },
+          exclude = search_exclusions,
         })
       end,
       desc = "Find files",
     },
     ["<Leader>fw"] = {
-      function() require("snacks").picker.grep { hidden = true, ignored = true } end,
+      function() require("snacks").picker.grep {
+        hidden = true,
+        ignored = true,
+          exclude = search_exclusions,
+      } end,
       desc = "Find words in all files",
     },
-    ["<Leader>f/"] = { function() require("snacks").picker.grep() end, desc = "Find words" },
+    ["<Leader>f/"] = { function() require("snacks").picker.grep({
+      glob = {
+        vim.fn.expand("%")
+      }
+    }) end, desc = "Find words" },
     ["<Leader>fo"] = {
       function() require("telescope.builtin").oldfiles({ cwd_only = true }) end,
       desc = "Find history",
