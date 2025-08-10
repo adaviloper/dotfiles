@@ -46,9 +46,12 @@ return {
 					surround = {
 						color = function()
 							return {
-								main = mocha.mantle,
+								main = mocha.mauve,
 							}
-						end
+						end,
+					},
+					hl = {
+						fg = mocha.base,
 					}
 				}
 			),
@@ -72,7 +75,13 @@ return {
 					end
 				end,
 			}),
-			status.component.git_diff(),
+			status.component.git_diff({
+				surround = {
+					color = {
+						main = mocha.mantle,
+					},
+				},
+			}),
 			status.component.diagnostics(),
 			status.component.fill(),
 			status.component.cmd_info({
@@ -84,7 +93,7 @@ return {
 			{ -- tab list
 				condition = function()
 					return #vim.api.nvim_list_tabpages() >= 2
-				end, -- only show tabs if there are more than one
+				end, -- Only show tabs if there are more than one
 				status.heirline.make_tablist({ -- component for each tab
 					provider = status.provider.tabnr(),
 					hl = function(self)
