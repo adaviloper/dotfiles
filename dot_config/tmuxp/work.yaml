@@ -5,11 +5,18 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: Admin
+  - window_name: OcrOrchestrator
+    start_directory: ./ocr_orchestrator
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: Frontend
+  - window_name: OcrTextract
+    start_directory: ./ocr_textract
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: SLAPI
+    start_directory: ./slapi/server
     panes:
       - shell_command:
           - cmd: "c"
