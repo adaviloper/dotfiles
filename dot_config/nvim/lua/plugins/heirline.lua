@@ -44,11 +44,9 @@ return {
 			status.component.git_branch(
 				{
 					surround = {
-						color = function()
-							return {
-								main = mocha.mauve,
-							}
-						end,
+						color = {
+							main = mocha.mauve,
+						},
 					},
 					hl = {
 						fg = mocha.base,
