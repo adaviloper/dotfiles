@@ -1,0 +1,19 @@
+#
+matches:
+  - trigger: "%man"
+    replace: "{{ onepasswordRead .secrets.espanso.manager_email }}@{{ onepasswordRead .secrets.espanso.work_domain }}"
+
+  - trigger: "%work"
+    replace: "{{ onepasswordRead .secrets.espanso.my_email }}@{{ onepasswordRead .secrets.espanso.work_domain }}"
+
+  - trigger: "%temail"
+    form: "{{ onepasswordRead .secrets.espanso.my_email }}+[[name]]@{{ onepasswordRead .secrets.espanso.work_domain }}"
+
+  - trigger: "%remail"
+    replace: "{{ onepasswordRead .secrets.espanso.my_email }}+{{ "{{" }} timestamp {{ "}}" }}@suralink.com"
+    vars:
+      - name: timestamp
+        type: date
+        params:
+          format: "%s"
+
