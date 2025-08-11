@@ -1,4 +1,5 @@
 # espanso match file 
+# ur shell
 
 # For a complete introduction, visit the official docs at: https://espanso.org/docs/
 
@@ -8,14 +9,10 @@
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  # Simple text replacement
-  - trigger: "%espanso"
-    replace: "Hi there!"
-
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
   # But matches can also be dynamic:
-
+  
   # Print the current date
   - trigger: "%today"
     replace: "{{todaysDate}}"
