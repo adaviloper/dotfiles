@@ -89,7 +89,7 @@ end
 
 M.template = function(pattern, template_name, additional_pattern)
   vim.api.nvim_create_autocmd({ "BufNew", "BufNewFile" }, {
-    desc = "Autoload template for notes/journal",
+    desc = "Autoload template for " .. template_name,
     pattern = pattern,
     callback = function(args)
       local index = "index.norg"
