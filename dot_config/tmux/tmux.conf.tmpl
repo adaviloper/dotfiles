@@ -1,108 +1,15 @@
-set -g default-terminal "tmux-256color"
-set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
-set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
-set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colors - needs tmux-3.0
-set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
-set -as terminal-overrides "*:Tc"
-if 'infocmp -x tmux-256color > /dev/null 2>&1' 'set -g default-terminal "tmux-256color"'
-
-setw -g xterm-keys on
-set -s escape-time 10                     # faster command sequences
-set -sg repeat-time 600                   # increase repeat timeout
-set -s focus-events on
-set -g status-position top
-set -g mouse on
+source-file ~/.config/tmux/config/options.conf
 
 unbind-key C-b
 set-option -g prefix C-Space             # GNU-Screen compatible prefix
 bind-key C-Space send-prefix
 
-set -q -g status-utf8 on                  # expect UTF-8 (tmux < 2.2)
-set -q -g utf8
-setw -q -g utf8 on
-
-set -g history-limit 5000                 # boost history
-
-# reload configuration
-bind r source-file ~/.config/tmux/tmux.conf \; display '~/.config/tmux/tmux.conf sourced'
-
-unbind-key n
-bind-key j next-window
-unbind-key p
-bind-key k previous-window
-
-# Session Management
-bind . if-shell '[ $(tmux has-session -t "Dotfiles") -eq 0 ]' {
-  # comment
-  attach -t "Dotfiles"
-} {
-  # comment
-  run-shell "load dots"
-}
-
-bind u if-shell 'test -f "$HOME/.config/work_computer"' {
-  if-shell 'tmux has-session -t "Work" 2>/dev/null' {
-    attach -t "Work"
-  } {
-    run-shell "load work"
-  }
-} {
-  if-shell 'tmux has-session -t "Redwood" 2>/dev/null' {
-    attach -t "Redwood"
-  } {
-    run-shell "load redwood"
-  }
-}
-bind i if-shell '[ $(tmux has-session -t "Plugins") -eq 0 ]' {
-  # comment
-  attach -t "Plugins"
-} {
-  # comment
-  run-shell "load plugins"
-}
-bind o if-shell '[ $(tmux has-session -t "QMK Firmware") -eq 0 ]' {
-  # comment
-  attach -t "QMK Firmware"
-} {
-  # comment
-  run-shell "load qmk"
-}
-bind n if-shell '[ $(tmux has-session -t "Notes") -eq 0 ]' {
-  # comment
-  attach -t "Notes"
-} {
-  # comment
-  run-shell "load notes"
-}
-bind q kill-session
-
-set -g base-index 1           # start windows numbering at 1
-setw -g pane-base-index 1     # make pane numbering consistent with windows
-setw -g pane-border-lines heavy     # make pane numbering consistent with windows
-
-setw -g automatic-rename on   # rename window to reflect current program
-set -g renumber-windows on    # renumber windows when a window is closed
-
-set -g set-titles on          # set terminal title
-
-set -g display-panes-time 800 # slightly longer pane indicators display time
-set -g display-time 1000      # slightly longer status messages display time
-
-set -g status-interval 10     # redraw status line every 10 seconds
-
-set -g detach-on-destroy off
+source-file ~/.config/tmux/config/key-bindings.conf
 
 # Vi copypaste mode
 set-window-option -g mode-keys vi
 bind-key -T copy-mode-vi 'C-v' send -X begin-selection
 bind-key -T copy-mode-vi 'C-y' send -X copy-selection
-
-# clear both screen and history
-bind -n C-l send-keys C-l \; run 'sleep 0.2' \; clear-history
-
-# activity
-set -g monitor-activity off
-set -g visual-activity off
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tmux-sensible'
@@ -134,8 +41,6 @@ set -g status-right-length 100
 set -g status-left "#{E:@tmux_theme_status_session_name} "
 set -g status-right "#{E:@tmux_theme_status_directory}"
 set -ag status-right " #{E:@tmux_theme_status_datetime}"
-
-# run '~/.config/tmux/plugins/tmux-theme/tmux-theme.tmux'
 
 set -g @plugin 'tmux-plugins/tpm'
 # Other examples:
