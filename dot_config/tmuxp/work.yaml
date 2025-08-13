@@ -1,12 +1,8 @@
 session_name: Work
 start_directory: ~/Code/suralink
 windows:
-  - window_name: Root
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: OcrOrchestrator
-    start_directory: ./ocr_orchestrator
+    start_directory: ./ocr_orchestrator_service
     panes:
       - shell_command:
           - cmd: "c"
@@ -17,6 +13,11 @@ windows:
           - cmd: "c"
   - window_name: SLAPI
     start_directory: ./slapi/server
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Files Service
+    start_directory: ./files_service
     panes:
       - shell_command:
           - cmd: "c"
