@@ -1,3 +1,4 @@
+{{- if eq .is_mac true -}}
 tap 'jakehilborn/jakehilborn'
 tap 'jesseduffield/lazynpm'
 tap 'thoughtbot/formulae'
@@ -55,3 +56,4 @@ cask 'postman'
 cask 'shottr'
 cask 'steermouse'
 cask 'wezterm'
+{{- end -}}

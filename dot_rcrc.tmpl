@@ -1,5 +1,7 @@
+{{- if eq .is_mac true -}}
 EXCLUDES="apps assets Brewfile Brewfile.lock.json phpstorm scripts vim vimrc work-settings.jar xbindkeysrc.scm"
 
 SYMLINK_DIRS="config/autostart config/awesome config/bat config/bin config/nvim config/phpactor config/tmuxp config/wezterm config/yazi Library/Application\ Support/org.yanex.marta themes"
 
 UNDOTTED="intelephense Library"
+{{- end -}}
