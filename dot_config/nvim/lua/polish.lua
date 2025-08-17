@@ -24,7 +24,7 @@ vim.filetype.add({
   pattern = {
     ["*"] = "text",
     [".*/dot_config/bin/.*"] = "sh",
-    [".*.lua.tmpl"] = "toml",
+    [".*.lua.tmpl"] = "lua",
     [".*.sh.tmpl"] = "sh",
     [".*.toml.tmpl"] = "toml",
     [".*.yaml.tmpl"] = "yaml",
