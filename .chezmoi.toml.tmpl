@@ -3,6 +3,9 @@
 [hooks.read-source-state.pre]
   command = ".local/share/chezmoi/.install-password-manager.sh"
 
+[hooks.apply.post]
+  command = ".local/share/chezmoi/.update-omz-permissions.sh"
+
 [data]
   purpose = "{{ $purpose }}"
   is_mac = {{ if eq .chezmoi.os "darwin" }} true {{ else }} false {{ end }}
