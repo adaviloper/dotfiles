@@ -1,5 +1,7 @@
 #!/bin/bash
 
+{{ template "shared_bin_utils.sh.tmpl" . }}
+
 {{ template "shared_pick_node_package_manager.tmpl" . -}}
 
 if [ ! -f "package.json" ]; then
@@ -17,9 +19,11 @@ fi
 
 COMMAND="$(jq -r '.scripts | keys[]' package.json | gum filter)"
 
-if [! -n $COMMAND ]; then
+if [ ! -n "$COMMAND" ]; then
   exit 0
 fi
+
+info "Running [$COMMAND]"
 
 case "$(_pick_node_package_manager)" in
   yarn) yarn "$COMMAND" ;;
