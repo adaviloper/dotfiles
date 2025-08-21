@@ -22,7 +22,6 @@ vim.filetype.add({
     ["dot_zshrc.tmpl"] = "zsh",
   },
   pattern = {
-    ["*"] = "text",
     [".*/dot_config/bin/.*"] = "sh",
     [".*.lua.tmpl"] = "lua",
     [".*.sh.tmpl"] = "sh",
@@ -37,23 +36,32 @@ vim.filetype.add({
 -- Function overwrites
 vim.ui.open = (function(overridden)
   return function(path)
-    vim.validate({
-      path = { path, 'string' },
-    })
-    local is_uri = path:match('%w+:')
-    local is_half_url = path:match('%.com$') or path:match('%.com%.')
-    local is_repo = vim.tbl_contains({'lua', 'tmux'}, vim.bo.filetype) and path:match('%w/%w') and vim.fn.count(path, '/') == 1
-    local is_dir = path:match('/%w')
+    vim.validate({ path = { path, "string" } })
+
+    local current_ft = (vim.bo and vim.bo.filetype) or ""
+    local is_uri = path:match("^%a[%w+.-]*:") ~= nil
+    local is_dir = (vim.fn and vim.fn.isdirectory(path) == 1) or false
+    local is_repo_like = (current_ft == "lua" or current_ft == "tmux")
+      and path:match("^[%w_.-]+/[%w_.-]+$") ~= nil
+    local looks_like_domain = path:match("^[%w%-%.]+%.[A-Za-z][A-Za-z]+") ~= nil
 
     if not is_uri then
-      if is_half_url then
-        path = ('https://%s'):format(path)
-      elseif is_repo then
-        path = ('https://github.com/%s'):format(path)
+      if looks_like_domain then
+        if not path:match("^https?://") then
+          path = ("https://%s"):format(path)
+        end
+      elseif is_repo_like then
+        path = ("https://github.com/%s"):format(path)
       elseif not is_dir then
-        path = ('https://google.com/search?q=%s'):format(path)
+        local q = path:gsub("%s+", "+")
+        path = ("https://google.com/search?q=%s"):format(q)
       end
     end
-    overridden(path)
+
+    if overridden then
+      overridden(path)
+    else
+      vim.notify("No UI opener available for: " .. path, vim.log.levels.WARN)
+    end
   end
 end)(vim.ui.open)
