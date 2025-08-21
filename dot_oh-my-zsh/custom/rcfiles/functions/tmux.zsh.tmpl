@@ -1,80 +1,81 @@
-#!/bin/bash
+# zsh-native helpers for tmuxp session selection and completion
 
-# Function to check if a directory exists
-function check_directory() {
-    local expanded_path=$(eval echo $1)
-    if [ -d "$expanded_path" ]; then
-        return 0  # Directory exists
-    else
-        return 1  # Directory does not exist
+# Check if a directory exists (after expanding ~)
+check_directory() {
+  local expanded_path
+  expanded_path=${~1}
+  [[ -d "$expanded_path" ]]
+}
+
+# Completion for `tm` function: suggest tmuxp YAML basenames
+_tm_complete() {
+  local -a yaml_files filtered basenames
+  local config_dir="$HOME/.config/tmuxp"
+  yaml_files=(${config_dir}/*.yaml(N))
+
+  for yaml_file in ${yaml_files[@]}; do
+    local start_directory
+    start_directory=$(yq e -r '.start_directory' "$yaml_file" 2>/dev/null | head -n1 | tr -d '"')
+    if [[ -z "$start_directory" ]] || check_directory "$start_directory"; then
+      filtered+="$yaml_file"
     fi
+  done
+
+  for file in ${filtered[@]}; do
+    basenames+="${file:t:r}"
+  done
+
+  compadd -- ${basenames[@]}
 }
+compdef _tm_complete tm
 
-_load_completion() {
-    CONFIG_DIR="$HOME/.config/tmuxp"
-    local cur_word
-    COMPREPLY=()
-    cur_word="${COMP_WORDS[COMP_CWORD]}"
-    YAML_FILES=("$CONFIG_DIR"/*.yaml)
+tm() {
+  local config_dir="$HOME/.config/tmuxp"
 
-    # Filter YAML files based on the start_directory key
-    VALID_YAML_FILES=()
-    for yaml_file in "${YAML_FILES[@]}"; do
-        start_directory=$(cat "$yaml_file" | yq {{ if eq .is_linux true }} e {{ end }} -r '.start_directory' | awk 'NR==1' | tr -d '"')
-        if [ -z "$start_directory" ] || check_directory "$start_directory"; then
-            VALID_YAML_FILES+=("$yaml_file")
-        fi
-    done
+  # If args are provided, pass through to tmux directly
+  if (( $# > 0 )); then
+    command tmux "$@"
+    return
+  fi
 
-    # Extract just the file names without the path or extension
-    YAML_FILES_BASENAMES=()
-    for file in "${VALID_YAML_FILES[@]}"; do
-        file_basename=$(basename "$file" .yaml)
-        YAML_FILES_BASENAMES+=("$file_basename")
-    done
-
-    # Generate autocomplete suggestions
-    COMPREPLY=($(compgen -W "${YAML_FILES_BASENAMES[*]}" -- "$cur_word"))
-}
-complete -F _load_completion load
-
-function tm() {
-    CONFIG_DIR="$HOME/.config/tmuxp"
-
-    # Check if there are any arguments
-    if [ "$#" -gt 0 ]; then
-        # Execute tmux commands passed as arguments
-        tmux "$@"
-    else
-        # Get a list of YAML files in the CONFIG_DIR
-        YAML_FILES=("$CONFIG_DIR"/*.yaml)
-
-        # Filter YAML files based on start_directory existence
-        FILTERED_YAML=()
-        for yaml_file in "${YAML_FILES[@]}"; do
-            start_directory=$(cat "$yaml_file" | yq {{ if eq .is_ubuntu true }} e {{ end }} -r '.start_directory' | awk 'NR==1' | tr -d '"')
-            if [ -z "$start_directory" ] || check_directory "$start_directory"; then
-                FILTERED_YAML+=("$yaml_file")
-            fi
-        done
-
-        # If there are valid YAML files, choose one using gum choose
-        if [ ${#FILTERED_YAML[@]} -gt 0 ]; then
-            SESSIONS="$(gum choose --header "Choose which sessions to load" --no-limit "${FILTERED_YAML[@]}")"
-            eval "CONFIG_FILES=($SESSIONS)"
-            for config_path in $CONFIG_FILES; do
-                # Check if the tmuxp config file exists
-                if [ -f "$config_path" ]; then
-                    # Load the tmuxp session using the config file
-                    tmuxp load -d "$config_path"
-                fi
-            done
-            tmux attach -t Dotfiles
-        else
-            echo "No valid YAML files found in '$CONFIG_DIR' or start directories do not exist."
-        fi
+  # If a tmux server is already running and we're not inside tmux, just attach
+  if [[ -z "$TMUX" ]]; then
+    if tmux list-sessions >/dev/null 2>&1; then
+      if tmux has-session -t Dotfiles >/dev/null 2>&1; then
+        tmux attach -t Dotfiles
+      else
+        tmux attach
+      fi
+      return
     fi
-}
+  fi
 
-# To use this function, source this script from your shell or add it to your .bashrc or .zshrc file.
-# Then you can call it from the terminal by typing `tm` or `tm <tmux command>`.
+  # Collect tmuxp YAMLs and filter by start_directory existence
+  local -a yaml_files filtered_yaml
+  yaml_files=(${config_dir}/*.yaml(N))
+
+  local yaml_file start_directory
+  for yaml_file in ${yaml_files[@]}; do
+    start_directory=$(yq e -r '.start_directory' "$yaml_file" 2>/dev/null | head -n1 | tr -d '"')
+    if [[ -z "$start_directory" ]] || check_directory "$start_directory"; then
+      filtered_yaml+="$yaml_file"
+    fi
+  done
+
+  if (( ${#filtered_yaml[@]} > 0 )); then
+    local sessions config_files
+    sessions=$(gum choose --header "Choose which sessions to load" --no-limit ${filtered_yaml[@]})
+    # Split gum's newline-separated output into an array
+    config_files=(${(f)sessions})
+
+    local config_path
+    for config_path in ${config_files[@]}; do
+      if [[ -f "$config_path" ]]; then
+        tmuxp load -d -- "$config_path"
+      fi
+    done
+    tmux attach -t Dotfiles
+  else
+    echo "No valid YAML files found in '$config_dir' or start directories do not exist."
+  fi
+}
