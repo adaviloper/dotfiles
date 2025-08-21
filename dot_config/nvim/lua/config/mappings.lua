@@ -10,8 +10,12 @@ local search_exclusions = {
   "*.min.js",
   "*.min_*.js",
   "*_min.js",
-  "*min.js.map",
-  "*min.map",
+  "*.map",
+  "public/*",
+  "dist/*",
+  "*/dist/*",
+  "build/*",
+  "*/build/*",
 }
 local function setFileTag(tagName)
   return {
