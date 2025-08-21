@@ -4,16 +4,16 @@ return {
     breakindentopt = 'shift:2',
     conceallevel = 2,
     jumpoptions = 'view',
-    number = true, -- sets vim.opt.number
-    relativenumber = true, -- sets vim.opt.relativenumber
+    number = true,
+    relativenumber = true,
     scrolloff = 8,
-    signcolumn = "yes:1", -- sets vim.opt.signcolumn to auto
+    signcolumn = "yes:1", -- set to 1 to prevent horizontal jumping
     showtabline = 0,
-    spell = true, -- sets vim.opt.spell
+    spell = true,
     spelloptions = "camel",
     whichwrap = "b,s,<,>",
     wildmode = 'list:longest,full',
-    wrap = true, -- sets vim.opt.wrap
+    wrap = true,
   },
   g = { -- vim.g.<key>
     -- configure global vim variables (vim.g)
@@ -22,7 +22,6 @@ return {
     autoformat_enabled = false,
     autopairs_enabled = true,
     cmp_enabled = true,
-    diagnostics_mode = 1,
     format_on_save = false,
     icons_enabled = true,
     resession_enabled = false,
