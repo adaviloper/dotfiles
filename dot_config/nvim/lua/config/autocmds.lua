@@ -25,14 +25,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 
 local misc_group = vim.api.nvim_create_augroup('adaviloper/miscellaneous', { clear = true })
 
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'TermClose', 'TermLeave' }, {
   group = misc_group,
-  pattern = {
-    '*.js',
-    '*.lua',
-    '*.php',
-    '*.ts',
-    '*.vue',
-  },
   command = 'checktime',
 })
