@@ -7,9 +7,14 @@ bind-key C-Space send-prefix
 source-file ~/.config/tmux/config/key-bindings.conf
 
 # Vi copypaste mode
+set -g @copy_mode_fg '{{ .colorscheme.crust }}'
+set -g @copy_mode_bg '{{ .colorscheme.sky }}'
 set-window-option -g mode-keys vi
-bind-key -T copy-mode-vi 'C-v' send -X begin-selection
-bind-key -T copy-mode-vi 'C-y' send -X copy-selection
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi V send -X select-line
+bind-key -T copy-mode-vi C-v send -X rectangle-toggle
+bind-key -T copy-mode-vi y send -X copy-selection
+set -g mode-style 'fg=#{@copy_mode_fg},bg=#{@copy_mode_bg}'
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tmux-sensible'
