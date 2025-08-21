@@ -51,10 +51,6 @@ return {
     ["<A-k>"] = { "5k" },
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
     ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab" },
-    ["<F3>"] = {
-      function() vim.cmd('TermExec cmd="dock deno run ' .. vim.fn.expand("%:t") .. '"') end,
-      desc = "Run current AoC file",
-    },
 
     ["<Leader>SS"] = {
       function()
@@ -162,11 +158,11 @@ return {
     ["<F8>"] = { name = "CLI TUIs" },
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
-      desc = "Toggleterm Artisan for current Docker container",
+      desc = "Toggleterm Artisan tinker for current Docker container",
     },
     ["<Leader>db"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dbash" }) end,
-      desc = "Toggleterm Artisan Tinker for current Docker container",
+      desc = "Toggleterm Bash for current Docker container",
     },
     ["<Leader>tg"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "gh dash" }) end,
@@ -180,7 +176,10 @@ return {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "yazi" }) end,
       desc = "Toggleterm Yazi",
     },
-    ["<F8>f"] = { "F>ldiwi<BS><BS>['']<Esc>hhp", desc = "Class property to array key" },
+    ["<F3>"] = {
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "cursor-agent", count = 9 }) end,
+      desc = "Toggleterm Cursor Agent",
+    },
 
     -- Telescope
     ["<Leader>ff"] = {
