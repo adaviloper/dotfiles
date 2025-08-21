@@ -131,20 +131,26 @@ export TERM="xterm-256color"
 unalias g
 unalias gco
 
-# Check if already inside a tmux session
-if [ -z "$TMUX" ]; then
+# Detect WezTerm (only autostart tmux from WezTerm)
+is_wezterm=false
+[[ "$TERM_PROGRAM" = "WezTerm" ]] && is_wezterm=true
+[[ -n "$WEZTERM_EXECUTABLE" ]] && is_wezterm=true
+[[ -n "$WEZTERM_PANE" ]] && is_wezterm=true
+
+# Autostart tmux only when in WezTerm
+if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ "$is_wezterm" = true ]] && [[ -z "$ZSH_NO_TMUX_AUTOSTART" ]]; then
   # Check if a tmux server is running
   if ! pgrep -x "tmux" > /dev/null; then
     # If no tmux server is running, run your command
-
     tmuxp load -d dots
 
-    if [[ -f "$HOME/.config/work_computer" ]]; then
-      #
-    else
-      tmuxp load -d notes
-      tmuxp load -d redwood
-    fi
+    tmuxp load -d notes
+
+    {{- if eq .purpose "work" -}}
+    tmuxp load -d notes
+    {{ else }}
+    tmuxp load -d redwood
+    {{- end }}
 
     tmux attach
   else
