@@ -1,13 +1,12 @@
-local mocha = require("catppuccin.palettes").get_palette("mocha")
-local Snacks = require("snacks")
-
 -- You can also add new plugins here as well using the lazy syntax:
 return {
   "andweeb/presence.nvim",
   {
     "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
+    event = "InsertEnter",
+    config = function()
+      require("lsp_signature").setup()
+    end,
   },
 
   -- customize alpha options
@@ -15,6 +14,8 @@ return {
     "folke/snacks.nvim",
     opts = function(_, opts)
       -- customize the dashboard header
+      local mocha = require("catppuccin.palettes").get_palette("mocha")
+      local Snacks = require("snacks")
 
       vim.api.nvim_set_hl(0, "NeovimDashboardLogo1", { fg = mocha.blue })
       vim.api.nvim_set_hl(0, "NeovimDashboardLogo2", { fg = mocha.green, bg = mocha.blue })
