@@ -63,7 +63,8 @@ return {
           function ()
             vim.cmd('norm 5k')
           end
-        }
+        },
+        l = "open",
       }
     }
   }
