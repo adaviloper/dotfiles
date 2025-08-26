@@ -17,4 +17,11 @@ function M.get_session_name()
   end
 end
 
+function M.run_shell_command(str)
+  local handle = io.popen(str)
+  if handle then
+    handle:close()
+  end
+end
+
 return M
