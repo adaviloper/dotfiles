@@ -1,17 +1,16 @@
-[Application settings for org.wezfurlong.wezterm]
-Description=Application settings for org.wezfurlong.wezterm
-clientmachine=localhost
-noborder=true
-noborderrule=4
-wmclass=org.wezfurlong.wezterm
-wmclassmatch=1
-
 [No Title Bar]
 Description=No Title Bar
 noborder=true
 noborderrule=3
 types=1
 wmclass=org.wezfurlong.wezterm
+wmclassmatch=1
+
+[Switch to 1Password]
+Description=Switch to 1Password
+shortcut=Ctrl+Alt+Shift+X
+shortcutrule=4
+wmclass=1Password
 wmclassmatch=1
 
 [Switch to Browser]
@@ -22,18 +21,25 @@ types=1
 wmclass=zen
 wmclassmatch=1
 
+[Switch to Cursor]
+Description=Switch to Cursor
+shortcut=Ctrl+Alt+Shift+R
+shortcutrule=4
+wmclass=Cursor
+wmclassmatch=1
+
+[Switch to Discord]
+Description=Switch to Discord
+shortcut=Ctrl+Alt+Shift+D
+shortcutrule=4
+types=1
+wmclass=discord
+wmclassmatch=1
+
 [Switch to Slack]
 Description=Switch to Slack
 shortcut=Ctrl+Alt+Shift+S
 shortcutrule=4
 types=1
 wmclass=Slack
-wmclassmatch=1
-
-[Switch to Terminal]
-Description=Switch to Terminal
-shortcut=Ctrl+Alt+Shift+Return
-shortcutrule=4
-types=1
-wmclass=org.wezfurlong.wezterm
 wmclassmatch=1
