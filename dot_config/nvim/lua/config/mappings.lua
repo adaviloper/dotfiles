@@ -292,10 +292,10 @@ return {
 
     -- TreeSJ
     ["gS"] = {
-      function() require("treesj").split() end,
+      "v%!jq .<CR>",
       desc = "TreeSJ split",
     },
-    ["gJ"] = { function() require("treesj").join() end, desc = "TreeSJ join" },
+    ["gJ"] = { "v%!jq -c .<CR>", desc = "TreeSJ join" },
 
     -- Git
     ["<Leader>gB"] = { "<cmd>G blame<cr>", desc = "Commit annotations" },
@@ -361,6 +361,8 @@ return {
     ["<"] = { "<gv", desc = "Unindent without losing selection" },
     [">"] = { ">gv", desc = "Indent without losing selection" },
     ["y"] = { "ymy", desc = "Yank in visual mode without losing cursor position" },
+    ["gS"] = { "!jq<CR>", desc = "Format JSON" },
+    ["gJ"] = { "!jq<CR>", desc = "Format JSON" },
   },
   t = {
     -- setting a mapping to false will disable it
