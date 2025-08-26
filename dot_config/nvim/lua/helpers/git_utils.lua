@@ -1,16 +1,11 @@
+local utils = require("helpers.utils")
 local M = {}
 
-function run_shell_command(str)
-  local handle = io.popen(str)
-  if handle then
-    handle:close()
-  end
-end
-
 M.commit_lazy_lock_file = function()
-  run_shell_command([[
+  utils.run_shell_command([[
+  chezmoi add ~/.config/nvim/lazy-lock.json
   git add dot_config/nvim/lazy-lock.json; 
-  git commit -m "updating lazy lock file;
+  git commit -m "updating lazy lock file";
   ]])
 end
 
