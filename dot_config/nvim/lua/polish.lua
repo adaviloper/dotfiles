@@ -14,12 +14,13 @@ vim.filetype.add({
     zsh = "sh",
   },
   filename = {
-    ["Foofile"] = "fooscript",
-    ["phpstan.neon.dist"] = "phpstan",
     [".env"] = "sh",
     [".env.default"] = "sh",
-    ["tmux.conf.tmpl"] = "tmux",
+    ["Foofile"] = "fooscript",
+    ["composer.lock"] = "json",
     ["dot_zshrc.tmpl"] = "zsh",
+    ["phpstan.neon.dist"] = "phpstan",
+    ["tmux.conf.tmpl"] = "tmux",
   },
   pattern = {
     [".*/dot_config/bin/.*"] = "sh",
