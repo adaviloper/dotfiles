@@ -11,6 +11,8 @@ local function get_ft_hl()
 		toml = mocha.red,
 		typescript = mocha.sky,
 		vue = mocha.green,
+		xml = mocha.peach,
+		yaml = mocha.yellow,
 	}
 
 	return ft_color[vim.bo.filetype] or mocha.green
