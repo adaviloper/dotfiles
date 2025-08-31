@@ -9,7 +9,7 @@ local function get_ft_hl()
 		php = mocha.mauve,
 		scss = mocha.red,
 		toml = mocha.red,
-		typescript = mocha.blue,
+		typescript = mocha.sky,
 		vue = mocha.green,
 	}
 
@@ -72,11 +72,16 @@ return {
 						return "[" .. grapple.name_or_index() .. "]"
 					end
 				end,
+				surround = {
+					color = {
+						main = mocha.surface0,
+					},
+				},
 			}),
 			status.component.git_diff({
 				surround = {
 					color = {
-						main = mocha.mantle,
+						main = mocha.surface0,
 					},
 				},
 			}),
@@ -125,12 +130,27 @@ return {
 			status.component.fill(),
 			status.component.lsp({
 				hl = function ()
-					return { fg = get_ft_hl() }
+					return { fg = mocha.mantle }
 				end,
-				surround = { separator = "tab" }
+				surround = {
+					separator = "tab",
+					color = function ()
+						return {
+							main = get_ft_hl(),
+						}
+					end
+				},
 			}),
 			status.component.virtual_env(),
-			status.component.treesitter({ surround = { separator = "tab" } }),
+			status.component.treesitter({
+				hl = { fg = mocha.mantle },
+				surround = {
+					separator = "tab",
+					color = {
+						main = mocha.green,
+					},
+				}
+			}),
 			status.component.nav(),
 			status.component.mode({ surround = { separator = "blank" } }),
 		}
