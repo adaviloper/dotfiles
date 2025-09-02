@@ -43,3 +43,10 @@ shortcutrule=4
 types=1
 wmclass=Slack
 wmclassmatch=1
+
+[Switch to Terminal]
+Description=Switch to Terminal
+shortcut=Ctrl+Alt+Shift+Return
+shortcutrule=4
+wmclass=org.wezfurlong.wezterm
+wmclassmatch=1
