@@ -3,6 +3,7 @@ local mocha = require("catppuccin.palettes").get_palette("mocha")
 local function get_ft_hl()
 	local ft_color = {
 		css = mocha.blue,
+		go = mocha.sapphire,
 		json = mocha.text,
 		lua = mocha.sky,
 		markdown = mocha.yellow,
@@ -135,7 +136,7 @@ return {
 					return { fg = mocha.mantle }
 				end,
 				surround = {
-					separator = "tab",
+					separator = "right",
 					color = function ()
 						return {
 							main = get_ft_hl(),
@@ -147,13 +148,20 @@ return {
 			status.component.treesitter({
 				hl = { fg = mocha.mantle },
 				surround = {
-					separator = "tab",
+					separator = "right",
 					color = {
 						main = mocha.green,
 					},
 				}
 			}),
-			status.component.nav(),
+			status.component.nav({
+				surround = {
+					separator = "right_end",
+					color = {
+						main = mocha.surface2,
+					}
+				}
+			}),
 			status.component.mode({ surround = { separator = "blank" } }),
 		}
 

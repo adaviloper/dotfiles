@@ -27,9 +27,20 @@ return {
     status = {
       separators = {
         left = { "", " " }, -- separator for the left side of the statusline
-        right = { " ", "" }, -- separator for the right side of the statusline
+        right = { " ", "" }, -- separator for the right side of the statusline
+        right_end = { " ", "" },
         tab = { "", " " },
         blank = { "", "" },
+      },
+      modes = {
+        ["n"] = {
+          "NORM",
+          "normal"
+        },
+        ["t"] = {
+          "TERM",
+          "replace"
+        },
       },
     },
     text_icons = {
