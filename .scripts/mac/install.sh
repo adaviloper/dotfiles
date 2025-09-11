@@ -4,7 +4,6 @@ sudo xcodebuild -license accept
 set -e
 
 CONFIG_DIR="$HOME/.config"
-WORK_INDICATOR_FILE="$CONFIG_DIR/work_computer"
 
 yellow() {
   tput setaf 3
