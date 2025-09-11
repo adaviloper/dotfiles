@@ -1,13 +1,13 @@
 session_name: Advent of Code
 start_directory: ~/Code/advent-of-code/
 windows:
-  - window_name: "2024"
-    start_directory: ./2024
+  - window_name: "Plugin"
+    start_directory: ./aoc
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: "2023"
-    start_directory: ./2023
+  - window_name: "2024"
+    start_directory: ./2024
     panes:
       - shell_command:
           - cmd: "c"
