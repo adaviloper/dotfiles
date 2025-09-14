@@ -93,38 +93,25 @@ M.template = function(pattern, template_name, additional_pattern)
     pattern = pattern,
     callback = function(args)
       local index = "index.norg"
-      vim.schedule(function()
-        if additional_pattern then
-          if not args.file:match(additional_pattern) then
-            vim.schedule(function ()
-              vim.notify('pattern: ' .. additional_pattern)
-              vim.notify('additional_pattern match not found against: ' .. args.file)
-            end)
-            return
-          else
-            vim.schedule(function ()
-              vim.notify('pattern: ' .. additional_pattern)
-              vim.notify('additional_pattern match found')
-            end)
-            vim.api.nvim_cmd({
-              cmd = "Neorg",
-              args = { "templates", "fload", template_name },
-            }, {})
+      local target_file = args.file
 
-            return
-          end
-        end
-        if vim.fn.fnamemodify(args.file, ":t") == index then
-          return
-        end
-        if args.event == "BufNewFile"
-          or (args.event == "BufNew"
-          and file_utils.file_exists_and_is_empty(args.file)) then
-          vim.api.nvim_cmd({
-            cmd = "Neorg",
-            args = { "templates", "fload", template_name },
-          }, {})
-        end
+      -- Only run for files that are either new or empty on disk.
+      local should_apply = args.event == "BufNewFile"
+        or (args.event == "BufNew" and file_utils.file_exists_and_is_empty(target_file))
+
+      if not should_apply then return end
+
+      -- Skip index files explicitly
+      if vim.fn.fnamemodify(target_file, ":t") == index then return end
+
+      -- If provided, ensure the file path matches the additional pattern
+      if additional_pattern and not target_file:match(additional_pattern) then
+        return
+      end
+
+      -- Execute the template load within the originating buffer context to avoid races.
+      vim.api.nvim_buf_call(args.buf, function()
+        vim.cmd(string.format("Neorg templates fload %s", template_name))
       end)
     end,
   })
