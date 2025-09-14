@@ -15,7 +15,7 @@ bind . if-shell '[ $(tmux has-session -t "Dotfiles") -eq 0 ]' {
   run-shell "load dots"
 }
 
-{{ if eq .purpose "personal" -}}
+{{ if eq .purpose "work" -}}
 bind u if-shell '[ $(tmux has-session -t "Work") -eq 0 ]' {
   attach -t "Work"
 } {
@@ -45,6 +45,10 @@ bind n if-shell '[ $(tmux has-session -t "Notes") -eq 0 ]' {
   attach -t "Notes"
 } {
   run-shell "load notes"
+}
+
+bind m if-shell '[ $(tmux has-session -t "Miscellaneous") -eq 0 ]' {
+  attach -t "Miscellaneous"
 }
 
 bind q kill-session
