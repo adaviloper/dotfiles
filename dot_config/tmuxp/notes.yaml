@@ -3,9 +3,10 @@ start_directory: "~/Code/neorg"
 windows:
   - window_name: Notes
     start_directory: ./notes
+    focus: 'true'
     panes:
       - shell_command:
-          - cmd: "c"
+          - cmd: "vim"
   - window_name: Templates
     start_directory: ./templates
     panes:
