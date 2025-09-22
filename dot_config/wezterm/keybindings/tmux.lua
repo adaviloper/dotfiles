@@ -47,7 +47,15 @@ function M.getKeybindings()
 				act.SendKey({ key = "u" }),
 			}),
 		},
-		{ -- Switch to Plugins session
+		{ -- Switch to Miscellaneous session
+			key = "m",
+			mods = "CMD",
+			action = act.Multiple({
+				tmuxPrefix,
+				act.SendKey({ key = "m" }),
+			}),
+		},
+		{ -- Switch to Notes session
 			key = "n",
 			mods = "CMD",
 			action = act.Multiple({
