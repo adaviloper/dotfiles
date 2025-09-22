@@ -7,8 +7,8 @@ return
       fmt(
         [=[{{:$/people/{}.norg:}}[{}]]=],
         {
+          f(snippet_utils.slug_case_var, { 1 }),
           i(1),
-          f(snippet_utils.title_case_var, { 1 })
         }
       )
     ),
@@ -17,8 +17,8 @@ return
       fmt(
         [=[{{:$/services/{}.norg:}}[{}]]=],
         {
+          f(snippet_utils.slug_case_var, { 1 }),
           i(1),
-          f(snippet_utils.title_case_var, { 1 })
         }
       )
     ),
