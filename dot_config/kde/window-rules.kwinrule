@@ -14,6 +14,13 @@ types=1
 wmclass=org.wezfurlong.wezterm
 wmclassmatch=1
 
+[Switch to 1Password]
+Description=Switch to 1Password
+shortcut=Ctrl+Alt+Shift+X
+shortcutrule=5
+wmclass=1Password
+wmclassmatch=1
+
 [Switch to Browser]
 Description=Switch to Browser
 shortcut=Ctrl+Alt+Shift+B
@@ -25,8 +32,7 @@ wmclassmatch=1
 [Switch to Discord]
 Description=Switch to Discord
 shortcut=Ctrl+Alt+Shift+D
-shortcutrule=4
-types=1
+shortcutrule=5
 wmclass=discord
 wmclassmatch=1
 
