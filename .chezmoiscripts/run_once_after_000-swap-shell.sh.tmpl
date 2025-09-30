@@ -2,8 +2,10 @@
 
 {{ template "shared_bin_utils.sh.tmpl" . }}
 
+CURRENT_SHELL=$(basename "$SHELL")
+
 # Change shell to zsh if not already
-if [ "$SHELL" != "$(which zsh)" ]; then
+if [ "$CURRENT_SHELL" != "zsh" ]; then
   info "Changing default shell to zsh"
   debug "-- Changing from [$SHELL] to [$(which zsh)]"
   chsh -s "$(which zsh)"
