@@ -4,7 +4,7 @@ local function get_ft_hl()
 	local ft_color = {
 		css = mocha.blue,
 		go = mocha.sapphire,
-		json = mocha.text,
+		json = mocha.yellow,
 		lua = mocha.sky,
 		markdown = mocha.yellow,
 		php = mocha.mauve,
