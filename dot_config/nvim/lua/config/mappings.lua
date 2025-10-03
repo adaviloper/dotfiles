@@ -104,7 +104,9 @@ return {
       desc = "Toggle relativenumber",
     },
 
-    ["<Leader>e"] = { "<Cmd>Neotree reveal toggle<CR>", desc = "Toggle Explorer" },
+    ["<Leader>e"] = { "<Cmd>Neotree reveal toggle<CR>", desc = "NeoTree" },
+    ["<Leader>eb"] = { "<Cmd>Neotree float buffers<CR>", desc = "Toggle Buffer Explorer" },
+    ["<Leader>eg"] = { "<Cmd>Neotree float git_status<CR>", desc = "Toggle changed files" },
 
     ["<Leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
     -- second key is the lefthand side of the map
