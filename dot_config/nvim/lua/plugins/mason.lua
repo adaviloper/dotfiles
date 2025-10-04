@@ -12,6 +12,7 @@ return {
         -- install language servers
         "bash-language-server",
         "eslint-lsp",
+        "gopls",
         "json-lsp",
         "lua-language-server",
         "phpactor",
@@ -21,7 +22,7 @@ return {
         "stylua",
 
         -- install debuggers
-        "debugpy",
+        "delve",
 
         -- install any other package
         "tree-sitter-cli",
