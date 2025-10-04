@@ -88,5 +88,6 @@ return {
       end,
       desc = 'Optimize imports',
     },
+    ["<Leader>db"] = { function () require('dap').toggle_breakpoint() end, desc = "Toggle Breakpoint" },
   },
 }
