@@ -1,4 +1,4 @@
-{{ if and (eq .purpose "personal") (eq .is_arch true) }}
+{{- if and (eq .purpose "personal") (eq .is_arch true) -}}
 #!/bin/bash
 
 {{ template "shared_bin_utils.sh.tmpl" . }}
@@ -11,10 +11,9 @@ CODE_DIR="$HOME/Code"
 
 mkdir -p "$CODE_DIR"
 
-cd $CODE_DIR
+cd "$CODE_DIR"
 
 qmk setup -y
-
 
 success "Successfully installed QMK"
 
