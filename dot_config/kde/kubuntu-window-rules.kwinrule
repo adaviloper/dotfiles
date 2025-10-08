@@ -28,19 +28,10 @@ shortcutrule=4
 wmclass=Cursor
 wmclassmatch=1
 
-[Switch to Discord]
-Description=Switch to Discord
-shortcut=Ctrl+Alt+Shift+D
-shortcutrule=4
-types=1
-wmclass=discord
-wmclassmatch=1
-
 [Switch to Slack]
 Description=Switch to Slack
 shortcut=Ctrl+Alt+Shift+S
 shortcutrule=4
-types=1
 wmclass=Slack
 wmclassmatch=1
 
