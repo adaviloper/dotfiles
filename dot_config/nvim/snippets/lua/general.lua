@@ -43,4 +43,15 @@ return
     ),
   },
   {
+    s(
+      "dml",
+      fmta(
+        [[
+        vim.notify(vim.inspect(<val>))
+        ]],
+        {
+          val = i(1, ''),
+        }
+      )
+    )
   }
