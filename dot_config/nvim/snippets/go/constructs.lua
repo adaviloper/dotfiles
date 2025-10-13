@@ -14,6 +14,9 @@ local function get_return_types(args, opts)
   local types = ts_utils.parse_query_for_capture(node, [=[
 [
  (function_declaration
+   result: (type_identifier) @types
+    )
+ (function_declaration
    result: (parameter_list
              (parameter_declaration
                (type_identifier) @types
