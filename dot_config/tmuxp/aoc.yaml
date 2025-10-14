@@ -2,7 +2,7 @@ session_name: Advent of Code
 start_directory: ~/Code/advent-of-code/
 windows:
   - window_name: "Plugin"
-    start_directory: ./aoc
+    start_directory: ~/Code/aoc
     panes:
       - shell_command:
           - cmd: "c"
