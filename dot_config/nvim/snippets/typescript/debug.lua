@@ -42,17 +42,17 @@ return
   {
     s(
       'dml',
-      fmt(
-        [[console.log('{}'{});]],
+      fmta(
+        [[console.log('<location>'<cursor>);]],
         {
-          f(
+          location = f(
             function ()
               local pos = vim.api.nvim_win_get_cursor(0)
 
               return vim.fn.expand('%:t') .. ':' .. pos[1]
             end
           ),
-          sn(
+          cursor = sn(
             1,
             {
               d(1,

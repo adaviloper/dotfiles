@@ -2,29 +2,29 @@ return
   {
     s(
       'describe',
-      fmt(
+      fmta(
         [[
-          describe('{}', () => {{
-            {}
-          }});
+          describe('<description>', () =>> {
+            <cursor>
+          });
         ]],
         {
-          i(1),
-          i(2),
+          description = i(1),
+          cursor = i(2),
         }
       )
     ),
     s(
       'test',
-      fmt(
+      fmta(
         [[
-          it('should {}', () => {{
-            {}
-          }});
+          it('should <description>', () =>> {
+            <body>
+          });
         ]],
         {
-          i(1),
-          i(2),
+          description = i(1),
+          body = i(2),
         }
       )
     ),
