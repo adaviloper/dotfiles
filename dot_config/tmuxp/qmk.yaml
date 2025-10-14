@@ -7,6 +7,7 @@ windows:
           - cmd: "c"
   - window_name: Userland
     start_directory: ./users/adaviloper
+    focus: true
     panes:
       - shell_command:
           - cmd: "c"
