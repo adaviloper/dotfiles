@@ -36,7 +36,6 @@ local function get_return_types(args, opts)
   if not types or #types == 0 then
     return t("")
   end
-  vim.notify('args: ' .. vim.inspect(args[1]))
 
   local mapped = {}
   for _, type_name in ipairs(types) do
@@ -51,7 +50,6 @@ local function get_return_types(args, opts)
     elseif type_name == "bool" or type_name == "boolean" then
       v = "false"
     elseif type_name == "error" then
-      vim.notify(vim.inspect('adding error'))
       v = args[1][1]
     elseif type_name:match("^%u") then
       -- Likely a struct or custom type
@@ -61,11 +59,8 @@ local function get_return_types(args, opts)
     end
     table.insert(mapped, v)
   end
-  vim.notify('mapped count: ' .. vim.inspect(#mapped))
-  vim.notify('mapped: ' .. vim.inspect(table.concat(mapped, ", ")))
 
   local result = table.concat(mapped, ", ")
-  vim.notify(vim.inspect(result))
   return result
 end
 
