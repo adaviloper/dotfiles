@@ -4,6 +4,7 @@
 
 require('config.autocmds')
 require('config.commands.shell_current_line')
+require('config.commands.clear_debug_logs')
 
 -- Set up custom filetypes
 vim.filetype.add({
