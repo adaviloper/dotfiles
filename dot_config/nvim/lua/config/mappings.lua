@@ -129,7 +129,7 @@ return {
       end,
       desc = "Close buffer",
     },
-    ["<Leader>DD"] = { "<cmd>ClearDebugLogs<cr>", desc = "Clear debug logs" },
+    ["<LocalLeader>D"] = { "<cmd>ClearDebugLogs<cr>", desc = "Clear debug logs" },
     -- Grapple
     ["<Leader>m"] = { name = "󰓾 Handle file tags" },
     ["<Leader>'"] = { name = "󰓾 Jump to file tags" },
