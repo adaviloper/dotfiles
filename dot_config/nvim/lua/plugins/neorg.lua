@@ -5,7 +5,8 @@ local c = ls.choice_node
 
 return {
   "nvim-neorg/neorg",
-  lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+  -- lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+  ft = "norg",
   version = "*", -- Pin Neorg to the latest stable release
   dependencies = {
     { "pysan3/neorg-templates", dependencies = { "L3MON4D3/LuaSnip" } },
