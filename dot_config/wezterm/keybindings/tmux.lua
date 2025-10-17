@@ -152,6 +152,14 @@ function M.getKeybindings()
 			}),
 		},
 		{ -- Session Switching
+			key = "f",
+			mods = "CMD",
+			action = act.Multiple({
+				tmuxPrefix,
+				act.SendKey({ key = "f" }),
+			}),
+		},
+		{ -- Session Switching
 			key = "s",
 			mods = "CMD",
 			action = act.Multiple({
