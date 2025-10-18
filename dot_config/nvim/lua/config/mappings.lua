@@ -2,6 +2,7 @@ local astro = require("astrocore")
 local utils = require("helpers.utils")
 local ls = require("luasnip")
 local git_utils = require("helpers.git_utils")
+local file_utils = require("helpers.file_utils")
 
 local search_exclusions = {
   "node_modules*",
@@ -57,9 +58,6 @@ return {
         local spellfile = vim.fn.expand(vim.o.spellfile)
         vim.fn.system({ "chezmoi", "add", spellfile })
         vim.fn.system({ "chezmoi", "add", spellfile .. '.spl' })
-        -- utils.run_shell_command([[
-        -- chezmoi add ~/.config/nvim/spell/en.utf-8.add
-        -- ]])
       end,
     },
     ["<A-e>"] = { "5<C-e>" },
@@ -260,6 +258,8 @@ return {
     ["<C-o>"] = { "<C-o>zz", desc = "Jump backward and center" },
 
     ["<LocalLeader>e"] = { "<cmd>e<CR>", desc = "Copy file path" },
+
+    ["<F2>"] = { function() file_utils.toggle_source_test() end, desc = "Toggle between test and source file" },
 
     -- Copying
     ["<LocalLeader>y"] = { name = "󰆏 Copy..." },
