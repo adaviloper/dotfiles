@@ -16,29 +16,29 @@ return
   {
     s(
       'req',
-      fmt([[local {} = require("{}")]], {
-        d(2, require_var, { 1 }),
-        i(1),
+      fmta([[local <module_name> = require("<path>")]], {
+        module_name = d(2, require_var, { 1 }),
+        path = i(1),
       })
     ),
     s(
       'treq',
-      fmt([[local {} = require("telescope.{}")]], {
-        d(2, require_var, { 1 }),
-        i(1),
+      fmta([[local <module_name> = require("telescope.<path>")]], {
+        module_name = d(2, require_var, { 1 }),
+        path = i(1),
       })
     ),
     s(
       'mod',
-      fmt([[
-      local M = {{}}
+      fmta([[
+      local M = {}
 
-      {}
+      <insert>
 
       return M
       ]],
         {
-          i(1, ''),
+          insert = i(1, ''),
       })
     ),
   },
@@ -47,10 +47,14 @@ return
       "dml",
       fmta(
         [[
-        vim.notify(vim.inspect(<val>))
+        vim.notify('<loc>: ' .. vim.inspect(<val>))
         ]],
         {
           val = i(1, ''),
+          loc = f(function ()
+            local pos = vim.api.nvim_win_get_cursor(0)
+            return vim.fn.expand('%:t') .. ':' .. pos[1]
+          end),
         }
       )
     )
