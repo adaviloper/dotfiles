@@ -1,27 +1,27 @@
 return
   {
     s(
-      "snipfmt",
-      fmt(
+      "snip",
+      fmta(
         [=[
         s(
-          "{}",
-          fmt([[
-          {}
+          "<trigger>",
+          fmta([[
+          <template>
           ]],
           {{
-            {}
+            <args>
           }}
           )
-        )
+        ),
       ]=],
-      {
-        i(1, "trigger"),
-        i(2, "body"),
-        i(3, ""),
-      }
-    )
-  )
+        {
+          trigger = i(1, "trigger"),
+          template = i(2, "body"),
+          args = i(3, ""),
+        }
+      )
+    ),
   },
   {
   }
