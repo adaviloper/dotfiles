@@ -89,5 +89,25 @@ return {
       desc = 'Optimize imports',
     },
     ["<Leader>db"] = { function () require('dap').toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+    ["<Leader>ls"] = {
+      function()
+        require("snacks").picker.lsp_symbols({
+          filter = {
+            default = {
+              "Constructor",
+              -- "Function",
+              "Method"
+            },
+            -- Include all filetypes to show functions
+            ["*"] = {
+              "Constructor",
+              -- "Function",
+              "Method",
+            }
+          }
+        })
+      end,
+      desc = "Show function symbols only"
+    },
   },
 }
