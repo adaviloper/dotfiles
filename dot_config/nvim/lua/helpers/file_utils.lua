@@ -47,11 +47,11 @@ M.toggle_source_test = function()
   local target
 
   -- Determine if current file is a test file or source file
-  local is_test_file = filename:match("%.spec$") or filename:match("%.test$") or filename:match("Test$")
+  local is_test_file = filename:match("%.spec$") or filename:match("%_test$") or filename:match("%.test$") or filename:match("Test$")
 
   if is_test_file then
     -- Test file → Source file
-    local source_filename = filename:gsub("%.spec$", ""):gsub("%.test$", ""):gsub("Test$", "")
+    local source_filename = filename:gsub("%.spec$", ""):gsub("%.test$", ""):gsub("_test$", ""):gsub("Test$", "")
     local search_pattern = source_filename .. "." .. extension
 
     -- Search for source file in the repository
@@ -71,6 +71,9 @@ M.toggle_source_test = function()
     if extension == "php" then
       -- PHP: filename.php → filenameTest.php
       table.insert(test_patterns, filename .. "Test." .. extension)
+    elseif extension == "go" then
+      -- GO: filename.go → filename_test.go
+      table.insert(test_patterns, filename .. "_test." .. extension)
     else
       -- JS/TS: filename.ts → filename.spec.ts, filename.test.ts
       table.insert(test_patterns, filename .. ".spec." .. extension)
