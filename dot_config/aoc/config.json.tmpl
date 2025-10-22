@@ -1,0 +1,12 @@
+{{- if eq .purpose "personal" -}}
+{
+  "base_directory": "/home/adaviloper/Code/advent-of-code",
+  "template_language": "ts",
+  "theme": {
+    "info": "{{ .colorscheme.yellow }}",
+    "danger": "{{ .colorscheme.red }}",
+    "warn": "{{ .colorscheme.peach }}",
+    "success": "{{ .colorscheme.green }}"
+  }
+}
+{{- end -}}
