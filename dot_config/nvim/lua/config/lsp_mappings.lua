@@ -89,6 +89,13 @@ return {
       desc = 'Optimize imports',
     },
     ["<Leader>db"] = { function () require('dap').toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+    ["<Leader>l<C-s>"] = { function () require('snacks').picker.lsp_workspace_symbols() end, desc = "Toggle Breakpoint" },
+    ["<Leader>lS"] = {
+      function()
+        require("snacks").picker.lsp_symbols()
+      end,
+      desc = "Show all symbols"
+    },
     ["<Leader>ls"] = {
       function()
         require("snacks").picker.lsp_symbols({
