@@ -17,7 +17,8 @@ windows:
       - shell_command:
           - cmd: "c"
   - window_name: gco
-    start_directory: ~/go/src/gco/
+    start_directory: ~/Code/gco/
+    focus: true
     panes:
       - shell_command:
           - cmd: "c"
@@ -27,7 +28,6 @@ windows:
       - shell_command:
           - cmd: "c"
   - window_name: kwicker
-    focus: true
     start_directory: ~/.local/share/kwin/scripts/kwicker/
     panes:
       - shell_command:
