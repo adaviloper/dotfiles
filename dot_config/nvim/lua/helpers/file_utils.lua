@@ -42,45 +42,62 @@ M.toggle_source_test = function()
     return
   end
 
+  local filename = vim.fn.expand("%:t:r") -- filename without extension
+  local extension = vim.fn.expand("%:e") -- file extension
   local target
 
-  -- ✅ JS / TS logic
-  if filepath:match("/src/") and (filepath:match("%.ts$") or filepath:match("%.js$")) then
-    -- src → test(s)
-    target = filepath:gsub("/src/", "/tests/")
-    target = target:gsub("(%w+)%.([tj]s)$", "%1.test.%2")
+  -- Determine if current file is a test file or source file
+  local is_test_file = filename:match("%.spec$") or filename:match("%.test$") or filename:match("Test$")
 
-    local spec = target:gsub("%.test%.([tj]s)$", ".spec.%1")
-    if vim.fn.filereadable(spec) == 1 then
-      target = spec
+  if is_test_file then
+    -- Test file → Source file
+    local source_filename = filename:gsub("%.spec$", ""):gsub("%.test$", ""):gsub("Test$", "")
+    local search_pattern = source_filename .. "." .. extension
+
+    -- Search for source file in the repository
+    local search_cmd = "find . -name '" .. search_pattern .. "' -type f | head -1"
+    local result = vim.fn.system(search_cmd)
+
+    if vim.v.shell_error == 0 and result and result ~= "" then
+      target = vim.trim(result)
+    else
+      vim.notify("No corresponding source file found for: " .. search_pattern, vim.log.levels.WARN)
+      return
+    end
+  else
+    -- Source file → Test file
+    local test_patterns = {}
+
+    if extension == "php" then
+      -- PHP: filename.php → filenameTest.php
+      table.insert(test_patterns, filename .. "Test." .. extension)
+    else
+      -- JS/TS: filename.ts → filename.spec.ts, filename.test.ts
+      table.insert(test_patterns, filename .. ".spec." .. extension)
+      table.insert(test_patterns, filename .. ".test." .. extension)
     end
 
-  elseif filepath:match("/test[s]*/") and (filepath:match("%.ts$") or filepath:match("%.js$")) then
-    -- test(s) → src
-    target = filepath:gsub("/test[s]*/", "/src/")
-    target = target:gsub("%.spec%.([tj]s)$", ".%1")
-    target = target:gsub("%.test%.([tj]s)$", ".%1")
+    target = nil
+    for _, pattern in ipairs(test_patterns) do
+      local search_cmd = "find . -name '" .. pattern .. "' -type f | head -1"
+      local result = vim.fn.system(search_cmd)
 
-  -- ✅ PHP / PHPUnit logic
-  elseif filepath:match("/src/") and filepath:match("%.php$") then
-    -- src → test(s)
-    target = filepath:gsub("/src/", "/tests/")
-    target = target:gsub("(%w+)%.php$", "%1Test.php")
+      if vim.v.shell_error == 0 and result and result ~= "" then
+        target = vim.trim(result)
+        break
+      end
+    end
 
-  elseif filepath:match("/test[s]*/") and filepath:match("%.php$") then
-    -- test(s) → src
-    target = filepath:gsub("/test[s]*/", "/src/")
-    target = target:gsub("Test%.php$", ".php")
-
-  else
-    vim.notify("File not in src/ or test(s)/, or unsupported extension", vim.log.levels.WARN)
-    return
+    if not target then
+      vim.notify("No corresponding test file found for: " .. filename .. "." .. extension, vim.log.levels.WARN)
+      return
+    end
   end
 
-  if vim.fn.filereadable(target) == 1 then
+  if target and vim.fn.filereadable(target) == 1 then
     vim.cmd.edit(target)
   else
-    vim.notify("No corresponding file: " .. target, vim.log.levels.WARN)
+    vim.notify("Target file not readable: " .. (target or "unknown"), vim.log.levels.WARN)
   end
 end
 
