@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-gco --vuln $@
+gco --ticket vuln $@
 

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-git --story $@
+gco --ticket story $@
 
