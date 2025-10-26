@@ -7,4 +7,7 @@ repositories:
     ticket_prefix: "AD"
     bug: "bugfix"
     story: "feat"
-
+  redwood:
+    bug: "bugfix"
+    story: "feat"
+    spike: "spike"
