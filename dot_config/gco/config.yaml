@@ -1,0 +1,10 @@
+repositories:
+  default:
+    ticket_prefix: DFLT
+  php-dev-tools.nvim:
+    ticket_prefix: "PDT"
+  gco:
+    ticket_prefix: "AD"
+    bug: "bugfix"
+    story: "feat"
+
