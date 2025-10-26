@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-gco --bug $@
+gco --ticket bug $@
 
