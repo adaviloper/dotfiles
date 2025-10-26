@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-ticket_branch 'epic' "$1" "${*:2}"
+gco --epic $@
 
