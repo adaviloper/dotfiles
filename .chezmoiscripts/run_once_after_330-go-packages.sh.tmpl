@@ -6,4 +6,8 @@ info "Installing Go packages"
 
 go install github.com/adaviloper/gco@latest
 
+{{ if eq .purpose "personal" }}
+go install github.com/adaviloper/aoc@latest
+{{ end }}
+
 success "Successfully installed go packages"
