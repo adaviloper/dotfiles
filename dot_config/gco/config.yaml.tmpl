@@ -1,13 +1,16 @@
 repositories:
+  {{- if eq .purpose "work" }}
   default:
-    ticket_prefix: DFLT
+    ticket_prefix: "APP"
+  {{- end }}
   php-dev-tools.nvim:
     ticket_prefix: "PDT"
   gco:
-    ticket_prefix: "AD"
+    ticket_prefix: "GCO"
     bug: "bugfix"
     story: "feat"
   redwood:
+    ticket_prefix: "RW"
     bug: "bugfix"
     story: "feat"
     spike: "spike"
