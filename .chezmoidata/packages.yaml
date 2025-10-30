@@ -41,8 +41,9 @@ packages:
       - '1password-cli'
       - 'alfred'
       - 'contexts'
-      - 'font-symbols-only-nerd-font'
       - 'font-jetbrains-mono-nerd-font'
+      - 'font-maple-mono-nf'
+      - 'font-symbols-only-nerd-font'
       - 'iterm2'
       - 'firefox'
       - 'keycastr'
@@ -109,6 +110,7 @@ packages:
       - tmux
       - tmuxp
       - tree
+      - ttf-maplemono
       - unar
       - wezterm
       - xclip
