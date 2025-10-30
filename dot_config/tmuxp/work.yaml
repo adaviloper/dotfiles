@@ -21,7 +21,8 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - focus: 'true'
+  - window_name: Terminals
+    focus: 'true'
     layout: 535f,249x54,0,0{124x54,0,0,28,124x54,125,0[124x27,125,0,30,124x26,125,28{62x26,125,28,29,61x26,188,28,40}]}
     options: {}
     panes:
@@ -33,4 +34,3 @@ windows:
       shell_command:
         - cd ./auditManager/ClientApp/npm
         - sudo sysctl -p
-    window_name: Terminals
