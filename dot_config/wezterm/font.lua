@@ -2,7 +2,15 @@ local wezterm = require('wezterm')
 local M = {}
 
 function M.setup(config)
-  config.font = wezterm.font('JetBrainsMono Nerd Font', {
+  local is_jb = false
+  local font = 'Maple Mono NF'
+
+  -- Some comment
+  if is_jb then
+    font = 'JetBrainsMono Nerd Font'
+  end
+
+  config.font = wezterm.font(font, {
     weight = 'Regular',
   })
 
