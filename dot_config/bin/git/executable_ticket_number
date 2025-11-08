@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-cmd "$(git_current_branch)" | grep -e '[A-Z]*-[0-9]*' -ow
