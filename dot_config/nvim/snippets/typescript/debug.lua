@@ -43,7 +43,7 @@ return
     s(
       'dml',
       fmta(
-        [[console.log('<location>'<cursor>);]],
+        [[console.log('<location>', {<cursor>});]],
         {
           location = f(
             function ()
@@ -78,8 +78,8 @@ return
                   if target_variable ~= nil then
                     return sn(1,
                       {
-                        t(', '),
-                        t(vim.trim(target_variable) .. ''),
+                        t(' '),
+                        t(vim.trim(target_variable) .. ', '),
                       }
                     )
                   end
