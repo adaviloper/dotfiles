@@ -71,6 +71,20 @@ return {
     },
 
     autocmds = {
+      active_cursor_line = {
+        {
+          event = { "WinEnter", "BufEnter" },
+          callback = function ()
+            vim.opt_local.cursorline = true
+          end,
+        },
+        {
+          event = { "WinLeave", "BufLeave" },
+          callback = function ()
+            vim.opt_local.cursorline = false
+          end,
+        },
+      },
       apply_chez_moi_edits = {
         {
           event = "BufWritePost",
