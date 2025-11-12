@@ -307,11 +307,13 @@ return {
     },
 
     -- TreeSJ
-    ["gS"] = {
-      "v%!jq .<CR>",
-      desc = "TreeSJ split",
+    ["<LocalLeader>j"] = {
+      -- "v%!jq -c .<CR>",
+      function()
+        require('treesj').toggle({ split = { recursive = true } })
+      end,
+      desc = "TreeSJ join",
     },
-    ["gJ"] = { "v%!jq -c .<CR>", desc = "TreeSJ join" },
 
     -- Git
     ["<Leader>gB"] = { "<cmd>G blame<cr>", desc = "Commit annotations" },
