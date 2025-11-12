@@ -8,4 +8,8 @@ sudo pacman -Syu yay fakeroot --noconfirm
 yay -Syu {{ . | quote }} --noconfirm
 {{ end -}}
 
+{{ range .packages.arch.paru }}
+paru -S {{ . | quote }} --noconfirm
+{{ end -}}
+
 {{- end -}}

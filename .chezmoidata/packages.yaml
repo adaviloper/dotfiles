@@ -110,7 +110,6 @@ packages:
       - tmux
       - tmuxp
       - tree
-      - ttf-maplemono
       - unar
       - wezterm
       - xclip
@@ -119,3 +118,5 @@ packages:
       - zoxide
       - zsh-autosuggestions
       - zsh-completions
+    paru:
+      - ttf-maplemono
