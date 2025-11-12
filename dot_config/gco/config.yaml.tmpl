@@ -2,6 +2,9 @@ repositories:
   {{- if eq .purpose "work" }}
   default:
     ticket_prefix: "APP"
+    bug: bugfix
+    story: feature
+    task: task
   {{- end }}
   php-dev-tools.nvim:
     ticket_prefix: "PDT"
