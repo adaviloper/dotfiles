@@ -1,0 +1,32 @@
+{{- if and (ne .chezmoi.os "darwin") (eq .is_arch true) -}}
+#!/bin/bash
+
+{{ template "shared_bin_utils.sh.tmpl" . }}
+
+info "Ensuring Rust toolchain prerequisites (Arch/Manjaro)"
+
+# Ensure build essentials for AUR builds
+if command -v pacman >/dev/null 2>&1; then
+  info "Installing base-devel and git (if needed)"
+  sudo pacman -S --needed --noconfirm base-devel git
+fi
+
+# Install rustup if missing
+if ! command -v rustup >/dev/null 2>&1; then
+  info "Installing rustup"
+  sudo pacman -S --needed --noconfirm rustup
+else
+  warn "rustup already installed"
+fi
+
+# Configure default toolchain if not set
+if ! rustup show active-toolchain >/dev/null 2>&1; then
+  info "Setting rustup default toolchain to stable"
+  rustup default stable
+  success "Rust default toolchain set to stable"
+else
+  warn "Rust toolchain already configured: $(rustup show active-toolchain | head -n1)"
+fi
+
+success "Rust prerequisites ready"
+{{- end -}}
