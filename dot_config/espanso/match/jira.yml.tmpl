@@ -2,4 +2,17 @@ matches:
   - trigger: "%jira"
     form: "{{ onepasswordRead .secrets.espanso.jira_link }}[[ticket_number]]"
 
+  - trigger: "%rl"
+    replace: "{{ "{{" }} today {{ "}}" }}-{{ "{{" }} release.commitHash{{ "}}" }} Word Nerds"
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%Y-%M-%d"
+      - name: "release"
+        type: "form"
+        params:
+          layout: "What is the [[commitHash]] being release?"
+
+
 
