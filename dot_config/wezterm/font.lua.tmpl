@@ -3,7 +3,11 @@ local M = {}
 
 function M.setup(config)
   local is_jb = false
+  {{ if eq .is_arch true -}}
+  local font = 'Maple Mono'
+  {{- else -}}
   local font = 'Maple Mono NF'
+  {{ end }}
 
   -- Some comment
   if is_jb then
