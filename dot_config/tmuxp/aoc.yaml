@@ -16,8 +16,9 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: Docker
+  - window_name: Utils
+    start_directory: ./utils
     panes:
       - shell_command:
           - cmd: "c"
-          - cmd: "dup"
+          - cmd: "vim"
