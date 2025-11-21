@@ -118,5 +118,6 @@ return {
     neorg_templates.template("*/miscellaneous/*.norg", "miscellaneous")
     neorg_templates.template("*/people/*.norg", "person")
     neorg_templates.template("*/tickets/*.norg", "ticket")
+    neorg_templates.template("*/aws/*.norg", "lesson")
   end,
 }

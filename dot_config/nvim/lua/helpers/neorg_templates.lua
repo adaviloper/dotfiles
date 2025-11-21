@@ -88,7 +88,7 @@ M.createMeeting = function ()
 end
 
 M.template = function(pattern, template_name, additional_pattern)
-  vim.api.nvim_create_autocmd({ "BufNew", "BufNewFile" }, {
+  vim.api.nvim_create_autocmd({ "BufNew", "BufNewFile", "BufEnter" }, {
     desc = "Autoload template for " .. template_name,
     pattern = pattern,
     callback = function(args)
@@ -97,7 +97,7 @@ M.template = function(pattern, template_name, additional_pattern)
 
       -- Only run for files that are either new or empty on disk.
       local should_apply = args.event == "BufNewFile"
-        or (args.event == "BufNew" and file_utils.file_exists_and_is_empty(target_file))
+        or (args.event == "BufEnter" and file_utils.file_exists_and_is_empty(target_file))
 
       if not should_apply then return end
 
