@@ -1,6 +1,6 @@
 local ft_patterns = {
   javascript =  "console.log('.*.ts:\\d*",
-  lua = "vim.notify(vim.inspect(",
+  lua = "vim.notify('.*.lua:\\d*: ' \\.\\. vim.inspect(",
   php =  "dd(.* __METHOD__",
   typescript = "console.log('.*.ts:\\d*",
 }
