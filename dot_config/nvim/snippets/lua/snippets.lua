@@ -9,9 +9,9 @@ return
           fmta([[
           <template>
           ]],
-          {{
+          {
             <args>
-          }}
+          }
           )
         ),
       ]=],
