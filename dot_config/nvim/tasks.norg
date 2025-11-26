@@ -1,4 +1,5 @@
 * Tasks
+  - (x) Move session update on branch change to use ToggleTerm's `on_close` handler
   - (x) Templatize gitconfig
   - ( ) Create test runner command for JS
   - ( ) Prevent sessions plugin from overriding MANPAGER

@@ -1,34 +1,5 @@
 local utils = require("helpers.utils")
 
-local current_branch = ""
-
-local function get_git_branch()
-  local handle = io.popen("git rev-parse --abbrev-ref HEAD 2>/dev/null")
-  if handle then
-    local branch = handle:read("*l")
-
-    handle:close()
-    return branch or ""
-  end
-  return ""
-end
-
-local function check_git_branch()
-  local new_branch = get_git_branch()
-  if current_branch == "" then
-    current_branch = new_branch
-  end
-
-  if new_branch ~= current_branch then
-    current_branch = new_branch
-    vim.api.nvim_exec_autocmds("User", { pattern = "GitBranchChange" })
-  end
-end
-
-vim.fn.timer_start(2000, function()
-  check_git_branch()
-end, { ["repeat"] = -1 })
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -85,6 +56,7 @@ return {
           end,
         },
       },
+
       apply_chez_moi_edits = {
         {
           event = "BufWritePost",
@@ -127,6 +99,7 @@ return {
             end
           end),
         },
+
         -- auto restore previous previous directory session, remove if necessary
         {
           event = "VimEnter",

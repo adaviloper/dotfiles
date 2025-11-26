@@ -182,6 +182,28 @@ return {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dbash" }) end,
       desc = "Toggleterm Bash for current Docker container",
     },
+    ["<Leader>gg"] = {
+      function()
+        local current_branch = git_utils.get_git_branch()
+        local worktree = astro.file_worktree()
+        local flags = worktree and (" --work-tree=%s --git-dir=%s"):format(worktree.toplevel, worktree.gitdir)
+        or ""
+        astro.toggle_term_cmd(
+          {
+            cmd = "lazygit " .. flags,
+            direction = "float",
+            on_close = function ()
+              local new_branch = git_utils.get_git_branch()
+
+              if new_branch ~= current_branch then
+                git_utils.signal_branch_change()
+              end
+            end
+          }
+        )
+      end,
+      desc = "ToggleTerm lazygit",
+    },
     ["<Leader>tg"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "gh dash" }) end,
       desc = "Toggleterm Github Dash",
