@@ -60,6 +60,7 @@ return {
         vim.fn.system({ "chezmoi", "add", spellfile .. '.spl' })
       end,
     },
+    ["<F5>"] = { "z=" },
     ["<A-e>"] = { "5<C-e>" },
     ["<A-y>"] = { "5<C-y>" },
     ["<A-j>"] = { "5j" },
