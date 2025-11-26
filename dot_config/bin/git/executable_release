@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check if commit hash is provided
+if [ -z "$1" ]; then
+  echo "Usage: release <commit-hash>"
+  exit 1
+fi
+
+COMMIT="$1"
+DATE=$(date +%Y-%m-%d)
+BRANCH_NAME="release/${DATE}-${COMMIT}-Word-Nerds"
+echo "$BRANCH_NAME"
+
+# Create new branch from current branch
+git checkout -b "$BRANCH_NAME"
+
+# Cherry pick the commit onto the new branch
+git cherry-pick "$COMMIT"
