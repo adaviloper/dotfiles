@@ -193,6 +193,14 @@ return {
           {
             cmd = "lazygit " .. flags,
             direction = "float",
+            on_open = function ()
+              require("resession").save(
+                utils.get_session_name(),
+                {
+                  notify = true,
+                }
+              )
+            end,
             on_close = function ()
               local new_branch = git_utils.get_git_branch()
 
@@ -204,10 +212,6 @@ return {
         )
       end,
       desc = "ToggleTerm lazygit",
-    },
-    ["<Leader>tg"] = {
-      function() astro.toggle_term_cmd({ direction = "float", cmd = "gh dash" }) end,
-      desc = "Toggleterm Github Dash",
     },
     ["<Leader>tn"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "lazynpm" }) end,
