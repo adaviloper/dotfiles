@@ -1,15 +1,18 @@
 {{- if eq .is_arch true -}}
 #!/bin/bash
 
-# Update package list
-sudo pacman -Syu yay fakeroot --noconfirm
+sudo pacman -Syu --noconfirm
+# Ensure helpers are installed without reinstalling
+sudo pacman -S --needed --noconfirm fakeroot yay
 
-{{ range .packages.arch.yays }}
-yay -Syu {{ . | quote }} --noconfirm
-{{ end -}}
+{{- if .packages.arch.yays }}
+# Install all yay-managed packages in one batch, skip installed
+yay -S --needed --noconfirm{{ range .packages.arch.yays }} {{ . | quote }}{{ end }}
+{{- end }}
 
-{{ range .packages.arch.paru }}
-paru -S {{ . | quote }} --noconfirm
-{{ end -}}
+{{- if .packages.arch.paru }}
+# Install all paru-managed packages in one batch, skip installed
+paru -S --needed --noconfirm{{ range .packages.arch.paru }} {{ . | quote }}{{ end }}
+{{- end }}
 
 {{- end -}}
