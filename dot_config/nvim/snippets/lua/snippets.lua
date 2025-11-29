@@ -6,12 +6,13 @@ return
         [=[
         s(
           "<trigger>",
-          fmta([[
-          <template>
-          ]],
-          {
-            <args>
-          }
+          fmta(
+            [[
+            <template>
+            ]],
+            {
+              <args>
+            }
           )
         ),
       ]=],
