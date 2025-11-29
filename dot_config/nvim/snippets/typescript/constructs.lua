@@ -1,5 +1,26 @@
+local str_utils = require("helpers.str_utils")
 return
   {
+    s(
+      "class",
+      fmta(
+        [[
+        export class <class> {
+          constructor(<args>) {
+          }
+
+          <stop>
+        }
+        ]],
+        {
+          class = f(function ()
+            return str_utils.pascal(vim.fn.expand("%:t:r"))
+          end),
+          args = i(1, ''),
+          stop = i(2, '')
+        }
+      )
+    ),
     s(
       "comment",
       fmta(
