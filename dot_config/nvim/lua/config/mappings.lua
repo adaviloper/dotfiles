@@ -372,7 +372,7 @@ return {
   i = {
     -- AI
     -- ["<A-CR>"] = { 'copilot#Accept("\\<CR>")', desc = "Accept AI suggestion", expr = true, replace_keycodes = false },
-
+ 
     -- Luasnip
     ["<C-k>"] = {
       function()
@@ -392,7 +392,7 @@ return {
       function()
         if ls.choice_active() then ls.change_choice(-1) end
       end,
-      desc = "Cycle through active choices",
+      desc = "Cycle backwards through active choices",
     },
     ["<C-l>"] = {
       function()
@@ -401,15 +401,44 @@ return {
       desc = "Cycle through active choices",
     },
   },
+  s = {
+    -- Luasnip
+    ["<C-k>"] = {
+      function()
+        if ls.jumpable(-1) then ls.jump(-1) end
+      end,
+      desc = "Jump to previous snippet",
+      silent = true,
+    },
+    ["<C-j>"] = {
+      function()
+        if ls.jumpable() then ls.jump(1) end
+      end,
+      desc = "Jump to next snippet",
+      silent = true,
+    },
+    ["<C-h>"] = {
+      function()
+        if ls.choice_active() then ls.change_choice(-1) end
+      end,
+      desc = "Cycle backwards through active choices",
+    },
+    ["<C-l>"] = {
+      function()
+        if ls.choice_active() then ls.change_choice(1) end
+      end,
+      desc = "Cycle through active choices",
+    },
+  },
+  t = {
+    -- setting a mapping to false will disable it
+    ["<F8>"] = { "<C-\\><C-n>" },
+  },
   v = {
     ["<"] = { "<gv", desc = "Unindent without losing selection" },
     [">"] = { ">gv", desc = "Indent without losing selection" },
     ["y"] = { "ymy", desc = "Yank in visual mode without losing cursor position" },
     ["gS"] = { "!jq<CR>", desc = "Format JSON" },
     ["gJ"] = { "!jq<CR>", desc = "Format JSON" },
-  },
-  t = {
-    -- setting a mapping to false will disable it
-    ["<F8>"] = { "<C-\\><C-n>" },
   },
 }
