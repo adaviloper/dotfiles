@@ -175,6 +175,7 @@ return {
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
+    ["<F7>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "ToggleTerm float" },
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
       desc = "Toggleterm Artisan tinker for current Docker container",
