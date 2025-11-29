@@ -1,6 +1,42 @@
 return
   {
     s(
+      "comment",
+      fmta(
+        [[
+        /**
+         * <comment>
+         */
+        ]],
+        {
+          comment = i(1, ''),
+        }
+      )
+    ),
+    s(
+      "keyBy",
+      fmta(
+        [[
+        const <variable_name> = <array>.reduce((acc: Record<<string, <acc_type>>>, <item>) =>> {
+          if (!acc[<rep_item>.<prop>]) {
+            acc[<rep_item>.<rep_prop>] = <rep_item>;
+          }
+
+          return acc;
+        }, {});
+        ]],
+        {
+          variable_name = i(1, ''),
+          array = i(2, ''),
+          acc_type = i(3, ''),
+          item = i(4, ''),
+          prop = i(5, ''),
+          rep_item = rep(4),
+          rep_prop = rep(5),
+        }
+      )
+    ),
+    s(
       "c",
       fmta(
         [[
