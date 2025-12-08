@@ -25,7 +25,7 @@ return {
           {'skip', 'only'},
         },
         typescript = {
-          {'let', 'const', 'var'},
+          {'const', 'let', 'var'},
           {'skip', 'only'},
         },
         sh = {
