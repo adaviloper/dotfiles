@@ -42,6 +42,17 @@ return
       )
     ),
     s(
+      "blist",
+      fmta([[
+      Benefits:
+      - <cursor>
+      ]],
+      {
+        cursor = i(1, '')
+      }
+      )
+    ),
+    s(
       "uclist",
       fmta([[
       Use case:
