@@ -371,8 +371,7 @@ return {
     ["<Leader>zz"] = { function() require("undotree").toggle() end, desc = "Toggle Undotree" },
   },
   i = {
-    -- AI
-    -- ["<A-CR>"] = { 'copilot#Accept("\\<CR>")', desc = "Accept AI suggestion", expr = true, replace_keycodes = false },
+    ["<A-BS>"] = { '<BS><BS><BS><BS><BS>', desc = "Delete small chunk of recent characters" },
  
     -- Luasnip
     ["<C-k>"] = {
