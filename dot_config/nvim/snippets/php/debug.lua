@@ -102,6 +102,8 @@ return
   {
     s({
       trig = 'dml',
+      name = "Debug with method and line",
+      desc = "Debug with method and line",
       condition = in_nodes_condition({'method_declaration'}),
       show_condition = in_nodes_condition({'method_declaration'}),
     },

@@ -41,19 +41,27 @@ return
       }
       )
     ),
+
     s(
-      "blist",
+      {
+        trig = "blist",
+        desc = "Unordered list of benefits"
+      },
       fmta([[
       Benefits:
       - <cursor>
       ]],
-      {
-        cursor = i(1, '')
-      }
+        {
+          cursor = i(1, '')
+        }
       )
     ),
+
     s(
-      "uclist",
+      {
+        trig = "uclist",
+        desc = "Unordered list of use cases"
+      },
       fmta([[
       Use case:
       - <cursor>
