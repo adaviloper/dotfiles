@@ -1,8 +1,6 @@
 local snacks = require("snacks")
 local finders = require('telescope.finders')
 local make_entry = require('telescope.make_entry')
-local pickers = require('telescope.pickers')
-local config = require('telescope.config').values
 
 local M = {}
 
