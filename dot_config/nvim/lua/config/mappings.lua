@@ -280,6 +280,7 @@ return {
     },
     ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find words in directory" },
     ["<Leader>fe"] = { function() require("config.pickers.env").read_env() end, desc = "Find env values" },
+    ["<LocalLeader>fn"] = { function() require("config.pickers.snippets").view_snippets() end, desc = "Find available snippets" },
 
     X = { "x~", desc = "Delete current character and capitalize the next" },
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
@@ -372,8 +373,9 @@ return {
   },
   i = {
     ["<A-BS>"] = { '<BS><BS><BS><BS><BS>', desc = "Delete small chunk of recent characters" },
- 
+
     -- Luasnip
+    ["<C-q>"] = { function() require("config.pickers.snippets").view_snippets() end, desc = "Find available snippets" },
     ["<C-k>"] = {
       function()
         if ls.jumpable(-1) then ls.jump(-1) end
