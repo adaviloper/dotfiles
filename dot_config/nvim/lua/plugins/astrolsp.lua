@@ -39,7 +39,7 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright"
+      -- "pyright",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -102,22 +102,6 @@ return {
       tailwindcss = {
         filetypes = { "html", "css", "scss", "postcss", "tsx", "jsx", "js", "ts", "vue" },
       },
-      -- snyk_ls = {
-      --   cmd = { 'snyk-ls', '-f', '~/.local/share/logs/snyk-ls-vim.log' },
-      --   root_dir = function(name)
-      --     return require('lspconfig').util.find_git_ancestor(name)
-      --   end,
-      --   filetypes = { "go", "gomod", "php", "javascript", "typescript", "json", "python", "requirements", "helm", "yaml", "terraform", "terraform-vars" },
-      --   init_options = {
-      --     activateSnykCode = "true",
-      --     folderConfigs = {
-      --       {
-      --         baseBranch = "main",
-      --         folderPath = "~/Code/loop-returns-app/",
-      --       }
-      --     }
-      --   }
-      -- },
     },
     -- customize how language servers are attached
     handlers = {
