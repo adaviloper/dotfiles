@@ -7,6 +7,7 @@ local function get_ft_hl()
 		json = mocha.yellow,
 		lua = mocha.sky,
 		markdown = mocha.yellow,
+		norg = mocha.blue,
 		php = mocha.mauve,
 		scss = mocha.red,
 		toml = mocha.red,
