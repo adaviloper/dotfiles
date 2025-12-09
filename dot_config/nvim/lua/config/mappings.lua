@@ -68,6 +68,11 @@ return {
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
     ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab" },
 
+    ["<C-a>"] = { function () require('dial.map').manipulate("increment", "normal") end, desc = "Dial up" },
+    ["<C-x>"] = { function () require('dial.map').manipulate("decrement", "normal") end, desc = "Dial down" },
+    ["g<C-a>"] = { function () require('dial.map').manipulate("increment", "gnormal") end, desc = "Dial up" },
+    ["g<C-x>"] = { function () require('dial.map').manipulate("decrement", "gnormal") end, desc = "Dial down", },
+
     ["<Leader>SS"] = {
       function()
         require("resession").save(utils.get_session_name(), {
@@ -442,5 +447,9 @@ return {
     ["y"] = { "ymy", desc = "Yank in visual mode without losing cursor position" },
     ["gS"] = { "!jq<CR>", desc = "Format JSON" },
     ["gJ"] = { "!jq<CR>", desc = "Format JSON" },
+    ["<C-a>"] = { function () require('dial.map').manipulate("increment", "visual") end, desc = "Dial up" },
+    ["<C-x>"] = { function () require('dial.map').manipulate("decrement", "visual") end, desc = "Dial down" },
+    ["g<C-a>"] = { function () require('dial.map').manipulate("increment", "gvisual") end, desc = "Dial up" },
+    ["g<C-x>"] = { function () require('dial.map').manipulate("decrement", "gvisual") end, desc = "Dial down", },
   },
 }
