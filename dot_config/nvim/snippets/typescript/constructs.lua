@@ -38,7 +38,7 @@ return
       "keyBy",
       fmta(
         [[
-        const <variable_name> = <array>.reduce((acc: Record<<string, <acc_type>>>, <item>) =>> {
+        const <variable_name> = <array>.reduce((acc: Record<<string, <acc_type>>>, <item>: <rep_acc_type>) =>> {
           if (!acc[<rep_item>.<prop>]) {
             acc[<rep_item>.<rep_prop>] = <rep_item>;
           }
@@ -54,6 +54,7 @@ return
           prop = i(5, ''),
           rep_item = rep(4),
           rep_prop = rep(5),
+          rep_acc_type = rep(3),
         }
       )
     ),
