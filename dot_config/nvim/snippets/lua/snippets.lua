@@ -5,7 +5,9 @@ return
       fmta(
         [=[
         s(
-          "<trigger>",
+          {
+            trig = "<trigger>",
+          },
           fmta(
             [[
             <template>
