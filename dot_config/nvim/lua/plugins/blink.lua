@@ -23,9 +23,9 @@ return {
 
     sources = {
       providers = {
-        snippets = { score_offset = 10 },
+        lsp = { score_offset = 10 },
+        snippets = { score_offset = 7 },
         path = { score_offset = 3 },
-        lsp = { score_offset = 0 },
         buffer = { score_offset = -3 },
       },
     },
