@@ -1,8 +1,36 @@
 #!/bin/bash
 
+# Function to find the latest release branch (matching release/<YYYY-mm-dd>-*)
+# First sort by date in branch name (most recent first), then by commit date for same-date branches
+find_latest_release_branch() {
+  local latest=$(git for-each-ref \
+    refs/heads/release/ refs/remotes/origin/release/ \
+    --format='%(refname:short)|%(committerdate:iso8601)' \
+    | grep -E 'release/[0-9]{4}-[0-9]{2}-[0-9]{2}-' \
+    | while IFS='|' read -r branch committerdate; do
+        # Extract date from branch name (format: release/YYYY-mm-dd-...)
+        branch_date=$(echo "$branch" | sed -n 's|release/\([0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\)-.*|\1|p')
+        echo "$branch_date|$committerdate|$branch"
+      done \
+    | sort -t'|' -k1,1r -k2,2r \
+    | head -n 1 \
+    | cut -d'|' -f3)
+  
+  # Remove remote prefix if present (e.g., "origin/release/..." -> "release/...")
+  echo "${latest#origin/}"
+}
+
+# Check for --latest flag
+if [ "$1" = "--latest" ]; then
+  LATEST_RELEASE_BRANCH=$(find_latest_release_branch)
+  echo "$LATEST_RELEASE_BRANCH"
+  exit 0
+fi
+
 # Check if commit hash is provided
 if [ -z "$1" ]; then
   echo "Usage: release <commit-hash>"
+  echo "       release --latest"
   exit 1
 fi
 
@@ -11,7 +39,26 @@ DATE=$(date +%Y-%m-%d)
 BRANCH_NAME="release/${DATE}-${COMMIT}-Word-Nerds"
 echo "$BRANCH_NAME"
 
-# Create new branch from current branch
+LATEST_RELEASE_BRANCH=$(find_latest_release_branch)
+
+if [ -z "$LATEST_RELEASE_BRANCH" ]; then
+  echo "Warning: No release branch found matching pattern release/<YYYY-mm-dd>-*. Creating from current branch."
+  BASE_BRANCH=$(git branch --show-current)
+else
+  echo "Branching off of: $LATEST_RELEASE_BRANCH"
+  BASE_BRANCH="$LATEST_RELEASE_BRANCH"
+  # Checkout the latest release branch first
+  if git show-ref --verify --quiet refs/heads/"$BASE_BRANCH"; then
+    git checkout "$BASE_BRANCH"
+  elif git show-ref --verify --quiet refs/remotes/origin/"$BASE_BRANCH"; then
+    git checkout -b "$BASE_BRANCH" "origin/$BASE_BRANCH"
+  else
+    echo "Error: Could not find branch $BASE_BRANCH locally or remotely"
+    exit 1
+  fi
+fi
+
+# Create new branch from the base branch
 git checkout -b "$BRANCH_NAME"
 
 # Cherry pick the commit onto the new branch
