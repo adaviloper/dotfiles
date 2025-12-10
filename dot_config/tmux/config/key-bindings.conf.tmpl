@@ -9,6 +9,9 @@ bind-key j next-window
 unbind-key p
 bind-key k previous-window
 
+# Pane Management
+bind-key C-w kill-pane -a
+
 # Session Management
 bind . if-shell '[ $(tmux has-session -t "Dotfiles") -eq 0 ]' {
   attach -t "Dotfiles"
