@@ -66,12 +66,12 @@ return {
           cyclic = true,
         }),
         augend.constant.new({
-          elements = { "describe(", "describe.skip(", "describe.only(", },
+          elements = { "describe(", "describe.only(", "describe.skip(", },
           word = false,
           cyclic = true,
         }),
         augend.constant.new({
-          elements = { "it(", "it.skip(", "it.only(", },
+          elements = { "it(", "it.only(", "it.skip(", },
           word = false,
           cyclic = true,
         }),
