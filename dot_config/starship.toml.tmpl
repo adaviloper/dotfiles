@@ -1,6 +1,7 @@
 {{- $bg_color := "mantle" -}}
 {{- $time_color := "sky" -}}
-{{- $directory_color := "pink" -}}
+{{- $directory_color := "mauve" -}}
+{{- $golang_color := "sapphire" -}}
 {{- $git_branch_color := "peach" -}}
 {{- $git_status_color := "green" -}}
 # Get editor completions based on the config schema
@@ -21,10 +22,10 @@ format = """
 [∙](bold {{ $time_color }})$fill[∙ ](bold {{ $time_color }})$time
 [](bold {{ $directory_color }})\
 $directory\
+$golang\
 $git_branch\
-$git_metrics\
 $git_status\
-[ ]({{ $git_status_color }})
+${custom.end}
 """
 
 # Inserts a blank line between shell prompts
@@ -56,6 +57,11 @@ disabled = false
 symbol = '─'
 style = 'bold {{ $time_color }}'
 
+[golang]
+format = '[ ]({{ $bg_color }} bg:{{ $golang_color }})[$symbol $version ]($style)[]({{ $golang_color }} bg:{{ $bg_color }})'
+style = 'bold {{ $bg_color }} bg:{{ $golang_color }}'
+symbol = '󰟓'
+
 [git_branch]
 format = '[ ]({{ $bg_color }} bg:{{ $git_branch_color }})[$symbol$branch(:$remote_branch) ]($style bg:{{ $git_branch_color }})$git_state[]({{ $git_branch_color }} bg:{{ $bg_color }})'
 style = '{{ $bg_color }}'
@@ -66,7 +72,7 @@ added_style = 'bold blue'
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [git_status]
-format = '[ $git_metrics]({{ $bg_color }} bg:{{ $git_status_color }})([$all_status$ahead_behind]($style))'
+format = '[ ]({{ $bg_color }} bg:{{ $git_status_color }})([+$added-$deleted$all_status$ahead_behind]($style))[ ]({{ $git_status_color }})'
 disabled = false
 style = '{{ $bg_color }} bg:{{ $git_status_color }}'
 
@@ -77,12 +83,16 @@ disabled = true
 [time]
 disabled = false
 format = '[$time]($style {{ $time_color }}) '
-
 [username]
 style_user = "bg:sapphire"
 style_root = "bg:pink"
 format = '[adaviloper ]($style {{ $bg_color }})'
 show_always = true
+
+[custom.end]
+format = '[ $git_metrics]({{ $bg_color }} bg:{{ $git_status_color }})([$all_status$ahead_behind]($style))[ ]({{ $git_status_color }})'
+style = '{{ $bg_color }} bg:{{ $directory_color }}'
+when = 'bash -c "! git rev-parse --git-dir >/dev/null 2>&1"'
 
 [palettes.catppuccin_mocha]
 rosewater = "{{ .colorscheme.rosewater }}"
