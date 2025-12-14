@@ -6,13 +6,8 @@ windows:
     panes:
       - shell_command:
           - cmd: "c"
-  - window_name: "2024"
-    start_directory: ./2024
-    panes:
-      - shell_command:
-          - cmd: "c"
-  - window_name: "2020"
-    start_directory: ./2020
+  - window_name: "2025"
+    start_directory: ./2025
     panes:
       - shell_command:
           - cmd: "c"
