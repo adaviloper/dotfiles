@@ -1,3 +1,8 @@
+{{- $bg_color := "mantle" -}}
+{{- $time_color := "sky" -}}
+{{- $directory_color := "pink" -}}
+{{- $git_branch_color := "peach" -}}
+{{- $git_status_color := "green" -}}
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
@@ -13,64 +18,57 @@ command_timeout = 1000
 # right angled: 
 
 format = """
-[∙](bold sky)$fill[∙ ](bold sky)$time
-[](bold mauve)\
+[∙](bold {{ $time_color }})$fill[∙ ](bold {{ $time_color }})$time
+[](bold {{ $directory_color }})\
 $directory\
-[ ](mauve bg:teal)\
 $git_branch\
-$git_state\
-$git_status\
 $git_metrics\
-[ ](teal)
+$git_status\
+[ ]({{ $git_status_color }})
 """
-
-# [└─∙ ](bold sky)
-# format = """
-# [\uE0B0](base bg:sapphire)\
-# $username\
-# [\ue0B4 ](sapphire bg:peach)\
-# $directory\
-# [\ue0b4 ](peach bg:green)\
-# $git_branch\
-# $git_state\
-# $git_status\
-# $git_metrics\
-# [\uE0B0](green)$fill $time
-# """
 
 # Inserts a blank line between shell prompts
 add_newline = false
 
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
-success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
-
 [directory]
 fish_style_pwd_dir_length = 3
-format = '[$path ]($style)[$read_only]($read_only_style bg:mauve)'
-style = 'mantle bg:mauve'
+format = '[$path $status]($style)[$read_only]($read_only_style bg:{{ $directory_color }})[]({{ $directory_color }} bg:{{ $bg_color }})'
+
+style = '{{ $bg_color }} bg:{{ $directory_color }}'
 truncation_length = 4
 
 [directory.substitutions]
 # Add any substitions here
 # 'some/path' = 'alias'
-'.dotfiles' = '  .dotfiles'
 '~/Code' = '  Code'
+'~/.local/share/chezmoi' = ' .dotfiles'
 'qmk_firmware' = '󰌓 QMK'
+
+[status]
+style = '{{ $bg_color }} bg:{{ $directory_color }}'
+symbol = ''
+success_symbol = ''
+format = '[$symbol$signal_number$maybe_int ]($style)'
+map_symbol = false
+disabled = false
 
 [fill]
 symbol = '─'
-style = 'bold sky'
+style = 'bold {{ $time_color }}'
 
 [git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style bg:teal)'
-style = 'mantle'
-symbol = '[ ](mantle bg:teal)'
+format = '[ ]({{ $bg_color }} bg:{{ $git_branch_color }})[$symbol$branch(:$remote_branch) ]($style bg:{{ $git_branch_color }})$git_state[]({{ $git_branch_color }} bg:{{ $bg_color }})'
+style = '{{ $bg_color }}'
+symbol = '[ ]({{ $bg_color }} bg:{{ $git_branch_color }})'
+
+[git_metrics]
+added_style = 'bold blue'
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+format = '[ $git_metrics]({{ $bg_color }} bg:{{ $git_status_color }})([$all_status$ahead_behind]($style))'
 disabled = false
-style = 'mantle bg:teal'
+style = '{{ $bg_color }} bg:{{ $git_status_color }}'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -78,12 +76,12 @@ disabled = true
 
 [time]
 disabled = false
-format = '[$time]($style rosewater) '
+format = '[$time]($style {{ $time_color }}) '
 
 [username]
 style_user = "bg:sapphire"
 style_root = "bg:pink"
-format = '[adaviloper ]($style mantle)'
+format = '[adaviloper ]($style {{ $bg_color }})'
 show_always = true
 
 [palettes.catppuccin_mocha]
