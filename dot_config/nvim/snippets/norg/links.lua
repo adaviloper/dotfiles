@@ -6,9 +6,9 @@ return {
       trig = "person",
       desc = "Link a person",
     },
-    fmt([=[{{:$/people/{}.norg:}}[{}]]=], {
-      f(snippet_utils.slug_case_var, { 1 }),
-      i(1),
+    fmta([=[{:$/people/<file_name>.norg:}[<name>]]=], {
+      file_name = f(snippet_utils.slug_case_var, { 1 }),
+      name = i(1),
     })
   ),
   s(
