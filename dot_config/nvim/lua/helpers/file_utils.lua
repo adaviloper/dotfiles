@@ -11,7 +11,9 @@ M.file_exists = function(filepath)
 end
 
 M.file_is_empty = function(filepath)
-  if not filepath or filepath == "" then return false end
+  if not filepath or filepath == "" then
+    filepath = vim.fn.expand('%')
+  end
   local handle = io.open(filepath, "r")
   if handle == nil then return false end
   local content = handle:read("*a")
