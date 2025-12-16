@@ -1,3 +1,4 @@
+{{- $txt_color := "mantle" -}}
 {{- $bg_color := "mantle" -}}
 {{- $time_color := "sky" -}}
 {{- $directory_color := "mauve" -}}
@@ -40,7 +41,7 @@ add_newline = false
 fish_style_pwd_dir_length = 3
 format = '[$path $status]($style)[$read_only]($read_only_style bg:{{ $directory_color }})[{{ $separator }}]({{ $directory_color }} bg:{{ $bg_color }})'
 
-style = '{{ $bg_color }} bg:{{ $directory_color }}'
+style = '{{ $txt_color }} bg:{{ $directory_color }}'
 truncation_length = 4
 
 [directory.substitutions]
@@ -51,7 +52,7 @@ truncation_length = 4
 'qmk_firmware' = '󰌓 QMK'
 
 [status]
-style = '{{ $bg_color }} bg:{{ $directory_color }}'
+style = '{{ $txt_color }} bg:{{ $directory_color }}'
 symbol = ''
 success_symbol = ''
 format = '[$symbol$signal_number$maybe_int ]($style)'
@@ -64,13 +65,13 @@ style = 'bold {{ $time_color }}'
 
 [golang]
 format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $golang_color }})[$symbol $version ]($style)[{{ $separator }}]({{ $golang_color }} bg:{{ $bg_color }})'
-style = 'bold {{ $bg_color }} bg:{{ $golang_color }}'
+style = 'bold {{ $txt_color }} bg:{{ $golang_color }}'
 symbol = '󰟓'
 
 [git_branch]
 format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $git_branch_color }})[$symbol$branch(:$remote_branch) ]($style bg:{{ $git_branch_color }})$git_state[{{ $separator }}]({{ $git_branch_color }} bg:{{ $bg_color }})'
-style = '{{ $bg_color }}'
-symbol = '[ ]({{ $bg_color }} bg:{{ $git_branch_color }})'
+style = '{{ $txt_color }}'
+symbol = '[ ]({{ $txt_color }} bg:{{ $git_branch_color }})'
 
 [git_metrics]
 added_style = 'bold blue'
@@ -79,7 +80,7 @@ format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 [git_status]
 format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $git_status_color }})([+$added-$deleted$all_status$ahead_behind]($style))[ ]({{ $git_status_color }})'
 disabled = false
-style = '{{ $bg_color }} bg:{{ $git_status_color }}'
+style = '{{ $txt_color }} bg:{{ $git_status_color }}'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -91,12 +92,12 @@ format = '[$time]($style {{ $time_color }}) '
 [username]
 style_user = "bg:sapphire"
 style_root = "bg:pink"
-format = '[adaviloper ]($style {{ $bg_color }})'
+format = '[adaviloper ]($style {{ $txt_color }})'
 show_always = true
 
 [custom.end]
-format = '[{{ $separator }} $git_metrics]({{ $bg_color }} bg:{{ $git_status_color }})([$all_status$ahead_behind]($style))[ ]({{ $git_status_color }})'
-style = '{{ $bg_color }} bg:{{ $directory_color }}'
+format = '[{{ $separator }} $git_metrics]({{ $txt_color }} bg:{{ $git_status_color }})([$all_status$ahead_behind]($style))[ ]({{ $git_status_color }})'
+style = '{{ $txt_color }} bg:{{ $directory_color }}'
 when = 'bash -c "! git rev-parse --git-dir >/dev/null 2>&1"'
 
 [palettes.catppuccin_mocha]
