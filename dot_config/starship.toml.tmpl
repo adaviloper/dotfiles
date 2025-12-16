@@ -75,10 +75,10 @@ symbol = '[ ]({{ $txt_color }} bg:{{ $git_branch_color }})'
 
 [git_metrics]
 added_style = 'bold blue'
-format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+format = '[$added]($added_style)/[$deleted]($deleted_style) '
 
 [git_status]
-format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $git_status_color }})([+$added-$deleted$all_status$ahead_behind]($style))[ ]({{ $git_status_color }})'
+format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $git_status_color }})([$added$deleted$all_status$ahead_behind]($style))[ ]({{ $git_status_color }})'
 disabled = false
 style = '{{ $txt_color }} bg:{{ $git_status_color }}'
 
