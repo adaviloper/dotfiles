@@ -3,7 +3,13 @@
 {{ template "shared_pick_node_package_manager.tmpl" . -}}
 
 case "$(_pick_node_package_manager)" in
-  yarn) yarn add "$@" ;;
+  yarn)
+    if [ $# -gt 0 ]; then
+      yarn add "$@"
+    else
+      yarn install
+    fi
+    ;;
   pnpm) pnpm install "$@" ;;
   npm) npm install "$@" ;;
 esac
