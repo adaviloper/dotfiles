@@ -27,6 +27,7 @@ return {
       "vue",
       "yaml",
       "yml",
+      "xml",
       "zsh",
     },
     use_telescope = true,
