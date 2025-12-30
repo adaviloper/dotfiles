@@ -104,13 +104,14 @@ return
       trig = 'dml',
       name = "Debug with method and line",
       desc = "Debug with method and line",
-      condition = in_nodes_condition({'method_declaration'}),
-      show_condition = in_nodes_condition({'method_declaration'}),
+      condition = in_nodes_condition({'anonymous_function', 'method_declaration'}),
+      show_condition = in_nodes_condition({'anonymous_function', 'method_declaration'}),
     },
       fmt(
         [[
-dd({}__METHOD__ . ':' . __LINE__);
-    ]], {
+        dd({}__METHOD__ . ':' . __LINE__);
+        ]],
+        {
           sn(
             1,
             {
