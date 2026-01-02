@@ -12,5 +12,3 @@ alias p='phpunit'
 alias pf='p --filter'
 
 export CLICOLOR=1
-
-alias -s md="nvim"
