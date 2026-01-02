@@ -4,6 +4,14 @@ set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
 set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colors - needs tmux-3.0
 set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
 set -as terminal-overrides "*:Tc"
+# Allow cursor style escape sequences to pass through (DECSCUSR)
+# This ensures Wezterm's cursor style settings work inside Tmux
+# \E[0 q = default, \E[1 q = blinking block, \E[2 q = steady block
+# \E[3 q = blinking block, \E[4 q = steady underline, \E[5 q = blinking underline
+# \E[6 q = steady bar (pipe), \E[7 q = blinking bar
+set -as terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[2 q'
+# For Wezterm specifically, ensure cursor style sequences pass through
+set -as terminal-overrides 'wezterm*:Ss=\E[%p1%d q:Se=\E[2 q'
 if 'infocmp -x tmux-256color > /dev/null 2>&1' 'set -g default-terminal "tmux-256color"'
 
 setw -g xterm-keys on
