@@ -13,14 +13,14 @@ if handle then
   handle:close()
 end
 
-for _, value in pairs({
+for _, category in pairs({
 	hooks,
 	keybindings,
 	mouse_bindings,
 	font,
 	ui,
 }) do
-	value.setup(config)
+	category.setup(config)
 end
 
 config.term = "wezterm"
