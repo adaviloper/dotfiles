@@ -27,7 +27,7 @@ function M.getKeybindings()
     { key = "0", mods = "SUPER", action = act.ResetFontSize },
 		{ key = "c", mods = "SUPER", action = act.CopyTo("Clipboard") },
 		{ key = "f", mods = "SUPER", action = act.Search("CurrentSelectionOrEmptyString") },
-		{ key = "p", mods = "SUPER", action = act.ActivateCommandPalette },
+		{ key = "p", mods = "SUPER|CTRL", action = act.ActivateCommandPalette },
 		{ key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
 		{ key = "q", mods = "SUPER", action = act.QuitApplication },
 		{ key = "r", mods = "SUPER", action = act.ReloadConfiguration },
