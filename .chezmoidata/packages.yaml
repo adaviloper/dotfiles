@@ -96,6 +96,7 @@ packages:
       - go
       - gum
       - jq
+      - lazydocker
       - lazygit
       - lazynpm
       - luarocks
