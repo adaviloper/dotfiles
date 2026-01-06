@@ -36,7 +36,7 @@ fi
 
 COMMIT="$1"
 DATE=$(date +%Y-%m-%d)
-BRANCH_NAME="release/${DATE}-${COMMIT}-Word-Nerds"
+BRANCH_NAME="release/${DATE}-${COMMIT}-{{ onepasswordRead .secrets.jira.team_name }}"
 echo "$BRANCH_NAME"
 
 LATEST_RELEASE_BRANCH=$(find_latest_release_branch)
