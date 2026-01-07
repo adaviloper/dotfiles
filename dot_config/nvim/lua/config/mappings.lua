@@ -50,16 +50,6 @@ end
 return {
   -- first key is the mode
   n = {
-    zg = {
-      function ()
-        local word = vim.fn.expand("<cword>")
-        vim.cmd('spellgood ' .. word)  -- marks word as good directly
-
-        local spellfile = vim.fn.expand(vim.o.spellfile)
-        vim.fn.system({ "chezmoi", "add", spellfile })
-        vim.fn.system({ "chezmoi", "add", spellfile .. '.spl' })
-      end,
-    },
     ["<F5>"] = { "z=" },
     ["<A-e>"] = { "5<C-e>" },
     ["<A-y>"] = { "5<C-y>" },
