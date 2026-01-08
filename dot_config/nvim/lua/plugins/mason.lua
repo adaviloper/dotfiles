@@ -16,6 +16,7 @@ return {
         "json-lsp",
         "lua-language-server",
         "phpactor",
+        "tsgo",
 
         -- install formatters
         "shfmt",
