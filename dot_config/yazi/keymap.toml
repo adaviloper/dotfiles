@@ -147,7 +147,7 @@ keymap = [
 
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go to the home directory" },
-	{ on = [ "g", "." ],       run = "cd ~/.dotfiles",   desc = "Go to the Dotfiles directory" },
+	{ on = [ "g", "." ],       run = "cd ~/.local/share/chezmoi/.dotfiles",   desc = "Go to the Dotfiles directory" },
 	{ on = [ "g", "c" ],       run = "cd ~/Code",     	 desc = "Go to the Code directory" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
 	{ on = [ "g", "l" ],       run = "cd ~/.local",   	 desc = "Go to the Local directory" },
