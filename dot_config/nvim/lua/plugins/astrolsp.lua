@@ -40,6 +40,7 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright",
+      "tsgo",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -101,6 +102,20 @@ return {
       },
       tailwindcss = {
         filetypes = { "html", "css", "scss", "postcss", "tsx", "jsx", "js", "ts", "vue" },
+      },
+      tsgo = {
+        cmd = { "tsgo", "--lsp", "--stdio" },
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "javascriptreact.jsx",
+          "typescript",
+          "typescriptreact",
+          "typescriptreact.tsx",
+        },
+        root_dir = function (...)
+          return require("lspconfig.util").root_pattern("package.json", "tsconfig.json", ".git")(...)
+        end,
       },
     },
     -- customize how language servers are attached
