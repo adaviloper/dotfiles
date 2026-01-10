@@ -14,46 +14,18 @@ return {
     "folke/snacks.nvim",
     opts = function(_, opts)
       -- customize the dashboard header
-      local mocha = require("catppuccin.palettes").get_palette("mocha")
       local Snacks = require("snacks")
 
-      vim.api.nvim_set_hl(0, "NeovimDashboardLogo1", { fg = mocha.blue })
-      vim.api.nvim_set_hl(0, "NeovimDashboardLogo2", { fg = mocha.green, bg = mocha.blue })
-      vim.api.nvim_set_hl(0, "NeovimDashboardLogo2_1", { fg = mocha.blue, bg = mocha.green })
-      vim.api.nvim_set_hl(0, "NeovimDashboardLogo3", { fg = mocha.green })
-      vim.api.nvim_set_hl(0, "NeovimDashboardFooter1", { fg = mocha.blue })
-      vim.api.nvim_set_hl(0, "NeovimDashboardFooter2", { fg = mocha.green })
-      opts.dashboard.preset.header = table.concat({
-        [[     ██        ]],
-        [[    ███        ]],
-        [[   ███        ]],
-        [[  ██████████  ]],
-        [[    ██   ██  ]],
-        [[      ██    ██  ]],
-        [[      ██   ██  ]],
-        [[     ███████  ]],
-        [[      █        ]],
-        [[]],
-        [[N  E  O  V  I  M]],
-      }, "\n")
-
-      -- opts.dashboard = {
-      --   { { 'NeovimDashboardLogo1', 2, 45 } },
-      --   { { 'NeovimDashboardLogo1', 2, 45 } },
-      --   { { 'NeovimDashboardLogo1', 2, 45 } },
-      --   { { 'NeovimDashboardLogo3', 2, 14 }, { 'NeovimDashboardLogo1', 14, 20 }, { 'NeovimDashboardLogo3', 20, 45 } },
-      --   { { 'NeovimDashboardLogo1', 2, 17 }, { 'NeovimDashboardLogo3', 18, 41 } },
-      --   { { 'NeovimDashboardLogo1', 2, 19 }, { 'NeovimDashboardLogo3', 16, 45 } },
-      --   { { 'NeovimDashboardLogo1', 2, 19 }, { 'NeovimDashboardLogo3', 15, 45 } },
-      --   { { 'NeovimDashboardLogo3', 0, 45 } },
-      --   { { 'NeovimDashboardLogo1', 0, 45 } },
-      --   {},
-      --   { { 'NeovimDashboardFooter1', 0, 8 }, { 'NeovimDashboardFooter2', 9, 22 } },
-      -- }
-      -- 
+      -- Terminal section with alignment
+      -- align is part of snacks.dashboard.Item and should work
+      local logo = Snacks.dashboard.sections.terminal({
+        cmd = 'neovim_logo',
+        height = 12,
+        align = 'center', -- This should work since terminal() accepts snacks.dashboard.Item
+      })
 
       opts.dashboard.sections = {
-        { section = 'header' },
+        logo,
         function()
           local in_git = Snacks.git.get_root() ~= nil
           local cmds = {

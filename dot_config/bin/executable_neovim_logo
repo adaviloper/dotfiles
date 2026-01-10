@@ -1,0 +1,197 @@
+#!/usr/bin/env bash
+# Neovim logo printer with customizable colors
+#
+# Usage:
+#   ./neovim-logo.sh
+#   COLOR1=blue COLOR2=green COLOR3=cyan ./neovim-logo.sh  # Two-tone logo colors
+#   FOOTER_N=#166534 FOOTER_E=#86EFAC FOOTER_O=#166534 FOOTER_V=#86EFAC FOOTER_I=#166534 FOOTER_M=#86EFAC ./neovim-logo.sh
+
+# ANSI color codes
+# You can use color names, ANSI codes (30-37), or RGB values (hex or decimal)
+declare -A COLORS=(
+  [black]=30
+  [red]=31
+  [green]=32
+  [yellow]=33
+  [blue]=34
+  [magenta]=35
+  [cyan]=36
+  [white]=37
+  [bright_black]=90
+  [bright_red]=91
+  [bright_green]=92
+  [bright_yellow]=93
+  [bright_blue]=94
+  [bright_magenta]=95
+  [bright_cyan]=96
+  [bright_white]=97
+)
+
+# Parse RGB value from various formats
+# Supports: #FF0000, #ff0000, FF0000, 255,0,0, rgb(255,0,0)
+parse_rgb() {
+  local color="$1"
+  local r g b
+  
+  # Hex format: #FF0000 or FF0000
+  if [[ "$color" =~ ^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$ ]]; then
+    r=$((0x${BASH_REMATCH[1]}))
+    g=$((0x${BASH_REMATCH[2]}))
+    b=$((0x${BASH_REMATCH[3]}))
+    echo "$r $g $b"
+    return 0
+  fi
+  
+  # Decimal format: 255,0,0 or rgb(255,0,0)
+  if [[ "$color" =~ ^rgb\(([0-9]+),([0-9]+),([0-9]+)\)$ ]] || \
+     [[ "$color" =~ ^([0-9]+),([0-9]+),([0-9]+)$ ]]; then
+    r="${BASH_REMATCH[1]}"
+    g="${BASH_REMATCH[2]}"
+    b="${BASH_REMATCH[3]}"
+    # Validate range
+    if [[ $r -ge 0 && $r -le 255 && $g -ge 0 && $g -le 255 && $b -ge 0 && $b -le 255 ]]; then
+      echo "$r $g $b"
+      return 0
+    fi
+  fi
+  
+  return 1
+}
+
+# Generate ANSI escape sequence for a color
+# Returns either standard ANSI code or 24-bit RGB escape sequence
+color_code() {
+  local color="$1"
+  local rgb
+  
+  # Check if it's an RGB value
+  if rgb=$(parse_rgb "$color"); then
+    # Return RGB values as space-separated string (we'll handle the escape sequence separately)
+    echo "RGB:$rgb"
+    return 0
+  fi
+  
+  # If it's already a number, use it directly
+  if [[ "$color" =~ ^[0-9]+$ ]]; then
+    echo "$color"
+  # Otherwise, look it up in the COLORS array
+  elif [[ -n "${COLORS[$color]}" ]]; then
+    echo "${COLORS[$color]}"
+  else
+    echo "34" # Default to blue if not found
+  fi
+}
+
+# Generate ANSI escape sequence from color code
+# Handles both standard ANSI codes and RGB values
+ansi_escape() {
+  local code="$1"
+  
+  if [[ "$code" =~ ^RGB:(.+)$ ]]; then
+    local rgb="${BASH_REMATCH[1]}"
+    local r g b
+    read -r r g b <<< "$rgb"
+    # 24-bit true color: \033[38;2;R;G;Bm
+    printf "\033[38;2;%d;%d;%dm" "$r" "$g" "$b"
+  else
+    # Standard ANSI color code
+    printf "\033[%sm" "$code"
+  fi
+}
+
+# Get colors from environment variables or use defaults
+# Logo uses two-tone legacy system (COLOR1, COLOR2, COLOR3)
+COLOR1="${COLOR1:-blue}"      # Main logo color (default: blue)
+COLOR2="${COLOR2:-green}"     # Secondary logo color (default: green)
+COLOR3="${COLOR3:-green}"     # Tertiary logo color (default: green)
+
+# Convert logo colors to escape sequences
+C1=$(color_code "$COLOR1")
+C2=$(color_code "$COLOR2")
+C3=$(color_code "$COLOR3")
+
+FG1=$(ansi_escape "$C1")
+FG2=$(ansi_escape "$C2")
+FG3=$(ansi_escape "$C3")
+
+# Footer text: 6 individual color variables (one for each letter)
+FOOTER_N="#5290F9"  # Color for 'N'
+FOOTER_E="#89B4FA" # Color for 'E'
+FOOTER_O="#CDE0FF" # Color for 'O'
+# FOOTER_O="#E6F0FF" # Color for 'O'
+# FOOTER_V="#E3F7E1" # Color for 'V'
+FOOTER_V="#C9EBC7" # Color for 'V'
+FOOTER_I="#A6E3A1" # Color for 'I'
+FOOTER_M="#7BD578" # Color for 'M'
+
+# Convert footer colors to escape sequences
+CF_N=$(color_code "$FOOTER_N")
+CF_E=$(color_code "$FOOTER_E")
+CF_O=$(color_code "$FOOTER_O")
+CF_V=$(color_code "$FOOTER_V")
+CF_I=$(color_code "$FOOTER_I")
+CF_M=$(color_code "$FOOTER_M")
+
+FF_N=$(ansi_escape "$CF_N")
+FF_E=$(ansi_escape "$CF_E")
+FF_O=$(ansi_escape "$CF_O")
+FF_V=$(ansi_escape "$CF_V")
+FF_I=$(ansi_escape "$CF_I")
+FF_M=$(ansi_escape "$CF_M")
+
+RESET="\033[0m"
+
+# Logo lines
+# Main logo: Uses two-tone system (COLOR1, COLOR2, COLOR3)
+# Footer text: Uses FOOTER_N, FOOTER_E, FOOTER_O, FOOTER_V, FOOTER_I, FOOTER_M
+#
+# Color format examples:
+#   - Named colors: blue, green, cyan, etc.
+#   - ANSI codes: 34, 32, 36, etc.
+#   - RGB hex: #89B4FA, #A6E3A1
+#   - RGB decimal: 137,180,250 or rgb(137,180,250)
+
+# Get terminal width for centering
+TERM_WIDTH="${COLUMNS:-80}"
+if command -v tput >/dev/null 2>&1; then
+  tput_width=$(tput cols 2>/dev/null)
+  if [[ -n "$tput_width" ]] && [[ "$tput_width" =~ ^[0-9]+$ ]] && [[ $tput_width -gt 0 ]]; then
+    TERM_WIDTH="$tput_width"
+  fi
+fi
+
+# Ensure TERM_WIDTH is a valid number
+if ! [[ "$TERM_WIDTH" =~ ^[0-9]+$ ]] || [[ $TERM_WIDTH -le 0 ]]; then
+  TERM_WIDTH=80
+fi
+
+# Logo lines are 16 characters wide
+LOGO_WIDTH=16
+LOGO_INDENT=$(( (TERM_WIDTH - LOGO_WIDTH) / 2 ))
+if [[ $LOGO_INDENT -lt 0 ]]; then
+  LOGO_INDENT=0
+fi
+LOGO_INDENT_STR=$(printf "%*s" $LOGO_INDENT "")
+
+# Footer text "N  E  O  V  I  M" is 17 characters wide
+FOOTER_WIDTH=17
+FOOTER_INDENT=$(( (TERM_WIDTH - FOOTER_WIDTH) / 2 ))
+if [[ $FOOTER_INDENT -lt 0 ]]; then
+  FOOTER_INDENT=0
+fi
+FOOTER_INDENT_STR=$(printf "%*s" $FOOTER_INDENT "")
+
+# Main logo (always uses two-tone legacy system) - centered
+printf "${LOGO_INDENT_STR}${FG1}     ██        ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG1}    ███        ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG1}   ███        ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG3}  ███${FG1}██${FG3}█████  ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG1}    ██ ${FG2}  ██  ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG1}      ██ ${FG3}   ██  ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG1}      ██ ${FG3}  ██  ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG3}     ███████  ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG1}      █        ${RESET}\n"
+printf "\n"
+
+# Footer text: Each letter uses its own color variable - centered
+printf "${FOOTER_INDENT_STR}${FF_N}N  ${FF_E}E  ${FF_O}O  ${FF_V}V  ${FF_I}I  ${FF_M}M${RESET}\n"
