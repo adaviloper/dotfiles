@@ -109,10 +109,14 @@ COLOR3="${COLOR3:-green}"     # Tertiary logo color (default: green)
 C1=$(color_code "$COLOR1")
 C2=$(color_code "$COLOR2")
 C3=$(color_code "$COLOR3")
+C4=$(color_code "#9DD5BC") # green over blue
+C5=$(color_code "#92C2DF") # blue over green
 
 FG1=$(ansi_escape "$C1")
 FG2=$(ansi_escape "$C2")
 FG3=$(ansi_escape "$C3")
+FG4=$(ansi_escape "$C4")
+FG5=$(ansi_escape "$C5")
 
 # Footer text: 6 individual color variables (one for each letter)
 FOOTER_N="#5290F9"  # Color for 'N'
@@ -123,6 +127,7 @@ FOOTER_O="#CDE0FF" # Color for 'O'
 FOOTER_V="#C9EBC7" # Color for 'V'
 FOOTER_I="#A6E3A1" # Color for 'I'
 FOOTER_M="#7BD578" # Color for 'M'
+# a0dab3
 
 # Convert footer colors to escape sequences
 CF_N=$(color_code "$FOOTER_N")
@@ -189,7 +194,7 @@ printf "${LOGO_INDENT_STR}${FG3}  ███${FG1}██${FG3}█████�
 printf "${LOGO_INDENT_STR}${FG1}    ██ ${FG2}  ██  ${RESET}\n"
 printf "${LOGO_INDENT_STR}${FG1}      ██ ${FG3}   ██  ${RESET}\n"
 printf "${LOGO_INDENT_STR}${FG1}      ██ ${FG3}  ██  ${RESET}\n"
-printf "${LOGO_INDENT_STR}${FG3}     ███████  ${RESET}\n"
+printf "${LOGO_INDENT_STR}${FG3}     ${FG3}██${FG3}█████  ${RESET}\n"
 printf "${LOGO_INDENT_STR}${FG1}      █        ${RESET}\n"
 printf "\n"
 
