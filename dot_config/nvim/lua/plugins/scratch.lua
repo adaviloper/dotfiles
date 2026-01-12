@@ -8,6 +8,7 @@ return {
       "blade.php",
       "conf",
       "css",
+      "csv",
       "html",
       "js",
       "json",
