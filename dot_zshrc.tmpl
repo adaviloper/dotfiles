@@ -161,6 +161,7 @@ fi
 
 {{- if eq .is_ubuntu true }}
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  eval "$(fnm env --use-on-cd)"
 {{- end }}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
