@@ -3,7 +3,7 @@ matches:
     form: "{{ onepasswordRead .secrets.espanso.jira_link }}[[ticket_number]]"
 
   - trigger: "%rl"
-    replace: "{{ "{{" }} today {{ "}}" }}-{{ "{{" }} release.commitHash{{ "}}" }} Word Nerds"
+    replace: "{{ "{{" }} today {{ "}}" }}-{{ "{{" }} release.commitHash{{ "}}" }} {{ onepasswordRead .secrets.jira.team_name }}"
     vars:
       - name: today
         type: date
