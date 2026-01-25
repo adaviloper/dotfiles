@@ -5,6 +5,7 @@ local git_utils = require("helpers.git_utils")
 local file_utils = require("helpers.file_utils")
 
 local search_exclusions = {
+  ".idea/*",
   "node_modules*",
   "*.min.css",
   "*_min.css",
@@ -17,6 +18,8 @@ local search_exclusions = {
   "*/dist/*",
   "build/*",
   "*/build/*",
+  "storage/*",
+  "vendor/*",
 }
 local function setFileTag(tagName)
   return {
