@@ -29,7 +29,7 @@ return {
       opts.environments = {
         definitions = {
           {
-            name = "loop",
+            name = "together",
             condition = {
               file_exists = { "docker-compose.yml" },
               executable = { "docker" },
@@ -37,11 +37,10 @@ return {
             commands = {
               compose = { "docker", "compose" },
               {
-                commands = { "php", "composer", "npm" },
+                commands = { "php", "composer" },
                 docker = {
                   container = {
-                    env = "APP_SERVICE",
-                    default = "core",
+                    default = "together_api",
                   },
                   exec = { "docker", "compose", "exec", },
                 },

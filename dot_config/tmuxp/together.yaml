@@ -1,0 +1,17 @@
+session_name: Together
+start_directory: "~/Code/together"
+windows:
+  - window_name: Backend
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Frontend
+    start_directory: "./frontend"
+    panes:
+      - shell_command:
+          - cmd: "c"
+  - window_name: Terminals
+    layout: main-vertical
+    panes:
+      - shell_command:
+          - cmd: "c"
