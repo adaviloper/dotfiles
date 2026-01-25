@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Check if the current directory has a node_modules directory
-if [ -d "node_modules" ]; then
-    dnr vitest $@
-
 # Check if the current directory has a vendor directory
-elif [ -d "vendor" ]; then
+if [ -d "vendor" ]; then
     dock ./vendor/bin/phpunit $@
+
+# Check if the current directory has a node_modules directory
+elif [ -d "node_modules" ]; then
+    dnr vitest $@
 
 # Default case if neither directory is found
 else
