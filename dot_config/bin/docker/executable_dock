@@ -12,6 +12,9 @@ get_service_name() {
         */"redwood/frontend"/*|*/"redwood/frontend")
             echo "redwood_ui"
             ;;
+        */"together"/*|*/"together")
+            echo "together_api"
+            ;;
         */"redwood"/*|*/"redwood")
             echo "redwood_api"
             ;;
@@ -53,6 +56,15 @@ if [ -z "$service_name" ]; then
     exit 1
 fi
 
+# Determine if we need to use a specific user
+user_flag=""
+case $current_dir in
+    */"together"/*|*/"together")
+        user_flag="--user $(id -u):$(id -g)"
+        ;;
+esac
+
 # Execute the docker command with the mapped container name
 # docker compose run "$container_name" $@
+# docker compose exec "$user_flag" "$service_name" "$@"
 docker compose exec "$service_name" "$@"

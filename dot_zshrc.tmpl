@@ -149,7 +149,7 @@ if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ "$is_wezterm" = true ]] && [[ 
     {{- if eq .purpose "work" -}}
     tmuxp load -d notes
     {{ else }}
-    tmuxp load -d redwood
+    tmuxp load -d together
     {{- end }}
 
     tmux attach

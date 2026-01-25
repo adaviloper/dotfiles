@@ -26,10 +26,10 @@ bind u if-shell '[ $(tmux has-session -t "Work") -eq 0 ]' {
   run-shell "load work"
 }
 {{- else -}}
-bind u if-shell '[ $(tmux has-session -t "Redwood") -eq 0 ]' {
-  attach -t "Redwood"
+bind u if-shell '[ $(tmux has-session -t "Together") -eq 0 ]' {
+  attach -t "Together"
 } {
-  run-shell "load redwood"
+  run-shell "load together"
 }
 {{- end }}
 
