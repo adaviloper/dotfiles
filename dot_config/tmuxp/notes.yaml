@@ -1,14 +1,8 @@
 session_name: Notes
-start_directory: "~/Code/notes/obsidian/"
+start_directory: "~/Code/neorg"
 windows:
-  - window_name: Personal
-    start_directory: ./personal
-    focus: 'true'
-    panes:
-      - shell_command:
-          - cmd: "vim"
   - window_name: Work
-    start_directory: ./work
+    start_directory: ./notes
     panes:
       - shell_command:
           - cmd: "c"
