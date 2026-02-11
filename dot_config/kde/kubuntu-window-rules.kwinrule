@@ -13,6 +13,13 @@ shortcutrule=4
 wmclass=1Password
 wmclassmatch=1
 
+[Switch to Apidog]
+Description=Switch to Apidog
+shortcut=Ctrl+Alt+Shift+R
+shortcutrule=3
+wmclass=apidog
+wmclassmatch=1
+
 [Switch to Browser]
 Description=Switch to Browser
 shortcut=Ctrl+Alt+Shift+B
