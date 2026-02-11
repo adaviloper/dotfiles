@@ -20,6 +20,8 @@ local search_exclusions = {
   "*/build/*",
   "storage/*",
   "vendor/*",
+  "venv/*",
+  "*/venv/*",
 }
 local function setFileTag(tagName)
   return {
@@ -221,8 +223,8 @@ return {
       desc = "Toggleterm Yazi",
     },
     ["<F3>"] = {
-      function() astro.toggle_term_cmd({ direction = "float", cmd = "cursor-agent", count = 9 }) end,
-      desc = "Toggleterm Cursor Agent",
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "claude", count = 9 }) end,
+      desc = "Toggleterm 󱚟 Robot Helper",
     },
 
     -- Telescope
