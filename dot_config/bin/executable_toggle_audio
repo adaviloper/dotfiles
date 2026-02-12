@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Toggle default audio output between Logi Z407 and SteelSeries Arctis 7 Chat
+
+LOGI="bluez_output.10_94_97_10_C5_93.1"
+ARCTIS="alsa_output.usb-SteelSeries_SteelSeries_Arctis_7-00.mono-chat"
+
+current=$(pactl get-default-sink)
+
+if [ "$current" = "$LOGI" ]; then
+    next="$ARCTIS"
+    label="SteelSeries Arctis 7 Chat"
+else
+    next="$LOGI"
+    label="Logi Z407"
+fi
+
+pactl set-default-sink "$next"
+echo "Switched audio output to: $label"
