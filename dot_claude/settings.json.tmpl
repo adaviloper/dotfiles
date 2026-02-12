@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      {{ if eq .purpose "work" }}
+      "~/Code/suralink/"
+      {{ end }}
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/home/adrian/.claude/statusline-command.sh"
+  }
+}
