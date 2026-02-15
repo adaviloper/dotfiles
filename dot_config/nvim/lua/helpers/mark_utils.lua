@@ -1,6 +1,6 @@
 local M = {}
 
-M.setFileTag = function(tagName)
+M.set_file_tag = function(tagName)
   return {
     function()
       local grapple = require("grapple")
@@ -23,7 +23,7 @@ M.setFileTag = function(tagName)
   }
 end
 
-M.jumpToFileTag = function(tagName)
+M.jump_to_file_tag = function(tagName)
   return {
     function() require("grapple").select({ name = tagName }) end,
     desc = "Jump to the [" .. tagName .. "] tag",
