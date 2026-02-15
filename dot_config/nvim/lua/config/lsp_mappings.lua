@@ -37,6 +37,7 @@ end
 return {
   n = {
     gl = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
+
     gd = {
       function ()
         -- require('php-dev-tools.go_to').go_to_definition()
@@ -45,6 +46,7 @@ return {
       end,
       desc = "Go to definition",
     },
+
     -- condition for only server with declaration capabilities
     gD = {
       function()
@@ -53,7 +55,9 @@ return {
       desc = "Declaration of current symbol",
       cond = "textDocument/declaration",
     },
+
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
+
     -- this mapping will only be set in buffers with an LSP attached
     K = {
       function()
@@ -61,19 +65,24 @@ return {
       end,
       desc = "Hover symbol details",
     },
+
     ["<Leader>lt"] = { name = "PhpActor Templates" },
+
     ["<Leader>lta"] = {
       auto_select_template,
       desc = 'Auto-generate template for the current file',
     },
+
     ["<Leader>ltd"] = {
       select_template('default'),
       desc = 'Auto-generate template for the current file',
     },
+
     ["<Leader>ltt"] = {
       select_template('trait'),
       desc = 'Auto-generate template for the current file',
     },
+
     ["<Leader>lo"] = {
       function ()
         vim.lsp.buf.code_action({
@@ -88,14 +97,18 @@ return {
       end,
       desc = 'Optimize imports',
     },
+
     ["<Leader>db"] = { function () require('dap').toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+
     ["<Leader>l<C-s>"] = { function () require('snacks').picker.lsp_workspace_symbols() end, desc = "Toggle Breakpoint" },
+
     ["<Leader>lS"] = {
       function()
         require("snacks").picker.lsp_symbols()
       end,
       desc = "Show all symbols"
     },
+
     ["<Leader>ls"] = {
       function()
         require("snacks").picker.lsp_symbols({
@@ -105,6 +118,7 @@ return {
               -- "Function",
               "Method"
             },
+
             -- Include all filetypes to show functions
             ["*"] = {
               "Constructor",

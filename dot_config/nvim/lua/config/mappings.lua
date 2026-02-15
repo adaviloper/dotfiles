@@ -30,16 +30,25 @@ return {
   -- first key is the mode
   n = {
     ["<F5>"] = { "z=" },
+
     ["<A-e>"] = { "5<C-e>" },
+
     ["<A-y>"] = { "5<C-y>" },
+
     ["<A-j>"] = { "5j" },
+
     ["<A-k>"] = { "5k" },
+
     ["<C-Tab>"] = { "gt", desc = "Go to next tab" },
+
     ["<C-S-Tab>"] = { "gT", desc = "Go to previous tab" },
 
     ["<C-a>"] = { function () require('dial.map').manipulate("increment", "normal") end, desc = "Dial up" },
+
     ["<C-x>"] = { function () require('dial.map').manipulate("decrement", "normal") end, desc = "Dial down" },
+
     ["g<C-a>"] = { function () require('dial.map').manipulate("increment", "gnormal") end, desc = "Dial up" },
+
     ["g<C-x>"] = { function () require('dial.map').manipulate("decrement", "gnormal") end, desc = "Dial down", },
 
     ["<Leader>SS"] = {
@@ -50,6 +59,7 @@ return {
       end,
       desc = "Save this dirsession",
     },
+
     -- update load dirsession mapping to get the correct session name
     ["<Leader>S."] = {
       function()
@@ -61,6 +71,7 @@ return {
     },
 
     ["<Leader><Leader>e"] = { "<cmd>e<CR>", desc = "Reload the file" },
+
     ["<Leader><Leader>s"] = {
       function()
         local file_type = vim.bo.filetype
@@ -81,30 +92,38 @@ return {
         end
       end,
     },
+
     ["<Leader>uG"] = {
       "<cmd>Gitsigns toggle_current_line_blame<CR>",
       desc = "Toggle current line blame",
     },
+
     ["<Leader>un"] = {
       function() vim.o.relativenumber = vim.o.relativenumber ~= true end,
       desc = "Toggle relativenumber",
     },
 
     ["<Leader>e"] = { "<Cmd>Neotree reveal toggle<CR>", desc = "NeoTree" },
+
     ["<Leader>eb"] = { "<Cmd>Neotree float buffers<CR>", desc = "Toggle Buffer Explorer" },
+
     ["<Leader>eg"] = { "<Cmd>Neotree float git_status<CR>", desc = "Toggle changed files" },
 
     ["<Leader>W"] = { "<cmd>wa<cr>", desc = "Save all" },
+
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
     ["<Leader>b"] = { name = "Buffers" },
+
     ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+
     ["<Leader>bD"] = {
       function()
         require("astroui.status").heirline.buffer_picker(function(bufnr) require("astroui.buffer").close(bufnr) end)
       end,
       desc = "Pick to close",
     },
+
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<Leader>c"] = {
@@ -115,61 +134,78 @@ return {
       end,
       desc = "Close buffer",
     },
+
     ["<LocalLeader>D"] = { "<cmd>ClearDebugLogs<cr>", desc = "Clear debug logs" },
+
     -- Grapple
     ["<Leader>m"] = { name = "󰓾 Handle file tags" },
+
     ["<Leader>'"] = { name = "󰓾 Jump to file tags" },
+
     ["<Leader>mf"] = { function() require("grapple").open_tags() end, desc = "List all tags" },
+
     ["<Leader>mT"] = { "<cmd>Telescope grapple tags", desc = "List all tags" },
+
     ["<Leader>mF"] = { function() require("grapple").open_loaded() end, desc = "List all scopes" },
+
     ["<Leader>ma"] = { function() require("grapple").tag() end, desc = "Add Grapple tag to file" },
+
     ["<Leader>md"] = { function() require("grapple").untag() end, desc = "Remove file from Grapple tag list" },
 
-    ["<Leader>mt"] = mark_utils.setFileTag("test"),
-    ["<Leader>'t"] = mark_utils.jumpToFileTag("test"),
-    ["<Leader>ms"] = mark_utils.setFileTag("subject"),
-    ["<Leader>'s"] = mark_utils.jumpToFileTag("subject"),
-    ["<Leader>mw"] = mark_utils.setFileTag("primary"),
-    ["<Leader>'w"] = mark_utils.jumpToFileTag("primary"),
-    ["<Leader>me"] = mark_utils.setFileTag("secondary"),
-    ["<Leader>'e"] = mark_utils.jumpToFileTag("secondary"),
-    ["<Leader>mr"] = mark_utils.setFileTag("tertiary"),
-    ["<Leader>'r"] = mark_utils.jumpToFileTag("tertiary"),
-    ["<Leader>mu"] = mark_utils.setFileTag("scratch"),
-    ["<Leader>'u"] = mark_utils.jumpToFileTag("scratch"),
-    ["<Leader>ml"] = mark_utils.setFileTag("log"),
-    ["<Leader>'l"] = mark_utils.jumpToFileTag("log"),
+    ["<Leader>mt"] = mark_utils.set_file_tag("test"),
+    ["<Leader>'t"] = mark_utils.jump_to_file_tag("test"),
+    ["<Leader>ms"] = mark_utils.set_file_tag("subject"),
+    ["<Leader>'s"] = mark_utils.jump_to_file_tag("subject"),
+    ["<Leader>mw"] = mark_utils.set_file_tag("primary"),
+    ["<Leader>'w"] = mark_utils.jump_to_file_tag("primary"),
+    ["<Leader>me"] = mark_utils.set_file_tag("secondary"),
+    ["<Leader>'e"] = mark_utils.jump_to_file_tag("secondary"),
+    ["<Leader>mr"] = mark_utils.set_file_tag("tertiary"),
+    ["<Leader>'r"] = mark_utils.jump_to_file_tag("tertiary"),
+    ["<Leader>mu"] = mark_utils.set_file_tag("scratch"),
+    ["<Leader>'u"] = mark_utils.jump_to_file_tag("scratch"),
+    ["<Leader>ml"] = mark_utils.set_file_tag("log"),
+    ["<Leader>'l"] = mark_utils.jump_to_file_tag("log"),
 
     -- ISwap
     ["Q"] = { "<cmd>ISwapWith<cr>" },
+
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
+
     ["<p"] = { "<cmd>ISwapWithLeft<cr>", desc = "Swap node with left" }, -- better search
     n = { "nzz", desc = "Next search" },
     N = { "Nzz", desc = "Previous search" },
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
+
     ["<F7>"] = { function () terminals.default_terminal:toggle() end, desc = "ToggleTerm float" },
+
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
       desc = "Toggleterm Artisan tinker for current Docker container",
     },
+
     ["<Leader>db"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dbash" }) end,
       desc = "Toggleterm Bash for current Docker container",
     },
+
     ["<Leader>gg"] = {
       terminals.lazy_git,
       desc = "ToggleTerm lazygit",
     },
+
     ["<Leader>tn"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "lazynpm" }) end,
       desc = "Toggleterm LazyNPM",
     },
+
     ["<Leader>ty"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "yazi" }) end,
       desc = "Toggleterm Yazi",
     },
+
     ["<F3>"] = {
       function()
         terminals.robo_term:toggle()
@@ -190,6 +226,7 @@ return {
       end,
       desc = "Find files",
     },
+
     ["<Leader>fw"] = {
       function() require("snacks").picker.grep {
         hidden = true,
@@ -198,15 +235,18 @@ return {
       } end,
       desc = "Find words in all files",
     },
+
     ["<Leader>f/"] = { function() require("snacks").picker.grep({
       glob = {
         vim.fn.expand("%")
       }
     }) end, desc = "Find words" },
+
     ["<Leader>fo"] = {
       function() require("telescope.builtin").oldfiles({ cwd_only = true }) end,
       desc = "Find history",
     },
+
     ["<Leader>fH"] = {
       function()
         vim.ui.select(
@@ -228,11 +268,15 @@ return {
       end,
       desc = "Find in node_modules",
     },
+
     ["<Leader>fe"] = { function() require("config.pickers.env").read_env() end, desc = "Find env values" },
+
     ["<LocalLeader>fn"] = { function() require("config.pickers.snippets").view_snippets() end, desc = "Find available snippets" },
 
     X = { "x~", desc = "Delete current character and capitalize the next" },
+
     ["<C-i>"] = { "<C-i>zz", desc = "Jump forward and center" },
+
     ["<C-o>"] = { "<C-o>zz", desc = "Jump backward and center" },
 
     ["<LocalLeader>e"] = { "<cmd>e<CR>", desc = "Copy file path" },
@@ -241,20 +285,26 @@ return {
 
     -- Copying
     ["<LocalLeader>y"] = { name = "󰆏 Copy..." },
+
     ["<LocalLeader>yp"] = { function() vim.fn.setreg("+", vim.fn.expand("%:p:.")) end, desc = "Copy file path" },
+
     ["<LocalLeader>yd"] = { function() vim.fn.setreg("+", vim.fn.expand("%:h")) end, desc = "Copy directory path" },
+
     ["<LocalLeader>yf"] = { function() vim.fn.setreg("+", vim.fn.expand("%:t:r")) end, desc = "Copy file name" },
 
     -- Local Git Operations
     ["<LocalLeader>g"] = { name = "󰊢 Git..." },
+
     ["<LocalLeader>go"] = { function() require("snacks").gitbrowse() end, desc = "Copy file path" },
 
     -- Scratch
     ["<LocalLeader>s"] = { name = "Scratch files" },
+
     ["<LocalLeader>sn"] = {
       "<cmd>Scratch<CR>",
       desc = "Open new scratch file",
     },
+
     ["<LocalLeader>st"] = {
       function()
         vim.ui.select(vim.g.scratch_config.filetypes, {
@@ -275,10 +325,12 @@ return {
       end,
       desc = "Open and name a new scratch file",
     },
+
     ["<LocalLeader>sf"] = {
       "<cmd>ScratchOpen<CR>",
       desc = "Find a scratch file",
     },
+
     ["<LocalLeader>s/"] = {
       "<cmd>ScratchOpenFzf<CR>",
       desc = "Search through all scratch files",
@@ -314,10 +366,12 @@ return {
     },
 
     ["ga"] = { "GA", desc = "Start inserting at the end of the last line" },
+
     ["go"] = { "Go", desc = "Start inserting after the last line" },
 
     -- Undotree
     ["<Leader>z"] = { name = "Undotree" },
+
     ["<Leader>zz"] = { function() require("undotree").toggle() end, desc = "Toggle Undotree" },
   },
 
@@ -326,6 +380,7 @@ return {
 
     -- Luasnip
     ["<C-q>"] = { function() require("config.pickers.snippets").view_snippets() end, desc = "Find available snippets" },
+
     ["<C-k>"] = {
       function()
         if ls.jumpable(-1) then ls.jump(-1) end
@@ -333,6 +388,7 @@ return {
       desc = "Jump to previous snippet",
       silent = true,
     },
+
     ["<C-j>"] = {
       function()
         if ls.jumpable() then ls.jump(1) end
@@ -340,12 +396,14 @@ return {
       desc = "Jump to next snippet",
       silent = true,
     },
+
     ["<C-h>"] = {
       function()
         if ls.choice_active() then ls.change_choice(-1) end
       end,
       desc = "Cycle backwards through active choices",
     },
+
     ["<C-l>"] = {
       function()
         if ls.choice_active() then ls.change_choice(1) end
@@ -363,6 +421,7 @@ return {
       desc = "Jump to previous snippet",
       silent = true,
     },
+
     ["<C-j>"] = {
       function()
         if ls.jumpable() then ls.jump(1) end
@@ -370,12 +429,14 @@ return {
       desc = "Jump to next snippet",
       silent = true,
     },
+
     ["<C-h>"] = {
       function()
         if ls.choice_active() then ls.change_choice(-1) end
       end,
       desc = "Cycle backwards through active choices",
     },
+
     ["<C-l>"] = {
       function()
         if ls.choice_active() then ls.change_choice(1) end
@@ -397,13 +458,21 @@ return {
 
   v = {
     ["<"] = { "<gv", desc = "Unindent without losing selection" },
+
     [">"] = { ">gv", desc = "Indent without losing selection" },
+
     ["y"] = { "ymy", desc = "Yank in visual mode without losing cursor position" },
+
     ["gS"] = { "!jq<CR>", desc = "Format JSON" },
+
     ["gJ"] = { "!jq<CR>", desc = "Format JSON" },
+
     ["<C-a>"] = { function () require('dial.map').manipulate("increment", "visual") end, desc = "Dial up" },
+
     ["<C-x>"] = { function () require('dial.map').manipulate("decrement", "visual") end, desc = "Dial down" },
+
     ["g<C-a>"] = { function () require('dial.map').manipulate("increment", "gvisual") end, desc = "Dial up" },
+
     ["g<C-x>"] = { function () require('dial.map').manipulate("decrement", "gvisual") end, desc = "Dial down", },
   },
 }
