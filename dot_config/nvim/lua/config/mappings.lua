@@ -144,8 +144,8 @@ return {
     ["Q"] = { "<cmd>ISwapWith<cr>" },
     [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
     ["<p"] = { "<cmd>ISwapWithLeft<cr>", desc = "Swap node with left" }, -- better search
-    n = { utils.better_search("nzz"), desc = "Next search" },
-    N = { utils.better_search("Nzz"), desc = "Previous search" }, -- quick save
+    n = { "nzz", desc = "Next search" },
+    N = { "Nzz", desc = "Previous search" },
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
@@ -228,7 +228,6 @@ return {
       end,
       desc = "Find in node_modules",
     },
-    ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find words in directory" },
     ["<Leader>fe"] = { function() require("config.pickers.env").read_env() end, desc = "Find env values" },
     ["<LocalLeader>fn"] = { function() require("config.pickers.snippets").view_snippets() end, desc = "Find available snippets" },
 
