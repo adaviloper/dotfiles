@@ -1,8 +1,10 @@
 local astro = require("astrocore")
-local utils = require("helpers.utils")
-local ls = require("luasnip")
-local git_utils = require("helpers.git_utils")
 local file_utils = require("helpers.file_utils")
+local git_utils = require("helpers.git_utils")
+local ls = require("luasnip")
+local mark_utils = require('helpers.mark_utils')
+local terminals = require('helpers.terminals')
+local utils = require("helpers.utils")
 
 local search_exclusions = {
   ".idea/*",
@@ -23,34 +25,6 @@ local search_exclusions = {
   "venv/*",
   "*/venv/*",
 }
-local function setFileTag(tagName)
-  return {
-    function()
-      local grapple = require("grapple")
-      if not grapple.exists({ name = tagName }) then
-        grapple.tag({ name = tagName })
-      else
-        local tag = grapple.find({ name = tagName })
-        if tag == nil then return end
-
-        vim.ui.select({
-          "yes",
-          "no",
-        }, { prompt = "Overwrite [" .. tag.name .. "]" }, function(selection)
-          if selection ~= nil and selection == "yes" then grapple.tag({ name = tagName }) end
-        end)
-      end
-    end,
-    desc = "Tag as [" .. tagName .. "]",
-  }
-end
-
-local function jumpToFileTag(tagName)
-  return {
-    function() require("grapple").select({ name = tagName }) end,
-    desc = "Jump to the [" .. tagName .. "] tag",
-  }
-end
 
 return {
   -- first key is the mode
@@ -151,20 +125,20 @@ return {
     ["<Leader>ma"] = { function() require("grapple").tag() end, desc = "Add Grapple tag to file" },
     ["<Leader>md"] = { function() require("grapple").untag() end, desc = "Remove file from Grapple tag list" },
 
-    ["<Leader>mt"] = setFileTag("test"),
-    ["<Leader>'t"] = jumpToFileTag("test"),
-    ["<Leader>ms"] = setFileTag("subject"),
-    ["<Leader>'s"] = jumpToFileTag("subject"),
-    ["<Leader>mw"] = setFileTag("primary"),
-    ["<Leader>'w"] = jumpToFileTag("primary"),
-    ["<Leader>me"] = setFileTag("secondary"),
-    ["<Leader>'e"] = jumpToFileTag("secondary"),
-    ["<Leader>mr"] = setFileTag("tertiary"),
-    ["<Leader>'r"] = jumpToFileTag("tertiary"),
-    ["<Leader>mu"] = setFileTag("scratch"),
-    ["<Leader>'u"] = jumpToFileTag("scratch"),
-    ["<Leader>ml"] = setFileTag("log"),
-    ["<Leader>'l"] = jumpToFileTag("log"),
+    ["<Leader>mt"] = mark_utils.setFileTag("test"),
+    ["<Leader>'t"] = mark_utils.jumpToFileTag("test"),
+    ["<Leader>ms"] = mark_utils.setFileTag("subject"),
+    ["<Leader>'s"] = mark_utils.jumpToFileTag("subject"),
+    ["<Leader>mw"] = mark_utils.setFileTag("primary"),
+    ["<Leader>'w"] = mark_utils.jumpToFileTag("primary"),
+    ["<Leader>me"] = mark_utils.setFileTag("secondary"),
+    ["<Leader>'e"] = mark_utils.jumpToFileTag("secondary"),
+    ["<Leader>mr"] = mark_utils.setFileTag("tertiary"),
+    ["<Leader>'r"] = mark_utils.jumpToFileTag("tertiary"),
+    ["<Leader>mu"] = mark_utils.setFileTag("scratch"),
+    ["<Leader>'u"] = mark_utils.jumpToFileTag("scratch"),
+    ["<Leader>ml"] = mark_utils.setFileTag("log"),
+    ["<Leader>'l"] = mark_utils.jumpToFileTag("log"),
 
     -- ISwap
     ["Q"] = { "<cmd>ISwapWith<cr>" },
@@ -175,7 +149,7 @@ return {
 
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
-    ["<F7>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "ToggleTerm float" },
+    ["<F7>"] = { function () terminals.default_terminal:toggle() end, desc = "ToggleTerm float" },
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
       desc = "Toggleterm Artisan tinker for current Docker container",
@@ -185,33 +159,7 @@ return {
       desc = "Toggleterm Bash for current Docker container",
     },
     ["<Leader>gg"] = {
-      function()
-        local current_branch = git_utils.get_git_branch()
-        local worktree = astro.file_worktree()
-        local flags = worktree and (" --work-tree=%s --git-dir=%s"):format(worktree.toplevel, worktree.gitdir)
-        or ""
-        astro.toggle_term_cmd(
-          {
-            cmd = "lazygit " .. flags,
-            direction = "float",
-            on_open = function ()
-              require("resession").save(
-                utils.get_session_name(),
-                {
-                  notify = true,
-                }
-              )
-            end,
-            on_close = function ()
-              local new_branch = git_utils.get_git_branch()
-
-              if new_branch ~= current_branch then
-                git_utils.signal_branch_change()
-              end
-            end
-          }
-        )
-      end,
+      terminals.lazy_git,
       desc = "ToggleTerm lazygit",
     },
     ["<Leader>tn"] = {
@@ -223,7 +171,9 @@ return {
       desc = "Toggleterm Yazi",
     },
     ["<F3>"] = {
-      function() astro.toggle_term_cmd({ direction = "float", cmd = "claude", count = 9 }) end,
+      function()
+        terminals.robo_term:toggle()
+      end,
       desc = "Toggleterm 󱚟 Robot Helper",
     },
 
@@ -371,6 +321,7 @@ return {
     ["<Leader>z"] = { name = "Undotree" },
     ["<Leader>zz"] = { function() require("undotree").toggle() end, desc = "Toggle Undotree" },
   },
+
   i = {
     ["<A-BS>"] = { '<BS><BS><BS><BS><BS>', desc = "Delete small chunk of recent characters" },
 
@@ -403,6 +354,7 @@ return {
       desc = "Cycle through active choices",
     },
   },
+
   s = {
     -- Luasnip
     ["<C-k>"] = {
@@ -432,10 +384,18 @@ return {
       desc = "Cycle through active choices",
     },
   },
+
   t = {
+    ["<F3>"] = {
+      function ()
+        terminals.robo_term:toggle()
+      end
+    },
+
     -- setting a mapping to false will disable it
     ["<F8>"] = { "<C-\\><C-n>" },
   },
+
   v = {
     ["<"] = { "<gv", desc = "Unindent without losing selection" },
     [">"] = { ">gv", desc = "Indent without losing selection" },
