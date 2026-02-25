@@ -1,8 +1,8 @@
 return {
   'jiaoshijie/undotree',
   dependencies = 'nvim-lua/plenary.nvim',
-  enabled = true,
+  -- enabled = true,
   config = function()
-    require('undotree').setup()
+    require('undotree').setup({ keymaps = {} })
   end,
 }
