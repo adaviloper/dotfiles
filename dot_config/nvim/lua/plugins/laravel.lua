@@ -17,7 +17,6 @@ return {
     --   { "<leader>lm", ":Laravel related<cr>" },
     -- },
 
-    event = { "VeryLazy" },
     opts = function (_, opts)
       opts.features = {
         route_info = {
