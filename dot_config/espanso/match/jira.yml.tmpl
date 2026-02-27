@@ -14,3 +14,19 @@ matches:
         params:
           layout: "What is the [[commitHash]] being release?"
 
+  - trigger: "%slrl"
+    replace: |
+      Going to release [{{ "{{" }} release.fixVersion {{ "}}" }}]({{ "{{" }} release.fixVersionUrl {{ "}}" }}) to prod
+      *Ticket:* [APP-{{ "{{" }} release.ticketId {{ "}}" }}](https://suralink.atlassian.net/browse/APP-{{ "{{" }} release.ticketId {{ "}}" }})
+      *Repo:* `{{ release.repo }}`
+    vars:
+      - name: "release"
+        type: "form"
+        params:
+          layout: |
+            Fix version: [[fixVersion]]
+            Fix Version URL: [[fixVersionUrl]]
+            Ticket ID: [[ticketId]]
+            Repo: [[repo]]
+
+
