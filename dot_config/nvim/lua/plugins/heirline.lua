@@ -196,6 +196,7 @@ return {
       },
       -- active winbar
       {
+        condition = status.condition.is_file,
         -- add the file name and icon
 				status.component.file_info({
 					hl = function ()
