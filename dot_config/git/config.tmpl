@@ -1,6 +1,6 @@
 [user]
-	name = {{ onepasswordRead .secrets.git.username }}
-	email = {{ onepasswordRead .secrets.git.personal_email }}
+	name = {{ protonPass .secrets.git.username }}
+	email = {{ protonPass .secrets.git.personal_email }}
 
 {{ if eq .purpose "work" -}}
 [includeIf "gitdir:~/Code/suralink/"]

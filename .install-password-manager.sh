@@ -57,7 +57,8 @@ case "$(uname -s)" in
           ;;
         arch)
           echo "Detected Arch Linux"
-          sudo pacman -Syu --noconfirm 1password 1password-cli
+          # sudo pacman -Syu --noconfirm 1password 1password-cli
+          curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
           ;;
         *)
           echo "Unsupported Linux distribution: $ID"

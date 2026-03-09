@@ -1,4 +1,4 @@
 {{- if eq .purpose "work" -}}
 [user]
-	email = {{ onepasswordRead .secrets.git.work_email }}
+	email = {{ protonPass .secrets.git.work_email }}
 {{- end -}}

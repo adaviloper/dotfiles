@@ -1,0 +1,21 @@
+[secrets.git]
+  username = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/XZfz3sXDVXiTUJqVQs_eAFfZQvubLuIoN2J139_a49QOtNPuat-zwZmPvd_aacVNqCcvUvwM3cA-YzWDQBky3w==/username"
+  personal_email = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/XZfz3sXDVXiTUJqVQs_eAFfZQvubLuIoN2J139_a49QOtNPuat-zwZmPvd_aacVNqCcvUvwM3cA-YzWDQBky3w==/personal_email"
+  work_email = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/XZfz3sXDVXiTUJqVQs_eAFfZQvubLuIoN2J139_a49QOtNPuat-zwZmPvd_aacVNqCcvUvwM3cA-YzWDQBky3w==/work_email"
+
+[secrets.zima]
+  ip = "pass://hTgluvo6r5vAsuZ-KZ4QO379r8UmW9nWhdARs87Ndlt3EYfEbv5CpinnhgvzWkoz5rB1UZF0CAmOLY4G2bEeaA==/VBEdFtFHpFAdQ3ilmC6jdmVXPnvBDUzaPaf0pp_J5k9bMq1NZ9Pbc9j70D_HnbJZgvuBthIzSynl5PrwBGgmfw==/ip"
+  username = "pass://hTgluvo6r5vAsuZ-KZ4QO379r8UmW9nWhdARs87Ndlt3EYfEbv5CpinnhgvzWkoz5rB1UZF0CAmOLY4G2bEeaA==/VBEdFtFHpFAdQ3ilmC6jdmVXPnvBDUzaPaf0pp_J5k9bMq1NZ9Pbc9j70D_HnbJZgvuBthIzSynl5PrwBGgmfw==/username"
+  password = "pass://hTgluvo6r5vAsuZ-KZ4QO379r8UmW9nWhdARs87Ndlt3EYfEbv5CpinnhgvzWkoz5rB1UZF0CAmOLY4G2bEeaA==/VBEdFtFHpFAdQ3ilmC6jdmVXPnvBDUzaPaf0pp_J5k9bMq1NZ9Pbc9j70D_HnbJZgvuBthIzSynl5PrwBGgmfw==/password"
+
+[secrets.espanso]
+  work_domain = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/HM1L7DqYBLuyqC50CCwpCHV6F5T0UnuZhm8ycmhuDW3O03iZtx2KvwtMTxPTu8y9ixrZlp1RuW5KgQhahNpOFQ==/WorkDomain"
+  manager_email = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/HM1L7DqYBLuyqC50CCwpCHV6F5T0UnuZhm8ycmhuDW3O03iZtx2KvwtMTxPTu8y9ixrZlp1RuW5KgQhahNpOFQ==/ManagerEmail"
+  my_email = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/HM1L7DqYBLuyqC50CCwpCHV6F5T0UnuZhm8ycmhuDW3O03iZtx2KvwtMTxPTu8y9ixrZlp1RuW5KgQhahNpOFQ==/MyEmail"
+  jira_link = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/HM1L7DqYBLuyqC50CCwpCHV6F5T0UnuZhm8ycmhuDW3O03iZtx2KvwtMTxPTu8y9ixrZlp1RuW5KgQhahNpOFQ==/JiraLink"
+
+[secrets.jira]
+  team_name = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/HM1L7DqYBLuyqC50CCwpCHV6F5T0UnuZhm8ycmhuDW3O03iZtx2KvwtMTxPTu8y9ixrZlp1RuW5KgQhahNpOFQ==/TeamName"
+
+[secrets.aoc]
+  session = "pass://GMRIX_0N50TzgvjD9L64ASu_ZfpZFmzBLaT5qJS5W1kPpQBjdr05dymkmzFKP14gjVRIAVbCJK-wpWvToFBOiQ==/gOrATELzgWsl4yDW1fdrebEb9j25B82_RsA8Sgtb9tpgyD-6zMJ6HurRvaaiBI85CJFJ-o_FoI1P4eod9o6rnA==/session"
