@@ -1,9 +1,9 @@
 matches:
   - trigger: "%jira"
-    form: "{{ onepasswordRead .secrets.espanso.jira_link }}[[ticket_number]]"
+    form: "{{ protonPass .secrets.espanso.jira_link }}[[ticket_number]]"
 
   - trigger: "%rl"
-    replace: "{{ "{{" }} today {{ "}}" }}-{{ "{{" }} release.commitHash{{ "}}" }} {{ onepasswordRead .secrets.jira.team_name }}"
+    replace: "{{ "{{" }} today {{ "}}" }}-{{ "{{" }} release.commitHash{{ "}}" }} {{ protonPass .secrets.jira.team_name }}"
     vars:
       - name: today
         type: date
@@ -18,7 +18,7 @@ matches:
     replace: |
       Going to release [{{ "{{" }} release.fixVersion {{ "}}" }}]({{ "{{" }} release.fixVersionUrl {{ "}}" }}) to prod
       *Ticket:* [APP-{{ "{{" }} release.ticketId {{ "}}" }}](https://suralink.atlassian.net/browse/APP-{{ "{{" }} release.ticketId {{ "}}" }})
-      *Repo:* `{{ release.repo }}`
+      *Repo:* `{{ "{{" }} release.repo {{ "}}" }}`
     vars:
       - name: "release"
         type: "form"
