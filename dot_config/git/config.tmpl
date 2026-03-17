@@ -1,11 +1,11 @@
 [user]
 	name = {{ protonPass .secrets.git.username }}
-	email = {{ protonPass .secrets.git.personal_email }}
+	email = {{ protonPass .secrets.git.personal_email -}}
 
-{{ if eq .purpose "work" -}}
+{{ if eq .purpose "work" }}
 [includeIf "gitdir:~/Code/suralink/"]
   path = ~/.config/git/config-work
-{{- end -}}
+{{- end }}
 
 [color "status"]
 	changed = "{{ .colorscheme.red }}"
