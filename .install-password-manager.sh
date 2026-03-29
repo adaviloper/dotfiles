@@ -20,18 +20,11 @@ case "$(uname -s)" in
     fi
 
     # Check if 1Password is already installed
-    if [[ -d /Applications/1Password.app ]]; then
-      echo "✅ 1Password is already installed."
+    if type pass-cli >/dev/null 2>&1; then
+      echo "✅ ProtonPass CLI is already installed."
     else
-      echo "1Password is not installed."
-      brew install --cask 1password
-    fi
-
-    # Check if 1Password CLI is already installed
-    if command -v op >/dev/null 2>&1; then
-      echo "✅ 1Password CLI is already installed."
-    else
-      brew install --cask 1password-cli
+      echo "ProtonPass CLI is not installed."
+      curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
     fi
     ;;
   Linux)
