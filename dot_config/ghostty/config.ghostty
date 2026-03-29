@@ -1,10 +1,18 @@
 auto-update = check
 
+font-family = Maple Mono NF
 font-size = 16
+
+# link = true
+
+macos-titlebar-style = hidden
 
 theme = Catppuccin Mocha
 
-macos-titlebar-style = hidden
+window-padding-x = 8
+window-padding-y = 8
+
+window-save-state = always
 
 # Tmux keybindings (prefix = Ctrl+Space = \x00)
 keybind = super+z=text:\x00z
