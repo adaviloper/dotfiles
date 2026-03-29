@@ -1,0 +1,38 @@
+auto-update = check
+
+font-size = 16
+
+theme = Catppuccin Mocha
+
+macos-titlebar-style = hidden
+
+# Tmux keybindings (prefix = Ctrl+Space = \x00)
+keybind = super+z=text:\x00z
+keybind = super+x=text:\x00x
+keybind = super+semicolon=text:\x00:
+keybind = super+period=text:\x00.
+keybind = super+u=text:\x00u
+keybind = super+m=text:\x00m
+keybind = super+n=text:\x00n
+keybind = super+i=text:\x00i
+keybind = super+o=text:\x00o
+keybind = super+e=text:\x00q
+keybind = super+l=text:\x00l
+keybind = super+h=text:\x00L
+keybind = super+j=text:\x00j
+keybind = super+k=text:\x00k
+keybind = super+up=text:\x00\x1b[A
+keybind = super+down=text:\x00\x1b[B
+keybind = super+left=text:\x00\x1b[D
+keybind = super+right=text:\x00\x1b[C
+keybind = super+f=text:\x00f
+keybind = super+s=text:\x00T
+keybind = super+digit_1=text:\x001
+keybind = super+digit_2=text:\x002
+keybind = super+digit_3=text:\x003
+keybind = super+digit_4=text:\x004
+keybind = super+digit_5=text:\x005
+keybind = super+digit_6=text:\x006
+keybind = super+digit_7=text:\x007
+keybind = super+digit_8=text:\x008
+keybind = super+digit_9=text:\x009
