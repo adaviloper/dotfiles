@@ -80,8 +80,6 @@ packages:
       - 'zsh'
   arch:
     yays:
-      - 1password
-      - 1password-cli
       - bat
       - btop
       - chezmoi
@@ -92,6 +90,7 @@ packages:
       - flameshot
       - fzf
       - gcc
+      - ghostty
       - github-cli
       - go
       - gum
@@ -112,7 +111,6 @@ packages:
       - tmuxp
       - tree
       - unar
-      - wezterm
       - xclip
       - yazi
       - yq
