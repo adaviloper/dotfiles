@@ -1,6 +1,6 @@
 [user]
-	name = {{ protonPass .secrets.git.username }}
-	email = {{ protonPass .secrets.git.personal_email -}}
+	name = {{ protonPass .secrets.git.username | trim }}
+	email = {{ protonPass .secrets.git.personal_email | trim }}
 
 {{ if eq .purpose "work" }}
 [includeIf "gitdir:~/Code/suralink/"]

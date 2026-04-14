@@ -1,4 +1,4 @@
 {{- if eq .purpose "work" -}}
 [user]
-	email = {{ protonPass .secrets.git.work_email }}
+	email = {{ protonPass .secrets.git.work_email | trim }}
 {{- end -}}

@@ -1,16 +1,16 @@
 #
 matches:
   - trigger: "%man"
-    replace: "{{ protonPass .secrets.espanso.manager_email }}@{{ protonPass .secrets.espanso.work_domain }}"
+    replace: "{{ protonPass .secrets.espanso.manager_email | trim }}@{{ protonPass .secrets.espanso.work_domain | trim }}"
 
   - trigger: "%work"
-    replace: "{{ protonPass .secrets.espanso.my_email }}@{{ protonPass .secrets.espanso.work_domain }}"
+    replace: "{{ protonPass .secrets.espanso.my_email | trim }}@{{ protonPass .secrets.espanso.work_domain | trim }}"
 
   - trigger: "%temail"
-    form: "{{ protonPass .secrets.espanso.my_email }}+[[name]]@{{ protonPass .secrets.espanso.work_domain }}"
+    form: "{{ protonPass .secrets.espanso.my_email | trim }}+[[name]]@{{ protonPass .secrets.espanso.work_domain | trim }}"
 
   - trigger: "%remail"
-    replace: "{{ protonPass .secrets.espanso.my_email }}+{{ "{{" }} timestamp {{ "}}" }}@suralink.com"
+    replace: "{{ protonPass .secrets.espanso.my_email | trim }}+{{ "{{" }} timestamp {{ "}}" }}@{{ protonPass .secrets.espanso.work_domain | trim }}"
     vars:
       - name: timestamp
         type: date

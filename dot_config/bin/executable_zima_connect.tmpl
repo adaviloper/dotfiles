@@ -4,9 +4,9 @@
 {{ template "shared_bin_utils.sh.tmpl" . }}
 
 # Prompt the user for IP address, username, and password
-IP="{{ protonPass .secrets.zima.ip }}"
-USERNAME="{{ protonPass .secrets.zima.username }}"
-PASSWORD="{{ protonPass .secrets.zima.password }}"
+IP="{{ protonPass .secrets.zima.ip | trim }}"
+USERNAME="{{ protonPass .secrets.zima.username | trim }}"
+PASSWORD="{{ protonPass .secrets.zima.password | trim }}"
 echo ""
 
 # Build the SMB URL

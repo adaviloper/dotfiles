@@ -1,9 +1,9 @@
 matches:
   - trigger: "%jira"
-    form: "{{ protonPass .secrets.espanso.jira_link }}[[ticket_number]]"
+    form: "{{ protonPass .secrets.espanso.jira_link | trim }}[[ticket_number]]"
 
   - trigger: "%rl"
-    replace: "{{ "{{" }} today {{ "}}" }}-{{ "{{" }} release.commitHash{{ "}}" }} {{ protonPass .secrets.jira.team_name }}"
+    replace: "{{ "{{" }} today {{ "}}" }}-{{ "{{" }} release.commitHash{{ "}}" }} {{ protonPass .secrets.jira.team_name | trim }}"
     vars:
       - name: today
         type: date
