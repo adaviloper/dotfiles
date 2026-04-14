@@ -3,6 +3,6 @@ export DISABLE_AUTO_TITLE='true'
 export QMK_HOME="$HOME/Code/qmk_firmware"
 
 {{ if eq .purpose "personal" }}
-export AOC_SESSION={{ protonPass .secrets.aoc.session }}
+export AOC_SESSION={{ protonPass .secrets.aoc.session | trim }}
 {{ end }}
 

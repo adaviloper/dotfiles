@@ -5,6 +5,12 @@ local ls = require("luasnip")
 local mark_utils = require('helpers.mark_utils')
 local terminals = require('helpers.terminals')
 local utils = require("helpers.utils")
+local paste_and_clean = function (key)
+  return function()
+      vim.cmd('normal! ' .. key)
+      vim.cmd("'[,']s/\\s\\+$//e")
+  end
+end
 
 local search_exclusions = {
   ".idea/*",
@@ -20,6 +26,8 @@ local search_exclusions = {
   "*/dist/*",
   "build/*",
   "*/build/*",
+  "coverage/*",
+  "*/coverage/*",
   "storage/*",
   "vendor/*",
   "venv/*",
@@ -373,6 +381,9 @@ return {
     ["<Leader>z"] = { name = "Undotree" },
 
     ["<Leader>zz"] = { function() require("undotree").toggle() end, desc = "Toggle Undotree" },
+
+    ["p"] = { paste_and_clean('p'), desc = "Clean up white space after pasting" },
+    ["P"] = { paste_and_clean('P'), desc = "Clean up white space after pasting" },
   },
 
   i = {

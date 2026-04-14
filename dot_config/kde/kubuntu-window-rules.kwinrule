@@ -6,13 +6,6 @@ types=1
 wmclass=org.wezfurlong.wezterm
 wmclassmatch=1
 
-[Switch to 1Password]
-Description=Switch to 1Password
-shortcut=Ctrl+Alt+Shift+X
-shortcutrule=4
-wmclass=1Password
-wmclassmatch=1
-
 [Switch to Apidog]
 Description=Switch to Apidog
 shortcut=Ctrl+Alt+Shift+R
@@ -28,13 +21,6 @@ types=1
 wmclass=zen
 wmclassmatch=1
 
-[Switch to Cursor]
-Description=Switch to Cursor
-shortcut=Ctrl+Alt+Shift+R
-shortcutrule=4
-wmclass=Cursor
-wmclassmatch=1
-
 [Switch to Slack]
 Description=Switch to Slack
 shortcut=Ctrl+Alt+Shift+S
@@ -45,6 +31,6 @@ wmclassmatch=1
 [Switch to Terminal]
 Description=Switch to Terminal
 shortcut=Ctrl+Alt+Shift+Return
-shortcutrule=4
+shortcutrule=5
 wmclass=org.wezfurlong.wezterm
 wmclassmatch=1

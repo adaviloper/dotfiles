@@ -33,4 +33,4 @@ windows:
     - focus: 'true'
       shell_command:
         - cd ./auditManager/ClientApp/npm
-        - sudo sysctl -p
+        - sudo sysctl --system

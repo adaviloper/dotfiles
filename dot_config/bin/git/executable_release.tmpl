@@ -4,7 +4,7 @@ git checkout master
 
 COMMIT="$1"
 DATE=$(date +%Y-%m-%d)
-BRANCH_NAME="release/${DATE}-${COMMIT}-{{ protonPass .secrets.jira.team_name }}"
+BRANCH_NAME="release/${DATE}-${COMMIT}-{{ protonPass .secrets.jira.team_name | trim }}"
  echo "$BRANCH_NAME"
 
 git checkout -b "$BRANCH_NAME"
@@ -45,7 +45,7 @@ git checkout -b "$BRANCH_NAME"
 #
 # COMMIT="$1"
 # DATE=$(date +%Y-%m-%d)
-# BRANCH_NAME="release/${DATE}-${COMMIT}-{{ protonPass .secrets.jira.team_name }}"
+# BRANCH_NAME="release/${DATE}-${COMMIT}-{{ protonPass .secrets.jira.team_name | trim }}"
 # echo "$BRANCH_NAME"
 #
 # LATEST_RELEASE_BRANCH=$(find_latest_release_branch)
