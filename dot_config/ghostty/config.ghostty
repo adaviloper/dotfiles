@@ -1,11 +1,15 @@
 auto-update = check
 
-font-family = Maple Mono NF
-font-size = 16
+font-family = Maple Mono
+font-size = 12
 
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
+macos-hidden = always
 
 theme = Catppuccin Mocha
+
+gtk-titlebar-style = native
+window-decoration = none
 
 window-padding-x = 8
 window-padding-y = 8
@@ -13,26 +17,31 @@ window-padding-y = 8
 window-save-state = always
 
 # Tmux keybindings (prefix = Ctrl+Space = \x00)
-keybind = super+z=text:\x00z
-keybind = super+x=text:\x00x
-keybind = super+semicolon=text:\x00:
-keybind = super+period=text:\x00.
-keybind = super+u=text:\x00u
-keybind = super+m=text:\x00m
-keybind = super+n=text:\x00n
-keybind = super+i=text:\x00i
-keybind = super+o=text:\x00o
+keybind = super+c=copy_to_clipboard
 keybind = super+e=text:\x00q
-keybind = super+l=text:\x00l
+keybind = super+f=text:\x00f
 keybind = super+h=text:\x00L
+keybind = super+i=text:\x00i
 keybind = super+j=text:\x00j
 keybind = super+k=text:\x00k
+keybind = super+l=text:\x00l
+keybind = super+m=text:\x00m
+keybind = super+n=text:\x00n
+keybind = super+o=text:\x00o
+keybind = super+s=text:\x00T
+keybind = super+u=text:\x00u
+keybind = super+v=paste_from_clipboard
+keybind = super+x=text:\x00x
+keybind = super+z=text:\x00z
+
+keybind = super+period=text:\x00.
+keybind = super+semicolon=text:\x00:
+
 keybind = super+up=text:\x00\x1b[A
 keybind = super+down=text:\x00\x1b[B
 keybind = super+left=text:\x00\x1b[D
 keybind = super+right=text:\x00\x1b[C
-keybind = super+f=text:\x00f
-keybind = super+s=text:\x00T
+
 keybind = super+digit_1=text:\x001
 keybind = super+digit_2=text:\x002
 keybind = super+digit_3=text:\x003
