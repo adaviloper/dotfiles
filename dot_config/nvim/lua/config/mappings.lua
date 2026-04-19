@@ -62,7 +62,7 @@ return {
     ["<Leader>SS"] = {
       function()
         require("resession").save(utils.get_session_name(), {
-          -- dir = "dirsession",
+          --
         })
       end,
       desc = "Save this dirsession",
@@ -72,7 +72,7 @@ return {
     ["<Leader>S."] = {
       function()
         require("resession").load(utils.get_session_name(), {
-          -- dir = "dirsession",
+          --
         })
       end,
       desc = "Load current dirsession",

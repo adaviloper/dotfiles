@@ -92,10 +92,10 @@ return {
               require("resession").save(
                 utils.get_session_name(),
                 {
-                  -- dir = "dirsession",
                   notify = false,
                 }
               )
+              utils.prune_sessions(10)
             end
           end),
         },
@@ -106,15 +106,15 @@ return {
           desc = "Restore previous directory session if neovim opened with no arguments",
           nested = true, -- trigger other autocommands as buffers open
           callback = function()
-            -- Only load the session if nvim was started with no args
             if vim.fn.argc(-1) == 0 then
-              -- try to load a directory session using the current working directory
-              require("resession").load(
-                utils.get_session_name(),
-                {
-                  silence_errors = true,
-                }
-              )
+              local resession = require('resession')
+              local target = utils.get_session_name()
+
+              if vim.uv.fs_stat(utils.session_path()) then
+                resession.load(target, { silence_errors = true })
+              else
+                resession.load('Last Session', { silence_errors = true })
+              end
             end
           end,
         },
