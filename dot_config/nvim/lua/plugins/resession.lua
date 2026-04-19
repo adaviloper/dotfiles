@@ -1,12 +1,7 @@
-local get_session_directory = function ()
-  local cwd = vim.fn.getcwd()
-  local home = vim.fn.expand("~")
-  return cwd:gsub("^" .. vim.pesc(home) .. "/?", "")
-end
-
+local utils = require("helpers.utils")
 return {
   'stevearc/resession.nvim',
   opts = {
-    dir = 'dirsession/' .. get_session_directory(),
+    dir = utils.RESESSION_ROOT_PATH .. '/' .. vim.fn.getcwd():gsub("^" .. vim.pesc(vim.fn.expand("~")) .. "/?", ""),
   },
 }
