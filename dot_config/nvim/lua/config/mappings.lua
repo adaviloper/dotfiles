@@ -187,7 +187,7 @@ return {
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
 
-    ["<F7>"] = { function () terminals.default_terminal:toggle() end, desc = "ToggleTerm float" },
+    ["<F7>"] = { function () terminals.toggle_default() end, desc = "ToggleTerm float" },
 
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
@@ -215,9 +215,7 @@ return {
     },
 
     ["<F3>"] = {
-      function()
-        terminals.robo_term:toggle()
-      end,
+      function() terminals.toggle_robo() end,
       desc = "Toggleterm 󱚟 Robot Helper",
     },
 
@@ -457,11 +455,9 @@ return {
   },
 
   t = {
-    ["<F3>"] = {
-      function ()
-        terminals.robo_term:toggle()
-      end
-    },
+    ["<F3>"] = { function() terminals.toggle_robo() end },
+
+    ["<F7>"] = { function() terminals.toggle_default() end },
 
     -- setting a mapping to false will disable it
     ["<F8>"] = { "<C-\\><C-n>" },
