@@ -15,6 +15,24 @@ M.robo_term = Terminal:new({
   direction = 'float',
 })
 
+M.toggle_robo = function()
+  if M.default_terminal:is_open() then
+    M.default_terminal:close()
+    M.robo_term:open()
+  else
+    M.robo_term:toggle()
+  end
+end
+
+M.toggle_default = function()
+  if M.robo_term:is_open() then
+    M.robo_term:close()
+    M.default_terminal:open()
+  else
+    M.default_terminal:toggle()
+  end
+end
+
 M.lazy_git = function()
   local git_utils = require("helpers.git_utils")
   local current_branch = git_utils.get_git_branch()
