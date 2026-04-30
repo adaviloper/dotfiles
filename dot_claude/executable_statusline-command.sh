@@ -16,61 +16,61 @@ display_dir="${display_dir/#$HOME\/.local\/share\/chezmoi/ .dotfiles}"
 display_dir="${display_dir/qmk_firmware/󰌓 QMK}"
 display_dir="${display_dir/#$HOME/~}"
 
-# Catppuccin Mocha colors (true color)
-BASE_R=30  BASE_G=30  BASE_B=46      # #1e1e2e - dark text
-MAUVE_R=203 MAUVE_G=166 MAUVE_B=247  # #cba6f7 - directory
-BLUE_R=250 BLUE_G=179 BLUE_B=135     # #fab387 - model
-YELLOW_R=249 YELLOW_G=226 YELLOW_B=175 # #f9e2af - context
-TEAL_R=148 TEAL_G=226 TEAL_B=213     # #94e2d5 - cost
+# Catppuccin Mocha — 24-bit for fg, 256-color index for bg
+# (Claude Code statusline renders 48;2 bg as grey; 48;5 bg works correctly)
+BASE_R=30  BASE_G=30  BASE_B=46     # #1e1e2e
+BASE_256=234                         # #1c1c1c (closest grayscale)
 
-# Powerline characters
+MAUVE_R=203 MAUVE_G=166 MAUVE_B=247 # #cba6f7
+MAUVE_256=183                        # #d7afff
+
+BLUE_R=250 BLUE_G=179 BLUE_B=135    # #fab387 (peach)
+BLUE_256=216                         # #ffaf87
+
+YELLOW_R=249 YELLOW_G=226 YELLOW_B=175 # #f9e2af
+YELLOW_256=223                          # #ffd7af
+
+TEAL_R=148 TEAL_G=226 TEAL_B=213    # #94e2d5
+TEAL_256=116                         # #87d7d7
+
+# Powerline pill characters
 LEFT_CAP=""
 RIGHT_CAP=""
 
-# Helper function: render a powerline segment
-# Usage: segment "text" R G B
+# Render a powerline pill segment
+# Usage: segment "text" fg_R fg_G fg_B bg_256
 segment() {
-    local text="$1"
-    local r="$2" g="$3" b="$4"
-
-    # Left cap: fg = accent, bg = base
-    printf "\033[38;2;%d;%d;%d;48;2;%d;%d;%dm%s" "$r" "$g" "$b" "$BASE_R" "$BASE_G" "$BASE_B" "$LEFT_CAP"
-
-    # Segment text: fg = base (dark), bg = accent color
-    printf "\033[38;2;%d;%d;%d;48;2;%d;%d;%dm%s" "$BASE_R" "$BASE_G" "$BASE_B" "$r" "$g" "$b" "$text"
-
-    # Right cap: fg = accent, bg = base
-    printf "\033[38;2;%d;%d;%d;48;2;%d;%d;%dm%s\033[0m " "$r" "$g" "$b" "$BASE_R" "$BASE_G" "$BASE_B" "$RIGHT_CAP"
+    local text="$1" r="$2" g="$3" b="$4" bg256="$5"
+    # Left cap: accent fg (256-color, same index as text bg for exact match)
+    printf "\033[38;5;%dm%s" "$bg256" "$LEFT_CAP"
+    # Text: BASE fg (256-color), accent bg (256-color)
+    printf "\033[38;5;%dm\033[48;5;%dm%s" "$BASE_256" "$bg256" "$text"
+    # Right cap: reset bg to default, accent fg (256-color)
+    printf "\033[49m\033[38;5;%dm%s\033[0m " "$bg256" "$RIGHT_CAP"
 }
 
-# Build segments array
-# Format: "text|R|G|B"
+# Build segments array: "text|R|G|B|BG256"
 segments=()
 
-# Model segment (blue)
 if [ -n "$model" ]; then
-    segments+=("󱚟 $model|$BLUE_R|$BLUE_G|$BLUE_B")
+    segments+=("󱚟 $model|$BLUE_R|$BLUE_G|$BLUE_B|$BLUE_256")
 fi
 
-# Directory segment (mauve)
 if [ -n "$display_dir" ]; then
-    segments+=(" $display_dir|$MAUVE_R|$MAUVE_G|$MAUVE_B")
+    segments+=(" $display_dir|$MAUVE_R|$MAUVE_G|$MAUVE_B|$MAUVE_256")
 fi
 
-# Context usage segment (yellow)
 if [ -n "$context_pct" ] && [ "$context_pct" != "null" ]; then
     context_display=$(printf "%.0f%%" "$context_pct")
-    segments+=("󱨵 $context_display|$YELLOW_R|$YELLOW_G|$YELLOW_B")
+    segments+=("󱨵 $context_display|$YELLOW_R|$YELLOW_G|$YELLOW_B|$YELLOW_256")
 fi
 
-# Cost segment (teal)
 if [ -n "$cost" ] && [ "$cost" != "null" ] && [ "$cost" != "0" ]; then
-    cost_display=$(printf "$%.2f" "$cost")
-    segments+=("$cost_display|$TEAL_R|$TEAL_G|$TEAL_B")
+    cost_display=$(printf "󱀇 $%.2f" "$cost")
+    segments+=("$cost_display|$TEAL_R|$TEAL_G|$TEAL_B|$TEAL_256")
 fi
 
-# Output all segments
 for seg in "${segments[@]}"; do
-    IFS='|' read -r text r g b <<< "$seg"
-    segment "$text" "$r" "$g" "$b"
+    IFS='|' read -r text r g b bg256 <<< "$seg"
+    segment "$text" "$r" "$g" "$b" "$bg256"
 done
