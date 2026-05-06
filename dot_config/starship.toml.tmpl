@@ -3,8 +3,10 @@
 {{- $time_color := "sky" -}}
 {{- $directory_color := "mauve" -}}
 {{- $golang_color := "sapphire" -}}
+{{- $nodejs_color := "green" -}}
 {{- $git_branch_color := "peach" -}}
-{{- $git_status_color := "green" -}}
+{{- $git_status_color := "teal" -}}
+# https://starship.rs/config/
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
@@ -29,6 +31,7 @@ format = """
 [](bold {{ $directory_color }})\
 $directory\
 $golang\
+$nodejs\
 $git_branch\
 $git_status\
 ${custom.end}
@@ -47,8 +50,8 @@ truncation_length = 4
 [directory.substitutions]
 # Add any substitions here
 # 'some/path' = 'alias'
-'~/Code' = '  Code'
-'~/.local/share/chezmoi' = ' .dotfiles'
+'Code' = '  Code'
+'chezmoi' = ' .dotfiles'
 'qmk_firmware' = '󰌓 QMK'
 
 [status]
@@ -81,6 +84,11 @@ format = '[$added]($added_style)/[$deleted]($deleted_style) '
 format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $git_status_color }})([$added$deleted$all_status$ahead_behind]($style))[ ]({{ $git_status_color }})'
 disabled = false
 style = '{{ $txt_color }} bg:{{ $git_status_color }}'
+
+[nodejs]
+format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $nodejs_color }})[$symbol $version ]($style)[{{ $separator }}]({{ $nodejs_color }} bg:{{ $bg_color }})'
+style = 'bold {{ $txt_color }} bg:{{ $nodejs_color }}'
+symbol = '󰎙'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
