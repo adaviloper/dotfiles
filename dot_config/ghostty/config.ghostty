@@ -1,7 +1,9 @@
+adjust-cell-height = 2
+
 auto-update = check
 
-font-family = Maple Mono
-font-size = 12
+font-family = Maple Mono NF
+font-size = 13.1
 
 gtk-titlebar-style = native
 
@@ -12,7 +14,7 @@ theme = Catppuccin Mocha
 
 window-decoration = none
 window-padding-x = 8
-window-padding-y = 8
+window-padding-y = 16
 window-save-state = always
 
 config-file = keymaps.ghostty
