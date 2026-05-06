@@ -21,6 +21,13 @@ types=1
 wmclass=zen
 wmclassmatch=1
 
+[Switch to Email Client]
+Description=Switch to Email Client
+shortcut=Ctrl+Alt+Shift+C
+shortcutrule=4
+wmclass=thunderbird_thunderbird
+wmclassmatch=1
+
 [Switch to Slack]
 Description=Switch to Slack
 shortcut=Ctrl+Alt+Shift+S
@@ -32,5 +39,5 @@ wmclassmatch=1
 Description=Switch to Terminal
 shortcut=Ctrl+Alt+Shift+Return
 shortcutrule=5
-wmclass=org.wezfurlong.wezterm
+wmclass=com.mitchellh.ghostty
 wmclassmatch=1
