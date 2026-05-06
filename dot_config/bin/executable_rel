@@ -1,0 +1,16 @@
+#!/bin/bash
+
+REPO=$(gum choose 'files_service' 'ocr_orchestrator' 'ocr_textract')
+
+TICKET="APP-$1"
+
+DATA=$(acli jira workitem view "$TICKET" --fields fixVersions --json)
+
+KEY=$(echo "$DATA" | jq -r '.key')
+VERSION_ID=$(echo "$DATA" | jq -r '.fields.fixVersions[0].id')
+VERSION_NAME=$(echo "$DATA" | jq -r '.fields.fixVersions[0].name')
+VERSION_URL="https://suralink.atlassian.net/projects/APP/versions/$VERSION_ID/tab/release-report-all-issues"
+TICKET_URL="https://suralink.atlassian.net/browse/$KEY"
+
+printf "Going to release [%s](%s) to prod\n*Ticket:* [%s](%s)\n*Repo:* \`%s\`" \
+  "$VERSION_NAME" "$VERSION_URL" "$KEY" "$TICKET_URL" "$REPO" | tee >(wl-copy)
