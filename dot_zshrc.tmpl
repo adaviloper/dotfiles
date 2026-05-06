@@ -131,14 +131,12 @@ export TERM="xterm-256color"
 unalias g
 unalias gco
 
-# Detect WezTerm (only autostart tmux from WezTerm)
-is_wezterm=false
-[[ "$TERM_PROGRAM" = "WezTerm" ]] && is_wezterm=true
-[[ -n "$WEZTERM_EXECUTABLE" ]] && is_wezterm=true
-[[ -n "$WEZTERM_PANE" ]] && is_wezterm=true
+# Detect Ghostty (only autostart tmux from Ghostty)
+is_ghostty=false
+[[ "$TERM_PROGRAM" = "ghostty" ]] && is_ghostty=true
 
-# Autostart tmux only when in WezTerm
-if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ "$is_wezterm" = true ]] && [[ -z "$ZSH_NO_TMUX_AUTOSTART" ]]; then
+# Autostart tmux only when in Ghostty
+if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ "$is_ghostty" = true ]] && [[ -z "$ZSH_NO_TMUX_AUTOSTART" ]]; then
   # Check if a tmux server is running
   if ! pgrep -x "tmux" > /dev/null; then
     # If no tmux server is running, run your command
