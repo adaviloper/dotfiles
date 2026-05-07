@@ -20,5 +20,12 @@ return {
         preview = { 'i', 'n' }
       })
     end,
+  },
+  {
+    "yousefhadder/markdown-plus.nvim",
+    ft = "markdown",
+    opts = {
+      -- Your custom configuration here
+    },
   }
 }
