@@ -68,7 +68,7 @@ style = 'bold {{ $time_color }}'
 
 [golang]
 format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $golang_color }})[$symbol $version ]($style)[{{ $separator }}]({{ $golang_color }} bg:{{ $bg_color }})'
-style = 'bold {{ $txt_color }} bg:{{ $golang_color }}'
+style = '{{ $txt_color }} bg:{{ $golang_color }}'
 symbol = '󰟓'
 
 [git_branch]
@@ -87,7 +87,7 @@ style = '{{ $txt_color }} bg:{{ $git_status_color }}'
 
 [nodejs]
 format = '[{{ $separator }} ]({{ $bg_color }} bg:{{ $nodejs_color }})[$symbol $version ]($style)[{{ $separator }}]({{ $nodejs_color }} bg:{{ $bg_color }})'
-style = 'bold {{ $txt_color }} bg:{{ $nodejs_color }}'
+style = '{{ $txt_color }} bg:{{ $nodejs_color }}'
 symbol = '󰎙'
 
 # Disable the package module, hiding it from the prompt completely
