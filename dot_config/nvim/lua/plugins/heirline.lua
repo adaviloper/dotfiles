@@ -3,6 +3,7 @@ local mocha = require("catppuccin.palettes").get_palette("mocha")
 local function get_ft_hl()
 	local ft_color = {
 		css = mocha.blue,
+		fugitiveblame = mocha.green,
 		go = mocha.sapphire,
 		json = mocha.yellow,
 		lua = mocha.sky,
