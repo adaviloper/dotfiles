@@ -2,12 +2,19 @@
 
 git checkout master
 
+if git log -1 --format="%B" | grep -q '\[skip ci\]'; then
+  BASE_COMMIT="HEAD~1"
+  echo "Latest commit has [skip ci] — branching from parent"
+else
+  BASE_COMMIT="HEAD"
+fi
+
 COMMIT="$1"
 DATE=$(date +%Y-%m-%d)
 BRANCH_NAME="release/${DATE}-${COMMIT}-{{ protonPass .secrets.jira.team_name | trim }}"
- echo "$BRANCH_NAME"
+echo "$BRANCH_NAME"
 
-git checkout -b "$BRANCH_NAME"
+git checkout -b "$BRANCH_NAME" "$BASE_COMMIT"
 
 # # Function to find the latest release branch (matching release/<YYYY-mm-dd>-*)
 # # First sort by date in branch name (most recent first), then by commit date for same-date branches
