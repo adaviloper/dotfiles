@@ -6,7 +6,6 @@ windows:
       - shell_command:
           - cmd: "c"
   - window_name: Frontend
-    start_directory: "./frontend"
     panes:
       - shell_command:
           - cmd: "c"
