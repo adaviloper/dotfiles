@@ -34,3 +34,5 @@ keybind = super+digit_7=text:\x007
 keybind = super+digit_8=text:\x008
 keybind = super+digit_9=text:\x009
 
+keybind = ctrl+tab=text:gt
+keybind = ctrl+shift+tab=text:gT
