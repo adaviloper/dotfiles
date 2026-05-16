@@ -111,6 +111,7 @@ return {
       desc = "Toggle relativenumber",
     },
 
+    ["<Leader>E"] = { "<Cmd>e<CR>", desc = "Refresh buffer" },
     ["<Leader>e"] = { "<Cmd>Neotree reveal toggle<CR>", desc = "NeoTree" },
 
     ["<Leader>eb"] = { "<Cmd>Neotree float buffers<CR>", desc = "Toggle Buffer Explorer" },
