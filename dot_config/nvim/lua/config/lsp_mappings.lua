@@ -66,22 +66,22 @@ return {
       desc = "Hover symbol details",
     },
 
-    ["<Leader>lt"] = { name = "PhpActor Templates" },
-
-    ["<Leader>lta"] = {
-      auto_select_template,
-      desc = 'Auto-generate template for the current file',
-    },
-
-    ["<Leader>ltd"] = {
-      select_template('default'),
-      desc = 'Auto-generate template for the current file',
-    },
-
-    ["<Leader>ltt"] = {
-      select_template('trait'),
-      desc = 'Auto-generate template for the current file',
-    },
+    -- ["<Leader>lt"] = { name = "PhpActor Templates" },
+    --
+    -- ["<Leader>lta"] = {
+    --   auto_select_template,
+    --   desc = 'Auto-generate template for the current file',
+    -- },
+    --
+    -- ["<Leader>ltd"] = {
+    --   select_template('default'),
+    --   desc = 'Auto-generate template for the current file',
+    -- },
+    --
+    -- ["<Leader>ltt"] = {
+    --   select_template('trait'),
+    --   desc = 'Auto-generate template for the current file',
+    -- },
 
     ["<Leader>lo"] = {
       function ()
