@@ -17,7 +17,13 @@ return {
 
       markview.setup({
         heading = presets.headings.glow_labels,
-        preview = { 'i', 'n' }
+        preview = {
+          modes = { 'i', 'n' },
+          callbacks = {},
+          ignore = {
+            buftypes = { "nofile", "nowrite", "quickfix", "terminal", "prompt" },
+          },
+        }
       })
     end,
   },
