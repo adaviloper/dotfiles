@@ -3,24 +3,12 @@ start_directory: ~/Code/suralink
 windows:
   - window_name: OcrOrchestrator
     start_directory: ./ocr_orchestrator_service
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: OcrTextract
     start_directory: ./ocr_textract
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: SLAPI
     start_directory: ./slapi/server
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: Files Service
     start_directory: ./files_service
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: Terminals
     focus: 'true'
     layout: 535f,249x54,0,0{124x54,0,0,28,124x54,125,0[124x27,125,0,30,124x26,125,28{62x26,125,28,29,61x26,188,28,40}]}
