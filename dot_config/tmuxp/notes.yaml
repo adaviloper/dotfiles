@@ -3,11 +3,5 @@ start_directory: "~/Code/neorg"
 windows:
   - window_name: Work
     start_directory: ./notes
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: Templates
     start_directory: ./templates
-    panes:
-      - shell_command:
-          - cmd: "c"

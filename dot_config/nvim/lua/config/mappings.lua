@@ -210,6 +210,11 @@ return {
       desc = "Toggleterm LazyNPM",
     },
 
+    ["<Leader>tt"] = {
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "tuido" }) end,
+      desc = "Toggleterm Todo Manager",
+    },
+
     ["<Leader>ty"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "yazi" }) end,
       desc = "Toggleterm Yazi",

@@ -3,11 +3,5 @@ start_directory: ~/Code/suralink
 windows:
   - window_name: Document Search
     start_directory: ./document_search
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: AI
     start_directory: ./ai_doc_service
-    panes:
-      - shell_command:
-          - cmd: "c"

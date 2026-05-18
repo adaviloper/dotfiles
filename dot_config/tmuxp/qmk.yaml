@@ -2,27 +2,12 @@ session_name: QMK Firmware
 start_directory: ~/Code/qmk_userspace
 windows:
   - window_name: Root
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: Userland
     start_directory: ./users/adaviloper
     focus: true
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: Unicorne
     start_directory: ./keyboards/boardsource/unicorne
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: Lulu
     start_directory: ./keyboards/boardsource/lulu/rp2040/keymaps/adaviloper
-    panes:
-      - shell_command:
-          - cmd: "c"
   - window_name: QMK Firmware
     start_directory: ~/Code/qmk_firmware/
-    panes:
-      - shell_command:
-          - cmd: "c"
