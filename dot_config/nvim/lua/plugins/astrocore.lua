@@ -115,6 +115,20 @@ return {
               else
                 resession.load('Last Session', { silence_errors = true })
               end
+
+              vim.schedule(function()
+                local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+                local has_real = false
+                for _, buf in ipairs(bufs) do
+                  if buf.name ~= "" then
+                    has_real = true
+                    break
+                  end
+                end
+                if not has_real then
+                  require("snacks").dashboard()
+                end
+              end)
             end
           end,
         },
