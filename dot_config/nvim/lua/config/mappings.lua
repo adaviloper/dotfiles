@@ -176,12 +176,6 @@ return {
     ["<Leader>ml"] = mark_utils.set_file_tag("log"),
     ["<Leader>'l"] = mark_utils.jump_to_file_tag("log"),
 
-    -- ISwap
-    ["Q"] = { "<cmd>ISwapWith<cr>" },
-
-    [">p"] = { "<cmd>ISwapWithRight<cr>", desc = "Swap node with right" },
-
-    ["<p"] = { "<cmd>ISwapWithLeft<cr>", desc = "Swap node with left" }, -- better search
     n = { "nzz", desc = "Next search" },
     N = { "Nzz", desc = "Previous search" },
 
@@ -210,10 +204,8 @@ return {
       desc = "Toggleterm LazyNPM",
     },
 
-    ["<Leader>tt"] = {
-      function() astro.toggle_term_cmd({ direction = "float", cmd = "tuido" }) end,
-      desc = "Toggleterm Todo Manager",
-    },
+    ["<Leader>tt"] = { "<CMD>Dooing<CR>", desc = "Toggleterm Todo Manager" },
+    ["<LocalLeader>tt"] = { "<CMD>DooingLocal<CR>", desc = "Toggleterm Todo Manager" },
 
     ["<Leader>ty"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "yazi" }) end,

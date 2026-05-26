@@ -34,7 +34,7 @@ return {
         cyclic = true,
       }),
       augend.constant.new({
-        elements = { "up", "down" },
+        elements = { "top", "bottom", "left", "right" },
         word = false,
         cyclic = true,
       }),
