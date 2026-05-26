@@ -2,7 +2,13 @@ return {
   "atiladefreitas/dooing",
   config = function()
     require("dooing").setup({
-      -- your custom config here (optional)
+      pretty_print_json = true,
+
+      quick_keys = false,
+
+      window = {
+        width = 100,
+      },
     })
   end,
 }
