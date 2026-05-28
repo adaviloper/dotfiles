@@ -1,4 +1,4 @@
-session_name: DocSearch
+session_name: Skynet
 start_directory: ~/Code/suralink
 windows:
   - window_name: Document Search
