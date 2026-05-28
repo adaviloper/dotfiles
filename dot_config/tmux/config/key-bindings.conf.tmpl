@@ -39,11 +39,20 @@ bind i if-shell '[ $(tmux has-session -t "Plugins") -eq 0 ]' {
   run-shell "load plugins"
 }
 
+{{ if eq .purpose "work" -}}
+bind o if-shell '[ $(tmux has-session -t "Skynet") -eq 0 ]' {
+  attach -t "Skynet"
+} {
+  run-shell "load skynet"
+}
+{{- else -}}
 bind o if-shell '[ $(tmux has-session -t "QMK Firmware") -eq 0 ]' {
   attach -t "QMK Firmware"
 } {
   run-shell "load qmk"
 }
+{{- end }}
+
 
 bind n if-shell '[ $(tmux has-session -t "Notes") -eq 0 ]' {
   attach -t "Notes"
