@@ -9,7 +9,11 @@ current=$(pactl get-default-sink)
 
 if [ "$current" = "$LOGI" ]; then
     next="$ARCTIS"
+    {{- if eq .purpose "work" }}
     label="SteelSeries Arctis 7 Chat"
+    {{- else }}
+    label="SteelSeries Arctis 7 Game"
+    {{- end }}
 else
     next="$LOGI"
     label="Logi Z407"
