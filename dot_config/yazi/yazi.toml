@@ -16,12 +16,12 @@ sort_dir_first = true
 sort_reverse = false
 sort_sensitive = false
 
-[[plugin.prepend_fetchers]]
+[[plugin.deps]]
 id   = "git"
 name = "*"
 run  = "git"
 
-[[plugin.prepend_fetchers]]
+[[plugin.deps]]
 id   = "git"
 name = "*/"
 run  = "git"
