@@ -44,7 +44,7 @@ local menu        = "hyprlauncher"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 
-hl.on("hyprland.start", function () 
+hl.on("hyprland.start", function ()
   hl.exec_cmd(terminal)
   hl.exec_cmd("nm-applet")
   hl.exec_cmd("waybar & hyprpaper & zen")
@@ -79,6 +79,7 @@ hl.env("HYPRCURSOR_SIZE", "16")
 -- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 
+local GAP = 32
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -87,8 +88,8 @@ hl.env("HYPRCURSOR_SIZE", "16")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 16,
-        gaps_out = 32,
+        gaps_in  = GAP / 2,
+        gaps_out = GAP,
 
         border_size = 2,
 
@@ -104,7 +105,7 @@ hl.config({
         -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
         allow_tearing = false,
 
-        layout = "dwindle",
+        layout = "master",
     },
 
     decoration = {
@@ -194,6 +195,8 @@ hl.config({
 hl.config({
     master = {
         new_status = "master",
+
+        orientation = "center",
     },
 })
 
@@ -228,15 +231,13 @@ hl.config({
         kb_options = "",
         kb_rules   = "",
 
-        follow_mouse = 1,
+        follow_mouse = 0,
 
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
             natural_scroll = false,
         },
-
-        follow_mouse = 0,
 
         mouse_refocus = false,
     },
@@ -262,12 +263,18 @@ hl.device({
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 local meh     = "CONTROL + ALT + SHIFT"  -- debug: using ALT only while testing
+local hyper   = "SUPER + CONTROL + ALT + SHIFT"  -- debug: using ALT only while testing
 
 local function focus_or_open(window_class, cmd)
     return function()
         local windows = hl.get_windows({ class = window_class })
         if #windows > 0 then
-            hl.dispatch(hl.dsp.focus({ window = windows[1] }))
+            table.sort(windows, function(a, b)
+                return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge)
+            end)
+            local win = windows[1]
+            hl.dispatch(hl.dsp.focus({ window = win }))
+            hl.dispatch(hl.dsp.window.alter_zorder({ mode = 'top', window = win }))
         else
             hl.exec_cmd(cmd)
         end
@@ -275,15 +282,43 @@ local function focus_or_open(window_class, cmd)
 end
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+-- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+
+local function notify(msg)
+    local safe = tostring(msg):gsub("'", "")
+    hl.exec_cmd("hyprctl notify -1 4000 'rgb(26ff7a)' '" .. safe .. "'")
+    hl.exec_cmd("echo '" .. safe .. "' >> /tmp/hypr_cycle.log")
+end
+
+-- Cycle through windows of the same app class as the focused window
+hl.bind(mainMod .. " + N", function()
+    local all = hl.get_windows()
+    if #all < 2 then return end
+
+    table.sort(all, function(a, b)
+        return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge)
+    end)
+
+    local focused = all[1]
+
+    local same = {}
+    for _, w in ipairs(all) do
+        if w.class == focused.class then
+            table.insert(same, w)
+        end
+    end
+    if #same < 2 then return end
+
+    local target = same[2]
+    hl.dispatch(hl.dsp.focus({ window = target }))
+    hl.dispatch(hl.dsp.window.alter_zorder({ mode = 'top', window = target }))
+end)
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -313,7 +348,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Meh binds (Ctrl + Alt + Shift): focus or launch apps
 hl.bind(meh .. " + Return", focus_or_open("com.mitchellh.ghostty", terminal))
-hl.bind(meh .. " + B",      focus_or_open("zen-browser",                   "zen"))
+hl.bind(meh .. " + B",      focus_or_open("zen-browser",           "zen"))
 hl.bind(meh .. " + D",      focus_or_open("discord",               "discord"))
 
 -- Laptop multimedia keys for volume and LCD brightness
@@ -331,6 +366,90 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
 
+--------------------------
+---- MOOM KEYBINDINGS ----
+--------------------------
+
+local mon_w = 5120
+local mon_h = 1440
+
+local INNER = GAP / 2
+
+local function moom(x_frac, w_frac, y_frac, h_frac)
+    y_frac = y_frac or 0
+    h_frac = h_frac or 1
+    local at_left   = x_frac           <= 1e-9
+    local at_right  = x_frac + w_frac  >= 1 - 1e-9
+    local at_top    = y_frac           <= 1e-9
+    local at_bottom = y_frac + h_frac  >= 1 - 1e-9
+    local usable_w  = mon_w - 2 * GAP
+    local usable_h  = mon_h - 2 * GAP
+    return function()
+        hl.dispatch(hl.dsp.window.resize({
+            x        = math.floor(w_frac * usable_w) - (at_left  and 0 or INNER) - (at_right  and 0 or INNER),
+            y        = math.floor(h_frac * usable_h) - (at_top   and 0 or INNER) - (at_bottom and 0 or INNER),
+            relative = false,
+        }))
+        hl.dispatch(hl.dsp.window.move({
+            x        = GAP + math.floor(x_frac * usable_w) + (at_left   and 0 or INNER),
+            y        = GAP + math.floor(y_frac * usable_h) + (at_top    and 0 or INNER),
+            relative = false,
+        }))
+    end
+end
+
+local function nudge(x_bump, y_bump)
+    local x_delta = GAP * x_bump
+    local y_delta = GAP * y_bump
+    return function()
+        hl.dispatch(hl.dsp.window.move({
+            x        = x_delta,
+            y        = y_delta,
+            relative = true,
+        }))
+    end
+end
+
+local function once(fn)
+    return function()
+        fn()
+        hl.dispatch(hl.dsp.submap("reset"))
+    end
+end
+
+hl.bind(hyper .. " + M", hl.dsp.submap("moom"))
+
+hl.define_submap("moom", function()
+    -- Row 1 (Q–T): halves and quarters
+    hl.bind("Q", once(moom(0,   1/2)))  -- left half
+    hl.bind("W", once(moom(1/4, 1/4)))  -- 2nd quarter
+    hl.bind("E", once(moom(1/6, 2/3)))  -- center 2/3
+    hl.bind("R", once(moom(1/2, 1/4)))  -- 3rd quarter
+    hl.bind("T", once(moom(1/2, 1/2)))  -- right half
+
+    -- Row 2 (A–G): wider layouts
+    hl.bind("A", once(moom(0,   1/4)))  -- 1st quarter
+    hl.bind("S", once(moom(0,   3/4)))  -- left 3/4
+    hl.bind("D", once(moom(1/4, 1/2)))  -- center half
+    hl.bind("F", once(moom(1/4, 3/4)))  -- 2nd–4th quarters
+    hl.bind("G", once(moom(3/4, 1/4)))  -- 4th quarter
+
+    -- Row 3 (Z–B): thirds
+    hl.bind("Z", once(moom(0,   1/3)))  -- left third
+    hl.bind("X", once(moom(0,   2/3)))  -- left two thirds
+    hl.bind("C", once(moom(1/3, 1/3)))  -- center third
+    hl.bind("V", once(moom(1/3, 2/3)))  -- right two thirds
+    hl.bind("B", once(moom(2/3, 1/3)))  -- right third
+
+    hl.bind("LEFT",  nudge(-1,  0))
+    hl.bind("RIGHT", nudge( 1,  0))
+    hl.bind("UP",    nudge( 0, -1))
+    hl.bind("DOWN",  nudge( 0,  1))
+
+    hl.bind("Escape", hl.dsp.submap("reset"))
+end)
+
+
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
@@ -340,7 +459,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 
 -- Example window rules that are useful
 
-local suppressMaximizeRule = hl.window_rule({
+hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",
     match = { class = ".*" },
@@ -371,6 +490,11 @@ hl.window_rule({
 --     no_anim = true,
 -- })
 -- overlayLayerRule:set_enabled(false)
+
+hl.window_rule({
+    match = { class = ".*" },
+    float = true,
+})
 
 -- Hyprland-run windowrule
 hl.window_rule({
