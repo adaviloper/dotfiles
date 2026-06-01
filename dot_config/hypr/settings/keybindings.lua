@@ -1,6 +1,3 @@
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-local meh = "CONTROL + ALT + SHIFT" -- debug: using ALT only while testing
-
 local function focus_or_open(window_class, cmd)
   return function()
     local windows = hl.get_windows({ class = window_class })
@@ -16,6 +13,7 @@ end
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist store"))
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
@@ -88,6 +86,9 @@ hl.bind(meh .. " + B", focus_or_open("zen-browser", "zen"))
 hl.bind(meh .. " + D", focus_or_open("discord", "discord"))
 hl.bind(meh .. " + R", focus_or_open(api_client, "/opt/apidog/apidog"))
 hl.bind(meh .. " + T", focus_or_open(database, "/opt/datagrip/bin/datagrip"))
+
+-- Hyper binds (Ctrl + Alt + Shift + Super)
+hl.bind(hyper .. " + C", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher clipboard"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
