@@ -50,6 +50,18 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("waybar & hyprpaper & zen")
 end)
 
+hl.on("window.active", function ()
+    local all = hl.get_windows()
+    if #all < 2 then return end
+
+    table.sort(all, function(a, b)
+        return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge)
+    end)
+
+    local focused = all[1]
+    hl.dispatch(hl.dsp.window.alter_zorder({ mode = 'top', window = win }))
+end)
+
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -274,7 +286,6 @@ local function focus_or_open(window_class, cmd)
             end)
             local win = windows[1]
             hl.dispatch(hl.dsp.focus({ window = win }))
-            hl.dispatch(hl.dsp.window.alter_zorder({ mode = 'top', window = win }))
         else
             hl.exec_cmd(cmd)
         end
@@ -289,6 +300,8 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 -- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + TAB", hl.dsp.window.cycle_next())
+hl.bind("ALT + TAB", hl.dsp.window.cycle_next())
 
 local function notify(msg)
     local safe = tostring(msg):gsub("'", "")
@@ -317,7 +330,6 @@ hl.bind(mainMod .. " + N", function()
 
     local target = same[2]
     hl.dispatch(hl.dsp.focus({ window = target }))
-    hl.dispatch(hl.dsp.window.alter_zorder({ mode = 'top', window = target }))
 end)
 
 -- Move focus with mainMod + arrow keys
