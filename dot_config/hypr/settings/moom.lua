@@ -1,5 +1,19 @@
 local hyper = "SUPER + CONTROL + ALT + SHIFT" -- debug: using ALT only while testing
 
+local function has_tag(win, tag)
+  if not win.tags then return false end
+  for _, t in ipairs(win.tags) do
+    if t == tag then return true end
+  end
+  return false
+end
+
+local function place_window(win, geo)
+  hl.dispatch(hl.dsp.focus({ window = win }))
+  hl.dispatch(hl.dsp.window.resize({ x = geo.w, y = geo.h, relative = false }))
+  hl.dispatch(hl.dsp.window.move({ x = geo.x, y = geo.y, relative = false }))
+end
+
 local function moom(x_frac, w_frac, y_frac, h_frac)
   return function()
     local g = moom_geo(x_frac, w_frac, y_frac, h_frac)
@@ -51,10 +65,67 @@ hl.define_submap("moom", function()
   hl.bind("V", once(moom(1 / 3, 2 / 3))) -- right two thirds
   hl.bind("B", once(moom(2 / 3, 1 / 3))) -- right third
 
+  hl.bind("SPACE", once(moom(0, 1))) -- right third
+
   hl.bind("LEFT", nudge(-1, 0))
   hl.bind("RIGHT", nudge(1, 0))
   hl.bind("UP", nudge(0, -1))
   hl.bind("DOWN", nudge(0, 1))
+
+  -- Layout presets
+  hl.bind("P", once(function()
+    local wins = hl.get_windows()
+    if #wins == 0 then return end
+    table.sort(wins, function(a, b) return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge) end)
+    local win = wins[1]
+    if win.class == "zen-browser" then
+      hl.dispatch(hl.dsp.window.tag({ window = win, tag = "primary" }))
+    end
+  end))
+
+  hl.bind("J", once(function()
+    local browsers = hl.get_windows({ class = "zen-browser" })
+    local terminals = hl.get_windows({ class = "com.mitchellh.ghostty" })
+
+    local primary, secondary
+    for _, w in ipairs(browsers) do
+      if has_tag(w, "primary") then
+        primary = w
+      else
+        secondary = w
+      end
+    end
+    -- Fallback to focus-history order if nothing is tagged
+    if not primary then
+      table.sort(browsers, function(a, b) return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge) end)
+      primary = browsers[1]
+      secondary = browsers[2]
+    end
+
+    if secondary then place_window(secondary, moom_geo(3 / 4, 1 / 4)) end
+    if primary then place_window(primary, moom_geo(0, 1 / 4)) end
+    if #terminals >= 1 then place_window(terminals[1], moom_geo(1 / 4, 1 / 2)) end
+  end))
+
+  hl.bind("M", once(function()
+    local browsers = hl.get_windows({ class = "zen-browser" })
+    local chat = hl.get_windows({ class = "discord" })
+    local terminals = hl.get_windows({ class = "com.mitchellh.ghostty" })
+
+    local primary
+    for _, w in ipairs(browsers) do
+      if has_tag(w, "primary") then primary = w end
+    end
+    -- Fallback to most recently focused browser
+    if not primary and #browsers >= 1 then
+      table.sort(browsers, function(a, b) return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge) end)
+      primary = browsers[1]
+    end
+
+    if #chat >= 1 then place_window(chat[1], moom_geo(0, 1 / 4)) end
+    if primary then place_window(primary, moom_geo(1 / 4, 1 / 2)) end
+    if #terminals >= 1 then place_window(terminals[1], moom_geo(1 / 4, 1 / 2)) end
+  end))
 
   hl.bind("Escape", hl.dsp.submap("reset"))
 end)

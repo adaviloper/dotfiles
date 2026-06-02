@@ -82,6 +82,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Meh binds (Ctrl + Alt + Shift): focus or launch apps
 hl.bind(meh .. " + Return", focus_or_open("com.mitchellh.ghostty", terminal))
+hl.bind(meh .. " + X", focus_or_open("proton-pass", "proton-pass"))
 hl.bind(meh .. " + B", focus_or_open("zen-browser", "zen"))
 hl.bind(meh .. " + D", focus_or_open("discord", "discord"))
 hl.bind(meh .. " + R", focus_or_open(api_client, "/opt/apidog/apidog"))
