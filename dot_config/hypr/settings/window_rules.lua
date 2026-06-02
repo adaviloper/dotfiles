@@ -54,6 +54,10 @@ local function is_browser(class)
   return class == "zen-browser"
 end
 
+local function is_swiftpoint(class)
+  return class == swiftpoint
+end
+
 local function other_browser_count(window)
   local count = 0
   for _, w in ipairs(hl.get_windows()) do
@@ -74,6 +78,9 @@ hl.on("window.open", function(window)
     else
       g = moom_geo(1/4, 1/2) -- first browser: center half
     end
+  elseif is_swiftpoint(window.class) then
+    hl.dispatch(hl.dsp.window.center({ window = window}))
+    return
   else
     g = placements[window.class]
   end
