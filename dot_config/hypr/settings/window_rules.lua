@@ -43,6 +43,7 @@ hl.window_rule({
 -- Per-app placement: fires after window rules (including float) are applied
 local placements = {
   [chat]                    = moom_geo(0,   1/4),
+  ["proton-pass"]           = moom_geo(0,   1/4),
   [database]                = moom_geo(1/4, 1/2),
   [api_client]              = moom_geo(1/4, 1/2),
   ["com.mitchellh.ghostty"] = moom_geo(1/4, 1/2),
