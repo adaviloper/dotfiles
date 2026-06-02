@@ -1,27 +1,27 @@
 hl.config({
-    cursor = {
-        no_warps = true,
-    },
+  cursor = {
+    no_warps = true,
+  },
 })
 
 hl.config({
-    input = {
-        kb_layout  = "us",
-        kb_variant = "",
-        kb_model   = "",
-        kb_options = "",
-        kb_rules   = "",
+  input = {
+    kb_layout = "us",
+    kb_variant = "",
+    kb_model = "",
+    kb_options = "",
+    kb_rules = "",
 
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+    sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
-        touchpad = {
-            natural_scroll = false,
-        },
-
-        follow_mouse = 2,
-
-        mouse_refocus = false,
+    touchpad = {
+      natural_scroll = false,
     },
+
+    follow_mouse = 2,
+
+    mouse_refocus = false,
+  },
 })
 
 hl.gesture({
