@@ -46,11 +46,37 @@ local placements = {
   [database]                = moom_geo(1/4, 1/2),
   [api_client]              = moom_geo(1/4, 1/2),
   ["com.mitchellh.ghostty"] = moom_geo(1/4, 1/2),
+  -- ["Swiftpoint X1 Control Panel"] = moom_geo(),
 }
+
+local function is_browser(class)
+  return class == "zen-browser"
+end
+
+local function other_browser_count(window)
+  local count = 0
+  for _, w in ipairs(hl.get_windows()) do
+    if is_browser(w.class) and w.address ~= window.address then
+      count = count + 1
+    end
+  end
+  return count
+end
 
 hl.on("window.open", function(window)
   if not window then return end
-  local g = placements[window.class]
+
+  local g
+  if is_browser(window.class) then
+    if other_browser_count(window) == 0 then
+      g = moom_geo(3/4, 1/4) -- second+ browser: right quarter
+    else
+      g = moom_geo(1/4, 1/2) -- first browser: center half
+    end
+  else
+    g = placements[window.class]
+  end
+
   if not g then return end
   hl.dispatch(hl.dsp.window.resize({ x = g.w, y = g.h, relative = false }))
   hl.dispatch(hl.dsp.window.move({ x = g.x, y = g.y, relative = false }))
