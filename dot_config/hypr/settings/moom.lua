@@ -34,13 +34,6 @@ local function nudge(x_bump, y_bump)
   end
 end
 
-local function once(fn)
-  return function()
-    fn()
-    hl.dispatch(hl.dsp.submap("reset"))
-  end
-end
-
 hl.bind(hyper .. " + M", hl.dsp.submap("moom"))
 
 hl.define_submap("moom", function()
@@ -65,7 +58,8 @@ hl.define_submap("moom", function()
   hl.bind("V", once(moom(1 / 3, 2 / 3))) -- right two thirds
   hl.bind("B", once(moom(2 / 3, 1 / 3))) -- right third
 
-  hl.bind("SPACE", once(moom(0, 1))) -- right third
+  hl.bind("SPACE", once(moom(0, 1))) -- full screen
+  hl.bind("Return", once(function() hl.dispatch(hl.dsp.window.center()) end)) -- center window
 
   hl.bind("LEFT", nudge(-1, 0))
   hl.bind("RIGHT", nudge(1, 0))
