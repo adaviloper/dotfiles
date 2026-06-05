@@ -4,5 +4,6 @@ export QMK_HOME="$HOME/Code/qmk_firmware"
 
 {{ if eq .purpose "personal" }}
 export AOC_SESSION={{ protonPass .secrets.aoc.session | trim }}
+export QT_QPA_PLATFORMTHEME=gtk3
 {{ end }}
 
