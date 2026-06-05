@@ -42,10 +42,10 @@ hl.window_rule({
 
 -- Per-app placement: fires after window rules (including float) are applied
 local placements = {
-  [chat]                    = moom_geo(0,   1/4),
+  [chat.class]              = moom_geo(0,   1/4),
   ["proton-pass"]           = moom_geo(0,   1/4),
-  [database]                = moom_geo(1/4, 1/2),
-  [api_client]              = moom_geo(1/4, 1/2),
+  [database.class]          = moom_geo(1/4, 1/2),
+  [api_client.class]        = moom_geo(1/4, 1/2),
   ["com.mitchellh.ghostty"] = moom_geo(1/4, 1/2),
   -- ["Swiftpoint X1 Control Panel"] = moom_geo(),
 }
@@ -55,7 +55,7 @@ local function is_browser(class)
 end
 
 local function is_swiftpoint(class)
-  return class == swiftpoint
+  return class == swiftpoint.class
 end
 
 local function other_browser_count(window)
@@ -74,9 +74,9 @@ hl.on("window.open", function(window)
   local g
   if is_browser(window.class) then
     if other_browser_count(window) == 0 then
-      g = moom_geo(3/4, 1/4) -- second+ browser: right quarter
-    else
       g = moom_geo(1/4, 1/2) -- first browser: center half
+    else
+      g = moom_geo(3/4, 1/4) -- second+ browser: right quarter
     end
   elseif is_swiftpoint(window.class) then
     hl.dispatch(hl.dsp.window.center({ window = window}))
@@ -89,6 +89,18 @@ hl.on("window.open", function(window)
   hl.dispatch(hl.dsp.window.resize({ x = g.w, y = g.h, relative = false }))
   hl.dispatch(hl.dsp.window.move({ x = g.x, y = g.y, relative = false }))
 end)
+
+hl.window_rule({
+  name = "xwayland-video-bridge-fixes",
+  match = { class = "xwaylandvideobridge" },
+
+  no_initial_focus = true,
+  no_focus = true,
+  no_anim = true,
+  no_blur = true,
+  max_size = { 1, 1 },
+  opacity = 0.0,
+})
 
 hl.window_rule({
   name = "move-hyprland-run",

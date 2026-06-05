@@ -1,12 +1,12 @@
-local function focus_or_open(window_class, cmd)
+local function focus_or_open(app)
   return function()
-    local windows = hl.get_windows({ class = window_class })
+    local windows = hl.get_windows({ class = app.class })
     if #windows > 0 then
       table.sort(windows, function(a, b) return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge) end)
       local win = windows[1]
       hl.dispatch(hl.dsp.focus({ window = win }))
     else
-      hl.exec_cmd(cmd)
+      hl.exec_cmd(app.cmd)
     end
   end
 end
@@ -20,9 +20,9 @@ hl.bind(mainMod .. " + F10", info({
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist store"))
 -- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager.cmd))
 -- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu.cmd))
 hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call settings toggle"))
 hl.bind(hyper .. " + S", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call sessionMenu toggle"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
@@ -62,18 +62,18 @@ hl.bind(mainMod .. " + SHIFT + GRAVE", function()
 end)
 
 -- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + down", hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, 10 do
-  local key = i % 10 -- 10 maps to key 0
-  hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-  hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
-end
+-- for i = 1, 10 do
+--   local key = i % 10 -- 10 maps to key 0
+--   hl.bind(workspaceMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+--   hl.bind(workspaceMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+-- end
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
@@ -88,12 +88,13 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Meh binds (Ctrl + Alt + Shift): focus or launch apps
-hl.bind(meh .. " + Return", focus_or_open("com.mitchellh.ghostty", terminal))
-hl.bind(meh .. " + X", focus_or_open("proton-pass", "proton-pass"))
-hl.bind(meh .. " + B", focus_or_open("zen-browser", "zen"))
-hl.bind(meh .. " + D", focus_or_open("discord", "discord"))
-hl.bind(meh .. " + R", focus_or_open(api_client, "/opt/apidog/apidog"))
-hl.bind(meh .. " + T", focus_or_open(database, "/opt/datagrip/bin/datagrip"))
+hl.bind(meh .. " + Return", focus_or_open(terminal))
+hl.bind(meh .. " + E", hl.dsp.exec_cmd("toggle_audio"))
+hl.bind(meh .. " + X", focus_or_open(passwordManager))
+hl.bind(meh .. " + B", focus_or_open(browser))
+hl.bind(meh .. " + D", focus_or_open(chat))
+hl.bind(meh .. " + R", focus_or_open(api_client))
+hl.bind(meh .. " + T", focus_or_open(database))
 
 -- Hyper binds (Ctrl + Alt + Shift + Super)
 hl.bind(hyper .. " + C", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher clipboard"))
