@@ -11,14 +11,6 @@ local function focus_or_open(window_class, cmd)
   end
 end
 
-hl.bind(mainMod .. " + ESCAPE", hl.dsp.submap("session_management"))
-
-hl.define_submap("session_management", function()
-  hl.bind("L", hl.dsp.exec_cmd("command -v hyprlock >/dev/null 2>&1 && hyprlock"))
-  hl.bind("M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-
-  hl.bind("Escape", hl.dsp.submap("reset"))
-end)
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + F10", info({
@@ -32,8 +24,11 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 -- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call settings toggle"))
+hl.bind(hyper .. " + S", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call sessionMenu toggle"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher windows"))
+hl.bind(mainMod .. " + GRAVE", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher windows"))
+hl.bind("SUPER + SHIFT + CONTROL + 4", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f - --copy-command wl-copy -o "~/Pictures/Screenshots/%Y%m%d_%H%M%S.png"'))
 hl.bind("ALT + TAB", function()
   local all = hl.get_windows()
   if #all < 2 then return end
@@ -89,7 +84,7 @@ hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind("mouse:274", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Meh binds (Ctrl + Alt + Shift): focus or launch apps
