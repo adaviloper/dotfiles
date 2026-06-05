@@ -4,10 +4,11 @@
 -- Or execute your favorite apps at launch like this:
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd(terminal)
-  hl.exec_cmd(chat)
+  hl.exec_cmd(terminal.cmd)
+  hl.exec_cmd(chat.cmd)
   hl.exec_cmd("nm-applet")
-  hl.exec_cmd("waybar & hyprpaper & zen & qs -c noctalia-shell")
+  hl.exec_cmd("hyprpaper & zen & qs -c noctalia-shell")
+  hl.exec_cmd("xwaylandvideobridge")
   hl.exec_cmd("bash -c 'sleep 3 && cd ~/.local/opt/swiftpoint-x1 && \"./Swiftpoint X1 Control Panel\"'")
 end)
 

@@ -10,6 +10,7 @@
 -- require("myColors")
 
 mainMod = "SUPER" -- Sets "Windows" key as main modifier
+workspaceMod = "SUPER + CONTROL" -- Sets "Windows" key as main modifier
 meh = "CONTROL + ALT + SHIFT" -- debug: using ALT only while testing
 hyper = "SUPER + CONTROL + ALT + SHIFT" -- debug: using ALT only while testing
 
@@ -79,14 +80,15 @@ require('settings.monitors')
 ---------------------
 
 -- Set programs that you use
-terminal = "ghostty"
-fileManager = "dolphin"
-swiftpoint = "Swiftpoint X1 Control Panel"
-chat = "discord"
-menu = "qs -c noctalia-shell ipc call launcher toggle"
--- menu = "hyprlauncher"
-database = "jetbrains-datagrip"
-api_client = "apidog"
+browser   = { class = "zen-browser",                  cmd = "zen" }
+terminal   = { class = "com.mitchellh.ghostty",       cmd = "ghostty" }
+fileManager = { class = "dolphin",                    cmd = "dolphin" }
+swiftpoint = { class = "Swiftpoint X1 Control Panel", cmd = "bash -c 'cd ~/.local/opt/swiftpoint-x1 && \"./Swiftpoint X1 Control Panel\"'" }
+chat       = { class = "vesktop",                     cmd = "vesktop --wayland" }
+menu       = { class = nil,                           cmd = "qs -c noctalia-shell ipc call launcher toggle" }
+passwordManager = { class = "proton-pass",            cmd = "proton-pass" }
+database   = { class = "jetbrains-datagrip",          cmd = "/opt/datagrip/bin/datagrip" }
+api_client = { class = "apidog",                      cmd = "/opt/apidog/apidog" }
 
 -------------------
 ---- AUTOSTART ----
@@ -163,3 +165,7 @@ require('settings.moom')
 require('settings.window_rules')
 
 require('settings.layer_rules')
+
+hl.on("hyprland.start", function()
+  hl.exec_cmd("bash -c 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user restart xdg-desktop-portal && systemctl --user start xdg-desktop-portal-hyprland'")
+end)
