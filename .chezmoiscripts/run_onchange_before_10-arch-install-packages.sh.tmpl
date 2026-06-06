@@ -15,4 +15,9 @@ yay -S --needed --noconfirm{{ range .packages.arch.yays }} {{ . | quote }}{{ end
 paru -S --needed --noconfirm{{ range .packages.arch.paru }} {{ . | quote }}{{ end }}
 {{- end }}
 
+{{- if .packages.arch.pamac }}
+# Install all paru-managed packages in one batch, skip installed
+pamac install {{ range .packages.arch.pamac }} {{ . | quote }}{{ end }}
+{{- end }}
+
 {{- end -}}
