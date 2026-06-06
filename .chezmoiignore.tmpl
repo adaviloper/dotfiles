@@ -1,0 +1,30 @@
+{{ if eq .is_mac true }}
+.config/dconf/
+.config/espanso/
+.config/lazygit/
+.config/openbar/
+.config/systemd/
+.Xresource.tmpl
+.xinitrc
+{{ else }}
+.config/alfred/
+.config/moom/
+.config/steermouse/
+Library/
+{{ end }}
+
+{{ if eq .has_robot false }}
+.config/claude/
+{{ end }}
+
+{{ if eq .is_arch true }}
+.config/k9s/
+.config/openbar/
+Brewfile
+{{ end }}
+
+{{ if eq .purpose "work" }}
+.config/aoc/
+.config/hypr/
+.config/noctalia/
+{{ end }}
