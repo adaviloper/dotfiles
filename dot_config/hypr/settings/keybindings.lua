@@ -13,10 +13,6 @@ end
 
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + F10", info({
-  title = "some title",
-  body = "description"
-}))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist store"))
 -- closeWindowBind:set_enabled(false)
@@ -98,6 +94,38 @@ hl.bind(meh .. " + T", focus_or_open(database))
 
 -- Hyper binds (Ctrl + Alt + Shift + Super)
 hl.bind(hyper .. " + C", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher clipboard"))
+
+-- Peek at Desktop
+local peek_state = {}
+local PEEK_Y = math.floor(mon_h * 5 / 6)
+
+local function peek_show()
+  local all = hl.get_windows()
+  if #all == 0 then return end
+  for _, w in ipairs(all) do
+    table.insert(peek_state, { addr = w.address, x = w.at.x, y = w.at.y })
+    hl.dispatch(hl.dsp.focus({ window = w }))
+    hl.dispatch(hl.dsp.window.move({ x = w.at.x, y = PEEK_Y, relative = false }))
+  end
+end
+
+local function peek_restore()
+  local all = hl.get_windows()
+  for _, entry in ipairs(peek_state) do
+    for _, w in ipairs(all) do
+      if w.address == entry.addr then
+        hl.dispatch(hl.dsp.focus({ window = w }))
+        hl.dispatch(hl.dsp.window.move({ x = entry.x, y = entry.y, relative = false  }))
+        break
+      end
+    end
+  end
+  peek_state = {}
+end
+
+hl.bind(mainMod .. " + D", function()
+  if #peek_state > 0 then peek_restore() else peek_show() end
+end)
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })

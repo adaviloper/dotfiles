@@ -51,22 +51,22 @@ function notify(opts)
   local title = opts.title or "Title"
   local body = opts.body or "Body"
   local type = opts.type or "notify"
-  return hl.dsp.exec_cmd("qs -c noctalia-shell ipc call toast send '{\"title\": \""..title.. "\",\"body\": \""..body.. "\",\"type\": \""..opts.type.. "\"}'")
+  hl.dispatch(hl.dsp.exec_cmd("qs -c noctalia-shell ipc call toast send '{\"title\": \""..title.. "\",\"body\": \""..body.. "\",\"type\": \""..opts.type.. "\"}'"))
 end
 
 function info(opts)
   opts.type = "notify"
-  return notify(opts)
+  notify(opts)
 end
 
 function warn(opts)
   opts.type = "warning"
-  return notify(opts)
+  notify(opts)
 end
 
 function err(opts)
   opts.type = "error"
-  return notify(opts)
+  notify(opts)
 end
 
 ------------------
