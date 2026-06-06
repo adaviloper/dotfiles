@@ -2,6 +2,7 @@ return {
   opt = { -- vim.opt.<key>
     autoread = true,
     breakindentopt = 'shift:2',
+    clipboard = "unnamedplus",
     conceallevel = 2,
     jumpoptions = 'view',
     number = true,
