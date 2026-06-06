@@ -93,7 +93,12 @@ packages:
       - ghostty
       - github-cli
       - go
+      - grim
       - gum
+      - hyprutils
+      - hyprshutdown 
+      - hyprlock 
+      - hyprcursor
       - jq
       - lazydocker
       - lazygit
@@ -102,16 +107,22 @@ packages:
       - neovim
       - nodejs
       - npm
+      - nwg-look
       - php
+      - proton-pass
       - readline
       - ripgrep
       - rust
       - starship
+      - tela-circle-icon-theme-all
       - tmux
       - tmuxp
       - tree
       - unar
+      - vesktop-bin
       - xclip
+      - xdg-desktop-portal-hyprland
+      - xwaylandvideobridge
       - yazi
       - yq
       - zoxide
@@ -119,3 +130,6 @@ packages:
       - zsh-completions
     paru:
       - ttf-maplemono
+      - noctalia-shell
+    pamac:
+      - satty-git
