@@ -5,5 +5,6 @@ export QMK_HOME="$HOME/Code/qmk_firmware"
 {{ if eq .purpose "personal" }}
 export AOC_SESSION={{ protonPass .secrets.aoc.session | trim }}
 export QT_QPA_PLATFORMTHEME=gtk3
+export WAYLAND_DISPLAY=$(ls /run/user/1000/wayland-* 2>/dev/null | grep -v lock | head -1 | xargs basename)
 {{ end }}
 
