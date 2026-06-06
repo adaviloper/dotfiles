@@ -97,7 +97,7 @@ hl.bind(hyper .. " + C", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher
 
 -- Peek at Desktop
 local peek_state = {}
-local PEEK_Y = math.floor(mon_h * 5 / 6)
+local PEEK_Y = math.floor(mon_h * 7 / 8)
 
 local function peek_show()
   local all = hl.get_windows()
