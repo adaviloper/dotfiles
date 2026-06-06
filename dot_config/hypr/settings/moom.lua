@@ -61,10 +61,10 @@ hl.define_submap("moom", function()
   hl.bind("SPACE", once(moom(0, 1))) -- full screen
   hl.bind("Return", once(function() hl.dispatch(hl.dsp.window.center()) end)) -- center window
 
-  hl.bind("LEFT", nudge(-1, 0))
-  hl.bind("RIGHT", nudge(1, 0))
-  hl.bind("UP", nudge(0, -1))
-  hl.bind("DOWN", nudge(0, 1))
+  hl.bind("LEFT", nudge(-1, 0), { repeating = true })
+  hl.bind("RIGHT", nudge(1, 0), { repeating = true })
+  hl.bind("UP", nudge(0, -1), { repeating = true })
+  hl.bind("DOWN", nudge(0, 1), { repeating = true })
 
   -- Layout presets
   hl.bind("P", once(function()
