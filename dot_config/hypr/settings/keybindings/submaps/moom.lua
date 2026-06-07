@@ -1,5 +1,3 @@
-local hyper = "SUPER + CONTROL + ALT + SHIFT" -- debug: using ALT only while testing
-
 local function has_tag(win, tag)
   if not win.tags then return false end
   for _, t in ipairs(win.tags) do
