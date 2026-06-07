@@ -150,13 +150,7 @@ require('settings.config.input')
 ---- KEYBINDINGS ----
 ---------------------
 
-require('settings.keybindings')
-
---------------------------
----- MOOM KEYBINDINGS ----
---------------------------
-
-require('settings.moom')
+require('settings.keybindings.keybindings')
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----

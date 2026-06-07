@@ -1,3 +1,7 @@
+require('settings.keybindings.submaps.moom')
+
+require('settings.keybindings.submaps.noctalia')
+
 local function focus_or_open(app)
   return function()
     local windows = hl.get_windows({ class = app.class })
@@ -25,6 +29,7 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher windows"))
 hl.bind(mainMod .. " + GRAVE", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher windows"))
 hl.bind("SUPER + SHIFT + CONTROL + 4", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
+hl.bind("SUPER + SHIFT + CONTROL + 5", hl.dsp.exec_cmd('wf-recorder -g "$(slurp)" -f ~/Videos/recording.mp4'))
 hl.bind("ALT + TAB", function()
   local all = hl.get_windows()
   if #all < 2 then return end
