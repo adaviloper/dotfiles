@@ -44,6 +44,7 @@ hl.window_rule({
 local placements = {
   [chat.class]              = moom_geo(0,   1/4),
   [passwordManager.class]   = moom_geo(0,   1/4),
+  [emailClient.class]       = moom_geo(1/4, 1/2),
   [database.class]          = moom_geo(1/4, 1/2),
   [api_client.class]        = moom_geo(1/4, 1/2),
   [terminal.class]          = moom_geo(1/4, 1/2),
