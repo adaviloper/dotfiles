@@ -4,6 +4,21 @@ return {
     require("dooing").setup({
       pretty_print_json = true,
 
+      priorities = {
+        {
+          name = "important",
+          weight = 4,
+        },
+        {
+          name = "urgent",
+          weight = 2,
+        },
+        {
+          name = "low",
+          weight = -1,
+        },
+      },
+
       quick_keys = false,
 
       window = {
