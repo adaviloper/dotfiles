@@ -10,7 +10,13 @@ hl.window_rule({
 
   suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
+
+hl.window_rule({
+  name = "take-focus",
+  match = { class = browser.class },
+
+  focus_on_activate = true,
+})
 
 hl.window_rule({
   -- Fix some dragging issues with XWayland
