@@ -130,6 +130,6 @@ packages:
       - zsh-completions
     paru:
       - ttf-maplemono
-      - noctalia-shell
+      - noctalia-git
     pamac:
       - satty-git
