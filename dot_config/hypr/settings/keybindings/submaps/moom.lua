@@ -70,14 +70,15 @@ hl.define_submap("moom", function()
     if #wins == 0 then return end
     table.sort(wins, function(a, b) return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge) end)
     local win = wins[1]
-    if win.class == "zen-browser" then
+    if win.class == brower.class then
       hl.dispatch(hl.dsp.window.tag({ window = win, tag = "primary" }))
     end
   end))
 
   hl.bind("J", once(function()
-    local browsers = hl.get_windows({ class = "zen-browser" })
-    local terminals = hl.get_windows({ class = "com.mitchellh.ghostty" })
+    local browsers = hl.get_windows({ class = browser.class })
+    local terminals = hl.get_windows({ class = terminal.class })
+    local emailClients = hl.get_windows({ class = emailClient.class })
 
     local primary, secondary
     for _, w in ipairs(browsers) do
@@ -95,14 +96,40 @@ hl.define_submap("moom", function()
     end
 
     if secondary then place_window(secondary, moom_geo(3 / 4, 1 / 4)) end
-    if primary then place_window(primary, moom_geo(0, 1 / 4)) end
+    if #terminals >= 1 then place_window(terminals[1], moom_geo(1 / 4, 1 / 2)) end
+    if primary then place_window(primary, moom_geo(1 / 4, 1 / 2)) end
+  end))
+
+  hl.bind("K", once(function()
+    local browsers = hl.get_windows({ class = browser.class })
+    local terminals = hl.get_windows({ class = terminal.class })
+    local emailClients = hl.get_windows({ class = emailClient.class })
+
+    local primary, secondary
+    for _, w in ipairs(browsers) do
+      if has_tag(w, "primary") then
+        primary = w
+      else
+        secondary = w
+      end
+    end
+    -- Fallback to focus-history order if nothing is tagged
+    if not primary then
+      table.sort(browsers, function(a, b) return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge) end)
+      primary = browsers[1]
+      secondary = browsers[2]
+    end
+
+    if secondary then place_window(secondary, moom_geo(3 / 4, 1 / 4)) end
+    if primary then place_window(primary, moom_geo(1 / 4, 1 / 2)) end
     if #terminals >= 1 then place_window(terminals[1], moom_geo(1 / 4, 1 / 2)) end
   end))
 
   hl.bind("M", once(function()
-    local browsers = hl.get_windows({ class = "zen-browser" })
-    local chat = hl.get_windows({ class = "discord" })
-    local terminals = hl.get_windows({ class = "com.mitchellh.ghostty" })
+    local browsers = hl.get_windows({ class = browser.class })
+    local chat = hl.get_windows({ class = chat.class })
+    local terminals = hl.get_windows({ class = terminal.class })
+    local emailClients = hl.get_windows({ class = emailClient.class })
 
     local primary
     for _, w in ipairs(browsers) do
@@ -115,8 +142,9 @@ hl.define_submap("moom", function()
     end
 
     if #chat >= 1 then place_window(chat[1], moom_geo(0, 1 / 4)) end
-    if primary then place_window(primary, moom_geo(1 / 4, 1 / 2)) end
-    if #terminals >= 1 then place_window(terminals[1], moom_geo(1 / 4, 1 / 2)) end
+    if #emailClients >= 1 then place_window(emailClients[1], moom_geo(1 / 3, 5 / 12)) end
+    if primary then place_window(primary, moom_geo(0, 1 / 3)) end
+    if #terminals >= 1 then place_window(terminals[1], moom_geo(1 / 3, 5 / 12)) end
   end))
 
   hl.bind("Escape", hl.dsp.submap("reset"))
