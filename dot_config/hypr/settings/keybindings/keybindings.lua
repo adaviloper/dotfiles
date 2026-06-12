@@ -22,12 +22,17 @@ hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist store"))
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager.cmd))
 -- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu.cmd))
-hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call settings toggle"))
-hl.bind(hyper .. " + S", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call sessionMenu toggle"))
+_launcher_pending = false
+hl.bind(mainMod .. " + SPACE", function()
+  _launcher_pending = true
+  hl.exec_cmd(menu.cmd)
+end)
+
+hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd(shellPrefix .. " settings-toggle"))
+hl.bind(hyper .. " + S", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle session"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher windows"))
-hl.bind(mainMod .. " + GRAVE", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher windows"))
+hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
+hl.bind(mainMod .. " + GRAVE", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
 hl.bind("SUPER + SHIFT + CONTROL + 4", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
 hl.bind("SUPER + SHIFT + CONTROL + 5", hl.dsp.exec_cmd('wf-recorder -g "$(slurp)" -f ~/Videos/recording.mp4'))
 hl.bind("ALT + TAB", function()
@@ -99,7 +104,7 @@ hl.bind(meh .. " + R", focus_or_open(api_client))
 hl.bind(meh .. " + T", focus_or_open(database))
 
 -- Hyper binds (Ctrl + Alt + Shift + Super)
-hl.bind(hyper .. " + C", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher clipboard"))
+hl.bind(hyper .. " + C", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle clipboard"))
 
 -- Peek at Desktop
 local peek_state = {}
