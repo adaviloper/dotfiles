@@ -70,7 +70,7 @@ hl.define_submap("moom", function()
     if #wins == 0 then return end
     table.sort(wins, function(a, b) return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge) end)
     local win = wins[1]
-    if win.class == brower.class then
+    if win.class == browser.class then
       hl.dispatch(hl.dsp.window.tag({ window = win, tag = "primary" }))
     end
   end))
