@@ -94,6 +94,7 @@ packages:
       - github-cli
       - go
       - grim
+      - gtk-layer-shell
       - gum
       - hyprutils
       - hyprshutdown 
