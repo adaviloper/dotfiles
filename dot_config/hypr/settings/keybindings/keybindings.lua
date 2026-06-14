@@ -52,6 +52,7 @@ hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
 hl.bind(mainMod .. " + GRAVE", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
 hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd(shellPrefix .. " settings-toggle"))
 hl.bind(hyper .. " + S", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle session"))
+hl.bind(hyper .. " + D", hl.dsp.exec_cmd(shellPrefix .. " desktop-widgets-toggle-edit"))
 hl.bind(hyper .. " + C", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle clipboard"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist store"))
 hl.bind("SUPER + SHIFT + CONTROL + 4", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
@@ -59,7 +60,7 @@ hl.bind("SUPER + SHIFT + CONTROL + 5", hl.dsp.exec_cmd('wf-recorder -g "$(slurp)
 
 -- Window management
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager.cmd))
+hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(fileManager.cmd))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + D", function()
   if #peek_state > 0 then peek_restore() else peek_show() end
@@ -105,8 +106,9 @@ hl.bind(meh .. " + T", focus_or_open(database))
 hl.bind(meh .. " + X", focus_or_open(passwordManager))
 
 -- Workspaces / scratchpad
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle launcher"))
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 

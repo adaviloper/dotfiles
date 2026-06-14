@@ -96,6 +96,7 @@ hl.define_submap("moom", function()
     end
 
     if secondary then place_window(secondary, moom_geo(3 / 4, 1 / 4)) end
+    if #emailClients >= 1 then place_window(emailClients[1], moom_geo(1 / 4, 1 / 2)) end
     if #terminals >= 1 then place_window(terminals[1], moom_geo(1 / 4, 1 / 2)) end
     if primary then place_window(primary, moom_geo(1 / 4, 1 / 2)) end
   end))
@@ -121,6 +122,7 @@ hl.define_submap("moom", function()
     end
 
     if secondary then place_window(secondary, moom_geo(3 / 4, 1 / 4)) end
+    if #emailClients >= 1 then place_window(emailClients[1], moom_geo(1 / 4, 1 / 2)) end
     if primary then place_window(primary, moom_geo(1 / 4, 1 / 2)) end
     if #terminals >= 1 then place_window(terminals[1], moom_geo(1 / 4, 1 / 2)) end
   end))
