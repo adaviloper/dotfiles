@@ -3,6 +3,6 @@ return {
   dependencies = 'nvim-lua/plenary.nvim',
   -- enabled = true,
   config = function()
-    require('undotree').setup({ keymaps = {} })
+    require('undotree').setup({})
   end,
 }
