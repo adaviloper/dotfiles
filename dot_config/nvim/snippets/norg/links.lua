@@ -26,7 +26,7 @@ return {
       trig = "team",
       desc = "Link a team",
     },
-    fmt([=[{{:$/services/{}.norg:}}[{}]]=], {
+    fmt([=[{{:$/teams/{}.norg:}}[{}]]=], {
       f(snippet_utils.slug_case_var, { 1 }),
       i(1),
     })
