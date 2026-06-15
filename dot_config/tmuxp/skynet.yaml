@@ -5,3 +5,4 @@ windows:
     start_directory: ./document_search
   - window_name: AI
     start_directory: ./ai_doc_service
+    focus: true
