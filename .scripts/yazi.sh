@@ -24,6 +24,7 @@ if command -v ya &>/dev/null; then
   info "Installing Yazi plugins"
   install_yazi_plugin yazi-rs/flavors:catppuccin-mocha
   install_yazi_plugin yazi-rs/plugins:git
+  install_yazi_plugin yazi-rs/plugins:full-border
 else
   info "Skipping Yazi plugin install (ya not found)"
 fi
