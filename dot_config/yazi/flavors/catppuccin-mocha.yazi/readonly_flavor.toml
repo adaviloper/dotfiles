@@ -182,9 +182,11 @@ rules = [
 
 dirs = [
 	{ name = ".config", text = "", fg = "#f5c2e7" },
-	{ name = ".git", text = "", fg = "#94e2d5" },
-	{ name = ".github", text = "", fg = "#89b4fa" },
-	{ name = ".npm", text = "", fg = "#89b4fa" },
+	{ name = ".git", text = "", fg = "#a6e3a1" },
+	{ name = ".github", text = "", fg = "#a6e3a1" },
+	{ name = ".npm", text = "", fg = "#a6e3a1" },
+	{ name = "chezmoi", text = "󱂵", fg = "#cba6f7" },
+	{ name = "Code", text = "", fg = "#94e2d5" },
 	{ name = "Desktop", text = "", fg = "#94e2d5" },
 	{ name = "Development", text = "", fg = "#94e2d5" },
 	{ name = "Documents", text = "", fg = "#94e2d5" },
