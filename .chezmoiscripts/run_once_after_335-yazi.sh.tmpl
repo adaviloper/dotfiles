@@ -1,18 +1,8 @@
 #!/bin/bash
 
-set -euo pipefail
+{{ template "shared_bin_utils.sh.tmpl" . }}
 
-# Colors
-yellow() {
-  tput setaf 3
-  printf "%s\n" "$*"
-  tput sgr0
-}
-
-info() {
-  echo
-  yellow "$@"
-}
+info "Installing Yazi packages"
 
 function install_yazi_plugin() {
   package=$1
@@ -28,4 +18,3 @@ if command -v ya &>/dev/null; then
 else
   info "Skipping Yazi plugin install (ya not found)"
 fi
-
