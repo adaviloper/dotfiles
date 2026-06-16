@@ -1,4 +1,6 @@
 require("git"):setup()
+require("folder-rules"):setup()
+require("full-border"):setup()
 
 function Linemode:size_and_mtime()
 	local year = os.date("%Y")
