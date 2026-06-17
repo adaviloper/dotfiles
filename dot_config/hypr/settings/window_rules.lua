@@ -9,6 +9,7 @@ hl.window_rule({
   match = { class = ".*" },
 
   suppress_event = "maximize",
+  persistent_size = true,
 })
 
 hl.window_rule({
@@ -16,6 +17,13 @@ hl.window_rule({
   match = { class = browser.class },
 
   focus_on_activate = true,
+})
+
+hl.window_rule({
+  name = "force 16:9",
+  match = { class = "Slay the Spire 2" },
+
+  keep_aspect_ratio = true,
 })
 
 hl.window_rule({
@@ -87,6 +95,10 @@ hl.on("window.open", function(window)
     end
   elseif is_swiftpoint(window.class) then
     hl.dispatch(hl.dsp.window.center({ window = window}))
+    return
+  elseif window.class == fileManager.class then
+    hl.dispatch(hl.dsp.window.resize({ x = 1400, y = 900, relative = false }))
+    hl.dispatch(hl.dsp.window.center({ window = window }))
     return
   else
     g = placements[window.class]
