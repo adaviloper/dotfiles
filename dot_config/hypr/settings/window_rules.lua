@@ -90,6 +90,7 @@ hl.on("window.open", function(window)
   if is_browser(window.class) then
     if other_browser_count(window) == 0 then
       g = moom_geo(1/4, 1/2) -- first browser: center half
+      hl.dispatch(hl.dsp.window.tag({ window = window, tag = "primary" }))
     else
       g = moom_geo(3/4, 1/4) -- second+ browser: right quarter
     end
