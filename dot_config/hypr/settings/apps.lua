@@ -8,7 +8,7 @@ browser         = { class = "zen-browser",                 cmd = "zen" }
 --- @type App
 terminal        = { class = "com.mitchellh.ghostty",       cmd = "ghostty" }
 --- @type App
-fileManager     = { class = "org.kde.dolphin",             cmd = "dolphin" }
+fileManager     = { class = "thunar",             cmd = "thunar" }
 --- @type App
 swiftpoint      = { class = "Swiftpoint X1 Control Panel", cmd = "bash -c 'cd ~/.local/opt/swiftpoint-x1 && \"./Swiftpoint X1 Control Panel\"'" }
 --- @type App
