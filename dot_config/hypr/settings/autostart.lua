@@ -4,13 +4,17 @@
 -- Or execute your favorite apps at launch like this:
 
 hl.on("hyprland.start", function()
+  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+  hl.exec_cmd("systemctl --user start xdg-desktop-portal-hyprland")
   hl.exec_cmd(browser.cmd)
   hl.exec_cmd(terminal.cmd)
   hl.exec_cmd(emailClient.cmd)
   hl.exec_cmd(chat.cmd)
   hl.exec_cmd("nm-applet")
   hl.exec_cmd("hyprpaper")
+  hl.exec_cmd("noctalia")
   hl.exec_cmd("systemctl --user start noctalia")
+  -- hl.exec_cmd("bash -c '~/.config/eww/launch_eww'")
   hl.exec_cmd("xwaylandvideobridge")
   hl.exec_cmd("bash -c 'sleep 3 && cd ~/.local/opt/swiftpoint-x1 && \"./Swiftpoint X1 Control Panel\"'")
 end)
