@@ -56,7 +56,7 @@ hl.bind(hyper .. " + D", hl.dsp.exec_cmd(shellPrefix .. " desktop-widgets-toggle
 hl.bind(hyper .. " + C", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle clipboard"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist store"))
 hl.bind("SUPER + SHIFT + CONTROL + 4", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
-hl.bind("SUPER + SHIFT + CONTROL + 5", hl.dsp.exec_cmd('wf-recorder -g "$(slurp)" -f ~/Videos/recording.mp4'))
+hl.bind("SUPER + SHIFT + CONTROL + 5", hl.dsp.exec_cmd(shellPrefix .. ' plugin noctalia/screen_recorder:service all toggle'))
 
 -- Window management
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
