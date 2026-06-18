@@ -95,6 +95,18 @@ end)
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
+-- Drag-to-snap: SUPER + ALT + click opens a slurp selection box; drag it
+-- out and release to redraw the focused window into that rectangle
+hl.bind(workspaceMod .. " + mouse:272", hl.dsp.exec_cmd([[bash -c '
+  out="$(slurp -f "%x %y %w %h")" || exit 0
+  read -r x y w h <<< "$out"
+  [ -z "$w" ] && exit 0
+  floating=$(hyprctl activewindow -j | jq -r ".floating")
+  [ "$floating" = "false" ] && hyprctl dispatch "hl.dsp.window.float()"
+  hyprctl dispatch "hl.dsp.window.resize({x=$w,y=$h,relative=false})"
+  hyprctl dispatch "hl.dsp.window.move({x=$x,y=$y,relative=false})"
+']]), { mouse = true })
+
 -- App launching (Meh = Ctrl + Alt + Shift)
 hl.bind(meh .. " + Return", focus_or_open(terminal))
 hl.bind(meh .. " + B", focus_or_open(browser))
