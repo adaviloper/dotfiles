@@ -7,7 +7,7 @@ local terminals = require('helpers.terminals')
 local utils = require("helpers.utils")
 local paste_and_clean = function (key)
   return function()
-      vim.cmd('normal! ' .. key)
+      vim.cmd('normal! ' .. vim.v.count1 .. '"' .. vim.v.register .. key)
       vim.cmd("'[,']s/\\s\\+$//e")
   end
 end
