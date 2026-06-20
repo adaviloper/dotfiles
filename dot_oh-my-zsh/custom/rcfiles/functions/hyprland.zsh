@@ -7,7 +7,7 @@ _hyprland_current_sig() {
     local name="${${dir%/}##*/}"
     local timestamp="${${name%_*}##*_}"
 
-    if HYPRLAND_INSTANCE_SIGNATURE="$name" command hyprctl version &>/dev/null; then
+    if command hyprctl -i "$name" version &>/dev/null 2>&1; then
       (( timestamp > best_time )) && { best_time=$timestamp; best_sig=$name; }
     fi
   done
@@ -18,10 +18,11 @@ _hyprland_current_sig() {
 hyprctl() {
   local sig
   sig=$(_hyprland_current_sig)
-  if [[ -n "$sig" && "$sig" != "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
-    export HYPRLAND_INSTANCE_SIGNATURE="$sig"
+  if [[ -n "$sig" ]]; then
+    command hyprctl -i "$sig" "$@"
+  else
+    command hyprctl "$@"
   fi
-  command hyprctl "$@"
 }
 
 hyprland-cleanup() {
@@ -29,7 +30,7 @@ hyprland-cleanup() {
   for dir in "$hypr_dir"/*/; do
     [[ -d "$dir" ]] || continue
     local name="${${dir%/}##*/}"
-    if ! HYPRLAND_INSTANCE_SIGNATURE="$name" command hyprctl version &>/dev/null; then
+    if ! command hyprctl -i "$name" version &>/dev/null 2>&1; then
       echo "removing stale: $name"
       rm -rf "$dir"
     fi
