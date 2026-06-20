@@ -35,3 +35,19 @@ precmd_functions+=(_fix_cursor)
 
 # Highlight visual mode selection with actual background color instead of italic
 zle_highlight=('region:bg={{ .colorscheme.rosewater }},fg={{ .colorscheme.base }}')
+
+# Yank visual selection to system clipboard
+function vi-yank-clipboard {
+    zle vi-yank
+    echo -n "$CUTBUFFER" | wl-copy
+}
+zle -N vi-yank-clipboard
+bindkey -M visual 'y' vi-yank-clipboard
+
+# Yank from cursor to end of line to system clipboard
+function vi-yank-eol-clipboard {
+    zle vi-yank-eol
+    echo -n "$CUTBUFFER" | wl-copy
+}
+zle -N vi-yank-eol-clipboard
+bindkey -M vicmd 'Y' vi-yank-eol-clipboard
