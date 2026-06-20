@@ -1,5 +1,87 @@
 local norg_group = vim.api.nvim_create_augroup('adaviloper/norg-todo-list', { clear = true })
 
+local function sync_action_items_to_dooing(buf)
+  local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+  local in_action_items = false
+  local action_items_level = nil
+  local tasks = {}
+
+  for i, line in ipairs(lines) do
+    local stars = line:match("^(%*+)%s")
+    if stars then
+      local level = #stars
+      if line:match("^%*+%s+Action Items") then
+        in_action_items = true
+        action_items_level = level
+      elseif in_action_items and level <= action_items_level then
+        in_action_items = false
+      end
+    end
+
+    if in_action_items then
+      local task = line:match("^%s*%- %( %)%s+(.+)$")
+      if task then
+        table.insert(tasks, { idx = i, text = task, indent = line:match("^(%s*)") })
+      end
+    end
+  end
+
+  if #tasks == 0 then return end
+
+  local config = require("dooing.config")
+  local save_path = config.options.save_path
+  local todos = {}
+
+  local rf = io.open(save_path, "r")
+  if rf then
+    local content = rf:read("*all")
+    rf:close()
+    if content and content ~= "" then
+      local ok, decoded = pcall(vim.fn.json_decode, content)
+      if ok and type(decoded) == "table" then todos = decoded end
+    end
+  end
+
+  for _, item in ipairs(tasks) do
+    local unique_id = os.time() .. "_" .. math.random(1000, 9999)
+    table.insert(todos, {
+      id = unique_id,
+      text = item.text,
+      done = false,
+      in_progress = false,
+      category = item.text:match("#(%w+)") or "",
+      created_at = os.time(),
+      priorities = {},
+      notes = "",
+      depth = 0,
+    })
+    vim.api.nvim_buf_set_lines(buf, item.idx - 1, item.idx, false, {
+      item.indent .. "- [→ Dooing] " .. item.text,
+    })
+  end
+
+  local wf = io.open(save_path, "w")
+  if wf then
+    wf:write(vim.fn.json_encode(todos))
+    wf:close()
+  end
+
+  -- Write the buffer so replacements are persisted
+  vim.api.nvim_buf_call(buf, function()
+    vim.cmd("noautocmd write")
+  end)
+
+  vim.notify(string.format("%d action item(s) synced to Dooing", #tasks), vim.log.levels.INFO)
+end
+
+vim.api.nvim_create_autocmd({ "BufDelete", "VimLeavePre" }, {
+  group = norg_group,
+  pattern = "*.norg",
+  callback = function(args)
+    sync_action_items_to_dooing(args.buf)
+  end,
+})
+
 vim.api.nvim_create_autocmd('BufWritePost', {
   group = norg_group,
   pattern = 'to-do.norg',
