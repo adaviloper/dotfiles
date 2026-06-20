@@ -610,7 +610,7 @@
             },
             {
                 "action": "logout",
-                "command": "",
+                "command": "hyprctl dispatch exit",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "5"
