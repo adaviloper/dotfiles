@@ -82,8 +82,10 @@ packages:
     yays:
       - bat
       - btop
+      - catppuccin-cursors-mocha
       - chezmoi
       - composer
+      - espanso
       - eza
       - fd
       - ffmpegthumbnailer
@@ -116,6 +118,7 @@ packages:
       - rust
       - starship
       - tela-circle-icon-theme-all
+      - thunar
       - tmux
       - tmuxp
       - tree
