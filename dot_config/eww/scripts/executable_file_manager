@@ -1,0 +1,17 @@
+#!/bin/bash
+DIR="$1"
+SESSION="File Manager"
+WINDOW_NAME="$(basename "$DIR")"
+
+if tmux has-session -t "$SESSION" 2>/dev/null; then
+    tmux new-window -t "$SESSION:" -n "$WINDOW_NAME" -c "$DIR" "yazi $DIR"
+else
+    tmux new-session -d -s "$SESSION" -n "$WINDOW_NAME" -c "$DIR" "yazi $DIR"
+fi
+
+client=$(tmux list-clients -F '#{client_name}' 2>/dev/null | head -1)
+if [ -n "$client" ]; then
+    tmux switch-client -c "$client" -t "$SESSION"
+else
+    ghostty -e tmux attach-session -t "$SESSION" &
+fi
