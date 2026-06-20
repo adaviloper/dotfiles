@@ -1,0 +1,188 @@
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
+$pink: #f5c2e7;
+$mauve: #cba6f7;
+$red: #f38ba8;
+$maroon: #eba0ac;
+$peach: #fab387;
+$yellow: #f9e2af;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$sky: #89dceb;
+$sapphire: #74c7ec;
+$blue: #89b4fa;
+$lavender: #b4befe;
+$white: #eff1f5;
+$text: #cdd6f4;
+$subtext1: #bac2de;
+$subtext0: #a6adc8;
+$overlay2: #9399b2;
+$overlay1: #7f849c;
+$overlay0: #6c7086;
+$surface2: #585b70;
+$surface1: #45475a;
+$surface0: #313244;
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
+
+$baseSize: 16px;
+
+$sm: $baseSize / 2;
+$md: $baseSize;
+$lg: $baseSize * 2;
+
+$radius-md: $md;
+
+window {
+  background: transparent;
+  border-radius: $radius-md;
+}
+
+.peach {
+  &-text {
+    color: $peach;
+  }
+}
+
+.yellow {
+  &-text {
+    color: $yellow;
+  }
+}
+
+.mauve {
+  &-text {
+    color: $mauve;
+  }
+}
+
+.green {
+  &-text {
+    color: $green;
+  }
+}
+
+.red {
+  &-text {
+    color: $red;
+  }
+}
+
+/** Generic window ***********************************/
+.wrapper {
+  border-radius: $radius-md;
+  background-color: $overlay1;
+}
+
+.genwin {
+	background-color: $base;
+	border-radius: $radius-md;
+	padding: $radius-md;
+}
+
+.btn {
+  &:hover {
+    background-color: $base;
+  }
+}
+
+/** System ********************************************/
+.cpu_progress,
+.mem_progress {
+  border-radius: $radius-md;
+  min-height: 16px;
+
+  trough {
+    border-radius: $radius-md;
+    min-height: 16px;
+    background-color: $surface0;
+  }
+}
+
+.cpu_progress progress {
+  border-radius: $radius-md;
+  min-height: 16px;
+  background-color: $red;
+}
+
+.mem_progress progress {
+  border-radius: $radius-md;
+  min-height: 16px;
+  background-color: $green;
+}
+
+
+.iconcpu, .iconmem, .iconbright, .iconbat {
+	font-size : 32px;
+	font-weight : normal;
+}
+.iconcpu {
+	color: $red;
+}
+.iconmem {
+	color: $green;
+}
+.iconbright {
+	color: $yellow;
+}
+.iconbat {
+	color: $sky;
+}
+.iconfolder1, .iconfolder2, .iconfolder3, .iconfolder4, .iconfolder5, .iconfolder6  {
+  background-color: $base;
+	font-family: Maple Mono Nerd Font;
+	font-size : 32px;
+	font-weight : normal;
+	margin : 1px;
+	border-radius: $radius-md;
+}
+.iconfolder1 {
+	color: $red;
+}
+.iconfolder2 {
+	color: $green;
+}
+.iconfolder3 {
+	color: $yellow;
+}
+.iconfolder4 {
+	color: $blue;
+}
+// .iconfolder5 {
+// 	color: $mauve;
+// }
+.iconfolder6 {
+	color: $sky;
+}
+
+.folder {
+  padding: 0px;
+}
+
+.label_folder1, .label_folder2, .label_folder3, .label_folder4, .label_folder5, .label_folder6  {
+	font-size : 32px;
+	font-weight : normal;
+	margin : 0px;
+	padding: 0px;
+	background-color: $base;
+	border-radius: $radius-md;
+}
+.label_folder1 {
+	color: $red;
+}
+.label_folder2 {
+	color: $green;
+}
+.label_folder3 {
+	color: $yellow;
+}
+.label_folder4 {
+	color: $blue;
+}
+.label_folder5 {
+	color: $mauve;
+}
+.label_folder6 {
+	color: $sky;
+}

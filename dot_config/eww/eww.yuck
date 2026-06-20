@@ -1,0 +1,117 @@
+;; System vars
+(defvar DEFAULT_STACKING "fg")
+
+(defpoll HOST :interval "5s" `hostname`)
+(defpoll CPU_USAGE :interval "1s" :initial-value 0 `scripts/sys_info --cpu`)
+(defpoll MEM_USAGE :interval "1s" :initial-value 0 `scripts/sys_info --mem`)
+(defpoll BLIGHT :interval "1s" `scripts/sys_info --blight`)
+(defpoll BATTERY :interval "5s" `scripts/sys_info --bat`)
+
+(defwidget folders [] 
+	(box :class "genwin" :orientation "v" :space-evenly "true" :vexpand "true" :hexpand "false" 
+		(box :class "folder" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
+			(button :class "iconfolder1" :onclick "thunar $HOME/Documents &" "")
+			(button :class "label_folder1" :hexpand "true" :onclick "thunar $HOME/Documents &" "Documents"))
+		(box :class "folder" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+			(button :class "iconfolder2" :onclick "thunar $HOME/Downloads &" "")
+			(button :class "label_folder2" :hexpand "true" :onclick "thunar $HOME/Downloads &" "Downloads"))
+		(box :class "folder" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+			(button :class "iconfolder3" :onclick "thunar $HOME/Music &" "󱍙")
+			(button :class "label_folder3" :hexpand "true" :onclick "thunar $HOME/Music &" "Music"))
+		(box :class "folder" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+			(button :class "iconfolder4" :onclick "thunar $HOME/Pictures &" "")
+			(button :class "label_folder4" :hexpand "true" :onclick "thunar $HOME/Pictures &" "Pictures"))
+		(box :class "folder" :class "btn" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "true"
+			(button :class "iconfolder5 mauve-text" :onclick "thunar $HOME/.local/share/chezmoi &" "")
+			(button :class "label_folder5 mauve-text" :hexpand "true" :onclick "thunar $HOME/.local/share/chezmoi &" "dotfiles"))
+	))
+
+(defwidget system [] 
+	(box :class "genwin" :vexpand "false" :hexpand "false" 
+		(box :orientation "v" :spacing 8 :halign "center" :valign "center" :space-evenly "false" :vexpand "false" :hexpand "false" 
+			(box :class "cpu_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+				(label :class "iconcpu" :text "")
+				(progress :class "cpu_progress" :value {CPU_USAGE == "" ? 0 : CPU_USAGE} :valign "center" :hexpand true))
+			(box :class "mem_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+				(label :class "iconmem" :text "󰍛")
+				(progress :class "mem_progress" :value {MEM_USAGE == "" ? 0 : MEM_USAGE} :valign "center" :hexpand true))
+			;(box :class "bright_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+				;(label :class "iconbright" :text "")
+				;(scale :min 0 :max 100 :value BLIGHT :active "false"))
+			;(box :class "bat_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+				;(label :class "iconbat" :text "")
+				;(scale :min 0 :max 100 :value BATTERY :active "false"))
+		)
+	)
+)
+
+(defwidget session-logout []
+	(button :class "iconfolder5 yellow-text" :onclick "noctalia msg session logout" "󰈆")
+)
+
+(defwidget session-lock []
+	(button :class "iconfolder5 peach-text" :onclick "noctalia msg session lock" "")
+)
+
+(defwidget session-shutdown []
+	(button :class "iconfolder5 red-text" :onclick "noctalia msg session lock" "")
+)
+
+;; system
+(defwindow system 
+	:monitor 0 
+	:stacking "bg" 
+	:focusable "false"
+	:geometry (geometry
+		:x 2300
+		:y 464
+		:width 256
+	)
+	(system)
+)
+
+(defwindow session-shutdown
+	:monitor 0
+  :stacking "bg"
+	:geometry (geometry
+		:x 2300
+		:y 595
+		:width 256
+	)
+	(session-shutdown)
+)
+
+(defwindow session-logout
+	:monitor 0
+  :stacking "bg"
+	:geometry (geometry
+		:x 2300
+		:y 721
+		:width 256
+	)
+	(session-logout)
+)
+
+(defwindow session-lock
+	:monitor 0
+  :stacking "bg"
+	:geometry (geometry
+		:x 2300
+		:y 661
+		:width 256
+	)
+	(session-lock)
+)
+
+(defwindow folders
+  :monitor 0
+  :geometry (geometry
+    :x 2568
+    :y 464
+    :width 256
+  )
+  :stacking "bg"
+  :class "wrapper"
+  (folders)
+)
+
