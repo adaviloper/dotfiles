@@ -96,7 +96,3 @@ require('settings.keybindings.keybindings')
 require('settings.window_rules')
 
 require('settings.layer_rules')
-
-hl.on("hyprland.start", function()
-  hl.exec_cmd("bash -c 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user restart xdg-desktop-portal && systemctl --user start xdg-desktop-portal-hyprland'")
-end)

@@ -18,6 +18,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("bash -c '~/.config/eww/launch_eww'")
   hl.exec_cmd("xwaylandvideobridge")
   hl.exec_cmd("bash -c 'sleep 3 && cd ~/.local/opt/swiftpoint-x1 && \"./Swiftpoint X1 Control Panel\"'")
+  hl.exec_cmd("bash -c 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user restart xdg-desktop-portal && systemctl --user start xdg-desktop-portal-hyprland'")
 end)
 
 hl.on("window.active", function()
