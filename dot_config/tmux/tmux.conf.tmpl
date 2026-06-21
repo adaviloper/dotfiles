@@ -16,6 +16,11 @@ bind-key -T copy-mode-vi C-v send -X rectangle-toggle
 bind-key -T copy-mode-vi y send -X copy-selection
 set -g mode-style 'fg=#{@copy_mode_fg},bg=#{@copy_mode_bg}'
 
+# Yazi image preview
+set -g allow-passthrough on
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'adaviloper/t-session'
