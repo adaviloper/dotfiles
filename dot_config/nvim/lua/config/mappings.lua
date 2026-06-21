@@ -466,6 +466,10 @@ return {
 
     [">"] = { ">gv", desc = "Indent without losing selection" },
 
+    ["<A-j>"] = { "5j" },
+
+    ["<A-k>"] = { "5k" },
+
     ["y"] = { "ymy", desc = "Yank in visual mode without losing cursor position" },
 
     ["gS"] = { "!jq<CR>", desc = "Format JSON" },
