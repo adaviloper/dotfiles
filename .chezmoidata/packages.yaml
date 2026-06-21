@@ -122,6 +122,7 @@ packages:
       - tmux
       - tmuxp
       - tree
+      - ueberzugpp
       - unar
       - vesktop-bin
       - xclip
