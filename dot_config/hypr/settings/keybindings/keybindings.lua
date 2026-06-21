@@ -48,6 +48,7 @@ hl.bind(mainMod .. " + SPACE", function()
   _launcher_pending = true
   hl.exec_cmd(menu.cmd)
 end)
+
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
 hl.bind(mainMod .. " + GRAVE", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
 hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd(shellPrefix .. " settings-toggle"))
@@ -75,7 +76,9 @@ hl.bind("ALT + TAB", function()
   local all = hl.get_windows()
   if #all < 2 then return end
   table.sort(all, function(a, b) return (a.focus_history_id or math.huge) < (b.focus_history_id or math.huge) end)
-  hl.dispatch(hl.dsp.focus({ window = all[2] }))
+  local target = all[2]
+  hl.dispatch(hl.dsp.focus({ window = target }))
+  hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top", window = target }))
 end)
 
 -- Cycle through windows of the same class as the focused window
