@@ -26,8 +26,33 @@ return {
 
             local success, err
             if stat.type == "directory" then
-              -- Use vim.loop.fs_rmdir for empty dirs, or shell out to `rm -r` for non-empty
-              success, err = os.execute(string.format('rm -rf "%s"', target_path))
+              -- Only delete files chezmoi manages; leave untracked files alone
+              local managed_handle = io.popen(
+                string.format('chezmoi managed --path-style=absolute 2>/dev/null | grep -F "%s/"', target_path)
+              )
+              local del_failed = false
+              if managed_handle then
+                for managed_file in managed_handle:lines() do
+                  local fstat = vim.loop.fs_stat(managed_file)
+                  if fstat and fstat.type == "file" then
+                    if not os.remove(managed_file) then del_failed = true end
+                  end
+                end
+                managed_handle:close()
+              end
+              if del_failed then
+                vim.notify("Failed to delete some managed files in: " .. target_path, vim.log.levels.WARN)
+              end
+              -- Only remove the folder if no files (tracked or untracked) remain
+              local check_handle = io.popen(string.format('find "%s" -type f 2>/dev/null | wc -l', target_path))
+              local file_count = check_handle and tonumber(check_handle:read("*l")) or nil
+              if check_handle then check_handle:close() end
+              if file_count == 0 then
+                success, err = os.execute(string.format('rm -rf "%s"', target_path))
+              else
+                vim.notify("Skipping folder deletion — untracked files still exist in: " .. target_path, vim.log.levels.WARN)
+                success = true
+              end
             else
               -- Delete file
               success, err = os.remove(target_path)
