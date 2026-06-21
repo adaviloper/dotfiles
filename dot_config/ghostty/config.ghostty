@@ -2,7 +2,7 @@ adjust-cell-height = 2
 
 auto-update = check
 
-font-family = Maple Mono NF
+font-family = Maple Mono
 font-size = 13.1
 
 gtk-titlebar-style = native
