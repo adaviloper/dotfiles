@@ -199,6 +199,18 @@ return {
       desc = "ToggleTerm lazygit",
     },
 
+    ["<Leader>tc"] = {
+      function() astro.toggle_term_cmd({
+        direction = "float",
+        cmd = "numr",
+        float_opts = {
+          width = 50,
+          height = 20,
+        },
+      }) end,
+      desc = "Toggleterm Numr",
+    },
+
     ["<Leader>tn"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "lazynpm" }) end,
       desc = "Toggleterm LazyNPM",
