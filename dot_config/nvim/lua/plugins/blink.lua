@@ -1,5 +1,6 @@
 return {
   "Saghen/blink.cmp",
+  dependencies = { "saghen/blink.compat" },
   opts = {
     -- preset = 'none',
     keymap = {
@@ -24,9 +25,14 @@ return {
     sources = {
       providers = {
         lsp = { score_offset = 10 },
-        snippets = { score_offset = 7 },
-        path = { score_offset = 3 },
+        path = { score_offset = 7 },
+        snippets = { score_offset = 3 },
         buffer = { score_offset = -3 },
+        laravel = {
+          name = "laravel",
+          module = "blink.compat.source",
+          score_offset = 10,
+        },
       },
     },
   },
