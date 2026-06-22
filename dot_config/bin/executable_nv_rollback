@@ -1,4 +1,9 @@
 rm -rf ~/.local/share/nvim/
 rm -rf ~/.local/state/nvim/
+rm -rf ~/.cache/nvim
+rm ~/.config/nvim
+
+mv ~/.config/nvim.bak ~/.config/nvim
+mv ~/.cache/nvim.bak ~/.cache/nvim
 mv ~/.local/share/nvim.bak ~/.local/share/nvim
 mv ~/.local/state/nvim.bak ~/.local/state/nvim
