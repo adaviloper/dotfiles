@@ -110,6 +110,10 @@ hl.on("window.open", function(window)
   hl.dispatch(hl.dsp.window.move({ x = g.x, y = g.y, relative = false }))
 end)
 
+hl.on("window.active", function(window)
+  hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top", window = window }))
+end)
+
 hl.window_rule({
   name = "xwayland-video-bridge-fixes",
   match = { class = "xwaylandvideobridge" },
