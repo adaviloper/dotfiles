@@ -14,6 +14,7 @@ return {
     spelloptions = "camel",
     whichwrap = "b,s,<,>",
     wildmode = 'list:longest,full',
+    winborder = "rounded",
     wrap = true,
   },
   g = { -- vim.g.<key>
