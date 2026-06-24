@@ -3,6 +3,7 @@ return {
   dependencies = { "saghen/blink.compat" },
   opts = {
     -- preset = 'none',
+    fuzzy = { implementation = 'prefer_rust' },
     keymap = {
       ["<Up>"] = {},
       ["<Down>"] = {},
