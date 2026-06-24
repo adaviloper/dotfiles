@@ -40,6 +40,15 @@ local function moom(x_frac, w_frac, y_frac, h_frac)
   end
 end
 
+local function resize(x_bump, y_bump)
+  local x_delta = GAP * x_bump
+  local y_delta = GAP * y_bump
+  return function()
+    hl.dispatch(hl.dsp.window.resize({ x = x_delta, y = y_delta, relative = true }))
+    reset_moom_timer()
+  end
+end
+
 local function nudge(x_bump, y_bump)
   local x_delta = GAP * x_bump
   local y_delta = GAP * y_bump
@@ -87,6 +96,16 @@ hl.define_submap("moom", function()
   hl.bind("RIGHT", nudge(1, 0), { repeating = true })
   hl.bind("UP", nudge(0, -1), { repeating = true })
   hl.bind("DOWN", nudge(0, 1), { repeating = true })
+
+  hl.bind("ALT + LEFT", resize(-4, 0), { repeating = true })
+  hl.bind("ALT + RIGHT", resize(4, 0), { repeating = true })
+  hl.bind("ALT + UP", resize(0, 4), { repeating = true })
+  hl.bind("ALT + DOWN", resize(0, -4), { repeating = true })
+
+  hl.bind("SHIFT + LEFT", nudge(-4, 0), { repeating = true })
+  hl.bind("SHIFT + RIGHT", nudge(4, 0), { repeating = true })
+  hl.bind("SHIFT + UP", nudge(0, -4), { repeating = true })
+  hl.bind("SHIFT + DOWN", nudge(0, 4), { repeating = true })
 
   -- Layout presets
   hl.bind("P", with_debounce(function()
