@@ -1,11 +1,9 @@
-adjust-cell-height = 2
+adjust-cell-height = 0
 
 auto-update = check
 
 font-family = Maple Mono
-font-size = 13.1
-
-gtk-titlebar-style = native
+font-size = 12.3
 
 macos-hidden = always
 macos-titlebar-style = transparent
@@ -15,8 +13,10 @@ theme = Catppuccin Mocha
 title = "Ghostty"
 
 window-decoration = none
+window-padding-balance = false
 window-padding-x = 8
-window-padding-y = 16
+window-padding-y = 8
 window-save-state = always
+window-show-tab-bar = never
 
 config-file = keymaps.ghostty
