@@ -164,7 +164,7 @@ return {
 					}
 				}
 			}),
-			status.component.mode({ surround = { separator = "blank" } }),
+			status.component.mode({ surround = { separator = "left_end" } }),
 		}
 
 		opts.winbar = { -- create custom winbar
