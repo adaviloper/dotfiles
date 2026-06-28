@@ -57,7 +57,7 @@ hl.bind(hyper .. " + S", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle session")
 hl.bind(hyper .. " + D", hl.dsp.exec_cmd(shellPrefix .. " desktop-widgets-toggle-edit"))
 hl.bind(hyper .. " + C", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle clipboard"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist store"))
-hl.bind("SUPER + SHIFT + CONTROL + 4", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
+hl.bind("SUPER + SHIFT + CONTROL + 4", hl.dsp.exec_cmd('wayfreeze & FREEZE_PID=$!; sleep 0.2; SELECTION=$(slurp); kill $FREEZE_PID; grim -g "$SELECTION" - | satty -f -'))
 hl.bind("SUPER + SHIFT + CONTROL + 5", hl.dsp.exec_cmd(shellPrefix .. ' plugin noctalia/screen_recorder:service all toggle'))
 
 -- Window management
