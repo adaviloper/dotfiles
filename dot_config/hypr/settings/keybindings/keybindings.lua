@@ -49,7 +49,8 @@ hl.bind(mainMod .. " + SPACE", function()
   hl.exec_cmd(menu.cmd)
 end)
 
-hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
+-- hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
+hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("window-switcher"))
 hl.bind(mainMod .. " + GRAVE", hl.dsp.exec_cmd(shellPrefix .. " window-switcher"))
 hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd(shellPrefix .. " settings-toggle"))
 hl.bind(hyper .. " + S", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle session"))
@@ -120,6 +121,8 @@ hl.bind(meh .. " + F", focus_or_open(fileManager))
 hl.bind(meh .. " + R", focus_or_open(api_client))
 hl.bind(meh .. " + T", focus_or_open(database))
 hl.bind(meh .. " + X", focus_or_open(passwordManager))
+
+hl.bind(hyper .. " + F", hl.dsp.exec_cmd("yazi-launcher"))
 
 -- Workspaces / scratchpad
 -- hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))

@@ -14,7 +14,8 @@ swiftpoint      = { class = "Swiftpoint X1 Control Panel", cmd = "bash -c 'cd ~/
 --- @type App
 chat            = { class = "vesktop",                     cmd = "vesktop --wayland" }
 --- @type App
-menu            = { class = nil,                           cmd = "noctalia msg panel-toggle launcher" }
+menu            = { class = nil,                           cmd = "rofi -show drun" }
+-- menu            = { class = nil,                           cmd = "noctalia msg panel-toggle launcher" }
 --- @type App
 passwordManager = { class = "Proton Pass",                 cmd = "proton-pass" }
 --- @type App
