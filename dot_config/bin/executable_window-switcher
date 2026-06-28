@@ -1,0 +1,30 @@
+#!/bin/sh
+
+get_icon_name() {
+  class="$1"
+  class_kebab=$(printf '%s' "$class" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+  desktop=""
+  for name in "$class" "$class_kebab"; do
+    desktop=$(find /usr/share/applications ~/.local/share/applications -iname "${name}.desktop" 2>/dev/null | head -1)
+    [ -n "$desktop" ] && break
+  done
+  [ -z "$desktop" ] && return
+  grep -m1 '^Icon=' "$desktop" | cut -d= -f2-
+}
+
+selection=$(hyprctl clients -j \
+  | jq -r '.[] | select(.title != "") | [.title, .class] | @tsv' \
+  | while IFS='	' read -r title class; do
+      icon=$(get_icon_name "$class")
+      if [ -n "$icon" ]; then
+        printf '%s\0icon\x1f%s\n' "$title" "$icon"
+      else
+        printf '%s\n' "$title"
+      fi
+    done \
+  | rofi -dmenu -i -show-icons -p "Switch to") || exit 0
+
+[ -z "$selection" ] && exit 0
+
+title_esc=$(printf '%s' "$selection" | sed 's/"/\\"/g')
+hyprctl dispatch "hl.dsp.focus({ window = hl.get_windows({ title = \"${title_esc}\" })[1] })"

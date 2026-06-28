@@ -1,0 +1,17 @@
+#!/bin/sh
+
+dir=$(zoxide query -l | rofi -dmenu -i -p "Open in Yazi") || exit 0
+[ -d "$dir" ] || exit 0
+
+window=$(basename "$dir")
+
+if tmux list-windows -t "File Manager" -F "#{window_name}" 2>/dev/null | grep -qx "$window"; then
+  tmux switch-client -t "File Manager:$window"
+else
+  tmux new-session -d -s "File Manager" -n "$window" -c "$dir" 2>/dev/null \
+    || tmux new-window -t "File Manager:" -n "$window" -c "$dir"
+  tmux send-keys -t "File Manager:$window" "yazi '$dir'" Enter
+  tmux switch-client -t "File Manager:$window"
+fi
+
+hyprctl dispatch "hl.dsp.focus({ window = hl.get_windows({ class = 'com.mitchellh.ghostty' })[1] })"
