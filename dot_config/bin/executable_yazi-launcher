@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dir=$(zoxide query -l | rofi -dmenu -i -p "Open in Yazi") || exit 0
+dir=$(zoxide query -l | awk '{print $0 "\0icon\x1ffolder"}' | rofi -dmenu -i -p "Open in Yazi" -theme-str 'listview { columns: 1; }') || exit 0
 [ -d "$dir" ] || exit 0
 
 window=$(basename "$dir")
