@@ -117,6 +117,7 @@ packages:
       - ripgrep
       - rust
       - starship
+      - tabiew
       - tela-circle-icon-theme-all
       - thunar
       - tmux
