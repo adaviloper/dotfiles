@@ -24,6 +24,26 @@ function once(fn)
   end
 end
 
+local _debounce_timer
+
+_debounce_timer = hl.timer(function()
+  hl.dispatch(hl.dsp.submap("reset"))
+  _debounce_timer:set_enabled(false)
+end, { timeout = 1500, type = "repeat" })
+_debounce_timer:set_enabled(false)
+
+local function reset_debounce_timer()
+  _debounce_timer:set_enabled(false)
+  _debounce_timer:set_enabled(true)
+end
+
+function with_debounce(fn)
+  return function()
+    fn()
+    reset_debounce_timer()
+  end
+end
+
 function notify(opts)
   local title = opts.title or "Title"
   local body = opts.body or "Body"

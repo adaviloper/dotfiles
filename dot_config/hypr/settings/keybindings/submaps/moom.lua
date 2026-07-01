@@ -1,23 +1,3 @@
-local _moom_timer
-
-_moom_timer = hl.timer(function()
-  hl.dispatch(hl.dsp.submap("reset"))
-  _moom_timer:set_enabled(false)
-end, { timeout = 2000, type = "repeat" })
-_moom_timer:set_enabled(false)
-
-local function reset_moom_timer()
-  _moom_timer:set_enabled(false)
-  _moom_timer:set_enabled(true)
-end
-
-local function with_debounce(fn)
-  return function()
-    fn()
-    reset_moom_timer()
-  end
-end
-
 local function has_tag(win, tag)
   if not win.tags then return false end
   for _, t in ipairs(win.tags) do
@@ -45,7 +25,7 @@ local function resize(x_bump, y_bump)
   local y_delta = GAP * y_bump
   return function()
     hl.dispatch(hl.dsp.window.resize({ x = x_delta, y = y_delta, relative = true }))
-    reset_moom_timer()
+    reset_debounce_timer()
   end
 end
 
@@ -58,13 +38,13 @@ local function nudge(x_bump, y_bump)
       y = y_delta,
       relative = true,
     }))
-    reset_moom_timer()
+    reset_debounce_timer()
   end
 end
 
 hl.bind(hyper .. " + M", function()
   hl.dispatch(hl.dsp.submap("moom"))
-  reset_moom_timer()
+  reset_debounce_timer()
 end)
 
 hl.define_submap("moom", function()
@@ -193,7 +173,7 @@ hl.define_submap("moom", function()
   end))
 
   hl.bind("Escape", function()
-    _moom_timer:set_enabled(false)
+    _debounce_timer:set_enabled(false)
     hl.dispatch(hl.dsp.submap("reset"))
   end)
 end)
