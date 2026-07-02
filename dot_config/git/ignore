@@ -1,2 +1,6 @@
 dooing.json
 settings.local.json
+
+swagger-docs.yaml
+graph-openapi.yaml
+*ticket.md
