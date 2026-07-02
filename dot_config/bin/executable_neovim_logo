@@ -11,9 +11,9 @@
 declare -A COLORS=(
   [black]=30
   [red]=31
-  [green]=32
+  [green]=#a6e3a1
   [yellow]=33
-  [blue]=34
+  [blue]=#89b4fa
   [magenta]=35
   [cyan]=36
   [white]=37
