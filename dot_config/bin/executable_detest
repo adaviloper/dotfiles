@@ -1,0 +1,19 @@
+#!/bin/bash
+
+current_dir=$(pwd)
+
+get_service_cmd() {
+    # Map the current working directory to the corresponding container name
+    case $current_dir in
+        */"ai_doc_service"/*|*/"ai_doc_service")
+            echo "docker compose -f docker-compose.test.yml run --rm --no-deps test-service yarn test --testPathPattern="
+            ;;
+        *)
+            echo ""
+            ;;
+    esac
+}
+
+CMD=$(get_service_cmd "$current_dir")
+
+eval "${CMD}${1}"
