@@ -7,12 +7,18 @@ local M = {}
 M.default_terminal = Terminal:new({
   display_name = ' Default ',
   direction = 'float',
+  float_opts = {
+    border = 'curved',
+  },
 })
 
 M.robo_term = Terminal:new({
   display_name = ' Robot Helper ',
   cmd = 'claude',
   direction = 'float',
+  float_opts = {
+    border = 'curved',
+  },
 })
 
 M.toggle_robo = function()
