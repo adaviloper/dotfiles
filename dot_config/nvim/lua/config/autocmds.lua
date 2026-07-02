@@ -1,3 +1,15 @@
+-- nvim-treesitter's xml grammar has a native crash bug parsing plist-shaped XML
+-- (nested dict/array + self-closing tags). Every consumer (AstroCore's auto_install
+-- + highlight FileType autocmd, the default treesitter foldexpr, indentexpr, picker
+-- previews, ...) resolves filetype -> language via get_lang() before doing anything
+-- else, so refusing it there means xml never triggers install/parse attempts at all.
+local ts_get_lang = vim.treesitter.language.get_lang
+---@diagnostic disable-next-line: duplicate-set-field
+vim.treesitter.language.get_lang = function(filetype)
+  if filetype == 'xml' then return nil end
+  return ts_get_lang(filetype)
+end
+
 local function smart_close()
   if #vim.api.nvim_tabpage_list_wins(0) > 1 then
     vim.cmd('quit')

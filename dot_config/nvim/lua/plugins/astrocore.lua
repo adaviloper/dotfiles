@@ -30,6 +30,7 @@ return {
 		filetypes = {
 			extension = {
 				-- log = "json",
+				moom = "text",
 				neon = "yaml",
 				tmux = "sh",
 				zsh = "sh",
