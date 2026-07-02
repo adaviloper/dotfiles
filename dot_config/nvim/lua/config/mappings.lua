@@ -495,5 +495,9 @@ return {
     ["g<C-a>"] = { function () require('dial.map').manipulate("increment", "gvisual") end, desc = "Dial up" },
 
     ["g<C-x>"] = { function () require('dial.map').manipulate("decrement", "gvisual") end, desc = "Dial down", },
+
+    ["<A-j>"] = { "5j" },
+
+    ["<A-k>"] = { "5k" },
   },
 }
