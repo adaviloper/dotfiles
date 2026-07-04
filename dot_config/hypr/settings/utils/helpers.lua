@@ -32,9 +32,13 @@ _debounce_timer = hl.timer(function()
 end, { timeout = 1500, type = "repeat" })
 _debounce_timer:set_enabled(false)
 
-local function reset_debounce_timer()
+function reset_debounce_timer()
   _debounce_timer:set_enabled(false)
   _debounce_timer:set_enabled(true)
+end
+
+function cancel_debounce_timer()
+  _debounce_timer:set_enabled(false)
 end
 
 function with_debounce(fn)

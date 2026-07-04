@@ -114,6 +114,11 @@ hl.on("window.active", function(window)
   hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top", window = window }))
 end)
 
+hl.on("window.fullscreen", function(window)
+  if not window then return end
+  hl.exec_cmd("noctalia msg bar-toggle default")
+end)
+
 hl.window_rule({
   name = "xwayland-video-bridge-fixes",
   match = { class = "xwaylandvideobridge" },
