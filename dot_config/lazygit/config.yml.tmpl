@@ -52,9 +52,9 @@ git:
   commitPrefix:
     - pattern: "^\\w+\\/(\\w+-\\d+)[-_].*"
       replace: "$1: "
-  paging:
-    colorArg: always
-    useConfig: false
+  pagers:
+    - colorArg: always
+      useConfig: false
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
@@ -183,7 +183,7 @@ keybinding:
     viewResetOptions: "D"
     fetch: "f"
     toggleTreeView: "`"
-    openMergeTool: "M"
+    openMergeOptions: "M"
     openStatusFilter: "<c-b>"
   branches:
     createPullRequest: "o"
@@ -217,7 +217,7 @@ keybinding:
     pasteCommits: "v"
     tagCommit: "T"
     checkoutCommit: "<space>"
-    resetCherryPick: "<c-shift-r>"
+    resetCherryPick: "<c-R>"
     copyCommitMessageToClipboard: "<c-y>"
     openLogMenu: "<c-l>"
     viewBisectOptions: "b"
