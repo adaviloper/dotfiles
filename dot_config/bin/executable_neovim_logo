@@ -76,7 +76,12 @@ color_code() {
     echo "$color"
   # Otherwise, look it up in the COLORS array
   elif [[ -n "${COLORS[$color]}" ]]; then
-    echo "${COLORS[$color]}"
+    local resolved="${COLORS[$color]}"
+    if rgb=$(parse_rgb "$resolved"); then
+      echo "RGB:$rgb"
+    else
+      echo "$resolved"
+    fi
   else
     echo "34" # Default to blue if not found
   fi
