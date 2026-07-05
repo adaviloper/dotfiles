@@ -29,6 +29,7 @@ return {
         cmd = 'neovim_logo',
         height = 12,
         align = 'center', -- This should work since terminal() accepts snacks.dashboard.Item
+        ttl = 5 * 60,
       })
 
       opts.dashboard.sections = {
