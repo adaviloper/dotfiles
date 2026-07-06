@@ -71,7 +71,7 @@ hl.define_submap("moom", function()
 
   hl.bind("SPACE", with_debounce(moom(0, 1))) -- full screen
   hl.bind("Return", with_debounce(function() hl.dispatch(hl.dsp.window.center()) end)) -- center window
-  hl.bind("CTRL + Return", with_debounce(function() hl.dispatch(hl.dsp.window.fullscreen()) end)) -- center window
+  hl.bind("CONTROL + Return", with_debounce(function() hl.dispatch(hl.dsp.window.fullscreen()) end)) -- fullscreen window
 
   hl.bind("LEFT", nudge(-1, 0), { repeating = true })
   hl.bind("RIGHT", nudge(1, 0), { repeating = true })
