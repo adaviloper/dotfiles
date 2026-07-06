@@ -110,13 +110,50 @@ hl.on("window.open", function(window)
   hl.dispatch(hl.dsp.window.move({ x = g.x, y = g.y, relative = false }))
 end)
 
-hl.on("window.active", function(window)
-  hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top", window = window }))
+hl.on("window.active", function()
+  local active = hl.get_active_window()
+  if not active then return end
+  hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top", window = active }))
 end)
+
+-- Fullscreen windows move to a dedicated workspace that never shows the Noctalia bar
+local FULLSCREEN_WS = "name:fullscreen"local fullscreen_origin = {}
 
 hl.on("window.fullscreen", function(window)
   if not window then return end
-  hl.exec_cmd("noctalia msg bar-toggle default")
+
+  if window.fullscreen ~= 0 then
+    if window.workspace then
+      fullscreen_origin[window.address] = window.workspace.id
+    end
+    hl.dispatch(hl.dsp.window.move({ window = window, workspace = FULLSCREEN_WS }))
+    hl.dispatch(hl.dsp.focus({ workspace = FULLSCREEN_WS }))
+  else
+    local origin = fullscreen_origin[window.address]
+    fullscreen_origin[window.address] = nil
+    if origin then
+      hl.dispatch(hl.dsp.window.move({ window = window, workspace = origin }))
+      hl.dispatch(hl.dsp.focus({ workspace = origin }))
+
+      local g = placements[window.class]
+      if g then
+        -- Hyprland's own pre-fullscreen geometry restore lands a tick after
+        -- this event fires and clobbers any reposition issued right here,
+        -- so defer reapplying the placement until that reflow has settled.
+        local restore_timer
+        restore_timer = hl.timer(function()
+          hl.dispatch(hl.dsp.window.resize({ window = window, x = g.w, y = g.h, relative = false }))
+          hl.dispatch(hl.dsp.window.move({ window = window, x = g.x, y = g.y, relative = false }))
+          restore_timer:set_enabled(false)
+        end, { timeout = 50, type = "oneshot" })
+      end
+    end
+  end
+end)
+
+hl.on("workspace.active", function(workspace)
+  if not workspace then return end
+  hl.exec_cmd(workspace.name == "fullscreen" and "noctalia msg bar-hide default" or "noctalia msg bar-show default")
 end)
 
 hl.window_rule({
