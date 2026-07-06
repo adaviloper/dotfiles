@@ -36,3 +36,5 @@ keybind = super+digit_9=text:\x009
 
 keybind = ctrl+tab=text:gt
 keybind = ctrl+shift+tab=text:gT
+
+keybind = ctrl+enter=unbind
