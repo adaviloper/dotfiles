@@ -131,6 +131,28 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(shellPrefix .. " panel-toggle
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
+-- Switch workspaces with SUPER + ALT + [0-9]
+for i = 1, 10 do
+  local key = i % 10 -- 10 maps to key 0
+  hl.bind(workspaceMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+  hl.bind(workspaceMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+end
+
+hl.bind(workspaceMod .. " + L", function()
+  local last = hl.get_last_workspace()
+  if last then hl.dispatch(hl.dsp.focus({ workspace = last })) end
+end)
+
+hl.bind(workspaceMod .. " + F", function()
+  local active = hl.get_active_workspace()
+  if active and active.name == "fullscreen" then
+    local last = hl.get_last_workspace()
+    if last then hl.dispatch(hl.dsp.focus({ workspace = last })) end
+  else
+    hl.dispatch(hl.dsp.focus({ workspace = "fullscreen" }))
+  end
+end)
+
 -- Media keys
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"), { locked = true, repeating = true })
