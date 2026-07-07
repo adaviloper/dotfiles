@@ -5,7 +5,7 @@ local utils = require("helpers.utils")
 local M = {}
 
 M.default_terminal = Terminal:new({
-  display_name = ' Default ',
+  display_name = '  Default ',
   direction = 'float',
   float_opts = {
     border = 'curved',
@@ -13,7 +13,7 @@ M.default_terminal = Terminal:new({
 })
 
 M.robo_term = Terminal:new({
-  display_name = ' Robot Helper ',
+  display_name = ' 󱚟 Robot Helper ',
   cmd = 'claude',
   direction = 'float',
   float_opts = {
@@ -21,22 +21,32 @@ M.robo_term = Terminal:new({
   },
 })
 
-M.toggle_robo = function()
-  if M.default_terminal:is_open() then
-    M.default_terminal:close()
-    M.robo_term:open()
-  else
-    M.robo_term:toggle()
-  end
-end
+M.fm_term = Terminal:new({
+  display_name = ' 󰇥 File Manager ',
+  cmd = 'yazi',
+  direction = 'float',
+  float_opts = {
+    border = 'curved',
+  },
+})
 
-M.toggle_default = function()
-  if M.robo_term:is_open() then
-    M.robo_term:close()
-    M.default_terminal:open()
-  else
-    M.default_terminal:toggle()
+--- @alias TermKey "default" | "robot" | "fm"
+M.terminals = {
+  default = M.default_terminal,
+  robot = M.robo_term,
+  fm = M.fm_term,
+}
+
+--- @param term_key TermKey
+function M.toggle_terminal(term_key)
+  local term = M.terminals[term_key]
+  if term == nil then return end
+  for _, other in pairs(M.terminals) do
+    if other ~= term and other:is_open() then
+      other:close()
+    end
   end
+  term:toggle()
 end
 
 M.lazy_git = function()
