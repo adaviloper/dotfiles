@@ -37,7 +37,7 @@ local search_exclusions = {
 return {
   -- first key is the mode
   n = {
-    ["<F5>"] = { "z=" },
+    ["<F9>"] = { "z=" },
 
     ["<A-e>"] = { "5<C-e>" },
 
@@ -182,8 +182,6 @@ return {
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
 
-    ["<F7>"] = { function () terminals.toggle_default() end, desc = "ToggleTerm float" },
-
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
       desc = "Toggleterm Artisan tinker for current Docker container",
@@ -219,14 +217,21 @@ return {
     ["<Leader>tt"] = { "<CMD>Dooing<CR>", desc = "Toggleterm Todo Manager" },
     ["<LocalLeader>tt"] = { "<CMD>DooingLocal<CR>", desc = "Toggleterm Todo Manager" },
 
-    ["<Leader>ty"] = {
-      function() astro.toggle_term_cmd({ direction = "float", cmd = "yazi" }) end,
-      desc = "Toggleterm Yazi",
+    ["<F4>"] = {
+      function() terminals.toggle_terminal('fm') end,
+      desc = "Toggleterm 󰇥 File Manager",
     },
 
     ["<F3>"] = {
-      function() terminals.toggle_robo() end,
+      function() terminals.toggle_terminal('robot') end,
       desc = "Toggleterm 󱚟 Robot Helper",
+    },
+
+    ["<F7>"] = {
+      function ()
+        terminals.toggle_terminal('default')
+      end,
+      desc = "ToggleTerm  Default",
     },
 
     -- Telescope
@@ -465,9 +470,11 @@ return {
   },
 
   t = {
-    ["<F3>"] = { function() terminals.toggle_robo() end },
+    ["<F3>"] = { function() terminals.toggle_terminal('robot') end },
 
-    ["<F7>"] = { function() terminals.toggle_default() end },
+    ["<F7>"] = { function() terminals.toggle_terminal('default') end },
+
+    ["<F4>"] = { function() terminals.toggle_terminal('fm') end },
 
     -- setting a mapping to false will disable it
     ["<F8>"] = { "<C-\\><C-n>" },
@@ -495,9 +502,5 @@ return {
     ["g<C-a>"] = { function () require('dial.map').manipulate("increment", "gvisual") end, desc = "Dial up" },
 
     ["g<C-x>"] = { function () require('dial.map').manipulate("decrement", "gvisual") end, desc = "Dial down", },
-
-    ["<A-j>"] = { "5j" },
-
-    ["<A-k>"] = { "5k" },
   },
 }
