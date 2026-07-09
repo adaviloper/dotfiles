@@ -16,6 +16,16 @@ sort_dir_first = true
 sort_reverse = false
 sort_sensitive = false
 
+[opener]
+tw = [
+{ run = "tw %s", block = true, desc = "Open CSV" }
+]
+
+[open]
+rules = [
+  { url = "*.csv", use = "tw" },
+]
+
 [[plugin.deps]]
 id   = "git"
 name = "*"
