@@ -8,6 +8,7 @@ cwd=$(echo "$input" | jq -r '.workspace.current_dir // empty')
 model=$(echo "$input" | jq -r '.model.display_name // empty')
 context_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
+git_branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null || git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
 
 # Handle directory substitutions (matching Starship config)
 display_dir="$(basename $(pwd))"
@@ -24,11 +25,14 @@ BASE_256=234                         # #1c1c1c (closest grayscale)
 MAUVE_R=203 MAUVE_G=166 MAUVE_B=247 # #cba6f7
 MAUVE_256=183                        # #d7afff
 
-BLUE_R=250 BLUE_G=179 BLUE_B=135    # #fab387 (peach)
-BLUE_256=216                         # #ffaf87
+BLUE_R=137 BLUE_G=180 BLUE_B=250    # #89b4fa (blue)
+BLUE_256=111                         # #87afff (closest match)
+
+GREEN_R=166 GREEN_G=227 GREEN_B=161    # #a6e3a1 (green)
+GREEN_256=151                         # #afd7af (closest match)
 
 YELLOW_R=249 YELLOW_G=226 YELLOW_B=175 # #f9e2af
-YELLOW_256=223                          # #ffd7af
+YELLOW_256=223                          # #f9e2af
 
 TEAL_R=148 TEAL_G=226 TEAL_B=213    # #94e2d5
 TEAL_256=116                         # #87d7d7
@@ -58,6 +62,10 @@ fi
 
 if [ -n "$display_dir" ]; then
     segments+=(" $display_dir|$MAUVE_R|$MAUVE_G|$MAUVE_B|$MAUVE_256")
+fi
+
+if [ -n "$git_branch" ]; then
+    segments+=(" $git_branch|$GREEN_R|$GREEN_G|$GREEN_B|$GREEN_256")
 fi
 
 if [ -n "$context_pct" ] && [ "$context_pct" != "null" ]; then
