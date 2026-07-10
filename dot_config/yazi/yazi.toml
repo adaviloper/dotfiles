@@ -22,7 +22,7 @@ tw = [
 ]
 
 [open]
-rules = [
+append_rules = [
   { url = "*.csv", use = "tw" },
 ]
 
