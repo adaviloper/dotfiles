@@ -1,0 +1,39 @@
+layout {
+  cwd "~/Code/suralink/"
+
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  tab name="OcrOrchestrator" cwd="~/Code/suralink/ocr_orchestrator_service" {
+    pane
+  }
+
+  tab name="OcrTextract" cwd="~/Code/suralink/ocr_textract" {
+    pane
+  }
+
+  tab name="SLAPI" cwd="~/Code/suralink/slapi/server" {
+    pane
+  }
+
+  tab name="Files Service" cwd="~/Code/suralink/files_service" {
+    pane
+  }
+
+  tab name="Terminals" {
+    pane split_direction="vertical" {
+      pane
+      pane split_direction="horizontal" {
+        pane
+        pane
+      }
+    }
+  }
+}
