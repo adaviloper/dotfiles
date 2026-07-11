@@ -26,10 +26,6 @@ sh $OS_INSTALL_DIR/../prep-ssh.sh
 info "Installing core packages"
 sh $OS_INSTALL_DIR/packages.sh
 
-# Oh-My-Zsh installation
-info "Installing Oh-My-Zsh"
-sh $OS_INSTALL_DIR/../oh-my-zsh.sh
-
 # Tmux installation
 info "Installing Tmux"
 sh $OS_INSTALL_DIR/../tmux.sh
