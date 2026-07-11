@@ -1,0 +1,16 @@
+#!/bin/bash
+
+{{ template "shared_bin_utils.sh.tmpl" . }}
+
+# zsh-syntax-highlighting
+if [ ! -d "$HOME/.local/share/zsh/plugins/zsh-syntax-highlighting" ]; then
+  info "Installing zsh-syntax-highlighting"
+
+  mkdir -p "$HOME/.local/share/zsh/plugins"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.local/share/zsh/plugins/zsh-syntax-highlighting"
+
+  success "Successfully installed zsh-syntax-highlighting"
+else
+  warn "zsh-syntax-highlighting already installed"
+fi
+
