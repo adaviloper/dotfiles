@@ -1,4 +1,9 @@
 # Tmux keybindings (prefix = Ctrl+Space = \x00)
+# super+l, super+o, super+u, super+period are Zellij session/tab switches instead
+# super+l/o/u: (\x07 = Ctrl-G breaks out of locked mode; \x1b returns to locked mode after)
+# super+period: runs `zellij action switch-session` directly as a shell command (types
+#   it into the focused pane + \r) instead of injecting keystrokes — only works
+#   when the focused pane is at an idle shell prompt, unlike the \x07-based bindings
 keybind = super+c=copy_to_clipboard
 keybind = super+e=text:\x00q
 keybind = super+f=text:\x00f
@@ -6,17 +11,17 @@ keybind = super+h=text:\x00L
 keybind = super+i=text:\x00i
 keybind = super+j=text:\x00j
 keybind = super+k=text:\x00k
-keybind = super+l=text:\x00l
+keybind = super+l=text:\x07tl\x1b
 keybind = super+m=text:\x00m
 keybind = super+n=text:\x00n
-keybind = super+o=text:\x00o
+keybind = super+o=text:\x07oq\x1b
 keybind = super+s=text:\x00T
-keybind = super+u=text:\x00u
+keybind = super+u=text:\x07ou\x1b
 keybind = super+v=paste_from_clipboard
 keybind = super+x=text:\x00x
 keybind = super+z=text:\x00z
 
-keybind = super+period=text:\x00.
+keybind = super+period=text:\x07o.\x1b
 keybind = super+semicolon=text:\x00:
 
 keybind = super+up=text:\x00\x1b[A

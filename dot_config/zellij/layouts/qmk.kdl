@@ -1,0 +1,33 @@
+layout {
+  cwd "~/Code/qmk_userspace/"
+
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  tab name="Root" {
+    pane
+  }
+
+  tab name="Userland" cwd="~/Code/qmk_userspace/users/adaviloper" {
+    pane
+  }
+
+  tab name="Unicorne" cwd="~/Code/qmk_userspace/keyboards/boardsource/unicorne" {
+    pane
+  }
+
+  tab name="Lulu" cwd="~/Code/qmk_userspace/keyboards/boardsource/lulu/rp2040/keymaps/adaviloper" {
+    pane
+  }
+
+  tab name="QMK Firmware" cwd="~/Code/qmk_firmware/" {
+    pane
+  }
+}
