@@ -2,7 +2,7 @@ adjust-cell-height = 0
 
 auto-update = check
 
-font-family = Maple Mono
+font-family = Maple Mono NF
 font-size = 12.3
 
 macos-hidden = always
