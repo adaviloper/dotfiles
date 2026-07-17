@@ -23,7 +23,7 @@ return {
   },
   {
     "NeogitOrg/neogit",
-    enabled = false,
+    enabled = true,
     lazy = true,
     dependencies = {
       -- Only one of these is needed.
