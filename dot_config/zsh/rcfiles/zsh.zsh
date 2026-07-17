@@ -21,3 +21,14 @@ function clear-screen-and-scrollback() {
 zle -N clear-screen-and-scrollback
 bindkey '^x^l' clear-screen-and-scrollback
 
+# Up/down arrows cycle history filtered by what's already typed (prefix match)
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+for keymap in viins vicmd; do
+  bindkey -M $keymap '^[[A' up-line-or-beginning-search
+  bindkey -M $keymap '^[OA' up-line-or-beginning-search
+  bindkey -M $keymap '^[[B' down-line-or-beginning-search
+  bindkey -M $keymap '^[OB' down-line-or-beginning-search
+done
+
