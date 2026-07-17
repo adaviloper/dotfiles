@@ -1,0 +1,14 @@
+#!/bin/bash
+
+{{ template "shared_bin_utils.sh.tmpl" . }}
+
+info "Installing emacs"
+
+EMACS_DIR="$HOME/.config/emacs"
+
+if [ ! -d "$EMACS_DIR" ]; then
+  git clone --depth 1 https://github.com/doomemacs/core ~/.config/emacs
+  ~/.config/emacs/bin/doom install
+fi
+
+success "Successfully installed emacs"
