@@ -4,3 +4,4 @@ settings.local.json
 swagger-docs.yaml
 graph-openapi.yaml
 *ticket.md
+[A-Z]*-[0-9]*.md
