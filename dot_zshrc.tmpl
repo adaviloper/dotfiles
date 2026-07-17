@@ -2,7 +2,11 @@ CASE_SENSITIVE="true"
 
 autoload -Uz compinit && compinit
 
-setopt APPEND_HISTORY
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+
+setopt SHARE_HISTORY
 setopt AUTO_CD
 setopt EXTENDED_GLOB
 setopt GLOB_DOTS
