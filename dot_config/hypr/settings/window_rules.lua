@@ -56,11 +56,12 @@ hl.window_rule({
 
 -- Per-app placement: fires after window rules (including float) are applied
 local placements = {
-  [chat.class]              = moom_geo(0,   1/4),
-  [passwordManager.class]   = moom_geo(0,   1/4),
-  [emailClient.class]       = moom_geo(1/4, 1/2),
-  [database.class]          = moom_geo(1/4, 1/2),
   [api_client.class]        = moom_geo(1/4, 1/2),
+  [chat.class]              = moom_geo(0,   1/4),
+  [database.class]          = moom_geo(1/4, 1/2),
+  [emailClient.class]       = moom_geo(1/4, 1/2),
+  [notes_app.class]         = moom_geo(1/4, 1/2),
+  [passwordManager.class]   = moom_geo(0,   1/4),
   [terminal.class]          = moom_geo(1/4, 1/2),
   -- ["Swiftpoint X1 Control Panel"] = moom_geo(),
 }
