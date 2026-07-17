@@ -13,25 +13,26 @@ local paste_and_clean = function (key)
 end
 
 local search_exclusions = {
-  ".idea/*",
-  "node_modules*",
+  "*.map",
   "*.min.css",
-  "*_min.css",
   "*.min.js",
   "*.min_*.js",
-  "*_min.js",
-  "*.map",
-  "public/*",
-  "dist/*",
-  "*/dist/*",
-  "build/*",
   "*/build/*",
-  "coverage/*",
   "*/coverage/*",
+  "*/dist/*",
+  "*/venv/*",
+  "*_min.css",
+  "*_min.js",
+  ".idea/*",
+  "build/*",
+  "coverage/*",
+  "dist/*",
+  "node_modules*",
+  "package-lock.json",
+  "public/*",
   "storage/*",
   "vendor/*",
   "venv/*",
-  "*/venv/*",
 }
 
 return {
@@ -252,7 +253,7 @@ return {
       function() require("snacks").picker.grep {
         hidden = true,
         ignored = true,
-          exclude = search_exclusions,
+        exclude = search_exclusions,
       } end,
       desc = "Find words in all files",
     },
@@ -367,6 +368,7 @@ return {
 
     -- Git
     ["<Leader>gB"] = { "<cmd>G blame<cr>", desc = "Commit annotations" },
+    ["<Leader>gb"] = { "<cmd>Gitsigns blame<cr>", desc = "Gitsigns commit annotations" },
 
     ["<Leader>pa"] = {
       function()
