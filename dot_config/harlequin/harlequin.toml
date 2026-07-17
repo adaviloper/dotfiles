@@ -1,4 +1,8 @@
+default_profile = "adaviloper"
 
+[profiles.adaviloper]
+theme = "catppuccin-mocha"
+keymap_name = ["adaviloper"]
 
 [[keymaps.adaviloper]]
 keys = "ctrl+q"
@@ -58,7 +62,7 @@ action = "code_editor.new_buffer"
 
 [[keymaps.adaviloper]]
 keys = "ctrl+w"
-action = "code_editor.close_buffer"
+action = "code_editor.delete_word_left"
 
 [[keymaps.adaviloper]]
 keys = "ctrl+k"
