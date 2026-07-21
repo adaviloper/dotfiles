@@ -34,8 +34,24 @@ end
 --- @field wordTrig string
 --- @field regTrig string
 
+-- LuaSnip lazy-loads on `User AstroFile`, fired from AstroNvim core inside
+-- `vim.schedule(...)` (a deferred tick). Ftplugin autocmds/keymaps that look
+-- up a snippet by trigger can run before that fires, so force LuaSnip's
+-- plugin load synchronously first. `lazy.load` is idempotent (no-ops if
+-- already loaded), so it's safe to call on every lookup.
+local function ensure_luasnip_loaded()
+  local ok_lazy, lazy = pcall(require, "lazy")
+  if not ok_lazy then return end
+
+  local ok = pcall(lazy.load, { plugins = { "LuaSnip" } })
+  if not ok then
+    vim.notify("snippet_utils: failed to force-load the 'LuaSnip' plugin", vim.log.levels.WARN)
+  end
+end
+
 --- @return Snippet
 function M.available_snippets()
+  ensure_luasnip_loaded()
   return ls.available(function (snip)
 	  return {
 	    id = snip.id,
