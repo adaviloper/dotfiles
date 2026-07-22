@@ -149,6 +149,22 @@ function gbds() {
     done
 }
 
+function gcl() {
+  setopt localoptions extendedglob
+
+  # get repo URI from args based on valid formats: https://git-scm.com/docs/git-clone#URLS
+  local repo="${${@[(r)(ssh://*|git://*|ftp(s)#://*|http(s)#://*|*@*)(.git/#)#]}:-$_}"
+
+  # clone repository and exit if it fails
+  command git clone --recurse-submodules "$@" || return
+
+  # if last arg passed was a directory, that's where the repo was cloned
+  # otherwise parse the repo URI and use the last part as the directory
+  [[ -d "$_" ]] && cd "$_" || cd "${${repo:t}%.git/#}"
+}
+
+compdef _git gcl=git-clone
+
 alias gbgd='LANG=C git branch --no-color -vv | grep ": gone\]" | cut -c 3- | awk '"'"'{print $1}'"'"' | xargs git branch -d'
 alias gbgD='LANG=C git branch --no-color -vv | grep ": gone\]" | cut -c 3- | awk '"'"'{print $1}'"'"' | xargs git branch -D'
 alias gbm='git branch --move'
@@ -165,23 +181,7 @@ alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 alias gclean='git clean --interactive -d'
-alias gcl='git clone --recurse-submodules'
 alias gclf='git clone --recursive --shallow-submodules --filter=blob:none --also-filter-submodules'
-
-function gccd() {
-  setopt localoptions extendedglob
-
-  # get repo URI from args based on valid formats: https://git-scm.com/docs/git-clone#URLS
-  local repo="${${@[(r)(ssh://*|git://*|ftp(s)#://*|http(s)#://*|*@*)(.git/#)#]}:-$_}"
-
-  # clone repository and exit if it fails
-  command git clone --recurse-submodules "$@" || return
-
-  # if last arg passed was a directory, that's where the repo was cloned
-  # otherwise parse the repo URI and use the last part as the directory
-  [[ -d "$_" ]] && cd "$_" || cd "${${repo:t}%.git/#}"
-}
-compdef _git gccd=git-clone
 
 alias gcam='git commit --all --message'
 alias gcas='git commit --all --signoff'
