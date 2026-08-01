@@ -1,6 +1,6 @@
 {{- $txt_color := "mantle" -}}
 {{- $bg_color := "mantle" -}}
-{{- $time_color := "sky" -}}
+{{- $time_color := "lavender" -}}
 {{- $directory_color := "mauve" -}}
 {{- $golang_color := "sapphire" -}}
 {{- $nodejs_color := "green" -}}
@@ -27,7 +27,7 @@ command_timeout = 1000
 {{- $separator := "" }}
 
 format = """
-[∙](bold {{ $time_color }})$fill[∙ ](bold {{ $time_color }})$time
+[∙](bold {{ $time_color }})$fill[](bold {{ $time_color }})[$time](bg:{{ $time_color }} fg:{{ $txt_color }})[](bold {{ $time_color }})
 [](bold {{ $directory_color }})\
 $directory\
 $golang\
@@ -96,7 +96,8 @@ disabled = true
 
 [time]
 disabled = false
-format = '[$time]($style {{ $time_color }}) '
+format = '[$time]($style bg:{{ $time_color }} fg:{{ $txt_color }})'
+
 [username]
 style_user = "bg:sapphire"
 style_root = "bg:pink"
