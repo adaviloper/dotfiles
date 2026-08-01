@@ -54,6 +54,7 @@
 
 ;; Doom disables the menu-bar by default; re-enable it.
 (menu-bar-mode 1)
+(tab-bar-mode 1)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
