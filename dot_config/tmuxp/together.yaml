@@ -2,6 +2,7 @@ session_name: Together
 start_directory: "~/Code/together"
 windows:
   - window_name: Backend
-  - window_name: Frontend
+  - window_name: Database
+    start_directory: "~/DataGripProjects/together"
   - window_name: Terminals
     layout: main-vertical
