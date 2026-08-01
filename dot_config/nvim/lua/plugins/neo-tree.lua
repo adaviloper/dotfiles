@@ -66,6 +66,19 @@ return {
           end
         end,
       },
+      {
+        event = 'file_opened',
+        handler = function()
+          vim.schedule(function()
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+              if vim.bo[buf].filetype == "snacks_dashboard" then
+                pcall(vim.api.nvim_buf_delete, buf, { force = true })
+              end
+            end
+            vim.cmd("redraw!")
+          end)
+        end,
+      },
     },
     filesystem = {
       filtered_items = {
