@@ -23,7 +23,7 @@ return {
   },
   {
     "NeogitOrg/neogit",
-    enabled = true,
+    enabled = false,
     lazy = true,
     dependencies = {
       -- Only one of these is needed.
@@ -40,8 +40,10 @@ return {
       "folke/snacks.nvim",             -- optional
     },
     cmd = "Neogit",
-    keys = {
-      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
-    }
+    opts = {
+      commit_editor = {
+        show_staged_diff = false, -- or: staged_diff_split_kind = "vsplit" / "split"
+      }
+    },
   }
 }
