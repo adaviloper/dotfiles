@@ -1,9 +1,14 @@
 return {
   "atiladefreitas/dooing",
+  enabled = false,
   config = function()
     require("dooing").setup({
       calendar = {
         start_day = "monday",
+      },
+
+      keymaps = {
+        open_project_todo = "<LocalLeader>tt"
       },
 
       pretty_print_json = true,
