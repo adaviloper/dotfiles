@@ -195,6 +195,7 @@ return {
 
     ["<Leader>gg"] = {
       terminals.lazy_git,
+      -- "<Cmd>Neogit<CR>",
       desc = "ToggleTerm lazygit",
     },
 
@@ -215,7 +216,11 @@ return {
       desc = "Toggleterm LazyNPM",
     },
 
-    ["<Leader>tt"] = { "<CMD>Dooing<CR>", desc = "Toggleterm Todo Manager" },
+    ["<Leader>tt"] = { function() astro.toggle_term_cmd({ direction = "float", cmd = "tuxedo" }) end, desc = "Toggleterm Todo Manager" },
+    ["<F5>"] = {
+      function() astro.toggle_term_cmd({ direction = "float", cmd = "harlequin" }) end,
+      desc = "Toggleterm Database Client",
+    },
     ["<LocalLeader>tt"] = { "<CMD>DooingLocal<CR>", desc = "Toggleterm Todo Manager" },
 
     ["<F4>"] = {
