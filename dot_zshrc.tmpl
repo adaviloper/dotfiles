@@ -57,7 +57,8 @@ if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ "$is_primary_terminal" = true 
     tmuxp load -d notes
 
     {{- if eq .purpose "work" -}}
-    tmuxp load -d notes
+    tmuxp load -d work
+    tmuxp load -d skynet
     {{ else }}
     tmuxp load -d together
     {{- end }}
