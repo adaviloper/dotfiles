@@ -9,12 +9,22 @@ vim.api.nvim_create_autocmd('BufEnter', {
       return
     end
 
-    local first_line = vim.api.nvim_buf_get_lines(args.buf, 0, 1, false)[1] or ''
-    if first_line ~= '' then
-      return -- amend / already has a message, don't touch it
-    end
+    vim.schedule(function()
+      vim.wo.colorcolumn = '60'
 
-    vim.api.nvim_buf_set_lines(args.buf, 0, 1, false, { ticket .. ': ' })
-    vim.api.nvim_win_set_cursor(0, { 1, #ticket + 1 })
+      if not vim.api.nvim_buf_is_valid(args.buf) then
+        return
+      end
+
+      local first_line = vim.api.nvim_buf_get_lines(args.buf, 0, 1, false)[1] or ''
+      if first_line ~= '' then
+        return
+      end
+
+      local prefix = ticket .. ': '
+      vim.api.nvim_buf_set_lines(args.buf, 0, 1, false, { prefix })
+      vim.api.nvim_win_set_cursor(0, { 1, #prefix })
+      vim.cmd.startinsert { bang = true }
+    end)
   end,
 })
