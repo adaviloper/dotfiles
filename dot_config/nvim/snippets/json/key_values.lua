@@ -11,9 +11,6 @@ return
         {
           key = i(1, ''),
           val = c(2, {
-            i(nil, ''),
-            t('true'),
-            t('false'),
             sn(
               nil,
               fmta(
@@ -24,7 +21,10 @@ return
                   ins = i(1, ''),
                 }
               )
-            )
+            ),
+            i(nil, ''),
+            t('true'),
+            t('false'),
           })
         }
       )
