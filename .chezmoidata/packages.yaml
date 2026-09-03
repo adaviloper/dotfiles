@@ -54,7 +54,6 @@ packages:
       - 'postman'
       - 'shottr'
       - 'steermouse'
-      - 'wezterm'
     taps: 
       - 'jakehilborn/jakehilborn'
       - 'jesseduffield/lazynpm'
@@ -74,7 +73,6 @@ packages:
       - 'gnome-software-plugin-flatpak'
       - 'gnome-tweaks'
       - 'libwxgtk3.2-dev'
-      - 'wezterm'
       - 'wget'
       - 'wl-clipboard'
       - 'zsh'
@@ -173,7 +171,6 @@ packages:
       - tmux
       - tree
       - unar
-      - wezterm
       - wget
       - wl-clipboard
       - zoxide
