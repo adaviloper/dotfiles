@@ -140,9 +140,11 @@ packages:
     pamac:
       - satty-git
   fedora:
+    # dnf5 rejects display names on install/upgrade transactions (only
+    # accepts them for `dnf group info`) - use group IDs here, not names.
     groups:
-      - 'Development Tools'
-      - 'C Development Tools and Libraries'
+      - 'development-tools'
+      - 'c-development'
     dnfs:
       - autoconf
       - bat
