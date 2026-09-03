@@ -139,3 +139,53 @@ packages:
       - noctalia-git
     pamac:
       - satty-git
+  fedora:
+    groups:
+      - 'Development Tools'
+      - 'C Development Tools and Libraries'
+    dnfs:
+      - autoconf
+      - bat
+      - ctags
+      - composer
+      - curl
+      - emacs
+      - eza
+      - fd-find
+      - ffmpegthumbnailer
+      - flameshot
+      - flatpak
+      - fzf
+      - gcc
+      - gh
+      - git
+      - golang
+      - jq
+      - luarocks
+      - llvm
+      - neovim
+      - nodejs
+      - php
+      - readline-devel
+      - ripgrep
+      - tmux
+      - tree
+      - unar
+      - wezterm
+      - wget
+      - wl-clipboard
+      - zoxide
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+    # dnf copr repos for tools that lag or are missing from stable Fedora repos.
+    # Verify these are still maintained before relying on them (COPRs get orphaned).
+    coprs:
+      - atim/bottom
+      - atim/lazygit
+      - lihaohong/yazi
+    dnfs_from_coprs:
+      - bottom
+      - lazygit
+      - yazi
+    # rcm has no Fedora package and no known copr; skipped on Fedora.

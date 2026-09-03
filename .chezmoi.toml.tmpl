@@ -1,5 +1,9 @@
 {{- $purposes := list "personal" "work" -}}
 {{- $purpose := promptChoiceOnce . "purpose" "What is this machine used for?" $purposes -}}
+{{- $idLike := "" -}}
+{{- if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "idLike") -}}
+  {{- $idLike = index .chezmoi.osRelease "idLike" -}}
+{{- end -}}
 [hooks.read-source-state.pre]
   command = ".local/share/chezmoi/.install-password-manager.sh"
 
@@ -8,7 +12,8 @@
   is_mac = {{ if eq .chezmoi.os "darwin" }} true {{ else }} false {{ end }}
   is_linux = {{ if eq .chezmoi.os "linux" }} true {{ else }} false {{ end }}
   is_ubuntu = {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") }} true {{ else }} false {{ end }}
-  is_arch = {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "arch") }} true {{ else }} false {{ end }}
+  is_arch = {{ if eq $idLike "arch" }} true {{ else }} false {{ end }}
+  is_fedora = {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora") }} true {{ else }} false {{ end }}
   has_robot = {{ if lookPath "claude" }} true {{ else }} false {{ end }}
 
 [data.colorscheme]
