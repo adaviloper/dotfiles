@@ -42,6 +42,10 @@ case "$(uname -s)" in
           # sudo pacman -Syu --noconfirm 1password 1password-cli
           curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
           ;;
+        fedora)
+          echo "Detected Fedora"
+          curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
+          ;;
         *)
           echo "Unsupported Linux distribution: $ID"
           ;;

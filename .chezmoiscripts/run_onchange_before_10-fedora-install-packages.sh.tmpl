@@ -1,0 +1,79 @@
+{{- if eq .is_fedora true -}}
+#!/bin/bash
+
+{{ template "shared_bin_utils.sh.tmpl" . }}
+
+info "Updating dnf and enabling copr plugin support"
+sudo dnf upgrade --refresh -y
+sudo dnf install -y dnf-plugins-core
+
+{{- if .packages.fedora.groups }}
+
+info "Installing package groups"
+{{ range .packages.fedora.groups }}
+sudo dnf group install -y {{ . | quote }}
+{{ end -}}
+{{- end }}
+
+{{- if .packages.fedora.coprs }}
+
+info "Enabling copr repositories for packages missing/stale in stable Fedora repos"
+{{ range .packages.fedora.coprs }}
+sudo dnf copr enable -y {{ . | quote }}
+{{ end -}}
+{{- end }}
+
+{{- if .packages.fedora.dnfs }}
+
+info "Installing dnf packages"
+sudo dnf install -y{{ range .packages.fedora.dnfs }} {{ . | quote }}{{ end }}
+{{- end }}
+
+{{- if .packages.fedora.dnfs_from_coprs }}
+
+info "Installing packages provided by the copr repos enabled above"
+sudo dnf install -y{{ range .packages.fedora.dnfs_from_coprs }} {{ . | quote }}{{ end }}
+{{- end }}
+
+info "Installing gum from Charm's official repo"
+if ! command -v gum >/dev/null 2>&1; then
+  sudo tee /etc/yum.repos.d/charm.repo >/dev/null <<'EOF'
+[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key
+EOF
+  sudo dnf install -y gum
+else
+  warn "gum already installed"
+fi
+
+info "Installing starship"
+if ! command -v starship >/dev/null 2>&1; then
+  curl -sS https://starship.rs/install.sh | sh -s -- -y
+else
+  warn "starship already installed"
+fi
+
+info "Installing yq"
+if ! command -v yq >/dev/null 2>&1; then
+  go install github.com/mikefarah/yq/v4@latest
+else
+  warn "yq already installed"
+fi
+
+info "Installing tmuxp"
+if ! command -v pipx >/dev/null 2>&1; then
+  sudo dnf install -y pipx
+fi
+if ! command -v tmuxp >/dev/null 2>&1; then
+  pipx install tmuxp
+else
+  warn "tmuxp already installed"
+fi
+
+success "Fedora packages installed"
+
+{{- end -}}
