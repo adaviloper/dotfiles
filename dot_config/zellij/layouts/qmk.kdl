@@ -1,5 +1,5 @@
 layout {
-  cwd "~/Code/qmk_userspace/"
+  cwd "/home/adaviloper/Code/qmk_userspace/"
 
   default_tab_template {
     pane size=1 borderless=true {
@@ -15,19 +15,19 @@ layout {
     pane
   }
 
-  tab name="Userland" cwd="~/Code/qmk_userspace/users/adaviloper" {
+  tab name="Userland" cwd="/home/adaviloper/Code/qmk_userspace/users/adaviloper" {
     pane
   }
 
-  tab name="Unicorne" cwd="~/Code/qmk_userspace/keyboards/boardsource/unicorne" {
+  tab name="Unicorne" cwd="/home/adaviloper/Code/qmk_userspace/keyboards/boardsource/unicorne" {
     pane
   }
 
-  tab name="Lulu" cwd="~/Code/qmk_userspace/keyboards/boardsource/lulu/rp2040/keymaps/adaviloper" {
+  tab name="Lulu" cwd="/home/adaviloper/Code/qmk_userspace/keyboards/boardsource/lulu/rp2040/keymaps/adaviloper" {
     pane
   }
 
-  tab name="QMK Firmware" cwd="~/Code/qmk_firmware/" {
+  tab name="QMK Firmware" cwd="/home/adaviloper/Code/qmk_firmware/" {
     pane
   }
 }

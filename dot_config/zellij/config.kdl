@@ -4,7 +4,109 @@
 
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl g" { SwitchToMode "normal"; }
+        bind "Ctrl Space" { SwitchToMode "normal"; }
+        bind "Super l" { ToggleTab; }
+        bind "Super j" { GoToNextTab; }
+        bind "Super k" { GoToPreviousTab; }
+
+        bind "Super x" { CloseTab; }
+
+        bind "Super z" {
+            SwitchToMode "pane";
+            ToggleFocusFullscreen;
+            SwitchToMode "locked";
+        }
+
+        bind "Super 1" { GoToTab 1; }
+        bind "Super 2" { GoToTab 2; }
+        bind "Super 3" { GoToTab 3; }
+        bind "Super 4" { GoToTab 4; }
+        bind "Super 5" { GoToTab 5; }
+        bind "Super 6" { GoToTab 6; }
+        bind "Super 7" { GoToTab 7; }
+        bind "Super 8" { GoToTab 8; }
+        bind "Super 9" { GoToTab 9; }
+        bind "Super 0" { GoToTab 10; }
+
+        bind "Super h" {
+            Run "zellij-last-session" {
+                floating true
+                close_on_exit true
+                name "last-session"
+            }
+        }
+
+        bind "Super ." {
+            Run "zellij-goto-session" "dots" "/home/adaviloper/.config/zellij/layouts/dots.kdl" {
+                floating true
+                close_on_exit true
+                name "goto-session"
+            }
+        }
+
+        bind "Super m" {
+            Run "zellij-goto-session" "miscellaneous" "/home/adaviloper/.config/zellij/layouts/miscellaneous.kdl" {
+                floating true
+                close_on_exit true
+                name "goto-session"
+            }
+        }
+
+        bind "Super u" {
+            Run "zellij-goto-session" "together" "/home/adaviloper/.config/zellij/layouts/together.kdl" {
+                floating true
+                close_on_exit true
+                name "goto-session"
+            }
+        }
+
+        bind "Super i" {
+            Run "zellij-goto-session" "plugins" "/home/adaviloper/.config/zellij/layouts/plugins.kdl" {
+                floating true
+                close_on_exit true
+                name "goto-session"
+            }
+        }
+
+        bind "Super o" {
+            Run "zellij-goto-session" "qmk" "/home/adaviloper/.config/zellij/layouts/qmk.kdl" {
+                floating true
+                close_on_exit true
+                name "goto-session"
+            }
+        }
+
+        bind "Super s" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
+    }
+    normal {
+        bind "%" { NewPane "right"; SwitchToMode "locked"; }
+        bind "\"" { NewPane "down"; SwitchToMode "locked"; }
+        
+        bind "left" {
+            SwitchToMode "resize";
+            Resize "Increase left";
+            SwitchToMode "locked";
+        }
+        bind "down" {
+            SwitchToMode "resize";
+            Resize "Increase down";
+            SwitchToMode "locked";
+        }
+        bind "up" {
+            SwitchToMode "resize";
+            Resize "Increase up";
+            SwitchToMode "locked";
+        }
+        bind "right" {
+            SwitchToMode "resize";
+            Resize "Increase right";
+            SwitchToMode "locked";
+        }
     }
     pane {
         bind "left" { MoveFocus "left"; }
@@ -43,6 +145,7 @@ keybinds clear-defaults=true {
         bind "7" { GoToTab 7; SwitchToMode "locked"; }
         bind "8" { GoToTab 8; SwitchToMode "locked"; }
         bind "9" { GoToTab 9; SwitchToMode "locked"; }
+        bind "0" { GoToTab 10; SwitchToMode "locked"; }
         bind "[" { BreakPaneLeft; SwitchToMode "locked"; }
         bind "]" { BreakPaneRight; SwitchToMode "locked"; }
         bind "b" { BreakPane; SwitchToMode "locked"; }
@@ -110,29 +213,6 @@ keybinds clear-defaults=true {
         bind "w" { SearchToggleOption "Wrap"; }
     }
     session {
-        bind "." {
-            SwitchSession {
-                name "dots" 
-                tab_position 3 
-                layout "~/.config/zellij/layouts/dots.kdl" 
-            }
-        }
-        bind "q" {
-            SwitchSession {
-                name "qmk" 
-                tab_position 0 
-                layout "~/.config/zellij/layouts/qmk.kdl" 
-                cwd "~/Code/qmk_userspace/"
-            }
-        }
-        bind "u" {
-            SwitchSession {
-                name "together"
-                tab_position 0
-                layout "~/.config/zellij/layouts/together.kdl"
-                cwd "~/Code/together/"
-            }
-        }
         bind "a" {
             LaunchOrFocusPlugin "zellij:about" {
                 floating true
@@ -179,21 +259,20 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Alt left" { MoveFocus "left"; }
-        bind "Alt down" { MoveFocus "down"; }
-        bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocus "right"; }
+        bind "Super left" { MoveFocus "left"; }
+        bind "Super down" { MoveFocus "down"; }
+        bind "Super up" { MoveFocus "up"; }
+        bind "Super right" { MoveFocus "right"; }
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt h" { MoveFocus "left"; }
         bind "Alt i" { MoveTab "left"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocus "right"; }
+        bind "Super j" { MoveFocus "down"; }
+        bind "Super k" { MoveFocus "up"; }
+        bind "Super l" { MoveFocus "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
