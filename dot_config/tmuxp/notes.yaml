@@ -5,3 +5,8 @@ windows:
     start_directory: ./notes
   - window_name: Templates
     start_directory: ./templates
+  - window_name: Task Manager
+    start_directory: ~/Code/tasks/
+    panes:
+      - shell_command:
+        - tuxedo
