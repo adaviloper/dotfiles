@@ -2,6 +2,11 @@ mkd () {
   mkdir -p $1
 }
 
+mkcd () {
+  mkd $1
+  cd $1
+}
+
 mks () {
   REPO_URL="$1"
   REPO_NAME=$(echo "$REPO_URL" | sed "s|.*/||" | sed -E "s|\..*||")

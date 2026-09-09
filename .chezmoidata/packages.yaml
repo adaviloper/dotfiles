@@ -183,8 +183,10 @@ packages:
       - atim/bottom
       - atim/lazygit
       - lihaohong/yazi
+      - scottames/ghostty
     dnfs_from_coprs:
       - bottom
       - lazygit
       - yazi
+      - ghostty
     # rcm has no Fedora package and no known copr; skipped on Fedora.

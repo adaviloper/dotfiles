@@ -71,7 +71,7 @@ if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ "$is_primary_terminal" = true 
 fi
 
 {{- if eq .is_ubuntu true }}
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   eval "$(fnm env --use-on-cd)"
 {{- end }}
 
