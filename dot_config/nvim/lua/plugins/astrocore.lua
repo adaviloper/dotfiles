@@ -47,6 +47,7 @@ return {
 			pattern = {
 				[".*/dot_config/bin/.*"] = "sh",
 				[".*.json.tmpl"] = "json",
+				[".*.kdl.tmpl"] = "kdl",
 				[".*.lua.tmpl"] = "lua",
 				[".*.sh.tmpl"] = "sh",
 				[".*.toml.tmpl"] = "toml",

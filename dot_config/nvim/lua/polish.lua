@@ -5,6 +5,7 @@
 require('config.autocmds')
 require('config.commands.shell_current_line')
 require('config.commands.clear_debug_logs')
+require('config.commands.rgb')
 
 -- Function overwrites
 vim.ui.open = (function(overridden)

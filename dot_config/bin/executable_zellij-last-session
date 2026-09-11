@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Toggle to the previously visited zellij session (tmux `switch-client -l` equivalent).
+# Falls back to any other active session when no valid history exists.
+set -euo pipefail
+current="${ZELLIJ_SESSION_NAME:?not inside a zellij session}"
+last="${XDG_STATE_HOME:-$HOME/.local/state}/zellij/last-session"
+target="$(cat "$last" 2>/dev/null || true)"
+
+active() { zellij list-sessions -sn; }
+
+# empty / stale / self -> pick any other active session
+if [ -z "$target" ] || [ "$target" = "$current" ] || ! active | grep -qxF -- "$target"; then
+    target="$(active | grep -vxF -- "$current" | head -n1 || true)"
+fi
+[ -n "$target" ] || exit 0
+
+zellij-record-session
+exec zellij action switch-session -- "$target"

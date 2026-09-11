@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Switch to a named zellij session, recording the current one for `zellij-last-session`.
+# Usage: zellij-goto-session <name> [layout]
+set -euo pipefail
+name="${1:?usage: zellij-goto-session <name> [layout]}"
+layout="${2:-}"
+
+zellij-record-session
+
+if [ -n "$layout" ]; then
+    exec zellij action switch-session -l "$layout" -- "$name"
+fi
+exec zellij action switch-session -- "$name"

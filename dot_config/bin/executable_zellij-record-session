@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Record the session we are leaving, so `zellij-last-session` can jump back.
+set -euo pipefail
+[ -n "${ZELLIJ_SESSION_NAME:-}" ] || exit 0
+state="${XDG_STATE_HOME:-$HOME/.local/state}/zellij"
+mkdir -p "$state"
+printf '%s\n' "$ZELLIJ_SESSION_NAME" > "$state/last-session"

@@ -48,7 +48,7 @@ is_primary_terminal=false
 [[ "$TERM_PROGRAM" = "ghostty" ]] && is_primary_terminal=true
 
 # Autostart tmux only when in Ghostty
-if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ "$is_primary_terminal" = true ]] && [[ -z "$ZSH_NO_TMUX_AUTOSTART" ]]; then
+if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ -z "$ZELLIJ" ]] && [[ "$is_primary_terminal" = true ]] && [[ -z "$ZSH_NO_TMUX_AUTOSTART" ]]; then
   # Check if a tmux server is running
   if ! pgrep -x "tmux" > /dev/null; then
     # If no tmux server is running, run your command
