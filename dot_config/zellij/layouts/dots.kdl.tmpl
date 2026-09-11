@@ -1,5 +1,5 @@
 layout {
-  cwd "/home/adaviloper/.local/share/chezmoi/"
+  cwd "{{ .chezmoi.homeDir }}/.local/share/chezmoi/"
 
   default_tab_template {
     pane size=1 borderless=true {
@@ -17,13 +17,13 @@ layout {
     }
   }
 
-  tab name="Neovim Plugins" cwd="/home/adaviloper/.local/share/nvim/lazy/" {
+  tab name="Neovim Plugins" cwd="{{ .chezmoi.homeDir }}/.local/share/nvim/lazy" {
     pane {
       name "nvim"
     }
   }
 
-  tab name="Configs" cwd="/home/adaviloper/.config/" {
+  tab name="Configs" cwd="{{ .chezmoi.homeDir }}/.config" {
     pane {
       name "nvim"
     }
