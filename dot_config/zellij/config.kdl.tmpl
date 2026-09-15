@@ -54,8 +54,20 @@ keybinds clear-defaults=true {
             }
         }
 
+        bind "Super n" {
+            Run "zellij-goto-session" "notes" "{{ .chezmoi.homeDir }}/.config/zellij/layouts/notes.kdl" {
+                floating true
+                close_on_exit true
+                name "goto-session"
+            }
+        }
+
         bind "Super u" {
+        {{- if eq .purpose "work" }}
+            Run "zellij-goto-session" "work" "{{ .chezmoi.homeDir }}/.config/zellij/layouts/work.kdl" {
+        {{- else }}
             Run "zellij-goto-session" "together" "{{ .chezmoi.homeDir }}/.config/zellij/layouts/together.kdl" {
+        {{- end }}
                 floating true
                 close_on_exit true
                 name "goto-session"
@@ -82,6 +94,13 @@ keybinds clear-defaults=true {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true
+            }
+        }
+
+        bind "Super t" {
+            Run "zellij-session-picker" {
+                floating true
+                close_on_exit false
             }
         }
     }
