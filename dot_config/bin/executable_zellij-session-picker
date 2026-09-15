@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+# Fuzzy-pick an active zellij session, a layout file, or a zoxide directory,
+# then switch to it. Mirrors ~/.config/tmux/plugins/t-session for zellij.
+set -euo pipefail
+
+# Icon glyphs (nerd font)
+SESSION_GLYPH=""    # terminal, active zellij sessions
+LAYOUT_GLYPH=""     # gear, zellij layout files
+ZOXIDE_GLYPH=""     # folder, zoxide entries
+
+# Icon colors - pulled from the terminal's own ANSI palette (tput setaf N),
+# so they follow whatever theme the terminal is set to.
+COLOR_SESSION=$(tput setaf 2)   # green
+COLOR_LAYOUT=$(tput setaf 7)    # grey
+COLOR_ZOXIDE=$(tput setaf 4)    # blue
+COLOR_RESET=$(tput sgr0)
+
+SESSION_ICON="${COLOR_SESSION}${SESSION_GLYPH}${COLOR_RESET}"
+LAYOUT_ICON="${COLOR_LAYOUT}${LAYOUT_GLYPH}${COLOR_RESET}"
+ZOXIDE_ICON="${COLOR_ZOXIDE}${ZOXIDE_GLYPH}${COLOR_RESET}"
+
+LAYOUT_DIR="$HOME/.config/zellij/layouts"
+CURRENT_SESSION="${ZELLIJ_SESSION_NAME:-}"
+
+# List active zellij sessions and prepend the icon, excluding the current one
+SESSIONS=$(zellij list-sessions -sn 2>/dev/null | grep -vxF -- "$CURRENT_SESSION" | sed "s/^/$SESSION_ICON /")
+
+# List layout files from the zellij layouts directory, excluding any whose
+# name already matches an active session (it's already running that layout)
+LAYOUTS=""
+if [ -d "$LAYOUT_DIR" ]; then
+  while IFS= read -r file; do
+    layout_name=$(basename "$file" .kdl)
+    if ! echo "$SESSIONS" | grep -qF " $layout_name"; then
+      LAYOUTS+="$LAYOUT_ICON $layout_name ($file)"$'\n'
+    fi
+  done < <(find "$LAYOUT_DIR" -maxdepth 1 -name '*.kdl' | sort)
+fi
+
+# List zoxide entries using `zoxide query -l` and replace the full home path with ~
+ZOXIDE_ENTRIES=$(zoxide query -l 2>/dev/null | awk -v home="$HOME" '{gsub(home, "~"); print "'$ZOXIDE_ICON' " $0}')
+
+# Combine the lists
+COMBINED=$(printf '%s\n%s\n%s\n' "$SESSIONS" "$LAYOUTS" "$ZOXIDE_ENTRIES" | sed '/^[[:space:]]*$/d')
+
+# Display the sessions in a fzf popup and let the user pick one
+SELECTED=$(echo "$COMBINED" | \
+  fzf --ansi \
+    --layout=reverse \
+    --style full \
+    --border \
+    --border-label ' Select a Session ' \
+    --input-label ' Query ' \
+    --color 'border:#a6e3a1,label:#a6e3a1,input:#ccccff' \
+    --color 'list-border:#89b4fa,list-label:#89b4fa' \
+    --color 'input-border:#89b4fa,input-label:#89b4fa' \
+    --color 'header-border:#6699cc,header-label:#99ccff')
+
+# Exit if no session is selected (Escape or empty selection)
+if [ -z "$SELECTED" ]; then
+  exit 0
+fi
+
+# Strip the icon from the selected line
+STRIPPED="${SELECTED#* }"
+
+if echo "$SESSIONS" | grep -qxF -- "$SELECTED"; then
+  # Switch to the selected active session
+  zellij-record-session
+  exec zellij action switch-session -- "$STRIPPED"
+elif echo "$LAYOUTS" | grep -qxF -- "$SELECTED"; then
+  # Create (or switch to) a session using the selected layout file, naming
+  # the session after the layout, e.g. "work.kdl" -> session "work"
+  LAYOUT_NAME=$(echo "$STRIPPED" | sed -e 's/ (.*)//')
+  LAYOUT_FILE=$(echo "$STRIPPED" | sed -e 's/.*(\(.*\))$/\1/')
+  zellij-record-session
+  exec zellij action switch-session -l "$LAYOUT_FILE" -- "$LAYOUT_NAME"
+elif [ -n "$STRIPPED" ]; then
+  # Create (or switch to) a session in the selected zoxide directory, naming
+  # the session after the directory's basename
+  ZOXIDE_PATH=$(eval echo "$STRIPPED")
+  SESSION_NAME=$(printf '%s' "$(basename "$ZOXIDE_PATH")" | tr -c 'A-Za-z0-9_-' '_')
+  zellij-record-session
+  exec zellij action switch-session -c "$ZOXIDE_PATH" -- "$SESSION_NAME"
+else
+  echo "No matching session, layout, or zoxide entry found for: $SELECTED" >&2
+  exit 1
+fi
