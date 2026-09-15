@@ -47,28 +47,26 @@ export TERM="xterm-256color"
 is_primary_terminal=false
 [[ "$TERM_PROGRAM" = "ghostty" ]] && is_primary_terminal=true
 
-# Autostart zellij only when in Ghostty
-if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ -z "$ZELLIJ" ]] && [[ "$is_primary_terminal" = true ]] && [[ -z "$ZSH_NO_ZELLIJ_AUTOSTART" ]]; then
-  # Check if a zellij server is running
-  if ! zellij list-sessions >/dev/null 2>&1; then
-    # If no zellij server is running, create the relevant sessions in the background
-    zellij attach -b dots options --default-layout dots >/dev/null 2>&1
-    zellij attach -b notes options --default-layout notes >/dev/null 2>&1
+# Autostart tmux only when in Ghostty
+if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ -z "$ZELLIJ" ]] && [[ "$is_primary_terminal" = true ]] && [[ -z "$ZSH_NO_TMUX_AUTOSTART" ]]; then
+  # Check if a tmux server is running
+  if ! pgrep -x "tmux" > /dev/null; then
+    # If no tmux server is running, run your command
+    tmuxp load -d dots
 
-    {{- if eq .purpose "work" }}
-    zellij attach -b work options --default-layout work >/dev/null 2>&1
-    zellij attach -b skynet options --default-layout skynet >/dev/null 2>&1
+    tmuxp load -d notes
+
+    {{- if eq .purpose "work" -}}
+    tmuxp load -d work
+    tmuxp load -d skynet
     {{ else }}
-    zellij attach -b together options --default-layout together >/dev/null 2>&1
-    {{ end }}
-    {{- if eq .purpose "work" }}
-    zellij attach skynet
-    {{ else }}
-    zellij attach together
-    {{ end }}
+    tmuxp load -d together
+    {{- end }}
+
+    tmux attach
   else
-    # If a zellij server is running, attach to it (opens the session picker if more than one session exists)
-    zellij
+    # If a tmux server is running, attach to it
+    tm a
   fi
 fi
 
