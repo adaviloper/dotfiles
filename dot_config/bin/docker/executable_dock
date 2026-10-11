@@ -24,6 +24,9 @@ get_service_name() {
         */"slapi/server"/*|*/"slapi/server")
             echo "server-api"
             ;;
+        */"apis"/*|*/"apis")
+            echo "laravel.test"
+            ;;
         *)
             echo ""
             ;;
