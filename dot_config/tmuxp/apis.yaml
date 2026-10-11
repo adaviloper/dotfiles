@@ -1,0 +1,8 @@
+session_name: apis-you-wont-hate
+start_directory: ~/Code/apis/
+windows:
+  - window_name: Project
+    panes:
+      - shell_command:
+        - vim
+  - window_name: Terminals

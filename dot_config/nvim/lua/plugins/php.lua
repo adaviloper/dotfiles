@@ -20,6 +20,11 @@ return {
 						cmd = "dart test",
 						group_cmd = "dock ./vendor/bin/phpunit --list-groups",
 					},
+					{
+						dir = "~/Code/apis",
+						cmd = "sail test",
+						group_cmd = "sail phpunit --group ",
+					},
 				},
 			})
 		end,
