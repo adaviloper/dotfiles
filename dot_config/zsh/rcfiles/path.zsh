@@ -16,6 +16,7 @@ export PATH="/opt/homebrew/opt/avr-gcc@8/bin:$PATH"
 export PATH="yarn global bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
 
