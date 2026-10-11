@@ -35,6 +35,9 @@ database        = { class = "jetbrains-datagrip",          cmd = "/opt/datagrip/
 api_client      = { class = "apidog",                      cmd = "/opt/apidog/apidog" }
 
 --- @type App
+pdf_client      = { class = "org.kde.okular",              cmd = "/usr/bin/okular" }
+
+--- @type App
 notes_app      = { class = "emacs",                        cmd = "emacs ~/Code/notes/org-mode/" }
 
 shellPrefix = "noctalia msg"
