@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Run PHPUnit inside Laravel Sail for neotest-phpunit.
+# Maps host paths to the container mount and writes the junit report
+# back to the host path neotest expects, with host paths restored.
+
+root="$(pwd)"
+remote="/var/www/html"
+tmp="storage/logs/neotest-junit.xml"
+junit=""
+args=()
+
+for a in "$@"; do
+  case "$a" in
+    --log-junit=*)
+      junit="${a#--log-junit=}"
+      args+=("--log-junit=$remote/$tmp")
+      ;;
+    *)
+      args+=("${a//$root/$remote}")
+      ;;
+  esac
+done
+
+./vendor/bin/sail phpunit "${args[@]}"
+status=$?
+
+if [ -n "$junit" ] && [ -f "$tmp" ]; then
+  sed "s#$remote#$root#g" "$tmp" > "$junit"
+  rm -f "$tmp"
+fi
+
+exit $status
