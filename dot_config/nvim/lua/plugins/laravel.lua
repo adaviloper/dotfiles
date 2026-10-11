@@ -1,9 +1,11 @@
 return {
   {
-    'RicardoRamirezR/blade-nav.nvim'
+    'RicardoRamirezR/blade-nav.nvim',
+    enabled = false,
   },
   {
     "adalessa/laravel.nvim",
+    enabled = false,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
@@ -58,6 +60,13 @@ return {
       environments = {
         ask_on_boot = true,
         definitions = {
+          {
+            name = "apis",
+            map = {
+              php = { "vendor/bin/sail", "php" },
+              composer = { "vendor/bin/sail", "composer" },
+            },
+          },
           {
             name = "together",
             map = {

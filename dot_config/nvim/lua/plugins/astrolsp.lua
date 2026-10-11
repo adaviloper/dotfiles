@@ -37,7 +37,8 @@ return {
 		},
 		-- enable servers that you already have installed without mason
 		servers = {
-			-- "pyright"
+			-- "pyright",
+			"laravel_lsp",
 		},
 		-- customize language server configuration passed to `vim.lsp.config`
 		-- client specific configuration can also go in `lsp/` in your configuration root (see `:h lsp-config`)
@@ -88,6 +89,16 @@ return {
 					},
 				},
 			},
+  		laravel_lsp = {
+        cmd = { "laravel-lsp" },
+        filetypes = { "php", "blade" },
+        root_dir = function(bufnr, on_dir)
+          local root = vim.fs.root(bufnr, "artisan")
+          if root then
+            on_dir(root)
+          end
+        end,
+  		},
 			phpactor = {
 				init_options = {
 					["language_server_phpstan.enabled"] = false,
