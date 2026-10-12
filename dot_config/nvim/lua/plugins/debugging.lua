@@ -4,26 +4,45 @@ return {
     "rcarriga/nvim-dap-ui",
     "leoluz/nvim-dap-go",
   },
-  opts = function (_, opts)
-    local dap = require('dap')
-    local dapui = require('dapui')
+  -- AstroNvim already sets up dap-ui and its open/close listeners, so only add adapters here
+  config = function (...)
+    require("astronvim.plugins.configs.nvim-dap")(...)
 
-    require('dapui').setup()
+    local dap = require('dap')
+
     require('dap-go').setup()
 
-    dap.listeners.before.attach.dapui_config = function ()
-      dapui.open()
-    end
-    dap.listeners.before.launch.dapui_config = function ()
-      dapui.open()
-    end
-    dap.listeners.before.event_terminated.dapui_config = function ()
-      dapui.close()
-    end
-    dap.listeners.before.event_exited.dapui_config = function ()
-      dapui.close()
-    end
-    
+    -- mason-nvim-dap has no handler for js-debug-adapter, so register pwa-node by hand
+    dap.adapters["pwa-node"] = {
+      type = "server",
+      host = "localhost",
+      port = "${port}",
+      executable = { command = "js-debug-adapter", args = { "${port}" } },
+    }
 
+    for _, ft in ipairs({ "typescript", "javascript" }) do
+      dap.configurations[ft] = {
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Vitest: current file",
+          cwd = "${workspaceFolder}",
+          program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+          args = { "run", "${file}", "--no-file-parallelism" },
+          autoAttachChildProcesses = true,
+          smartStep = true,
+          console = "integratedTerminal",
+          skipFiles = { "<node_internals>/**", "**/node_modules/**" },
+        },
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Node: current file",
+          cwd = "${workspaceFolder}",
+          program = "${file}",
+          skipFiles = { "<node_internals>/**" },
+        },
+      }
+    end
   end
 }

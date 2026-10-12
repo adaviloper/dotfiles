@@ -23,6 +23,7 @@ return {
 
         -- install debuggers
         "delve",
+        "js-debug-adapter",
 
         -- install any other package
         "tree-sitter-cli",
