@@ -9,3 +9,7 @@ Prefer using browser agent skill over using playwright directly.
 ## Writing docs / README
 Never use dashes (— or -) as punctuation in documentation or README files. Rephrase sentences using periods, commas, or parentheses instead.
 
+## Dotfile configuration
+
+All dotfile configuration needs to be done in the `$HOME/.local/share/chezmoi/` directory.
+
