@@ -30,11 +30,11 @@ M.fm_term = Terminal:new({
   },
 })
 
---- @alias TermKey "default" | "robot" | "fm"
+--- @alias TermKey "default" | "robot" | "file_manager"
 M.terminals = {
   default = M.default_terminal,
   robot = M.robo_term,
-  fm = M.fm_term,
+  file_manager = M.fm_term,
 }
 
 --- @param term_key TermKey

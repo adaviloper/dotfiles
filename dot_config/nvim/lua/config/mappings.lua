@@ -217,14 +217,14 @@ return {
     },
 
     ["<Leader>tt"] = { function() astro.toggle_term_cmd({ direction = "float", cmd = "tuxedo" }) end, desc = "Toggleterm Todo Manager" },
-    ["<F5>"] = {
-      function() astro.toggle_term_cmd({ direction = "float", cmd = "harlequin" }) end,
-      desc = "Toggleterm Database Client",
-    },
+    -- ["<F5>"] = {
+    --   function() astro.toggle_term_cmd({ direction = "float", cmd = "harlequin" }) end,
+    --   desc = "Toggleterm Database Client",
+    -- },
     ["<LocalLeader>tt"] = { "<CMD>DooingLocal<CR>", desc = "Toggleterm Todo Manager" },
 
-    ["<F4>"] = {
-      function() terminals.toggle_terminal('fm') end,
+    ["<F6>"] = {
+      function() terminals.toggle_terminal('file_manager') end,
       desc = "Toggleterm 󰇥 File Manager",
     },
 
@@ -481,7 +481,7 @@ return {
 
     ["<F7>"] = { function() terminals.toggle_terminal('default') end },
 
-    ["<F4>"] = { function() terminals.toggle_terminal('fm') end },
+    ["<F6>"] = { function() terminals.toggle_terminal('file_manager') end },
 
     -- setting a mapping to false will disable it
     ["<F8>"] = { "<C-\\><C-n>" },
