@@ -12,29 +12,6 @@ local paste_and_clean = function (key)
   end
 end
 
-local search_exclusions = {
-  "*.map",
-  "*.min.css",
-  "*.min.js",
-  "*.min_*.js",
-  "*/build/*",
-  "*/coverage/*",
-  "*/dist/*",
-  "*/venv/*",
-  "*_min.css",
-  "*_min.js",
-  ".idea/*",
-  "build/*",
-  "coverage/*",
-  "dist/*",
-  "node_modules*",
-  "package-lock.json",
-  "public/*",
-  "storage/*",
-  "vendor/*",
-  "venv/*",
-}
-
 return {
   -- first key is the mode
   n = {
@@ -258,26 +235,24 @@ return {
           include = {
             '.env',
           },
-          exclude = search_exclusions,
         })
       end,
       desc = "Find files",
     },
 
     ["<Leader>fw"] = {
-      function() require("snacks").picker.grep {
-        hidden = true,
-        ignored = true,
-        exclude = search_exclusions,
-      } end,
+      function()
+        require("snacks").picker.grep({ hidden = true, ignored = true })
+      end,
       desc = "Find words in all files",
     },
 
-    ["<Leader>f/"] = { function() require("snacks").picker.grep({
-      glob = {
-        vim.fn.expand("%")
-      }
-    }) end, desc = "Find words" },
+    ["<Leader>f/"] = {
+      function()
+        require("snacks").picker.grep({ glob = { vim.fn.expand("%") } })
+      end,
+      desc = "Find words",
+    },
 
     ["<Leader>fo"] = {
       function() require("telescope.builtin").oldfiles({ cwd_only = true }) end,

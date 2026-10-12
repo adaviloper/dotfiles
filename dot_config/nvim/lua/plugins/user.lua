@@ -68,6 +68,36 @@ return {
         { section = 'startup', padding = 1 },
       }
 
+      opts.picker = {
+        matcher = {
+          frecency = true,
+        },
+        formatters = {
+          file = {
+            filename_first = true,
+          }
+        },
+        exclude = {
+          "*.map",
+          "*.min.css",
+          "*.min.js",
+          "*.min_*.js",
+          "*_min.css",
+          "*_min.js",
+          ".idea",
+          "alfred",
+          "build",
+          "coverage",
+          "dist",
+          "node_modules",
+          "package-lock.json",
+          "public",
+          "storage",
+          "vendor",
+          "venv",
+        },
+      }
+
       return opts
     end,
   },
