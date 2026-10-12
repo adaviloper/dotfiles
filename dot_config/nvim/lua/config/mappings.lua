@@ -183,6 +183,16 @@ return {
     -- CLI TUIs
     ["<F8>"] = { name = "CLI TUIs" },
 
+    ["<Leader>dn"] = {
+      function() require("neotest").run.run({ strategy = "dap" }) end,
+      desc = "Debug nearest test",
+    },
+
+    ["<Leader>dN"] = {
+      function() require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" }) end,
+      desc = "Debug test file",
+    },
+
     ["<Leader>dt"] = {
       function() astro.toggle_term_cmd({ direction = "float", cmd = "dart tinker" }) end,
       desc = "Toggleterm Artisan tinker for current Docker container",
