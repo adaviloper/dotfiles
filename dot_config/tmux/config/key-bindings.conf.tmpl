@@ -62,7 +62,7 @@ bind n if-shell '[ $(tmux has-session -t "Notes") -eq 0 ]' {
 
 bind m if-shell 'tmux has-session -t "Miscellaneous"' 'attach -t "Miscellaneous"'
 
-bind q kill-session
+bind q confirm-before kill-session
 
 # Window search (case-insensitive, window names only)
 bind f command-prompt -p "Find window:" "find-window -i '%%'"
