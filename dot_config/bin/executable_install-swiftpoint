@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+# Install or update the Swiftpoint X1 Control Panel from a downloaded tarball.
+#
+# Usage: install-swiftpoint [--hid-only] [tarball]
+#   tarball     defaults to the highest version in ~/Downloads
+#   --hid-only  drop the udev lines that grant keyboard/mouse evdev access
+#               (keystroke recording then only works inside the app window)
+
+set -euo pipefail
+
+opt_dir="$HOME/.local/opt"
+bin_link="$HOME/.local/bin/swiftpoint"
+desktop_file="$HOME/.local/share/applications/swiftpoint.desktop"
+rules_dest="/etc/udev/rules.d/60-Swiftpoint.rules"
+hid_only=0
+tarball=""
+
+for arg in "$@"; do
+    case "$arg" in
+        --hid-only) hid_only=1 ;;
+        -h|--help) sed -n '2,8p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+        *) tarball="$arg" ;;
+    esac
+done
+
+if [ -z "$tarball" ]; then
+    tarball=$(find "$HOME/Downloads/" -maxdepth 1 -type f -name 'Swiftpoint X1 Control Panel *.xz' -printf '%f\n' \
+        | sort -V | tail -n 1)
+    [ -n "$tarball" ] || { echo "No Swiftpoint tarball found in ~/Downloads." >&2; exit 1; }
+    tarball="$HOME/Downloads/$tarball"
+fi
+[ -f "$tarball" ] || { echo "Not a file: $tarball" >&2; exit 1; }
+
+# Archive must contain exactly one top-level directory and no absolute or parent paths
+entries=$(tar -tJf "$tarball")
+if grep -qE '^/|(^|/)\.\.(/|$)' <<<"$entries"; then
+    echo "Refusing archive with absolute or '..' paths: $tarball" >&2
+    exit 1
+fi
+top=$(cut -d/ -f1 <<<"$entries" | sort -u)
+if [ "$(wc -l <<<"$top")" -ne 1 ]; then
+    echo "Expected one top-level directory in archive, found:" >&2
+    echo "$top" >&2
+    exit 1
+fi
+version=${top#Swiftpoint X1 Control Panel }
+binary_name="Swiftpoint X1 Control Panel"
+grep -qxF "$top/$binary_name" <<<"$entries" || { echo "Binary missing from archive." >&2; exit 1; }
+
+# Anchor on the path end so a tarball path passed as an argument does not match
+if pgrep -f "/$binary_name\$" >/dev/null; then
+    echo "Swiftpoint X1 Control Panel is running. Close it first." >&2
+    exit 1
+fi
+
+target="$opt_dir/swiftpoint-$version"
+current="$opt_dir/swiftpoint"
+previous=$(readlink -f "$current" 2>/dev/null || true)
+
+echo "Installing $version from $(basename "$tarball")"
+mkdir -p "$opt_dir"
+staging=$(mktemp -d "$opt_dir/.swiftpoint-staging.XXXXXX")
+trap 'rm -rf "$staging"' EXIT
+tar -xJf "$tarball" -C "$staging" --no-same-owner
+rm -rf "$target"
+mv "$staging/$top" "$target"
+ln -sfn "$target" "$current"
+
+# Keep the new version and the one it replaced, prune the rest
+for dir in "$opt_dir"/swiftpoint-*; do
+    [ -d "$dir" ] || continue
+    if [ "$dir" != "$target" ] && [ "$dir" != "$previous" ]; then
+        echo "Removing old install $dir"
+        rm -rf "$dir"
+    fi
+done
+
+mkdir -p "$(dirname "$bin_link")"
+ln -sfn "$current/$binary_name" "$bin_link"
+
+mkdir -p "$(dirname "$desktop_file")"
+cat >"$desktop_file" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Swiftpoint X1 Control Panel
+Exec=$bin_link
+Terminal=false
+Categories=Settings;HardwareSettings;
+EOF
+
+rules_src="$target/60-Swiftpoint.rules"
+if [ "$hid_only" -eq 1 ]; then
+    rules_src="$staging/60-Swiftpoint.rules"
+    grep -v 'SUBSYSTEM=="input"' "$target/60-Swiftpoint.rules" >"$rules_src"
+fi
+if cmp -s "$rules_src" "$rules_dest"; then
+    echo "udev rules unchanged"
+else
+    echo "Updating $rules_dest (needs sudo)"
+    sudo install -m 644 "$rules_src" "$rules_dest"
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger
+    echo "Replug the dongle if the app cannot see the mouse."
+fi
+
+echo "Done. Run: swiftpoint"
