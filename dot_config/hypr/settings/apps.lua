@@ -26,7 +26,7 @@ menu            = { class = nil,                           cmd = "rofi -show dru
 passwordManager = { class = "Proton Pass",                 cmd = "proton-pass" }
 
 --- @type App
-emailClient     = { class = "Proton Mail",                 cmd = "proton-mail" }
+emailClient     = { class = "proton-mail",                 cmd = "proton-mail" }
 
 --- @type App
 database        = { class = "jetbrains-datagrip",          cmd = "/opt/datagrip/bin/datagrip" }
