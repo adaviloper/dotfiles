@@ -3,20 +3,8 @@ local astrocore = require("astrocore")
 astrocore.set_mappings({
   n = {
     ["<LocalLeader>ts"] = { "<cmd>ToggleSyntax<CR>", desc = "Toggle property access type" },
-    -- NeoTeset
-    ["<F4>"] = { name = "Testing" },
-    ["<F4><F4>"] = {
-      function() require("neotest").run.run_last() end,
-      desc = "Rerun the previous test",
-    },
-    ["<F4>n"] = {
-      function() require("neotest").run.run() end,
-      desc = "Run nearest test",
-    },
-    ["<F4>f"] = {
-      function() require("neotest").run.run(vim.fn.expand("%")) end,
-      desc = "Test the entire file",
-    },
+
+    -- Testing
     ["<F4>g"] = {
       function()
         local cmd = vim.fn.expand("~/.config/bin/docker/sail-phpunit")

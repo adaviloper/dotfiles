@@ -227,6 +227,41 @@ return {
       desc = "ToggleTerm  Default",
     },
 
+    -- Testing
+    ["<F4>"] = {
+      name = "Testing",
+    },
+
+    ["<F4><F4>"] = {
+      function() require("neotest").run.run_last() end,
+      desc = "Rerun the previous test",
+    },
+
+    ["<F4>n"] = {
+      function() require("neotest").run.run() end,
+      desc = "Run nearest test",
+    },
+
+    ["<F4>f"] = {
+      function() require("neotest").run.run(vim.fn.expand("%")) end,
+      desc = "Test the entire file",
+    },
+
+    ["<F4>s"] = {
+      function()
+        require('neotest').summary.toggle()
+      end, 
+      desc = "Toggle test summary",
+    },
+
+    ["<F4>w"] = {
+      function ()
+        -- neotest.watch reruns on save itself; vitest must stay in run mode (neotest-vitest adds --watch=false)
+        require('neotest').watch.toggle(vim.fn.expand("%"))
+      end,
+      desc = "Run Test watcher"
+    },
+
     -- Telescope
     ["<Leader>ff"] = {
       function()
