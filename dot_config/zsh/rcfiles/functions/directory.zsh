@@ -1,9 +1,5 @@
 mkd () {
   mkdir -p $1
-}
-
-md () {
-  mkd $1
   cd $1
 }
 
