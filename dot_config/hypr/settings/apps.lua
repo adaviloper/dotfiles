@@ -19,7 +19,7 @@ swiftpoint      = { class = "Swiftpoint X1 Control Panel", cmd = "bash -c 'cd ~/
 chat            = { class = "vesktop",                     cmd = "vesktop --wayland" }
 
 --- @type App
-menu            = { class = nil,                           cmd = "rofi -show drun" }
+menu            = { class = nil,                           cmd = [[rofi -show combi -modi combi,drun,calc -combi-modi drun,calc -combi-hide-mode-prefix -calc-command "echo -n '{result}' | wl-copy"]] }
 
 -- menu            = { class = nil,                           cmd = "noctalia msg panel-toggle launcher" }
 --- @type App

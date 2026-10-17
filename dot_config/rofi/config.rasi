@@ -64,7 +64,7 @@ listbox {
     padding:                     20px;
     background-color:            transparent;
     orientation:                 vertical;
-    children:                    [ "listview" ];
+    children:                    [ "message", "listview" ];
 }
 
     /** REDACTED   REDACTED */
