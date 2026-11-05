@@ -1,0 +1,6 @@
+theme = "CatppuccinMocha"
+show_table_borders = false
+show_table_row_numbers = true
+
+[http]
+https_only = false

@@ -16,4 +16,6 @@ alias -g NUL='>/dev/null 2>&1'
 alias -g C='| pbcopy'
 
 alias -s md="bat"
+alias -s json="tw"
+alias -s csv="tw"
 

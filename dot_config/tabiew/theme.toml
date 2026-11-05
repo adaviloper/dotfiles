@@ -1,0 +1,75 @@
+[table_header]
+fg = "#FFFFFF"
+bg = "#000000"
+
+[[table_headers]]
+fg = "#FFFF00"
+bg = "#000000"
+
+[[table_headers]]
+fg = "#FF00FF"
+bg = "#000000"
+
+[[table_headers]]
+fg = "#00FFFF"
+bg = "#000000"
+
+[[rows]]
+fg = "#FFFFFF"
+bg = "#383838"
+
+[[rows]]
+fg = "#FFFFFF"
+bg = "#101010"
+
+[row_highlight]
+fg = "#000000"
+bg = "#FFFF00"
+
+[[table_tags]]
+fg = "#000000"
+bg = "#FF0000"
+
+[[table_tags]]
+fg = "#000000"
+bg = "#00FF00"
+
+[block]
+fg = "#FFFF00"
+bg = "#000000"
+
+[block_tag]
+fg = "#000000"
+bg = "#FFFF00"
+
+[text]
+fg = "#FFFFFF"
+bg = "#000000"
+
+[text_highlighted]
+fg = "#FF00FF"
+bg = "#000000"
+
+[subtext]
+fg = "#ABABAB"
+bg = "#000000"
+
+[error]
+fg = "#FFFFFF"
+bg = "#FF0000"
+
+[gutter]
+fg = "#FF00FF"
+bg = "#000000"
+
+[[chart]]
+fg = "#FFFF00"
+bg = "#000000"
+
+[[chart]]
+fg = "#FF00FF"
+bg = "#000000"
+
+[[chart]]
+fg = "#00FFFF"
+bg = "#000000"
