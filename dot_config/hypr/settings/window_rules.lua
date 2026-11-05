@@ -74,6 +74,7 @@ local function is_swiftpoint(class)
   return class == swiftpoint.class
 end
 
+---@param window HL.Window
 local function other_browser_count(window)
   local count = 0
   for _, w in ipairs(hl.get_windows()) do
@@ -84,20 +85,23 @@ local function other_browser_count(window)
   return count
 end
 
+---@param window HL.Window
 hl.on("window.open", function(window)
   if not window then return end
 
   local g
   if is_browser(window.class) then
     if other_browser_count(window) == 0 then
-      g = moom_geo(1/4, 1/2) -- first browser: center half
+      g = moom_geo(1/4, 1/2)
       hl.dispatch(hl.dsp.window.tag({ window = window, tag = "primary" }))
     else
-      g = moom_geo(3/4, 1/4) -- second+ browser: right quarter
+      g = moom_geo(3/4, 1/4)
     end
   elseif is_swiftpoint(window.class) then
     hl.dispatch(hl.dsp.window.center({ window = window}))
     return
+  elseif window.initial_title == "Discord Popout" then
+    g = moom_geo(2/3, 1/3)
   elseif window.class == fileManager.class then
     hl.dispatch(hl.dsp.window.resize({ x = 1400, y = 900, relative = false }))
     hl.dispatch(hl.dsp.window.center({ window = window }))
@@ -117,9 +121,9 @@ hl.on("window.active", function()
   hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top", window = active }))
 end)
 
--- Fullscreen windows move to a dedicated workspace that never shows the Noctalia bar
 local FULLSCREEN_WS = "name:fullscreen"local fullscreen_origin = {}
 
+---@param window HL.Window
 hl.on("window.fullscreen", function(window)
   if not window then return end
 
@@ -138,9 +142,6 @@ hl.on("window.fullscreen", function(window)
 
       local g = placements[window.class]
       if g then
-        -- Hyprland's own pre-fullscreen geometry restore lands a tick after
-        -- this event fires and clobbers any reposition issued right here,
-        -- so defer reapplying the placement until that reflow has settled.
         local restore_timer
         restore_timer = hl.timer(function()
           hl.dispatch(hl.dsp.window.resize({ window = window, x = g.w, y = g.h, relative = false }))
@@ -152,6 +153,7 @@ hl.on("window.fullscreen", function(window)
   end
 end)
 
+---@param workspace HL.Workspace
 hl.on("workspace.active", function(workspace)
   if not workspace then return end
   hl.exec_cmd(workspace.name == "fullscreen" and "noctalia msg bar-hide default" or "noctalia msg bar-show default")

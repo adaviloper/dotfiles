@@ -52,7 +52,7 @@ function notify(opts)
   local title = opts.title or "Title"
   local body = opts.body or "Body"
   local type = opts.type or "notify"
-  hl.dispatch(hl.dsp.exec_cmd("qs -c noctalia-shell ipc call toast send '{\"title\": \""..title.. "\",\"body\": \""..body.. "\",\"type\": \""..opts.type.. "\"}'"))
+  hl.dispatch(hl.dsp.exec_cmd("qs -c noctalia-shell ipc call toast send '{\"title\": \""..title.. "\",\"body\": \""..body.. "\",\"type\": \""..type.. "\"}'"))
 end
 
 function info(opts)
@@ -68,4 +68,37 @@ end
 function err(opts)
   opts.type = "error"
   notify(opts)
+end
+
+-- Append a description of obj (table or userdata) to a file for debugging.
+-- Watch with: tail -f /tmp/hypr-dump.txt
+function dump(obj, path)
+  path = path or "/tmp/hypr-dump.txt"
+  local f = io.open(path, "a")
+  if not f then return end
+  f:write(("=== %s (%s) ===\n"):format(os.date("%T"), type(obj)))
+
+  local function write_table(t, prefix)
+    for k, v in pairs(t) do
+      f:write(("%s%s = %s (%s)\n"):format(prefix, tostring(k), tostring(v), type(v)))
+    end
+  end
+
+  if type(obj) == "table" then
+    write_table(obj, "")
+  elseif type(obj) == "userdata" then
+    -- userdata fields live in the metatable
+    local mt = getmetatable(obj)
+    if type(mt) == "table" then
+      write_table(mt, "mt.")
+      if type(mt.__index) == "table" then
+        write_table(mt.__index, "__index.")
+      end
+    else
+      f:write("metatable: " .. tostring(mt) .. "\n")
+    end
+  else
+    f:write(tostring(obj) .. "\n")
+  end
+  f:close()
 end
