@@ -19,7 +19,20 @@ return {
         heading = presets.headings.glow_labels,
         preview = {
           modes = { 'i', 'n' },
-          callbacks = {},
+          -- Override markview's default conceallevel of 3 so obsidian.nvim's UI keeps working
+          callbacks = {
+            on_attach = function (_, wins)
+              for _, win in ipairs(wins) do vim.wo[win].conceallevel = 2 end
+            end,
+            on_enable = function (_, wins)
+              for _, win in ipairs(wins) do vim.wo[win].conceallevel = 2 end
+            end,
+            on_mode_change = function (_, wins, mode)
+              for _, win in ipairs(wins) do
+                vim.wo[win].conceallevel = vim.list_contains({ 'i', 'n' }, mode) and 2 or 0
+              end
+            end,
+          },
           ignore = {
             buftypes = { "nofile", "nowrite", "quickfix", "terminal", "prompt" },
           },
