@@ -5,3 +5,7 @@ swagger-docs.yaml
 graph-openapi.yaml
 *ticket.md
 [A-Z]*-[0-9]*.md
+
+.ignore
+
+harlequin.toml
