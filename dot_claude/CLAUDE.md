@@ -13,3 +13,5 @@ Never use dashes (— or -) as punctuation in documentation or README files. Rep
 
 All dotfile configuration needs to be done in the `$HOME/.local/share/chezmoi/` directory.
 
+## Git
+Never create git commits, including `git commit --amend` and `git rebase --continue`, which also produce commits. Leave changes uncommitted in the working tree so I can validate them and commit them myself. Ask before rebasing.
