@@ -9,7 +9,8 @@ else
   BASE_COMMIT="HEAD"
 fi
 
-COMMIT="$1"
+COMMIT="${1:-$(git rev-parse --short "$BASE_COMMIT")}"
+wl-copy "$COMMIT"
 DATE=$(date +%Y-%m-%d)
 BRANCH_NAME="release/${DATE}-${COMMIT}-{{ protonPass .secrets.jira.team_name | trim }}"
 echo "$BRANCH_NAME"
