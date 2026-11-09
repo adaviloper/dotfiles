@@ -13,11 +13,11 @@ keys = "f1"
 action = "help"
 
 [[keymaps.adaviloper]]
-keys = "tab"
+keys = "alt+down"
 action = "focus_next"
 
 [[keymaps.adaviloper]]
-keys = "shift+tab"
+keys = "alt+up"
 action = "focus_previous"
 
 [[keymaps.adaviloper]]
@@ -65,7 +65,11 @@ keys = "ctrl+w"
 action = "code_editor.delete_word_left"
 
 [[keymaps.adaviloper]]
-keys = "ctrl+k"
+keys = "alt+w"
+action = "code_editor.close_buffer"
+
+[[keymaps.adaviloper]]
+keys = "alt+j"
 action = "code_editor.next_buffer"
 
 [[keymaps.adaviloper]]
