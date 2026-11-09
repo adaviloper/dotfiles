@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('adaviloper/fugitiveblame_winbar', { clear = true }),
   pattern = 'fugitiveblame',
   callback = function()
-    vim.wo.winbar = ' '
+    vim.wo[0][0].winbar = ' '
   end,
 })
 

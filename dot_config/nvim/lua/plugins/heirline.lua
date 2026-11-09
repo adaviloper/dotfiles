@@ -219,6 +219,23 @@ return {
       },
     }
 
+		-- heirline only sets the window-local winbar on BufWinEnter/FileType and skips
+		-- windows that are 1 line tall at that moment, so windows can end up without one.
+		-- Restore it on enter for normal windows that have no winbar at all.
+		local heirline_winbar = "%{%v:lua.require'heirline'.eval_winbar()%}"
+		local disable_winbar_cb = opts.opts and opts.opts.disable_winbar_cb
+		vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+			group = vim.api.nvim_create_augroup("adaviloper/heirline_winbar_restore", { clear = true }),
+			callback = function(args)
+				local win = vim.api.nvim_get_current_win()
+				if vim.wo[win].winbar ~= "" then return end
+				if vim.api.nvim_win_get_config(win).relative ~= "" then return end
+				if vim.api.nvim_win_get_height(win) <= 1 then return end
+				if disable_winbar_cb and disable_winbar_cb(args) then return end
+				vim.wo[win][0].winbar = heirline_winbar
+			end,
+		})
+
 		-- Disabling tabline in `options.lua`
 		opts.tabline = { -- tabline
 			{ -- file tree padding
