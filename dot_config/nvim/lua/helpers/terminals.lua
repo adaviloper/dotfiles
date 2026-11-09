@@ -4,37 +4,40 @@ local utils = require("helpers.utils")
 
 local M = {}
 
-M.default_terminal = Terminal:new({
-  display_name = '  Default ',
-  direction = 'float',
-  float_opts = {
-    border = 'curved',
-  },
-})
+--- @class TerminalConfig
+--- @field display_name string
+--- @field cmd string?
 
-M.robo_term = Terminal:new({
-  display_name = ' 󱚟 Robot Helper ',
-  cmd = 'claude',
-  direction = 'float',
-  float_opts = {
-    border = 'curved',
-  },
-})
+--- @param opts TerminalConfig
+local function define_terminal(opts)
+  local config = {
+    display_name = ' ' .. opts.display_name .. ' ',
+    direction = 'float',
+    float_opts = {
+      border = 'curved',
+    },
+  }
 
-M.fm_term = Terminal:new({
-  display_name = ' 󰇥 File Manager ',
-  cmd = 'yazi',
-  direction = 'float',
-  float_opts = {
-    border = 'curved',
-  },
-})
+  if opts.cmd ~= nil then
+    config.cmd = opts.cmd
+  end
+
+  return Terminal:new(config)
+end
 
 --- @alias TermKey "default" | "robot" | "file_manager"
 M.terminals = {
-  default = M.default_terminal,
-  robot = M.robo_term,
-  file_manager = M.fm_term,
+  default = define_terminal({
+    display_name = ' Default',
+  }),
+  robot = define_terminal({
+    display_name = '󱚟 Robot Helper',
+    cmd = 'claude',
+  }),
+  file_manager = define_terminal({
+    display_name = '󰇥 File Manager',
+    cmd = 'yazi',
+  }),
 }
 
 --- @param term_key TermKey
