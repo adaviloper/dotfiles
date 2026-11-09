@@ -228,9 +228,7 @@ return {
     },
 
     -- Testing
-    ["<F4>"] = {
-      name = "Testing",
-    },
+    ["<F4>"] = { name = "Testing" },
 
     ["<F4><F4>"] = {
       function() require("neotest").run.run_last() end,
