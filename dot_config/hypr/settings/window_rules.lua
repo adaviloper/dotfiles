@@ -54,6 +54,12 @@ hl.window_rule({
   float = true,
 })
 
+hl.window_rule({
+  name  = "tag-modals",
+  match = { modal = true },
+  tag   = "+modal",
+})
+
 -- Per-app placement: fires after window rules (including float) are applied
 local placements = {
   [api_client.class]        = moom_geo(1/4, 1/2),
@@ -74,6 +80,40 @@ local function is_swiftpoint(class)
   return class == swiftpoint.class
 end
 
+-- Apps where every new window counts as a primary window
+local multi_primary = {
+  [terminal.class] = true,
+}
+
+---@param window HL.Window
+local function has_tag(window, tag)
+  local tags = window.tags
+  if type(tags) == "string" then tags = { tags } end
+  for _, t in ipairs(tags or {}) do
+    for name in t:gmatch("[^,%s]+") do
+      if name:gsub("%*$", "") == tag then return true end -- dynamic tags show as "modal*"
+    end
+  end
+  return false
+end
+
+---@param window HL.Window
+local function has_sibling(window)
+  for _, w in ipairs(hl.get_windows()) do
+    if w.class == window.class and w.address ~= window.address and w.mapped then
+      return true
+    end
+  end
+  return false
+end
+
+-- Later windows of an app (popups, sub-windows) skip the moom placements
+---@param window HL.Window
+local function is_secondary(window)
+  if multi_primary[window.class] then return false end
+  return has_sibling(window)
+end
+
 ---@param window HL.Window
 local function other_browser_count(window)
   local count = 0
@@ -88,20 +128,23 @@ end
 ---@param window HL.Window
 hl.on("window.open", function(window)
   if not window then return end
+  if has_tag(window, "modal") then return end
 
   local g
-  if is_browser(window.class) then
+  if window.initial_title == "Discord Popout" then
+    g = moom_geo(2/3, 1/3)
+  elseif is_browser(window.class) then
     if other_browser_count(window) == 0 then
       g = moom_geo(1/4, 1/2)
       hl.dispatch(hl.dsp.window.tag({ window = window, tag = "primary" }))
     else
       g = moom_geo(3/4, 1/4)
     end
+  elseif is_secondary(window) then
+    return
   elseif is_swiftpoint(window.class) then
     hl.dispatch(hl.dsp.window.center({ window = window}))
     return
-  elseif window.initial_title == "Discord Popout" then
-    g = moom_geo(2/3, 1/3)
   elseif window.class == fileManager.class then
     hl.dispatch(hl.dsp.window.resize({ x = 1400, y = 900, relative = false }))
     hl.dispatch(hl.dsp.window.center({ window = window }))
