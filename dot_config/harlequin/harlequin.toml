@@ -61,6 +61,10 @@ keys = "ctrl+n"
 action = "code_editor.new_buffer"
 
 [[keymaps.adaviloper]]
+keys = "alt+w"
+action = "code_editor.close_buffer"
+
+[[keymaps.adaviloper]]
 keys = "ctrl+w"
 action = "code_editor.delete_word_left"
 
