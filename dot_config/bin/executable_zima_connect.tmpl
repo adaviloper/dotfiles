@@ -3,25 +3,60 @@
 
 {{ template "shared_bin_utils.sh.tmpl" . }}
 
-# Prompt the user for IP address, username, and password
+{{ if eq .is_arch true -}}
+MOUNT_POINTS=(
+  "/mnt/zima-apps"
+  "/mnt/zima-media"
+)
+
+is_mounted() {
+  findmnt -n -t cifs "$1" >/dev/null
+}
+
+mount_share() {
+  local mount_point="$1"
+
+  if is_mounted "$mount_point"; then
+    success "ZimaCube already mounted at $mount_point"
+    return 0
+  fi
+
+  if ! findmnt --fstab -n "$mount_point" >/dev/null; then
+    error "No /etc/fstab entry for $mount_point. Add the cifs line first."
+    return 1
+  fi
+
+  info "Mounting ZimaCube at $mount_point"
+
+  # Touching the path triggers x-systemd.automount if it's configured.
+  ls "$mount_point" >/dev/null 2>&1
+
+  # No automount, so mount it directly.
+  if ! is_mounted "$mount_point"; then
+    sudo mount "$mount_point"
+  fi
+
+  if is_mounted "$mount_point"; then
+    success "ZimaCube mounted at $mount_point"
+  else
+    error "Failed to mount $mount_point"
+    return 1
+  fi
+}
+
+failed=0
+for mount_point in "${MOUNT_POINTS[@]}"; do
+  mount_share "$mount_point" || failed=1
+done
+
+exit "$failed"
+{{- else -}}
 IP="{{ protonPass .secrets.zima.ip | trim }}"
 USERNAME="{{ protonPass .secrets.zima.username | trim }}"
 PASSWORD="{{ protonPass .secrets.zima.password | trim }}"
-echo ""
 
-# Build the SMB URL
-SMB_URL="smb://$USERNAME:$PASSWORD@$IP"
-
-# Display connection information
 info "Connecting to ZimaCube"
-
-# Open the shared path in Finder
-{{ if eq .is_arch true }}
-xdg-open "$SMB_URL"
-{{- else -}}
-open "$SMB_URL"
-{{- end }}
-
-# Completion message
+open "smb://$USERNAME:$PASSWORD@$IP"
 success "SMB connection command executed. Check Finder for the result."
-{{- end -}}
+{{- end }}
+{{ end -}}
