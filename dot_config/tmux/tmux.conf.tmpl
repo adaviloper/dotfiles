@@ -18,6 +18,10 @@ bind-key -T copy-mode-vi M-j send -N 5 -X cursor-down
 bind-key -T copy-mode-vi M-k send -N 5 -X cursor-up
 set -g mode-style 'fg=#{@copy_mode_fg},bg=#{@copy_mode_bg}'
 
+set -g message-style 'fg={{ .colorscheme.crust }},bg={{ .colorscheme.yellow }},#{?#{m/r:(^|#,)IS(PANE|MODE)($|#,),#{prompt_flags}},,fill={{ .colorscheme.yellow }}}'
+set -g message-command-style 'fg={{ .colorscheme.yellow }},bg={{ .colorscheme.crust }},#{?#{m/r:(^|#,)IS(PANE|MODE)($|#,),#{prompt_flags}},,fill={{ .colorscheme.crust }}}'
+set -g window-status-current-style default
+
 # Yazi image preview
 set -g allow-passthrough on
 set -ga update-environment TERM_PROGRAM
