@@ -92,6 +92,8 @@ return {
   		laravel_lsp = {
         cmd = { "laravel-lsp" },
         filetypes = { "php", "blade" },
+        -- "auto" picks Sail when vendor/bin/sail exists and fails if the container is down
+        init_options = { phpEnvironment = "local" },
         root_dir = function(bufnr, on_dir)
           local root = vim.fs.root(bufnr, "artisan")
           if root then
